@@ -14,9 +14,9 @@ class IndexController extends HomeController{
      * @param string $remember 是否保存登录状态
      */
   	public function index(){
-      	
     	$this->display();
     }
+
     public function login($username = '', $password = '', $verify = '', $remember = ''){
         $model = M("Member");
         if (IS_POST) { //登录验证
