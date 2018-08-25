@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/dx_jiaoyi.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">定向交易</h1>		 
+		</header>
+     
+              <div class="mui-content">
+ 					<form action="{:U('')}" method="post" class="form-horizontal">
+                      <div class="top1">
+                          <p style="margin-bottom: 5px;"><span>钱包地址：</span><input type="text" class="mui-input-clear mui-ellipsis" value="{$uinfo['qianbao']}" readonly="readonly" ></p>
+                          <input type="hidden" name="uid" value="{$uinfo['uid']}">
+                          <p style="border-bottom:1px solid #CCCCCC;"><span>对方昵称：</span><input type="text"readonly="readonly" value="{$uinfo['usernumber']}" class="mui-input-clear mui-ellipsis"></p>
+                          <p><span>对方手机号：</span><input type="text" readonly="readonly" value="{$uinfo['mobile']}" class="mui-input-clear mui-ellipsis"></p>
+                          <p style="margin-top: 5px;"><span>转入数量：</span><input type="number" name="shuliang" class="mui-input-clear mui-ellipsis" placeholder="请输入转账金额（NWTT）"></p>
+                      </div>
+                      <p class="x address1">转入</p>
+
+             
+                  <div class="z_mask">
+                      <div class="z_alert">
+                          <p class="title">请输入密码</p>
+                          <input type="text" name="password"/>
+                          <p class="buts1">
+                              <span class="z_cancel">取消</span>
+                              <span type="submit" class="ajax-post" target-form='form-horizontal' style="color:#002f72;">确定</span>
+                          </p>
+                      </div>
+            
+                 </div>
+                            
+               </form>
+      		 </div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+     <script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script type="text/javascript">
+		$('.address1').click(function(){
+			$('.z_mask').show();
+		});
+		$('.z_cancel').click(function(){
+			$('.z_mask').hide();
+		});
+		$('.z_sure').click(function(){
+			$('.z_mask').hide();
+			//ajax
+		});
+	</script>
+</html>
+

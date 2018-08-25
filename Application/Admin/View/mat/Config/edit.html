@@ -1,0 +1,135 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="widget-box">
+		<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>{$info['id']?'编辑':'新增'}配置</h5>
+        </div>
+	<form action="{:U()}" method="post" class="form-horizontal">
+	<div class="widget-content nopadding">
+		<div class="control-group">
+			<label class="control-label">配置标识</label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="name" value="{$info.name|default=''}">
+				<span class="check-tips">（用于C函数调用，只能使用英文且不能重复）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">配置标题</label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="title" value="{$info.title|default=''}">
+				<span class="check-tips">（用于后台显示的配置标题）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">排序</label>
+			<div class="controls">
+				<input type="text" class="text input-small" name="sort" value="{$info.sort|default=0}">
+				<span class="check-tips">（用于分组显示的顺序）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">配置类型</label>
+			<div class="controls">
+				<select name="type">
+					<volist name="Think.config.CONFIG_TYPE_LIST" id="type">
+						<option value="{$key}">{$type}</option>
+					</volist>
+				</select><span class="check-tips">（系统会根据不同类型解析配置值）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">配置分组</label>
+			<div class="controls">
+				<select name="group">
+					<option value="0">不分组</option>
+					<volist name="Think.config.CONFIG_GROUP_LIST" id="group">
+						<option value="{$key}">{$group}</option>
+					</volist>
+				</select><span class="check-tips">（配置分组 用于批量设置 不分组则不会显示在系统设置中）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">配置值</label>
+			<div class="controls">
+				<eq name='info.type' value="7">
+				<div style="margin:10px;">
+				<eq name='info.value' value='0'>
+					<img class="profile-pic animated" style='width:271px;height:70px;' id="pic" src="__IMG__/news_color/logo.png"/>
+					<else/>
+					<img class="profile-pic animated" style='width:271px;height:70px;' id="pic" src="{$info.value|get_cover='path'}"/>
+				</eq>
+				</div>
+				<div class="controls" style="margin-left:75px;margin-bottom:30px;">
+					<input type="file" id="upload_picture" class="btn btn-lg m-r-5">
+				</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#icon").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+							$("#pic").attr("src",src);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<input type="hidden" name="value"  id="icon" value="{$info.value|default=''}"/>
+   				<else/>
+   				<textarea class='span4 textarea' name="value">{$info.value|default=''}</textarea>
+			</eq><span class="check-tips">（配置值）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">配置项</label>
+			<div class="controls">
+					<textarea class='span4 textarea' name="extra">{$info.extra|default=''}</textarea>
+					<span class="check-tips">（如果是枚举型 需要配置该项）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">说明</label>
+			<div class="controls">
+					<textarea class='span4 textarea' name="remark">{$info.remark|default=''}</textarea>
+					<span class="check-tips">（配置详细说明）</span>
+			</div>
+		</div>
+		<div class="form-actions">
+			<input type="hidden" name="id" value="{$info.id|default=''}">
+			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div></div>
+	</form>
+</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		Think.setValue("type", {$info.type|default=0});
+		Think.setValue("group", {$info.group|default=0});
+		//导航高亮
+		highlight_subnav('{:U('Config/index')}');
+	</script>
+</block>

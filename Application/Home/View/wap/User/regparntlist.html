@@ -1,0 +1,36 @@
+<extend name="wap/Base/base"/>
+<block name="body">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+<div class="decoration"></div>
+
+<div class="widget">
+<include file='wap/Public/search' /></div>
+<div class="widget">
+     <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+                  <tbody>
+                 <notempty name="_list">
+           			<volist name="_list" id="vo"  mod="2">
+	               <tr>
+	              		<td>{$Think.const.USERNUMBER}:{$vo.usernumber}</td>
+	              		<td>{$Think.const.REALNAME}:{$vo.realname|default='佚名'}</td>
+	              	</tr>
+	              	<tr>
+	             		<td><eq  name='vo.left_zone' value="0"  ><a style="color:#2b6893;" href="{:U('registuser',array('puid'=>$vo['uid'],'zone'=>1))}" >左区注册</a></eq></td>
+	             		<td><eq  name='vo.right_zone' value="0"  ><a style="color:#2b6893;" href="{:U('registuser',array('puid'=>$vo['uid'],'zone'=>2))}" >右区注册</a></eq></td>
+	              </tr>
+           		</volist>
+           		 <else/>
+           		 <td colspan="4"><h2 class="text-center">暂时没有可选择的注册位!</h2></td>
+			<!-- <include file='Public/emptylist' title="暂时没有可选择的注册位"/> -->
+ 		</notempty>
+           </tbody>
+      </table>
+ </div>
+ <div class="page">{$_page}</div>
+    
+</block>
+<block name="script">
+	<script type="text/javascript">
+	highlight_subnav("{:U('regparntlist')}");
+	</script>
+</block>

@@ -1,0 +1,44 @@
+<extend name="wap/Base/base"/>
+
+<block name="body">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+<div class="decoration"></div>
+<div class="widget">
+<form action="{:U('liuyanReply')}" method="post" class="form">
+<input type = "hidden" name='id' value ="{$id}" />
+   <fieldset class="step" >
+      <div class="formRow">
+         <label class="field-title contactNameField">留言内容:</label>
+         <div class="formRight">
+         	<span class='oneTwo'>
+         		<textarea class="contactTextarea requiredField" name='content' disabled >{$content}</textarea>
+			</span>
+         </div>
+         <div class="clear"></div>
+     </div>
+      <div class="formRow">
+         <label class="field-title contactNameField">回复内容:</label>
+         <div class="formRight">
+         	<span class='oneTwo'>
+         		<textarea class="contactTextarea requiredField"  name="reply"  ></textarea>
+			</span>
+         </div>
+         <div class="clear"></div>
+     </div>
+   </fieldset>
+   <div class="wizButtons"> 
+		<span class="wNavButtons">
+             <input class="button-big button-blue ajax-post"  value="确定" type="submit" target-form='form'/>
+             <input class="button-big button-green"  value="重置" type="reset" />
+             <input class="button-big button-dark"  value="返回" type="button"  onclick="javascript:history.back();"/>
+         </span>
+	</div>
+     <div class="clear"></div>
+</form>
+</div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+	highlight_subnav("{:U('Message/liuyanList')}");
+	</script>
+</block>

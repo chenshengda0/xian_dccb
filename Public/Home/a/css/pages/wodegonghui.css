@@ -1,0 +1,129 @@
+.top{
+	width: 100%;
+	height: 175px;
+	text-align: center;
+	background: url(../../imgs/bg-04.jpg) no-repeat;
+	overflow: hidden;
+}
+.img img{
+	max-width: 85px;
+	margin-top: 30px;
+	border-radius: 50%;
+}
+.name{
+	color: #FFFFFF;
+	font-size: 16px;
+	margin-top: 10px;
+}
+.main{
+	background-color: #FFFFFF;
+	margin-bottom: 10px;
+	padding: 10px 20px;
+	font-size: 14px;
+}
+.main li{
+	width: 100%;
+	line-height: 35px;
+}
+.a{
+	display: inline-block;
+	vertical-align: middle;	
+	width: 65%;
+}
+.boot p{
+	color: #666666;
+}
+.g{
+	color: #02ba03;
+}
+.num{
+	margin-top: -32px;
+	font-size: 16px;
+}
+
+.jia{
+	width: 80%;
+	line-height: 35px;
+	text-align: center;
+	color: #FFFFFF;
+	border-radius: 3px;
+	background-color: #002E72;
+	margin:50px auto;
+}
+.list1{
+	padding:20px 5px;
+	background: #FFFFFF;
+}
+.list1 span{
+	display: inline-block;
+	width:25%;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+}
+.list1 textarea{
+	resize: none;
+	width: 70%;
+	height: 100px;
+	padding:5px 7.5px;
+	background: #EEEEEE;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+.list1 input{
+	font-size: 14px;
+	width: 70%;
+	background: #EEEEEE;
+}
+.list1 span,.list input{
+	float: left;
+}
+.but{
+	margin: 20px auto;
+    width: 80%;
+    color: #fff; 
+}
+.but input{
+	width: 100%;
+    text-align: center;
+    line-height: 35px;
+    background-color: #002E72;
+    border-radius: 2px;
+    border: none;
+    padding: 0;
+}
+.bianji{
+	position:absolute;
+	right:20px;
+	top:20px;
+}
+.bianji:before{
+	color:#333;
+}
+.tel{
+	display: inline-block;
+	width: 42px;
+    height: 42px;
+    float: left;
+}
+.tel>a{
+	display: inline-block;
+	width: 42px;
+    height: 42px;
+}
+
+.jj{
+	position: absolute;
+    top: 8%;
+    right: 0;
+    color: #FFFFFF;
+    width: 89px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    background:rgba(25,25,25,.4);
+    text-align: center;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    font-size: 14px;
+}

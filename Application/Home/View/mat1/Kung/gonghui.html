@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/kggh.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">矿工公会</h1>
+		</header>
+		<div class="mui-content">
+			 <div class="mid">
+			 	<div class="tit1">
+			 		<ul>
+			 			<li class="dd active">我的公会</li>
+			 			<li class="dd">所属公会</li>
+			 			<li class="dd">公会管理</li>
+			 		</ul>
+			 	</div>
+               
+			 	<if condition="$uinfo.is_gonghui neq 0">
+			 			<div class="dd1 cur">
+                               <div id="top">
+                                  <div class="img1">
+                                      <img src="__HOME__/wap/img/me_03.png"/>
+                                  </div>
+                                  <div class="name">会长编号:{$uinfo['usernumber']}</div>
+                                  <ul class="ul1">
+                                      <li style="border-right: 1px solid #666;">公会总人数：<p>{$uinfo['team']-1}</p></li>
+                                      <li>公会总算力：<p>{$total}</p></li>
+                                  </ul>
+                                   </div>
+                                      <table border="" cellspacing="" cellpadding="">
+                                          <tr>
+                                              <th>成员昵称</th>
+                                              <th>成员手机号</th>
+                                              <th>成员等级</th>
+                                              <th>成员算力</th>
+                                          </tr>
+                                        <foreach name='people' item='vo'>
+                                          <tr>
+                                              <td>{$vo.usernumber}</td>
+                                               <td>{$vo.mobile}</td>
+                                              <td>{$vo.userrank|get_userrank}</td>
+                                              <td>{$vo.ttsuanli|default='0'}</td>
+                                          </tr>
+                                        </foreach>
+                                      </table>
+				 	     </div>
+			 	<else/>
+                  		<div class="dd1 cur">
+                             <div id="top">
+                                <div class="img1">
+                                    <img src="__HOME__/wap/img/me_03.png"/>
+                                </div>
+                                <div class="name">我的团队</div>
+                                <ul class="ul1">
+                                    <li style="border-right: 1px solid #666;">团队总人数：<p>{$uinfo['team']-1}</p></li>
+                                    <li>团队总算力：<p>{$uinfo['suanli']}</p></li>
+                                </ul>
+                                <p class="but link" data-link="{:U('kung/create_gh')}">点击创建公会</p>
+                            </div>
+			 			<table border="" cellspacing="" cellpadding="">
+							<tr>
+								<th>成员昵称</th>
+                              	<th>成员手机号</th>
+								<th>成员等级</th>
+								<th>成员状态</th>
+							</tr>
+                          <foreach name='people' item='vo'>
+							<tr>
+								<td>{$vo.usernumber}</td>
+                              	<td>{$vo.mobile}</td>
+								<td>{$vo.userrank|get_userrank}</td>
+								<td>{$vo.shenpi|getshenpi}</td>
+							</tr>
+                          </foreach>
+						</table>
+                       </div>
+			 	</if>
+			 	
+			 	<div class="dd1">
+			 		 <div class="list1">
+				    	<span>工会名称：</span><input type="text"  value="{$gonghui.gh_name}" placeholder="0.01GH/s" disabled="disabled"/>
+				    	<span>工会宣言：</span><textarea   disabled="disabled">{$gonghui.gh_xuanyan}</textarea>
+				    	<span>工会QQ群：</span><input type="text" value="{$gonghui.gh_qq}" placeholder="0.01GH/s" disabled="disabled"/>
+				    	<span>会长微信：</span><input type="text"  value="{$gonghui.gh_wx}" placeholder="0.01GH/s" disabled="disabled"/>
+				    	<span>会长QQ：</span><input type="text" value="{$gonghui.hz_qq}" placeholder="0.01GH/s" disabled="disabled"/>
+				    	<span>会长手机：</span><input type="text" value="{$gonghui.hz_phone}" placeholder="0.01GH/s" disabled="disabled"/>
+				   </div> 
+			 	</div>
+			 		
+			 	<form action="{:U('kung/xiugai')}" method="post">
+			 		<div class="dd1">
+			 		<if condition="$uinfo.is_gonghui eq 1">
+			 		 <div class="list1">
+				    	<span>工会名称：</span><input type="text" name = "gh_name" value="{$gonghui.gh_name}" placeholder="0.01GH/s"/>
+				    	<span>工会宣言：</span><textarea name = "gh_xuanyan">{$gonghui.gh_xuanyan}</textarea>
+				    	<span>工会QQ群：</span><input  name = "gh_qq" value="{$gonghui.gh_qq}" type="text" placeholder="0.01GH/s"/>
+				    	<span>会长微信：</span><input name = "gh_wx" value="{$gonghui.gh_wx}" type="text" placeholder="0.01GH/s"/>
+				    	<span>会长QQ：</span><input  name = "hz_qq" value="{$gonghui.hz_qq}" type="text" placeholder="0.01GH/s"/>
+				    	<span>会长手机：</span><input  name = "hz_phone" value="{$gonghui.hz_phone}"  type="text" placeholder="0.01GH/s"/>
+				      </div> 
+				   <input type="hidden" value="{$gonghui.id}" name="id">
+				   <input type="submit" value="修改">
+				 <else/>
+			 		<span>暂无公会管理</span>
+			 	</if>
+			 	</div>
+			  </form>
+			 	
+			 </div>
+		</div>		
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/index/kuangjishouyi.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		
+		</script>
+	</body>
+</html>
+
+
+

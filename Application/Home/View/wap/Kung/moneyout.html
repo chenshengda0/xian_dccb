@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>会员转账</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	header a{margin-top: 10px;font-size: .9em;color: #999;}
+    	.act{background: #292c33;}
+    	.box{float: left;width: 100%;height: auto;}
+    	#qd{width: 95%;height: 40px;background: #f93333;color: #fff;border: none;margin-left: 2.5%;}
+    	.box p{width: 100%;float: left;color: #fff;padding: 0 10px 0 10px;}
+    	.jine{width: 95% !important;height: 40px;border-bottom: 1px solid #313840;margin-left: 2.5%;}
+    	.box input{background: none !important;float: left;width: 70%;height: 40px;border: none;font-size:.95em;}
+    	.jine span{display: inline-block;10%;float: left;
+    	height: 40px;text-align: center;line-height: 40px;color: #a9a7a7;font-size: 1.1em;}
+      #mima input{width:50%;}
+      #huoqu{background:none;color:#fff;border:none}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+    	<a class=" mui-icon mui-icon-left-nav mui-pull-left" style="margin: 0;" href="{:U('user/index')}"></a>
+        <h1 class="mui-title">会员转账</h1>
+        <a href="{:U('moneyout_set')}" class="mui-pull-right">转出记录</a>
+    </header>
+    <div class="mui-content">
+        <form action="{:U('')}" method="post" class="form-horizontal">
+            <div class="box">
+                <p style="margin-top: 20px;">
+                    <span>币种：百业链（BYL）</span>
+                </p>
+                <p class="jine">
+                    <span>对方账号</span>
+                    <input type="text" name="usernumber" placeholder="请输入对方钱包帐号" />
+                </p>
+                <p class="jine">
+                    <span>转出数量</span>
+                    <input type="text" name="num" placeholder="请输入转出数量"/>
+                </p>
+                <p class="jine">
+                    <span>交易密码</span>
+                    <input type="password" name="pay" placeholder="请输入交易密码"/>
+                </p>
+           <!--  <p class="jine" id="mima">
+					<span>验证码</span>
+					<input type="text" name="msg" placeholder="输入验证码" style="width: 40%;"/>
+					<button id="huoqu" type="button" class="mui-pull-right">获取验证码</button>
+				</p>-->
+                <p style="margin-top: 35px;">
+                    <button type="submit" id="qd" class="ajax-post" target-form='form-horizontal' >确定</button>
+                </p>
+            </div>
+        </form>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+    <script type="text/javascript">
+        $('#huoqu').click(function(){
+            var mobile= {$logininfo.mobile};
+            if(mobile==""){
+                mui.alert("请绑定手机号");
+            }else{
+              
+                $.ajax({
+                    type: "post",
+                    url: "{:U('yanzheng')}",
+                    data: {mobile:mobile},
+                    dataType: "json",
+                    success: function(data){
+                     mui.alert(data.info);
+                    }
+                });
+
+
+
+            }
+
+
+
+        })
+
+    </script>
+</body>
+</html>
+
+

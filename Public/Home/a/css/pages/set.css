@@ -1,0 +1,29 @@
+.mui-content{
+	padding-top: 44px;
+}
+.mui-navigate-right span:nth-child(2){
+	margin-right: 18px;
+}
+.tuichu{
+	width: 80%;
+	line-height: 35px;
+	background-color: #00b50d;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 30px auto;
+	border-radius: 3px;
+}
+.mui-table-view{
+	font-size: 14px;
+}
+#contents{
+	width: 60%;
+	border: none;
+	height: 20px;
+	text-align: right;
+	margin-bottom: 0;
+	font-size: 14px;
+	color: #424242;
+	padding: 0;
+	margin-right: 18px;
+}

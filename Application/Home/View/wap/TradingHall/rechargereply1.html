@@ -1,0 +1,108 @@
+<extend name="wap/Base/base"/>
+<block name="body">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+<div class="decoration"></div>
+<div class="widget">
+<form action="{:U('rechargeReply')}" method="post" class='form'>
+    <fieldset class="step" >
+    
+      <div class="formRow">
+         <label class="field-title contactNameField">充值金额:</label>
+         <div class="formRight">
+         	<span class='oneTwo'><input class="contactField requiredField" type="text" name="money" id="money" value="" /></span>
+         </div>
+         <div class="clear"></div>
+     </div>
+      
+       <div class="formRow">
+       		<label class="field-title contactNameField">汇款时间:</label>
+       		<div class="formRight">
+              <span class='oneTwo'><input type="text" class="contactField requiredField" name="outtime" id="outtime" value=""></span>
+             </div>
+             <div class="clear"></div>
+      </div>
+      <div class="formRow">
+       		<label class="field-title contactNameField">手机号:</label>
+       		<div class="formRight">
+              <span class='oneTwo'><input type="text" class="contactField requiredField" name="mobile" id="mobile" value="{$uinfo['mobile']}" maxlength="11" ></span>
+             </div>
+             <div class="clear"></div>
+      </div>
+      <div class="formRow">
+       		<label class="field-title contactNameField">汇款账号:</label>
+       		<div class="formRight">
+              <span class='oneTwo'><input type="text" class="contactField requiredField" name="out_banknumber" id="out_banknumber" value="{$uinfo['banknumber']}" maxlength="20" ></span>
+             </div>
+             <div class="clear"></div>
+      </div>
+         <div class="formRow">
+           <label class="field-title contactNameField">开户银行:</label>
+           <div class="formRight">
+           <span class='oneTwo'><select class="contactField requiredField"  name="out_bankname" >
+                  <foreach name="allow_bank" item="vo">
+					<option value="{$vo}" <eq name="uinfo['bankname']" value="$vo">selected</eq> >{$vo}</option>
+				</foreach>
+               </select></span>
+           </div>
+           <div class="clear"></div>
+        </div>
+         <div class="formRow">
+       		<label class="field-title contactNameField">开户人:</label>
+       		<div class="formRight">
+              <span class='oneTwo'><input type="text" class="contactField requiredField" name="out_bankholder" id="out_bankholder" value="{$uinfo['bankholder']}" ></span>
+             </div>
+             <div class="clear"></div>
+     	 </div>
+        <div class="formRow">
+        	<label class="field-title contactNameField">充值类型:</label>
+        	<div class="formRight">
+        		<select class="contactField requiredField"  name="moneytype" style="display:none;display:inline-block;width:33%;min-width:80px;">
+          			<option value='1'>{$Think.const.HASBILL}</option>
+          			<option value='2'>{$Think.const.HASMONEY}</option>
+          			<option value='3'>{$Think.const.HASCP}</option>
+      			 </select>        		 
+			 </div> 
+			 <div class="clear"></div>
+        </div>
+       </fieldset>
+ 	<div class="wizButtons"> 
+		<span class="wNavButtons">
+              <input class="button-big button-blue ajax-post"  value="确定" type="submit" target-form='form'/>
+              <input class="button-big button-green"  value="重置" type="reset" />
+              <input class="button-big button-dark"  value="返回" type="button"  onclick="javascript:history.back();"/>
+         </span>
+	</div>
+     <div class="clear"></div>
+</form>
+</div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+    laydate({
+        elem: '#outtime', 
+        event: 'focus',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        min: '2015-01-01 00:00:00', //设定最小日期为当前日期
+        max: '2099-12-31 23:59:59', //最大日期
+        istime: true,
+    });
+    </script>
+    <script type="text/javascript">
+    $("#money").blur(function() {
+		if(!check_empty('money','充值金额')){return false;}
+		if(!check_number('money','充值金额')){return false;}
+	});
+    /*银行卡号*/
+	$("#out_banknumber").blur(function() {
+		if(!check_empty('out_banknumber','银行卡号')){return false;}
+		if(!check_number('out_banknumber','银行卡号')){return false;}
+		if(!check_Size('out_banknumber','银行卡号','16','19')){return false;}
+	});
+	/*开户人*/
+	$("#out_bankholder").blur(function() {
+		if(!check_empty('out_bankholder','开户人')){return false;}
+	});
+  	//导航高亮
+    highlight_subnav("{:U('rechargeReply')}");
+	</script>
+</block>

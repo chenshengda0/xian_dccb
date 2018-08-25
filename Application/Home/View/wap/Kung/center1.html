@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/shangcheng.css" />
+	</head>
+	<body>
+        <header class="mui-bar mui-bar-nav header" style="height:140px;font-size: 18px;">
+			<p style="color: #FFFFFF;height:70px;line-height:88px;font-size: 20px;text-align: center;">今日收益</p>
+		    <h1 class="mui-title" style="height: 60px;line-height:60px;font-size: 35px;" ><span id="bt" data-value="false">{$arr['eve_price']}</span>&nbsp;<span style="color:#00ba0d;font-size: 18px;font-weight: 600">USD</span></h1>
+			<p class="jj iconfont icon-jiaoyi2">&nbsp;定向交易</p>
+		</header>
+        
+		<div class="z_mask">
+			<div class="z_alert">
+	            <p class="title">请输入对方钱包地址</p>
+                <form action="{:U('dxjy')}" method="post" class="form-horizontal">
+                      <input type="text" name="qianbao" />
+                      <p class="buts1">
+                          <span class="z_cancel">取消</span>
+                          <span type="submit" class="ajax-post" target-form='form-horizontal' style="color:#002f72;">确定</span>
+                      </p>
+                 </form>
+	        </div>
+        </div>
+		<div class="mui-content" style="padding-top: 140px;">
+			<div class="list2">
+				<ul>
+					<li><span class="iconfont icon-shang" style="color:#fd5251;">高：</span><span>{$arr['hight']}$</span></li>
+					<li><span class="iconfont icon-shang" style="color:#00aa57;">低：</span><span>{$arr['low']}$</span></li>
+					<li><span class="iconfont icon-shang" style="color:#01a1e6;">量：</span><span>{$arr['liang']}</span></li>
+					<li style="border: none;"><span class="iconfont icon-shang" style="color:#ff9400;">幅：</span><span>{$arr['fu']}%</span></li>
+				</ul>
+			</div>
+			 <div class="mid">
+			 	<div class="list3">
+			 		<ul>
+			 			<li class="dd active" style="border-right: 1px solid #e8e8e8;" id="ru">买入</li>
+			 			<li class="dd" id="chu">卖出</li>
+			 		</ul>
+			 	</div>
+			 	<div class="mui-input-row mui-search">
+				    <input type="search"  class="mui-input-clear search" placeholder="输入对方手机号过滤">
+				</div>
+			 	<div class="dd1 cur" id="dd1">
+			 		<div class="mui-content list3-1">
+			 		<notempty name="mairu">
+			 		    <ul class="mui-table-view"  id="churu">
+			 		        <volist name="mairu" id="vo">
+			 		             <li class="mui-table-view-cell mui-media">	    
+					                <img class="mui-media-object mui-pull-left" src="__IMG__/new.jpg">
+					                <div class="mui-media-body">
+					                 	{$vo['youname']}
+					                	<div class="num"><p>{$vo['shuiliang']}<span>个</span></p><p>{$vo['danjia']}$/NWTT</p></div>
+					                	<p style="color:#30b73a">总计：<span>{$vo['price']}$</span></p>
+					                	<p class="but" onclick="sure({$vo['id']})">卖给TA</p>
+					                </div>		     
+					             </li>
+			 		        </volist>
+					    </ul>	
+			 		</notempty>
+					    		
+					</div>
+			 	</div>
+			 		
+			 	<div class="dd1" id="dd2">
+			 		<div class="mui-content list3-1">
+			 		<notempty name="maichu">
+					    <ul class="mui-table-view" id="chumai">
+					      <volist name="maichu" id="vo">
+					        <li class="mui-table-view-cell mui-media">	    
+					                <img class="mui-media-object mui-pull-left" src="__IMG__/new.jpg">
+					                <div class="mui-media-body">
+					                  {$vo['myname']}
+					                	<div class="num"><p>{$vo['shuiliang']}<span>个</span></p><p>{$vo['danjia']}$/NWTT</p></div>
+					                	<p style="color:#30b73a">总计：<span>{$vo['price']}$</span></p>
+					                	<p class="but g1" onclick="sure1({$vo['id']})">买入TA</p>
+					                </div>		     
+					        </li>
+					        </volist> 
+					    </ul>
+					</notempty>			
+					</div>
+			 	</div>			 	
+			 </div>
+			 <div class="mai1 aa cur">
+			  <div class="buy">我要买入</div>
+			  <div class="buy-1">
+			  		<div class="keyong">可用：<span>{$logininfo.hasmoney}NWTT</span></div>
+			  		<form action="{:U('mairu')}" method="post" class="mairu">
+			  			<div class="buy-2">
+				  			<ul>
+				  				<li>买入价：<input type="number" name="danjia" class="danjia1" value="" placeholder=""/></li>
+				  				<li>买入量：<input type="number" name="shuliang" class="shuliang1" value="" placeholder=""/></li>
+				  			</ul><p style="clear: both;"></p>
+				  		</div>
+				  		<div class="keyong" style="border: none;">交易总金额：$<span class="total1">0.00</span></div>
+				  		<p class="buy-but"><input type="submit" class="ajax-post"  target-form='mairu' value="我要买入"/></p>
+				  		<p class="cancle">取消</p>					
+		  			</form>
+			  </div>
+			</div>
+			
+			<div class="mai2 aa">
+				 <div class="buy g1">我要卖出</div>
+				  <div class="buy-1 g2">
+				  		<div class="keyong g2">可用：<span>{$logininfo.hasmoney}NWTT</span></div>
+				  		<form action="{:U('maichu')}" method="post" class="maichu">	
+				  		<div class="buy-2">
+				  			<ul>
+				  				<li>卖出价：<input type="number" name="danjia" class="danjia2" placeholder=""/></li>
+				  				<li>卖出量：<input type="number" name="shuliang" class="shuliang2" placeholder=""/></li>
+				  			</ul><p style="clear: both;"></p>
+				  		</div>
+				  		<div class="keyong" style="border: none;">交易总金额：$<span class="total2">0.00</span></div>
+				  		<p class="buy-but gg1"><input type="submit" class="ajax-post"  target-form='maichu' value="我要卖出"/></p>
+				  		<p class="cancle g1">取消</p>
+				  		
+				  		</form>
+				  </div>
+			</div>
+			
+		</div>
+		<div class="foot">
+			<a href="{:U('kung/index')}" >
+				<span class="iconfont  icon-shouye2" ></span>
+		       	<span>首页</span>
+			</a>
+			<a href="{:U('shop/index')}" >
+		        <span class="iconfont icon-sc1"></span>
+		       <span>矿机</span>
+		    </a>
+		     <a href="{:U('kung/center')}" class="foot-active">
+		        <span class="iconfont icon-icon"></span>
+		        <span>交易</span>
+		    </a>
+		    <a href="{:U('user/index')}">
+		        <span class="iconfont icon-wode"></span>
+		        <span>我的</span>
+		    </a>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__JS__/pages/jiaoyi.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script>
+    rmb = {$arr1['rmb']};
+	eve_price = {$arr1['eve_price']};
+    var flag =$('#bt').attr('data-value');
+		$('#bt').click(function(){
+		   	if(flag=="true"){
+		   		flag='false';
+		    	$(this).html(rmb);
+              	$(this).next().html('RMB');
+		   	}else{
+		   		flag='true';
+		   		$(this).html(eve_price);
+		    	$(this).next().html("USD");
+		    }
+		})
+
+	$('.search').keyup(function(){
+		mobile=$(this).val();
+		if(mobile==''){
+			window.location.reload();
+		}
+		   var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;  
+		   if (!myreg.test(mobile)) {  
+		     return false;  
+		   } 
+		mai = $('.active').attr('id');
+		if(mai=='ru'){
+			k=2;
+		}else if(mai=='chu'){
+		    k=1;
+		}
+		
+		   $.ajax({
+			  type: 'POST',
+			  url: '{:U('search')}',
+			  data: {mobile:mobile,k:k},
+			  success:
+				  function(data){
+				  if(data.k==1){
+					  $("#chumai").children('li').remove();
+					  $("#chumai").append(data.str);
+				  }else if(data.k==2){
+					  $("#churu").children('li').remove();
+					  $("#churu").append(data.str);
+				  }
+			  } 
+			});
+	})
+	
+	$(".danjia1,.shuliang1").blur(function(){
+    	danjia = $('.danjia1').val();	   
+    	shuliang = $('.shuliang1').val();
+    	total = danjia*shuliang;
+    	$('.total1').html(total);
+    })
+    $(".danjia2,.shuliang2").blur(function(){
+    	danjia2 = $('.danjia2').val();
+    	shuliang2 = $('.shuliang2').val();
+    	tota2 = danjia2*shuliang2;
+    	console.log(tota2);
+    	$('.total2').html(tota2);
+    })
+    
+  
+	
+	
+	    
+	function sure(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定卖给他吗?',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['确定','取消'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('pipei')}",{id:id,mai:2}, success, "json");
+		            	 return false;
+		            }, no: function(){
+		            	 
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+        $('.jj').click(function(){
+			$('.z_mask').show();
+		});
+		$('.z_cancel').click(function(){
+			$('.z_mask').hide();
+		});
+		$('.z_sure').click(function(){
+			$('.z_mask').hide();
+			//ajax
+		});
+	function sure1(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定买他的吗?',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['确定','取消'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('pipei')}",{id:id,mai:1}, success, "json");
+		            	 return false;
+		            }, no: function(){
+		            	 
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+	 function success(data) {
+	        if (data.status) {
+	        	layer.msg(data.info,3,1);
+	        	setTimeout(function () {
+	        		var index = layer.load('正在跳转，请耐心等待');
+	                window.location.href = data.url
+	            }, 1000);
+	        	 return false;
+	        } else {
+	           layer.msg(data.info,2,3);
+	        }
+	    }  
+	  
+	</script>
+</html>

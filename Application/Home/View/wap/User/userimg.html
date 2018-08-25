@@ -1,0 +1,74 @@
+<extend name="wap/Base/base" />
+<block name="body">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+<div class="decoration"></div>
+		<style>
+			#usrimg .img{
+				position: relative;
+				height: 30px;
+				width: 50%;
+				margin: 0 auto;
+			}
+			#usrimg img {
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				top:0;
+			}
+			#usrimg td{
+				text-align: center;
+			}
+			#usrimg tr{vertical-align: top;}
+			#usrimg table{
+				border-collapse: collapse;
+            	border: none;
+            	margin: 0 auto;
+			}
+			$usrimg .info{
+				margin: 0 auto;
+			}
+			#usrimg .info td{
+				border: 1px solid gainsboro;
+				min-width:30px;
+				padding: 2px 8px;
+			}
+			
+			#usrimg{
+				margin:20px;
+			}
+		</style>
+ <div class="widget">
+ <div class='floatL'>
+  <form action="__CONTROLLER__/userImg" method="post" >  
+  <span class='oneFive'>
+  <input type="text"  name="usernumber" class="contactField requiredField"  value="{$usernumber}" placeholder="会员编号"/></span>
+  <input type="submit"   class="button-big button-magenta"  value="查询" />
+  	<neq name="uid" value="$logininfo['uid']">
+        <input value="上一层" type="button" class="button-big button-magenta" onclick="javascript:var i={$uid}; window.location='__CONTROLLER__/userImg/p/1/uid/'+i;return false;" /></li>
+         <input value="第一层" type="button"  class="button-big button-magenta" onclick="javascript:window.location='__CONTROLLER__/userImg';return false;" /></li>
+    </neq>
+   </form></div>
+   <div class="clear"></div>
+ </div>
+   <div class="widget"><div id="usrimg">{$html}</div> </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	$(function(){
+		left = $('#usrimg').find('.left');
+		len = left.length; 
+		for(i=len-1;i>=0;i--){
+			leftw = $(left[i]).width();
+			rightw =  $(left[i]).next('td').width();
+			
+			if(leftw>rightw){
+				$(left[i]).next('td').width(leftw);
+			}else{
+				$(left[i]).width(rightw);
+			}
+		}
+	});
+    //导航高亮
+    highlight_subnav("{:U('User/userImg')}");
+</script>
+</block>

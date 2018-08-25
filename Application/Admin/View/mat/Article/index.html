@@ -1,0 +1,102 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class='opt_box'>
+<div class='dataTables_wrapper'>
+          	<div class="fl" style='margin:5px;'>
+			<div class="btn-group">
+				<gt name="allow" value="0">
+					<button data-toggle="dropdown" class="btn btn-info document_add" <if condition="count($model) eq 1">url="{:U('article/add',array('cate_id'=>$cate_id,'pid'=>I('pid',0),'model_id'=>$model[0]))}"</if>>新 增
+						<if condition="count($model) gt 1"><i class="caret"></i></if>
+					</button>
+					<if condition="count($model) gt 1">
+					<ul class="dropdown-menu">
+						<volist name="model" id="vo">
+						<li><a href="{:U('article/add',array('cate_id'=>$cate_id,'model_id'=>$vo,'pid'=>I('pid',0)))}">{$vo|get_document_model='title'}</a></li>
+						</volist>
+					</ul>
+					</if>
+				</gt>
+			</div>
+            <button class="btn ajax-post" target-form="ids" url="{:U('Article/setStatus',array('status'=>1))}">启 用</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U('Article/setStatus',array('status'=>0))}">禁 用</button>
+			<input type="hidden" class="hide-data" name="cate_id" value="{$cate_id}"/>
+			<input type="hidden" class="hide-data" name="pid" value="{$pid}"/>
+			<button class="btn ajax-post confirm" target-form="ids" url="{:U('Article/setStatus',array('status'=>-1))}">删 除</button>
+			<!-- <button class="btn document_add" url="{:U('article/batchOperate',array('cate_id'=>$cate_id,'pid'=>I('pid',0)))}">导入</button> -->
+			<button class="btn list_sort" url="{:U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'')}">排序</button>
+		</div><div class='clear'></div>
+</div>
+<div class="row-fluid">
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  	<th class="row-selected row-selected">
+                        <input class="check-all" type="checkbox">
+                    </th>
+                    <volist name="list_grids" id="field">
+                        <th>{$field.title}</th>
+                    </volist>
+                </tr>
+              </thead>
+              <tbody>
+                 <notempty name="list">
+ 			<volist name="list" id="data">
+                    <tr>
+                        <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
+                        <volist name="list_grids" id="grid">
+                            <td>{:get_list_field($data,$grid,$model_list)}</td>
+                        </volist>
+                    </tr>
+                </volist>
+                <else/>
+                <td colspan="16" class="text-center"> aOh! 暂时还没有内容!</td>
+            </notempty>
+              </tbody>
+            </table>
+             <div class="page">
+             {$_page}
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+window.onload = function(){
+
+	//只有一个模型时，点击新增
+	$('.document_add').click(function(){
+		var url = $(this).attr('url');
+		if(url != undefined && url != ''){
+			window.location.href = url;
+		}
+	});
+
+	//点击排序
+	$('.list_sort').click(function(){
+		var url = $(this).attr('url');
+		var ids = $('.ids:checked');
+		var param = '';
+		if(ids.length > 0){
+			var str = new Array();
+			ids.each(function(){
+				str.push($(this).val());
+			});
+			param = str.join(',');
+		}
+
+		if(url != undefined && url != ''){
+			window.location.href = url + '/ids/' + param;
+		}
+	});
+
+}
+highlight_subnav("{:U('Article/index',array('cate_id'=>$cate_id))}");
+</script>
+</block>

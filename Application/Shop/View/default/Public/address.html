@@ -1,0 +1,133 @@
+  <div class="add_box" id="add_new_consignee" style="display: none;">
+<p class="a_tit1">添加新的收货地址</p>
+<div class="account">
+    <div class="items">
+        <span class="label">收件人姓名：</span>
+        <div class="fl">
+            <input type="text" class="itxts" id='realname'><em>*</em>
+        </div>
+        <div class="clearfloat"></div>
+    </div> 
+    <div class="items">
+        <span class="label">所在区域：</span>
+        <div class="fl" id='area'>
+             {:hook('J_China_City',$param)}<em>*</em>
+        </div>
+        <div class="clearfloat"></div>
+    </div>                      
+    <div class="items">
+        <span class="label">详细地址：</span>
+        <div class="fl">
+            <textarea class="itxtare" id="address"></textarea><em>*</em>
+        </div>
+        <div class="clearfloat"></div>
+    </div>
+    <div class="items">
+        <span class="label">联系方式：</span>
+        <div class="fl">
+            <input type="text" class="itxts" style="width: 176px;" id="phone"><em>*</em>
+                    </div>
+                    <div class="clearfloat"></div>
+                </div>
+			<div class="items">     
+					<span class="label">设置默认地址：</span>                           
+                    <div class="fl">
+                    	<input id="isdefault" checked="checked" name="default"	type="checkbox" class="cart_n_box">
+                   </div>
+                    <div class="clearfloat"></div>
+              </div>
+                <div class="items">                                
+                    <div class="fl">                                    
+                        <div class="fl_btn"><a href="javascript:void(0)" onclick="savemsg();return false;" class="rose">保存</a><a href="javascript:noneAddres()"  class="gay">取消</a></div>
+       				 </div>
+        			<div class="clearfloat"></div>
+    		</div>        
+</div>
+</div>
+<script type="text/javascript">
+function addresSelz(my) {
+    $(my).addClass("green").siblings().removeClass("green");        
+    if ($("#add_new_consignee").css("display") == "none") {
+        $("#add_new_consignee").css("display", "");
+    }else {
+        $("#add_new_consignee").css("display", "none");
+    }
+}  
+
+function noneAddres() {
+	$('#add_new_consignee').css('display', 'none'); 
+}
+
+//保存收货人地址
+function savemsg() {
+	if ($.trim($("#phone").val()) == "") {
+		layer.alert("手机号码不能为空!");
+        return;
+    }
+	if ($.trim($("#realname").val()) == "") {
+		layer.alert("收件人不能为空!");
+        return;
+    }
+	var r = /^((0?1[3578]\d{9})|(\d{3,4}-)?\d{7,8})$/;
+    if (!r.test($("#phone").val())
+    		) {
+        $("#phone").css("background-color", "#ff9999");
+        layer.alert("请输入正确的手机号格式!");
+        return;
+    }
+    
+
+	if (document.getElementById("isdefault").checked==true) {
+	      var info=1;
+	}else {
+	     var info=0;
+	}
+	var dr=$("#address").val();	//获取收货人地址	
+	var na=$("#realname").val();//获取收货人地址
+	var ph=$("#phone").val();//获取收货人电话	
+	
+	var pr=$("#J_province").val();//收货人所在省
+	var ci=$("#J_city").val();//收货人所在市
+	var di=$("#J_district").val();//收货人所在县	
+	
+	var area = pr+','+ci+','+di;
+	var atype = '{$atype}';
+	 
+	$.ajax({
+		type:'post', //传送的方式,get/post
+		url:'{:U("Transport/addAddress")}', //发送数据的地址
+		data:{realname:na,cellphone:ph,area:area,address:dr,isdefault:info},
+		dataType: "json",
+		success:function(data){
+			if (data.reponsecode<0) {
+				layer.alert(data.reponsecode);				
+			}else{
+				 if(data.status == 1){
+					 style='green';
+				 }else{
+					 style='';
+				 }
+				 
+				 if(atype){
+					 layer.alert('添加成功');
+					 window.location = '__SELF__ ';
+				 }else{
+					$('#default').val(data.id);
+					addid = data.id;
+					var html=" <li onclick='addresSel(this)' class='"+style+"' id='"+addid+"'>" ; 
+					html +="<p class='add_name'>收货人：<span class='rose-red'>"+data.realname+"</span></p>";
+					html +="<p class='add_name'>联系电话：<span class='rose-red'>"+data.cellphone+"</span></p>";
+					html +="<p class='add_name'>所在地区：<span class='rose-red'>"+data.area+"</span></p>";
+					html +="<p class='add_detail'>详细地址：<span class='rose-red'>"+data.address+"</span></p></li>";
+					 $('#add-add').before(html);
+				}
+				 	
+			}		
+			$('#add_new_consignee').css('display', 'none');
+		},
+		error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+			alert("表单错误，"+XMLHttpRequest+thrownError); }
+	});
+	
+}
+</script>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>提现</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.box{width: 100%;height: auto;float: left;}
+    	.yinhang{width: 100%;height: 80px;background: #313840;float: left;}
+    	.yinhang_l{width: 20%;height: 80px;text-align: center;}
+    	.yinhang_l img{width: 50px;height: 50px;border-radius: 50%;margin-top: 15px;}
+    	.yinhang_c{width: 70%;height: 80px;}
+    	.yinhang_c p{margin: 0;margin-top: 5px;}
+    	.yinhang_r{width: 10%;height: 80px;}
+    	.yinhang_r span{margin-top: 28px;}
+    	.tian{width: 100%;height: 40px;float: left;
+    	background: #313840;margin-top: 25px;border-top: 1px solid #3d4651;
+    	border-bottom: 1px solid #3d4651;}
+    	.tian span{display: inline-block;width: 20%;height: 40px;text-align: center;
+    	line-height: 40px;color: #fff;font-size: 1em;float: left;}
+    	.tian input{float: left;width: 80%;height: 40px;background: none;border: none;font-size: .95em;}
+    	.queding{width: 100%;height: 40px;float: left;margin-top: 30px;text-align: center;}
+    	.queding button{width: 90%;height: 40px;background: #f93333;color: #fff;border: none;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">提现</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+    		<div class="yinhang">
+    			<div class="yinhang_l mui-pull-left">
+    				<img src="__H-W__/images/wdjy.png" alt="" />
+    			</div>
+    			<div class="yinhang_c mui-pull-left">
+    				<p style="margin-top: 15px;color: #fff;font-size: 1em;"><span>{$logininfo.bankname}</span></p>
+    				<p><span>{$logininfo.banknumber}</span></p>
+    			</div>
+    			<!--<div class="yinhang_r mui-pull-left">
+    				<span class="mui-icon mui-icon-arrowright" style="color: #999;"></span>
+    			</div>-->
+    		</div>
+            <div class="tian">
+                <span>余额</span>
+                <input type="text" value="{$logininfo.hasmoney}" disabled style="color: #FFFFFF;"/>
+            </div>
+    		<div class="tian">
+    			<span>金额</span>
+    			<input type="text" placeholder="请输入金额"/>
+    		</div>
+			<span style="color: #FFFFFF;font-size: 13px;">(手续费{$wdfee}%,最低提现金额{$wdleast},并且必须是{$wdmultiple}&nbsp;的整数倍)</span>
+    		<div class="queding">
+    			<button type="submit">确定</button>
+    		</div>
+    	</div>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+</body>
+</html>
+

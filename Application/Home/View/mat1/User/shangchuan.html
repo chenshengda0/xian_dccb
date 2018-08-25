@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<style type="text/css">
+			html,body,.mui-content,form{
+				width: 100%;
+				height: 100%;
+				background:#FFFFFF;
+			}
+			.con{	
+				text-align: center;
+			}
+			
+			.z_photo{
+				position: relative;
+				width: 100%;
+				height: 260px;
+			}
+						
+			.z_file{
+				width: 120px;
+				height:120px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -60px;
+				margin-top: -60px;
+				border: 1px solid #000;
+			}
+			#file{
+				opacity: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.z_addImg{
+				float: left;
+				width:120px;
+				height: 120px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -60px;
+				margin-top: -60px;
+				background: #fff;
+				text-align: center;
+				position: relative;
+				overflow: hidden;
+			}
+			.z_addImg>img{
+				width:100%;
+				height: 100%;
+			}
+			.but{
+				clear: both !important;
+				margin: 10px 10% !important;
+			    width: 80%;
+			    font-size: 16px !important;
+			    text-align: center;
+			    line-height: 40px !important;
+			    color: #fff;
+			    background: #03A3E8;
+			    border-radius: 5px;
+			}
+          .z_mask{
+			    width: 100%;
+			    height: 100%;
+			    background: rgba(0, 0, 0, .5);
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    z-index: 999;
+			 	display: none;
+			}
+			.z-mask{
+				position:absolute;
+				width:100%;
+				height:100%;
+				top:0;
+				left:0;
+				z-index: 12;
+				background:white;
+			}
+			.mui-backdrop{
+				 z-index: 9 !important;
+			}
+			.z-mask{
+				border-radius: 50%;
+			 	background: url(../../img/sp3/dengdai.gif) no-repeat top center;
+			 }
+			.z-mask>p{
+				width:200px;
+				height:14px;
+				position:absolute;
+				top:30%;
+				left:19%;
+				color:deeppink;
+				font-size:14px;
+				text-align:center;
+				line-height:220px;
+			}
+			.z_alert{
+			    width:240px;
+			    height:80px;
+			    border-radius: 4px;
+			    background: #fff;
+			    color: #333333;
+			    font-size:16px;
+			    text-align: center;
+			    position: absolute;
+			    left: 50%;
+			    top: 50%;
+			    margin-left:-120px;
+			    margin-top:-60px;
+			}
+						
+			.z_alert>p:nth-child(1){
+				width: 100%;
+				height: 51px;
+				font-size:14px;
+			    line-height:51px;
+			}
+			.z_alert>p:nth-child(2)
+			{
+				width: 100%;
+				height:30px;
+				border-top: 1px solid #ddd;
+			}
+			.z_alert>p:nth-child(2)>span
+			{
+				margin-top: 0;
+			    display: inline-block;
+			    width: 49%;
+			    height:28px;
+			    line-height:28px;
+			    float: left;
+			    font-size:14px;
+			}
+			.z_alert>p:nth-child(2)>span:nth-child(1)
+			{
+				border-right: 1px solid #ddd;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">上传头像</h1>
+		</header>-->
+		<header class="mui-bar mui-bar-nav header">
+		    <h1 class="mui-title">上传头像</h1>
+		</header>
+		<div class="mui-content">
+			<form action="{:U('')}" method="post" enctype="multipart/form-data">
+				 <div class="con">
+					<div class="z_photo">					
+			            <div class="z_file">
+			                <input type="file" name="file" id="file" value="" accept="image/*" multiple  onchange="imgChange('z_photo','z_file');" />			
+			            </div>				
+				   </div>
+				   <div class="z_mask">
+				            <!--弹出框-->
+				            <div class="z_alert">
+				                <p>确定要删除这张图片吗？</p>
+				                <p>
+				                    <span class="z_cancel">取消</span>
+				                    <span class="z_sure">确定</span>
+				                </p>
+				            </div>
+					    </div>
+				</div>
+				<input type="submit" value="提交" class="but link" data-link="../me.html"/>
+			</form>
+
+		  
+			
+		</div>
+		<script src="__HOME__/wap/js/mui.min.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script src="__HOME__/wap/js/sc_img.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/renzheng.css" />
+		
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header " >
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">实名认证</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="main2">
+				<div class="jindu2"></div>
+				<div class="yaoqiu">
+					<p>1、证件文字必须清晰可见,点击示例上传对应照片</p>
+					<p>2、建议在证件上贴上"NWTT认证"纸条</p>
+					<p>3、上传非证件照片将会封号</p>
+				</div>
+				<form action="{:U('')}" method="post" enctype="multipart/form-data" name="form1" id="myform">
+				<div class="renzheng2">
+					<div class="renzheng2-1">
+						<div class="z_photo">		        	
+				            <div class="z_file">
+				            	<p class="g">证件必须清晰可见</p>
+				                <input type="file" name="file[]" id="file" value="" accept="image/*" multiple onchange="imgChange('z_photo','z_file');" />			
+				            </div>
+				            <notempty name="result.IDcard_z">
+							    <div class="z_addImg">
+							      <img src="{$result['IDcard_z']}">
+							    </div>
+						    </notempty>				
+						    </div>
+						    
+						    
+						<div class="z_mask">				           
+				            <div class="z_alert">
+				                <p>确定要删除这张图片吗？</p>
+				                <p>
+				                    <span class="z_cancel">取消</span>
+				                    <span class="z_sure">确定</span>
+				                </p>
+				            </div>
+					    </div>
+					</div>
+					<div class="renzheng2-1">
+						<div class="z_photo1">		        	
+				            <div class="z_file1">
+				            	<p class="g" style="margin-top:-65px;">1.证件文字必须清晰可见。2.有效期必须大于1个月</p>
+				                <input type="file" name="file[]" id="file1" value="" accept="image/*" multiple onchange="imgChange1('z_photo1','z_file1');" />			
+				            </div>
+				            <notempty name="result.IDcard_f">
+							    <div class="z_addImg1">
+							      <img src="{$result['IDcard_f']}">
+							    </div>
+						    </notempty>				
+						    </div>
+						<div class="z_mask1">				           
+				            <div class="z_alert1">
+				                <p>确定要删除这张图片吗？</p>
+				                <p>
+				                    <span class="z_cancel1">取消</span>
+				                    <span class="z_sure1">确定</span>
+				                </p>
+				            </div>
+					    </div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="z_mask6">				           
+            <div class="z_alert6">
+                <p>信息一旦提交将无法更改</p>
+                <p>
+                    <span class="z_cancel6">取消</span>
+                    <span class="z_sure6"><input type="submit"  value="确定"></span>
+                </p>
+            </div>
+	    </div>		
+		<div class="buts">
+			<p class="link" data-link="{:U('renzheng_one')}">上一步</p>
+			<if condition="($result['IDcard_z'] neq null) and ($result['IDcard_z'] neq null)">
+			     <p class="link" data-link="{:U('index')}">回到个人中心</p>
+			<else/>
+			     <p class="sure">下一步</p>
+			</if>
+		</div>
+		</form>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__JS__/sc_img.js"></script>
+	
+	
+	
+	<script>
+	  $('.sure').click(function(){
+		 $('.z_mask6').show()
+	  })
+	   $('.z_cancel6').click(function(){
+		 $('.z_mask6').hide()
+	  })
+	</script>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.box{width: 100%;height: auto;float: left;}
+    	.box table tr th{color: #fff;font-weight: normal;background: #282f37;border-top: 1px solid #3d4651;border-bottom: 1px solid #3d4651;}
+    	.box table{width: 100%;}
+    	.box table tr{height: 40px;font-size: .95em;}
+    	.box table tr td{color: #a19fa0;text-align: center;border-bottom: 1px solid #3d4651;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left" href="{:U('moneyin')}"></a>
+        <h1 class="mui-title">转入记录</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+    		<table>
+    			<tr>
+    				<th>钱包账户</th>
+    				<th>转入金额</th>
+    				<th>转入时间</th>
+    			</tr>
+				<volist name="info" id="vo">
+					<tr>
+                        <td>尾号:{$vo.userid|getqianbao}</td>
+                        <td>{$vo.money}</td>
+                        <td>{$vo['createtime']|date="Y-m-d H:i:s",###}</td>
+					</tr>
+				</volist>
+
+    		</table>
+    	</div>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+</body>
+</html>
+
+
+

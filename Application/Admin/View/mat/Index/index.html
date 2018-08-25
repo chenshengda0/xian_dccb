@@ -1,0 +1,101 @@
+<extend name="Public/base"/>
+
+<block name="body">
+ <div class="row-fluid">
+      <div class="widget-box">
+       <!--  <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5>Site Analytics</h5>
+        </div> -->
+        <div class="widget-content" >
+          <div class="row-fluid">
+            <div class="span3" style='width:100%;'>
+              <ul class="site-stats">
+                <li class="bg_lh"><a style='color:white;' href="{:U('User/userindex')}"><i class="icon-user"></i><strong>{$info.userall}</strong> <small>会员总数</small></a></li>
+                <li class="bg_lh"><a style='color:white;' href="{:U('User/registuser')}"><i class="icon-plus"></i> <strong>{$info.newuser}</strong> <small>新增会员</small></a></li>
+                <li class="bg_lh"><a style='color:white;' href="{:U('bonus_rule/bonusrule')}"><i class="icon-tag"></i> <strong>{$bonusRule.zsh}</strong> <small>总发行量</small></a></li> 
+                <li class="bg_lh"><a style='color:white;' href="{:U('bonus_rule/bonusrule')}"><i class="icon-repeat"></i> <strong>{$bonusRule.mj}</strong> <small>私募量</small></a></li>
+                <li class="bg_lh"><a style='color:white;' href="{:U('bonus_rule/bonusrule')}"><i class="icon-globe"></i> <strong>{$bonusRule.tsl}</strong> <small>天使轮</small></a></li>
+                <li class="bg_lh"><a style='color:white;' href="{:U('public/ceshi')}"><i class="icon-globe"></i> <strong>点击一下</strong> <small>测试分红-共享</small></a></li>
+                 <li class="bg_lh"><a style='color:white;' href="{:U('public/daishu')}"><i class="icon-globe"></i> <strong>点击一下</strong> <small>测试分享-团队</small></a></li>
+                <li class="bg_lh"><a style='color:white;' href="{:U('public/qk')}"><i class="icon-globe"></i> <strong>点击一下</strong> <small>测试孵化生息</small></a></li>
+                <!--<li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>656</strong> <small>Total Shop</small></li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+</div></div>
+ <div class="row-fluid"> <div class="span12">
+    <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>公司财务</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped" style="max-width:100%">
+              <thead>
+                <tr>
+                  <th>今日充币量</th>
+                  <th>总充币量</th>
+                  <th>今日产币量</th>
+                  <th>总产币量</th>
+                  <th>剩余币量</th>
+                </tr>
+              </thead>
+              <tbody>
+              	
+                <tr class="odd gradeX">
+                  <td>{$more.jinchongzhi}</td>
+                  <td>{$more.chongzhi}</td>
+                  <td>{$more.jinchangbi}</td>
+                  <td class="center"> {$more.changbi}</td>
+                  <td><?php echo $bonusRule['mj']-$more["chongzhi"]-$more["chanbi"]?></td>
+                </tr>
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+</div></div>
+ <div class="row-fluid"> <div class="span12">
+    <!--<div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>最近半个月内公司财务</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped"  style="max-width:100%">
+              <thead>
+                <tr>
+                	 <th>日期</th>
+                  <th>总收入</th>
+                  <th>总支出</th>
+                  <th>总沉淀</th>
+                  <th>拨币</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<volist name='alist' id='vo'>
+                <tr class="odd gradeX">
+                <td>{$vo.createtime|date='Y-m-d',###}</td>
+                  <td>{$vo.income}</td>
+                  <td>{$vo.expend}</td>
+                  <td>{$vo.surplus}</td>
+                  <td class="center"> {$vo.outrate}%</td>
+                </tr>
+                </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>-->
+</div></div>
+</block>
+<block name="script">
+<script>
+window.onload = function(){
+	len = $('.bg_lh').length;
+	width = 88/len;
+	$(".bg_lh").each(function(i){
+		   $(this).attr('style','width:'+width+'%');
+	});
+}
+highlight_subnav("{:U('Index/index')}");
+</script>
+</block>

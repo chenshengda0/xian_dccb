@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/gerenziliao.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">个人资料</h1>
+		</header>
+     
+		<div class="mui-content main">
+		   <div class="list1">
+		    	<span>会员编号：</span><input type="text" value = "{$userinfo['usernumber']}"  disabled />
+		    	<span>真实姓名：</span><input type="text" value = "{$userinfo['realname']}"  disabled />
+		    
+		    	
+		    	
+		   		<a href="{:U('User/updatepwd')}"><div class="but">修改密码</div></a>
+		   		<a href="{:U('User/renzheng')}"><div class="but">实名认证</div></a>
+             	<if  condition="$kaiguan eq 0">
+                  
+                  <else/>
+             	<a href="{:U('User/ziliao_xg')}"><div class="but">修改资料</div></a>
+                </if>
+		   </div>
+		   <p>新注册会员完成实名认证后，即可获取免费矿机</p>
+		</div>
+		
+		<script src="__HOME__/wap/js/mui.min.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/echarts3.js">	</script>	
+		<script type="text/javascript">
+			mui.init();		
+		</script>
+	</body>
+</html>
+
+
+

@@ -1,0 +1,74 @@
+<extend name="Public/base" />
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+<div class='fr'>
+	<form action="{:U()}" method="post" id="wd" class="form-horizontal">
+		<input type="text" name="usernumber" class="text" value="{:I('usernumber')}" placeholder="请输入用户编号">
+		<button class="btn" id="cha" type="submit" >查询</button>
+		<button class="btn" id="daochu" type="button" >导出数据</button>
+	</form>
+	</div>
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table" style="max-width:100%">
+    <thead>
+        <tr>
+		  <th>{$Think.const.DATE_TIME}</th>
+          <th>{$Think.const.TARGET}</th><th>变更金额</th>
+          <th>变更状态</th><th>变更类型</th><th>变更币种</th>
+		</tr>
+    </thead>
+              
+     
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>				
+			<td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+            <td>{$vo.targetuserid|get_usernumber}</td>
+
+            <td>{$vo.money|format_num}</td>
+
+            <td >{$vo.recordtype|getChange}</td>
+            <td>{$vo.changetype|getChangeType}</td>
+            <td>{$vo.moneytype|getMoneyType}</td>
+		</tr>
+		</volist>
+      <tr>
+            <td> 今日奖金:<span style="color:red">{$more.jinjiangjin}</span></td>
+              <td> 累计奖金:<span style="color:red">{$more.jiangjin}</span></td>
+            
+         <td></td>
+         <td> </td>
+        <td></td>
+        <td></td>
+    
+            </tr>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div></div></div>
+   <else/>
+			<include file='Public/emptylist' title="暂时没有奖金统计"/>
+		</notempty>
+</block>
+<block name="script">
+<script type="text/javascript">
+$('#cha').click(function(){
+	$("#wd").attr("action", "{:U('bonustotal')}");
+	$('#wd').submit();
+});
+$('#daochu').click(function(){
+	$("#wd").attr("action", "{:U('import')}");
+	$('#wd').submit();
+});
+   //导航高亮
+   highlight_subnav("{:U('Bonus/bonusTotal')}");
+</script>
+</block>

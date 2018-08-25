@@ -1,0 +1,68 @@
+<extend name="Public/base" />
+
+<block name="body">
+<if condition="$total != 0">
+<div class="widget-box">
+  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+</div>
+ <div class="widget-content nopadding">
+ <table class="table table-bordered data-table">
+    <thead>
+        <tr>
+			<th>提现总金额</th><th>实得总金额</th><th>手续费总金额</th>
+		</tr>
+    </thead>
+    <tbody>
+		<tr>
+	           <td>{$total}</td>
+	           <td>{$_list.m}</td>
+	           <td>{$_list.f}</td> 
+		</tr>
+	</tbody>
+    </table></div></div>
+ <else/>
+ <include file='Public/emptylist' title="暂时还没有提现汇总"/>
+</if>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+	function auditing(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定批准该会员的提现申请吗？',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['批准','拒批'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('agree')}",{id:id}, success, "json");
+		            	 return false;
+		            }, no: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	 $.post("{:U('refuse')}",{id:id},success, "json");
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+	 function success(data) {
+	        if (data.status) {
+	        	layer.msg(data.info,3,1);
+	        	setTimeout(function () {
+	        		var index = layer.load('正在跳转，请耐心等待');
+	                window.location.href = data.url
+	            }, 1000);
+	        	 return false;
+	        } else {
+	           layer.msg(data.info,2,3);
+	        }
+	    }
+    //导航高亮
+    action = '{$Think.const.ACTION_NAME}';
+    highlight_subnav("{:U('"+action+"')}");
+	</script>
+</block>

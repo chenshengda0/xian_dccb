@@ -1,0 +1,75 @@
+<extend name="Public/base"/>
+<link rel="stylesheet" href="__STATIC__/orgchart/jquery.orgchart.css"/>
+<block name='style'>
+
+<style type="text/css">
+</style>
+</block>
+<block name="body">
+
+<div style="display:none;">
+        <ul id="organisation" style="display:none;">
+         <li><a href="{:U('User/orgChart',array('uid'=>$userinfo['uid']))}">编号：{$userinfo['usernumber']}</a>
+	        <br/>
+	        姓名：{$userinfo['realname']}
+         	<br/>
+	                      注册级别：{$userinfo['oldrank']|get_userrank}
+         	
+         	<ul>
+         		<volist name="userinfo._child" id="user_son">
+          		<li><a href="{:U('User/orgChart',array('uid'=>$user_son['uid']))}">编号：{$user_son['usernumber']}</a>
+          			<br/>
+          			姓名：{$user_son['realname']}
+          			<br/>
+          			注册级别：{$user_son['oldrank']|get_userrank}
+          			<ul>
+           			<volist name="user_son._child" id="son_son">
+           				<li><a href="{:U('User/orgChart',array('uid'=>$son_son['uid']))}">编号：{$son_son['usernumber']}</a>
+           					<br/>
+           					姓名：{$son_son['realname']}
+           					<br/>
+          					注册级别：{$son_son['oldrank']|get_userrank}
+           				</li>
+           			</volist>
+          			</ul>
+          		</li>
+         		</volist>
+         	</ul>
+         </li>
+        </ul>
+    </div>
+<div class="main-title">
+       
+ </div>
+<div class="cf">
+	<div class="txtbox_sercher">
+		<form action="" method="post">
+			<input type="search" name="usernumber" required="" placeholder="请输入用户编号"  lang="zh-CN" style="height:20px;margin-bottom: 0px; ">
+			<input type="submit" value="搜索" class="btn search-btn"/>
+			<input type="button" class="btn" value=" 返回第一层" onclick="javascript:document.location.href='{:U('Admin/User/orgChart')}'"> 
+			<input type="button" class="btn" value=" 返回上一层" onclick="javascript:document.location.href='{:U('Admin/User/orgChart',array('uid'=>$userinfo['parentid']))}'">
+		</form>
+	</div>
+	
+	<div id="zpmain">
+	</div>
+</div>
+
+ 
+</block>
+
+<block name="script">
+<!-- <script src="__STATIC__/orgchart/jquery.orgchart.js"></script> -->
+<script type="text/javascript" src="__STATIC__/orgchart/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="__STATIC__/orgchartjquery.orgchart.js"></script>
+<script type="text/javascript" src="__STATIC__/orgchart/jquery.orgchart.min.js"></script>
+<script>
+	$(function() {
+	    $("#organisation").orgChart({container: $("#zpmain")});
+	});
+</script>
+<script type="text/javascript">
+highlight_subnav("{:U('User/orgChart')}");
+</script>
+</block>
+

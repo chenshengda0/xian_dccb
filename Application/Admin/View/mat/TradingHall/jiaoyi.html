@@ -1,0 +1,62 @@
+<extend name="Public/base" />
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+	<!-- <include file='Public/search6'/> -->
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table" style="max-width:100%">
+    <thead>
+        <tr>
+			<th>买家编号</th><th>卖家编号</th>
+			<th>卖出数量</th><th>手续费</th><th>总价值</th>
+			<th>创建时间</th><th>匹配时间</th><th>打款时间</th><th>凭证</th>
+			<th>操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>				
+			<td>{$vo.youname}</td>
+			<td>{$vo.myname}</td>
+			<td>{$vo.shuiliang}</td>
+			<td>
+				{$vo.shouxu}
+			</td>
+			<td>{$vo.price}</td>
+			<td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+			<td >{$vo.time|date="Y-m-d H:i:s",###}</td>
+			<td>{$vo.dk_time|date="Y-m-d H:i:s",###}</td>
+			<td>
+				<img src = "{$vo.pinzheng}" width='100px' height="100px" onclick="fangda($(this).attr('src'))">
+			</td>
+			<td>
+			 <a class="confirm btn btn-info ajax-get" title="删除" href="{:U('chuli',array('id'=>$vo['id']))}">处理</a>
+			 <!-- <a class="btn btn-mini btn-info confirm"  href="{:U('chuli',array('id'=>$vo['id']))}" >已处理</a> -->
+			</td>
+		</tr>
+		</volist>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div></div></div>
+  <else/>
+  <include file='Public/emptylist' title="暂时没有奖金变更记录"/>
+</notempty>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+     function fangda(url){
+	    layer.alert("<img src="+url+">")
+	}
+    //导航高亮
+    highlight_subnav("{:U('Bonus/bonusChange')}");
+	</script>
+</block>

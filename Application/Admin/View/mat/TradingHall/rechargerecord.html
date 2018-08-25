@@ -1,0 +1,75 @@
+<extend name="Public/base" />
+
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+	<include file='Public/search'/>
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+</div>
+ <div class="widget-content nopadding">
+ <table class="table table-bordered data-table">
+    <thead>
+        <tr>
+			<th>申请时间</th><th>申请人</th><th>手机号</th><th>充值金额</th>
+			<th>充值币种</th><th>汇款账号</th><th>开户人</th><th>操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>
+			
+	           <td>{$vo.createtime|date="Y-m-d",###}</td><td>{$vo.userid|get_usernumber}</td>
+	           <td>{$vo.mobile}</td>
+	           <td>{$vo.money}</td>
+	           <td>{$vo.type|getMoneyType}</td>
+	           <td>{$vo.out_banknumber}</td>
+				<td>{$vo.out_bankholder}</td>
+				<td>
+				<a class='btn btn-mini btn-danger' href="javascript:void(0);" onclick="auditing({$vo['id']})">审核</a>
+				<a class='btn btn-mini btn-info' href="{:U('rechargeInfo',array('id'=>$vo['id']))}">查看详情</a>
+				</td> 
+		</tr>
+		</volist>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div>
+</div></div>
+<else/>
+<include file='Public/emptylist' title="暂时还没有充值申请"/>
+		</notempty>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+	//申请商家审核
+	function auditing(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定为该会员充值吗？',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['是','否'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	 $.post("{:U('bagree')}",{id:id},success, "json");
+		            }, no: function(){
+		            	layer.prompt({title: '拒绝理由？'}, function(message){
+		            		var index = layer.load('正在跳转，请耐心等待');
+		            	    $.post("{:U('brefuse')}",{id:id,message:message},success, "json");
+		            	});
+		            }
+		        }
+		    });
+	}
+    //导航高亮
+    highlight_subnav("{:U('rechargeRecord')}");
+	</script>
+</block>

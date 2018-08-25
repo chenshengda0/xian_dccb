@@ -1,0 +1,52 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>留言详情</h2>
+    </div>
+
+    <div class="cf">
+         <form action="{:U('replyLiuyan')}" method="post" class="form-horizontal">
+         	<input type = "hidden" name='id' value ="{$id}" />
+         	<if condition = "$type eq 2">
+         		<div class="form-item">
+	        	 <label class="item-label"><span class="check-tips">回复用户</span></label>
+	            <div class="controls">
+	            	<input type="text" disabled class="text input-small" name="usernumber" id="" value="{$content['touser']|get_username} " style="width:160px;">           
+	            </div>
+            	</div> 
+         	</if>
+         	<if condition = "$type eq 1">
+         		<div class="form-item">
+	        	 <label class="item-label"><span class="check-tips">留言用户</span></label>
+	            <div class="controls">
+	            	<input type="text" disabled class="text input-small" name="usernumber" id="" value="{$content['fromuserid']|get_username} " style="width:160px;">           
+	            </div>
+            	</div> 
+         	</if>
+             <div class="form-item">
+	        	 <label class="item-label"><span class="check-tips">留言内容</span></label>
+	            <div class="controls">
+	            	 <textarea name="content" disabled class="text input-small" style="height:93px;width:600px;">{$content['content']}</textarea>           
+	            </div>
+            </div>
+            <div class="form-item">
+	        	 <label class="item-label"><span class="check-tips">回复内容</span></label>
+	            <div class="controls">
+	            	 <textarea name="reply" disabled class="text input-small" style="height:93px;width:600px;">{$content['reply']}</textarea>           
+	            </div>
+            </div>
+             <div class="form-item">
+         
+            	 <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        	</div>
+    </form>
+    </div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+	<script type="text/javascript">
+		highlight_subnav("{:U('Admin/Message/liuyanList')}");
+	</script>
+</block>

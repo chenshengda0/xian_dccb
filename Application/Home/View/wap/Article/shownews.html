@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/gdlist.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">新手入门</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="top"></div>
+			<notempty name="instro">
+			   <ul class="mui-table-view">
+			   <volist name="instro" id="vo">
+			       <li class="mui-table-view-cell mui-collapse">
+		 	        <a class="mui-navigate-right" href="#"><span>{$vo['title']}</span></a>
+		 	        <div class="mui-collapse-content">
+		 	            <p>{$vo['content']}</p>		 	            
+		 	        </div>
+		 	       </li>
+			   </volist>
+		 	    
+		 	    		    
+		 	</ul>
+			</notempty>
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+</html>

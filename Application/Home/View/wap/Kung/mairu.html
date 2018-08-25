@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>买入</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.box{width: 100%;height: 310px;float: left;}
+    	.cfc{width: 95%;height: 130px;
+    	border-bottom: 1px solid #3d4651;margin-left: 2.5%;}
+    	.cfc_t{width: 100%;height: 80px;text-align: center;color: #fff;}
+    	.cfc_t span{font-size: .95em;}
+    	.cfc_t h2{margin-top: 10px;display: inline-block;width: 100%;}
+    	.cfc_b{width: 100%;height: 50px;display: flex;justify-content: space-between;}
+    	.cfc_b div{width: 33.33%;height: 50px;text-align: center;}
+    	.cfc_b div p{margin: 0;margin-top: 3px;}
+    	.num{color: #fff;}
+    	.maichu{width: 95%;height: auto;margin-left: 2.5%;}
+    	.maichu p{width: 100%;float: left;margin: 0;margin-top: 5px;height: 40px;}
+    	.shuzi span{
+    		display: inline-block;width: 50% !important;float: left;
+    		
+    	}
+    	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		    color: #fff; opacity:1; 
+		}
+		
+		::-moz-placeholder { /* Mozilla Firefox 19+ */
+		    color: #fff;opacity:1;
+		}
+		
+		input:-ms-input-placeholder{
+		    color: #fff;opacity:1;
+		}
+		
+		input::-webkit-input-placeholder{
+		    color: #fff;opacity:1;
+		}
+    	.maichu p span{width: 25%;height:40px;float: left;line-height: 40px;padding: 0 5px 0 5px;}
+    	.maichu p input{width: 75%;height:35px;float: left;background: none;
+    	margin: 0;border: none;border-bottom: 1px solid #3d4651;font-size: 1em;}
+    	.maichu p button{width: 100%;height: 40px;background: #08a627;color: #fff;border: none;}
+      .anniu{
+    		position: fixed;
+    		bottom: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 40px;
+    	}
+    	.biaoge_l{
+    		width: 20%;
+    		height: 86px;
+    		text-align: center;
+    	}
+    	.biaoge_l img{
+    		width: 60px;
+    		height: 60px;
+    		margin-top: 10px;
+    		border-radius: 50%;
+    	}
+    	.biaoge_c{
+    		width: 60%;
+    		height: 86px;
+    	}
+    	.biaoge_c p{
+    		width: 100%;
+    		margin: 0;
+    		margin-top: 5px;
+    		float: left;
+    	}
+    	.biaoge_c p span{
+    		margin-left: 10px;
+    		font-size: .9em;
+    		color: #fff;
+    	}
+    	.biaoge_r{
+    		width: 20%;
+    		height: 86px;
+    		text-align: center;
+    	}
+    	.biaoge_r button{
+    		width: 50px;
+    		height: 25px;
+    		padding: 0;
+    		font-size: .75em;
+    		margin-top: 30px;
+    		background: #08a627;
+    		color: #fff;
+    		border: none;
+    	}
+    	.liebiao{width: 100%;height: 300px;background: #1f2229;overflow-y: scroll;
+    	float: left;}
+    	.biaoge{width: 100%;height: 86px;border-bottom: 1px solid #3d4651;}
+    	
+    	.anniu button{width: 100%;height: 40px;background: #08a627;color: #fff;border: none;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left" href="{:U('kung/center')}"></a>
+        <h1 class="mui-title">买入</h1>
+    </header>
+  
+    <div class="mui-content">
+      <form action="{:U('')}" method="post" class="form-horizontal">
+    	<div class="box">
+          
+    		<div class="cfc">
+    			<div class="cfc_t mui-pull-left">
+    				<p>
+    					<h2>BYL</h2>
+    					<span>百业链</span>
+    				</p>
+    			</div>
+    			<div class="cfc_b mui-pull-left">
+    				<div>
+    					<p><span>当前价格</span></p>
+    					<p><span class="num">{$sj}</span></p>
+    				</div>
+    				<div>
+    					<p><span>购买价</span></p>
+    					<p><span class="num">{$pj_mr}</span></p>
+    				</div>
+    				<div>
+    					<p><span>出售价</span></p>
+    					<p><span class="num">{$pj_mc}</span></p>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="maichu mui-pull-left">
+				
+					<p class="shuzi">
+						<span>账户余额：<b>{$logininfo.hasmoney}元</b></span>
+						<!--<span>今日可买：<b>0个</b></span>-->
+					</p>
+					<p>
+						<span>买入价格：</span>
+						<input type="text" name="danjia" placeholder="0元"/>
+					</p>
+					<p>
+						<span>买入数量：</span>
+						<input type="text" name="shuliang" placeholder="0个"/>
+					</p>
+					<p>
+						<span>交易密码：</span>
+						<input type="password" name="password" placeholder="输入你的支付密码" />
+					</p>
+                  <p>
+                    <span style="width:100%;">每笔买入收取{$bonus.buybl}币的保证金，并获得买入总价{$bonus.byj}%的奖励</span>
+                  </p>
+
+    		</div>
+    	</div>
+  		<div class="liebiao" style="margin-top:50px;">
+          <volist name="mr" id="r">
+    		<div class="biaoge">
+    			<div class="biaoge_l mui-pull-left">
+    				<img src="{:C('HOME_LOGIN_LOGO')}" alt="" />
+    			</div>
+    			<div class="biaoge_c mui-pull-left">
+    				<p><span>{$r.myname}</span></p >
+    				<p><span>数量:{$r.shuiliang}个</span><span>单价:{$r.danjia}/个</span></p >
+    				<p><span>总计：{$r.price}</span></p >
+    			</div>
+    			<div class="biaoge_r mui-pull-left">
+    				<button type="button" onclick="sure1({$r['id']})">买入TA</button>
+    			</div>
+    		</div>
+          </volist>
+    	</div>
+  		<div style="width: 100%;height: 45px;float: left;"></div>
+    	<div class="anniu">
+    		<button type="submit">买入</button>
+    	</div>
+    </div>
+  </form>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+    <script type="text/javascript">
+    mui.init();
+      function sure(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定卖给他吗?',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['确定','取消'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('pipei')}",{id:id,mai:2}, success, "json");
+                      window.location="{:U('kung/jiaoyi')}";
+		            	 return false;
+		            }, no: function(){
+		            	 
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+        $('.jj').click(function(){
+			$('.z_mask').show();
+		});
+		$('.z_cancel').click(function(){
+			$('.z_mask').hide();
+		});
+		$('.z_sure').click(function(){
+			$('.z_mask').hide();
+			//ajax
+		});
+	function sure1(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定买他的吗?',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['确定','取消'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('pipei')}",{id:id,mai:1}, success, "json");
+                      window.location="{:U('kung/jiaoyi')}";
+		            	 return false;
+		            }, no: function(){
+		            	 
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+	 function success(data) {
+	        if (data.status) {
+	        	layer.msg(data.info,3,1);
+	        	setTimeout(function () {
+	        		var index = layer.load('正在跳转，请耐心等待');
+	                window.location.href ="{:U('kung/jiaoyi')}";
+	            }, 1000);
+	        	 return false;
+	        } else {
+	           layer.msg(data.info,2,3);
+	        }
+	    }  
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/wodejiaoyi.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header link" data-link="{:U('user/index')}">
+		   <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">我的交易</h1>
+		</header>
+		<div class="mui-content">
+		   	 <div class="mid">
+			 	<div>
+			 		<ul>
+			 			<li class="dd active">求购</li>
+			 			<li class="dd">出售</li>
+			 			<li class="dd">交易</li>
+			 			<li class="dd">已完成</li>
+			 		</ul>
+			 	</div>
+			 	<div class="dd1 cur">
+			 		 <div class="table">
+				 		<table   style="width:100%;">
+				 			<tr>
+				 				
+				 				<th>个数（{$Think.const.MONEY}）</th>
+				 				<th>价格（$）</th>
+				 				<th>是否取消</th>
+				 				<th>状态</th>
+				 			</tr>
+				 			<foreach name='res1' item='vo'>			 			
+					 			<tr>
+					 				
+					 				<td>{$vo.shuiliang}</td>
+					 				<td>{$vo.price}</td>
+					 				<td><a href="javascript:void(0);" onclick="quxiao({$vo['id']})"><p>取消</p></a></td>
+					 				<td>等待</td>
+					 			</tr>
+				 		    </foreach>			 			
+				 		</table>
+				 	</div>
+			 	</div>
+			 	<div class="dd1">
+			 		 <div class="table">
+				 		<table border="" cellspacing="" cellpadding="" style="width:100%;">
+				 			<tr>
+				 				
+				 				<th>个数（{$Think.const.MONEY}）</th>
+				 				<th>手续费</th>
+				 				<th>价格（$）</th>
+				 				<th>是否取消</th>
+				 				<th>状态</th>
+				 			</tr>
+				 			<foreach name='res2' item='vo'>			 			
+					 			<tr>
+					 				
+					 				<td>{$vo.shuiliang}</td>
+					 				<td>{$vo.shouxu}</td>
+					 				<td>{$vo.price}</td>
+					 				<td><a href="javascript:void(0);" onclick="quxiao({$vo['id']})"><p>取消</p></a></td>
+					 				<td>等待</td>
+					 			</tr>
+				 			</foreach>				 							 			
+				 		</table>
+				 	</div>
+				 	
+			 	</div>	
+			 	<div class="dd1">
+			 		<!--  <div class="buts">
+			 		 	<p class="but">查看图片</p>
+			 		 	<p class="but">对方信息</p>
+			 		 	<p class="but">投诉</p>
+			 		 	<p class="but">确认交易</p>
+			 		 </div> -->
+			 		 <div class="table">
+			 		 	<table border="" cellspacing="" cellpadding="" style="width:100%;">
+				 			<tr>
+				 				
+				 				<th>交易情况</th>
+				 				<th>价格</th>
+				 				
+					 				<th>手续费</th>
+					 			
+				 				
+				 				<th>{$Think.const.MONEY}</th>
+				 				<th>匹配时间</th>
+				 				<th>交易状态</th>
+				 				<th>操作</th>
+				 			</tr>
+				 			<foreach name='res3' item='vo'>			 			
+					 			<tr>
+					 							 				
+					 				<td><if condition='$vo.myid eq $uid'>卖出
+					 				<else/>买入
+					 				</if></td>
+					 				
+					 				<td>{$vo.price}</td>
+					 				
+					 				      <td>{$vo.shouxu}</td>
+					 				
+					 				
+					 				<td>{$vo.shuiliang}</td>
+					 				<td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+					 				<td>{$vo.status|get_jystatus}</td>
+					 				<td><a href="{:U('kung/xiangqing',array('id'=>$vo['id']))}">查看详情</a></td>
+					 			</tr>
+				 			</foreach>				 							 			
+				 		</table>
+			 		 </div>
+				 	
+			 	</div>	
+			 	<div class="dd1">
+			 		 <div class="table">
+				 		<table border="" cellspacing="" cellpadding="" style="width:100%;">
+				 			<tr>
+                              	<th>对方编号</th>
+				 				<th>个数（{$Think.const.MONEY}）</th>
+				 				<th>手续费</th>
+				 				<th>价格（$）</th>
+				 				
+				 				<th>完成时间</th>
+				 				<th>状态</th>
+				 			</tr>
+				 			<foreach name='res4' item='vo'>			 			
+					 			<tr>
+                                  	<if condition='$uid eq $vo.myid'>
+                                      
+                                      <td>{$vo.youname}</td>
+                                      <else/>
+                                      
+                                      <td>{$vo.myname}</td>
+                                    </if>
+					 				<td>{$vo.shuiliang}</td>
+					 				<td>{$vo.shouxu}</td>
+					 				<td>{$vo.price}</td>
+					 				<td>{$vo.youtime||date="Y-m-d H:i:s",###}</td>
+					 				 <td>
+                                  	<if condition="$vo.status eq 4"> <if condition="$vo.myid eq 0">买家撤销<else /> 卖家撤销</if>  <else /> {$vo.status||zhuangtai}</if>
+					 			 </td>
+					 			</tr>
+				 			</foreach>
+				 						 			
+				 		</table>
+				 	</div>
+				 	
+			 	</div>	
+			 </div>
+		</div>
+		<script type="text/javascript" src="__PUBLIC__/layui/layui.js"></script>
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/echarts3.js">	</script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script src="__HOME__/wap/js/index/wodejiaoyi.js"></script>
+		<script type="text/javascript">
+			mui.init();	
+			function quxiao(id){
+				
+				 if(confirm("确定要取消吗")){
+					 $.ajax({
+						    url:"{:U('quxiao')}",//请求的url地址
+						    dataType:"json",//返回的格式为json
+						    async:true,//请求是否异步，默认true异步，这是ajax的特性
+						    data:{id:id},//参数值
+						    type:"POST",//请求的方式
+						   	success:
+						   		function(req){
+                                    if(req==1){
+
+                                            layui.use(['layer'], function(){
+
+                                               
+
+                                                layer.alert('取消成功',function(){
+                                                   	window.location.reload();
+                                                }); 
+                                            })
+                                    }else if(req==2){
+
+                                            layui.use(['layer'], function(){
+
+                                              
+
+                                                layer.alert('取消失败',function(){
+                                                   window.location.reload();
+                                                }); 
+                                            })
+
+                                    }
+						   	 },
+						   
+						    error:
+						    	function(){
+						    	          layui.use(['layer'], function(){
+
+                                              
+
+                                                layer.alert('取消失败',function(){
+                                                   	window.location.reload();
+                                                }); 
+                                            })
+						       }
+						});
+				 }
+			}
+		</script>
+	</body>
+</html>
+
+
+

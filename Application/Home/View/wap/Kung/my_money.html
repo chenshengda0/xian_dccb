@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.box{width: 100%;height: auto;float: left;}
+    	.xuanze{width: 100%;height: 150px;float: left;
+    	background: #292c33;margin-top: 10px;border-top: 1px solid #3d4651;}
+    	.xuanze p{margin: 0;width: 90%;height:40px;
+    	margin-left: 5%;float: left;border-bottom: 1px solid #3d4651;margin-top: 10px;}
+    	.xuanze p span{display: inline-block;width: 30%;height: 40px;text-align: center;
+    	line-height: 40px;font-size: 1.1em;float: left;}
+    	.xuanze p select{width: 70%;height: 40px;background: none;float: left;}
+    	.biaoge{width: 100%;height: auto;float: left;overflow-x: scroll;}
+    	.biaoge table tr{height: 40px;color: #fff;}
+    	.biaoge table tr th{font-weight: normal;background: #313840;}
+    	.biaoge table tr td{height: 40px;color: #a19fa0;text-align: center;border-bottom: 1px solid #3d4651;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">我的交易</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+    		<div class="xuanze">
+    			<p>
+    				<span>选择币种</span>
+	    			<select name="">
+	    				<option value="0">人民币()RMB</option>
+	    				<option value="1">文化影视链(CFC)</option>
+	    			</select>
+    			</p>
+    			<p>
+    				<span>选择交易方式</span>
+	    			<select name="">
+	    				<option value="0">买入</option>
+	    				<option value="1">卖出</option>
+	    			</select>
+    			</p>
+    		</div>
+    		<div class="biaoge">
+    			<table style="width: 150%;">
+    				<tr>
+    					<th>币种</th>
+    					<th>交易类型</th>
+    					<th>单价</th>
+    					<th>剩余</th>
+    					<th>日期</th>
+    					<th>操作</th>
+    				</tr>
+    				<tr>
+    					<td>人民币</td>
+    					<td>卖出</td>
+    					<td>50.00</td>
+    					<td>100.00</td>
+    					<td>2015-05-09</td>
+    					<td>删除</td>
+    				</tr>
+    			</table>
+    		</div>
+    	</div>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+</body>
+</html>
+

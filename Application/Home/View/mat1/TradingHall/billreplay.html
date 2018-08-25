@@ -1,0 +1,43 @@
+<extend name="base/base"/>
+<block name='style'>
+<style>
+</style>
+</block>
+<block name="body">
+<div class="widget">
+<form action="{:U()}" method="post" class='form'>
+<div class="title"><img src="__MAT__/images/icons/dark/pencil.png" alt="" class="titleIcon" /><h6>{$title}</h6></div>
+   <fieldset class="step" >
+  <div class="formRow">
+         <label><span class="info_label">留言标题:</span><span class="req">*</span></label>
+         <div class="formRight">
+         	<span class='oneTwo'><input class='from-ipt' type="text" name="title" value="" /></span>
+         </div>
+         <div class="clear"></div>
+     </div>
+      <div class="formRow">
+         <label><span class="info_label">留言内容:</span></label>
+         <div class="formRight">
+         	<span class='oneTwo'>
+         		<textarea class="from-ipt" name='content' placeholder="请控制在120个字已内"></textarea>
+			</span>
+         </div>
+         <div class="clear"></div>
+     </div>
+   </fieldset>
+   <div class="wizButtons"> 
+		<span class="wNavButtons">
+             <input class="blueB ml10 ajax-post"  value="确定" type="submit" target-form='form'/>
+             <input class="greenB ml10"  value="重置" type="reset" />
+             <input class="redB ml10"  value="返回" type="button"  onclick="javascript:history.back();"/>
+         </span>
+	</div>
+     <div class="clear"></div>
+</form>
+</div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+	highlight_subnav("{:U('Message/liuyanList')}");
+	</script>
+</block>

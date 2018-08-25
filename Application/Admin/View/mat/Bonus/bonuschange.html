@@ -1,0 +1,77 @@
+<extend name="Public/base" />
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+	<include file='Public/search4'/>
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}   
+           
+            
+           
+            
+            
+            </h5>
+           
+           
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table" style="max-width:100%">
+    <thead>
+        <tr>
+			<th>{$Think.const.DATE_TIME}</th>
+			<th>来源会员</th><th>{$Think.const.TARGET}</th><th>变更金额</th>
+			<th>变更状态</th><th>变更类型</th><th>变更币种</th>
+		</tr>
+    </thead>
+    <tbody>
+      
+		<volist name="_list" id="vo">
+		<tr>				
+			<td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+			<td>{$vo.userid|get_usernumber}</td>
+			<td>{$vo.targetuserid|get_usernumber}</td>
+          	
+			
+			<td>{$vo.money|format_num}</td>
+          
+			
+			<td >
+              <if condition="$ob eq '1'">
+                <span style="color:red">入账</span>
+                <else/>
+                出账
+              </if>
+      </td>
+			<td>{$vo.changetype|getChangeType}</td>
+			<td>{$vo.moneytype|getMoneyType}</td>
+		</tr>
+		</volist>
+       <tr>
+            <td> 今日交易<span style="color:red">{$more.jinjiaoyi}</span></td>
+              <td> 总交易<span style="color:red">{$more.jiaoyi}</span></td>
+         <td> 今日转入<span style="color:red">{$more.jinzhuanru}</span></td>
+         <td> 总转入<span style="color:red">{$more.zhuanru}</span></td>
+              <td>  今日手续费<span style="color:red">{$more.shouxu}</span></td>
+              <td> 总手续费<span style="color:red">{$more.jinshouxu}</span></td>
+       
+        
+            </tr>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div></div></div>
+  <else/>
+  <include file='Public/emptylist' title="暂时没有奖金变更记录"/>
+</notempty>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+    //导航高亮
+    highlight_subnav("{:U('Bonus/bonusChange')}");
+	</script>
+</block>

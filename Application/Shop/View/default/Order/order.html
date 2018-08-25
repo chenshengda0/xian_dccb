@@ -1,0 +1,133 @@
+ <include file="Public:header" />
+ <script src="__JS__/all-nav.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="__CSS__/haojudian.css" type="text/css" />
+ <link rel="stylesheet" href="__CSS__/member.css" type="text/css" />
+    <div class="settlement_box">
+        <div class="sett_tit">填写并核对订单信息</div>
+        <div class="sett_cont">
+            <div class="order_box">
+                <div class="member_one T_T">收货地址</div>
+                <div class="add_ul sett_ul">
+                    <ul> 
+                    	  <notempty name='address'>                 	
+                        <li class="green" onclick="addresSel(this)" id="{$address['id']}">                        	                         
+                            <p class="add_name">收货人：<span class="rose-red" id='defaultName'>{$address.realname}</span></p>
+                            <p class="add_name">联系电话：<span class="rose-red" id='defaultPhone'>{$address.cellphone}</span></p>
+                            <p class="add_name">所在地区：<span class="rose-red" id='defaultArea'>{$address.area}</span></p>
+                            <p class="add_detail">详情地址：<span class='rose-red' id='defaultAddress'>{$address.address}</span></p>                           
+                        </li></notempty>
+
+                        <li onclick="addresSelz(this)" id='add-add'>
+                            <input type="radio" style="display: none" name="customerAddress" class="consignee_radio" id="consignee_radio_new" value="" />
+                            <a href="javascript:void(0)" id="addres_new" class="new_add">使用新地址</a>
+                            <span class="duihao"></span>
+                        </li>
+                    </ul>
+                 
+                    <div class="clearfloat"></div>
+   					<include file='Public/address'/>
+                </div>
+                <div class="clearfloat"></div>
+            </div>      
+            <!--付款方式-->
+ 	<form action="{:U('Order/createorder')}" method="post" name="myform" id="myform">    
+ 		<input type="hidden" name="tag"  id="orderid" value="{$tag}">  
+ 		<input type='hidden' id='default' name='addressid' value="{$address.id}"/> 		
+ 		 	<!--收货地址-->            
+            <div class="order_box">
+                <div class="member_two T_T">付款方式</div>
+                <div class="add_ul sett_ul">
+	              <!--   <div class="pay_box">
+	                    <input type="radio" class="pay_radio" name="paytype" value="2" checked="checked" id='pay-1'>
+	                    <label class="pay_label" for="pay-1">支付宝</label><span class="pay_instructions">推荐使用支付宝余额或余额宝余额购买</span>
+	                </div> -->
+                   <div class="pay_box">
+                        <input type="radio" class="pay_radio" name="paytype" checked value="2" id='pay-2'>
+                        <label class="pay_label" for="pay-2">{$Think.const.HASMONEY}</label><span class="pay_instructions">该用户当前{$Think.const.HASMONEY}：<span class='nickname'>{$money.hasmoney}</span></span>
+                    </div>
+                    <!--  <div class="pay_box">
+                        <input type="radio" class="pay_radio" name="paytype" value="4" id='pay-2'>
+                        <label class="pay_label" for="pay-2">{$Think.const.HASSHOP}</label><span class="pay_instructions">该用户当前{$Think.const.HASSHOP}：<span class='nickname'>{$money.hasshop}</span></span>
+                    </div> -->
+                    <div class="clearfloat"></div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>     
+            <div class="order_boxs">
+                <div class="member_three T_T">订单商品</div>
+                <div class="add_ul sett_ul">
+                    <div class="sp_list">
+                        <table collspacing="0" collpadding="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <th width="40%">商品名称</th>
+                                    <th width="20%">购买单价(元)</th>
+                                    <th width="20%">购买数量</th>
+                                    <th width="20%">小计(元)</th>
+                                </tr>
+                                <foreach name='shoplist' item='vo'>
+                                	<tr>
+                                		 <td width="40%">
+                                            <div class="sp_a">
+                                                <a href="{:U('')}" target="_blank" class="a1">
+                                                    <img src="{$vo.goodid|getGoodPic}"></a><a href="{:U('Index/goodsDetail?id='.$vo['goodid'])}" title='{$vo.goodid|get_good_name}' class="sp_a2">{$vo.goodid|get_good_name}</a>
+                                            </div>
+                                        </td>
+                                        <td width="20%">{$vo['price']}</td>
+                                        <td width="20%">{$vo['num']}</td>
+                                        <td width="20%" style="color: #f00;">{$vo['num']*$vo['price']}</td>
+                                	</tr>
+                                </foreach>                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="spr_box">                        
+                        <p class="sp_rs">
+                            <a href="javascript:void(0);" id="checkout-submit" onclick='makeorder();return false;' class="rose">提交订单</a><span class="s_yb">总计金额：<span class="rose_red">￥<em id="ysjh2">{$allprice}&nbsp;元</em></span></span>
+                        </p>
+                    </div>
+                    <div class="clearfloat"></div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+            <!--订单商品-->
+            </form>
+        </div>
+        <div class="clearfloat"></div>
+
+</div>
+<script type="text/javascript">
+function addresSel(my) {
+	id = $(my).attr('id');
+	$('#default').val(id);
+    $(my).addClass("green").siblings().removeClass("green");     
+    $("#add_new_consignee").css("display", "none");
+}
+function makeorder(){
+	layer.confirm('订单一旦提交无法修改，确定要提交该订单吗？', function(index){
+		if($('#default')==null||$('#default').val()==''){		
+			layer.alert("请选择一个地址!");
+			return false;
+		}
+		var item = $('input:radio[name=paytype][checked]').val();
+		var totalprice="{$allprice}";
+	
+		if(item==4){
+			//判断当前总额和当前购物币
+			var shopmoney="{$money.hasshop}";
+			if(totalprice-shopmoney>0){
+				layer.alert('对不起，你的购物币币不足，请充换支付方式');
+				return false;
+			}
+		}else if(item == 2){
+			var shopmoney="{$money.hasmoney}";
+			if(totalprice-shopmoney>0){
+				layer.alert('对不起，你的奖金币不足，请充值后再购买');
+				return false;
+			}
+		}
+		document.myform.submit();
+	}); 
+}
+</script>
+<include file="Public:footer" />

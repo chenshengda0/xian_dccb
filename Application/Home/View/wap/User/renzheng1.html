@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/renzheng.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">实名认证</h1>
+		</header>
+		<form action="{:U('tj_renzheng')}" method="post" enctype="multipart/form-data">
+		<div class="mui-content main">
+			<div class="main">
+			   <div class="list1">
+                <li><span><i style="color:red">*&nbsp;</i>开户银行：</span><input type="text"  value= "{$info.bankname}" name= "bankname" /></li>
+			    <li><span><i style="color:red">*&nbsp;</i>银行卡号：</span><input type="text" value= "{$info.banknumber}" name= "banknumber" /></li>
+			    <li><span><i style="color:red">*&nbsp;</i>支付宝：&nbsp;&nbsp;&nbsp;</span><input type="text" value= "{$info.alipay}" name= "alipay" /></li>
+			    <li><span><i style="color:red">*&nbsp;</i>手机号：&nbsp;&nbsp;&nbsp;</span><input type="text" value= "{$info.mobile}" name= "mobile" /></li>
+			    <li><span><i style="color:red">*&nbsp;</i>真实姓名：</span><input type="text" value= "{$info.realname}" name= "realname" /></li>
+               
+                 	<li><span>BTC比特币：</span><input type="text" value= "{$info.bite}" name= "bite" /></li>
+                    <li><span>以太坊ETH：</span><input type="text" value= "{$info.ytf}" name= "ytf" /></li>
+                 	
+                   <li> <span>skype账号：</span><input type="text" value= "{$info.skype}" name= "skype" /></li>
+                 <li><span>Facebook：</span><input type="text" value= "{$info.facebook}" name= "facebook" /></li>
+			   			   		
+			   </div>
+			  	<p>认证说明：为了保障您的帐户安全；请上传真实资料</p>
+			  	<if condition = "$info['shenpi'] eq 1 or $info['shenpi'] eq 3">
+						  		<div class="but shili">请点击查看上传身份证件</div>
+							     <div class="vis">
+								<img src="{$info['IDcard_z']}" alt=""/>
+								<img src="{$info['IDcard_f']}" alt="" />
+							   </div>
+			  	<else/>
+			  					<div class="but shili">请点击（查看示例）</div>
+								<div class="vis">
+									<img src="__HOME__/wap/img/index/sfz_07.png" alt=""/>
+									<img src="__HOME__/wap/img/index/sfz_10.png" alt="" />
+								</div>
+								<div class="img">
+										<p style="color: #109ADD;text-align: center;">请上传身份证正反面</p>
+										<div class="con">
+											<div class="z_photo">		        	
+									            <div class="z_file">
+									                <input type="file" name="file[]" id="file" value="" accept="image/*" multiple onchange="imgChange('z_photo','z_file');" />			
+									            </div>				
+										    </div>
+											<div class="z_mask">
+									            <!--弹出框-->
+									            <div class="z_alert">
+									                <p>确定要删除这张图片吗？</p>
+									                <p>
+									                    <span class="z_cancel">取消</span>
+									                    <span class="z_sure">确定</span>
+									                </p>
+									            </div>
+										    </div><p>身份证照（正面）</p>
+										</div>
+										
+										<div class="con1">
+											<div class="z_photo1">
+												<div class="z_file1">
+													<input type="file" name="file[]" id="file1" value="" accept="image/*" multiple onchange="imgChange1('z_photo1','z_file1');" />			
+												</div>	
+											</div>
+								
+											<!--遮罩层-->
+											<div class="z_mask1">
+												<!--弹出框-->
+												<div class="z_alert1">
+													<p>确定要删除这张图片吗？</p>
+													<p>
+														<span class="z_cancel1">取消</span>
+														<span class="z_sure1">确定</span>
+													</p>
+												</div>
+											</div><p>身份证照（背面）</p>
+										</div>
+									</div>
+									
+									<p style="color: #666666;">温馨提示：请认真填写实名认证资料，绑定后不可修改，请确认账户资料填写正确，上传的身份证和银行卡信息必须一致，否则不予通过。</p>
+								</div>
+								<!-- <div class="but but1">完成认证</div> -->
+								<input class="but but1" type="submit" value="完成认证" style="margin:20px 6%;font-size:16px">
+							</div>
+							</form>
+			  	</if>
+				
+				
+		<script src="__HOME__/wap/js/mui.min.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/sc_img.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/index/renzheng.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+		</script>
+	</body>
+</html>
+
+
+
+

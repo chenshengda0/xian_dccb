@@ -1,0 +1,47 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__STATIC__/bgcolor/css/jquery.bigcolorpicker.css" type="text/css" />
+	<div class="main-title">
+		<h2>{$meta_title}</h2>
+	</div>
+	<div class="tab-wrap">
+		<div class="tab-content">
+	<form action="{:U('rankColor')}" method="post" class="form-horizontal">
+	<volist name="reg_type" id="vo">
+	<div class="form-item">
+		<label class="item-label" style='color:{$vo.6}'>{$vo.4}</label>
+		<div class="controls">
+			背景色<input type="button" f="bnn"  style="background-color:{$vo.5};" class="btn-return">
+			<input type="hidden" class="text input-small bgcolor" name="color[]"  value="">
+			字体色<input type="button" f="btn"  style="background-color:{$vo.6};" class="btn-return">
+			<input type="hidden" class="text input-small ftcolor" name="ftcolor[]"  value="">
+			<input type="hidden" class="text input-small" name="rank[]" value="{$vo.1}">
+		</div>
+	</div>
+	</volist>
+	<div class="form-item">
+		<label class="item-label"></label>
+		<div class="controls">
+			<empty name="reg_type"><button type="submit" disabled class="btn submit-btn disabled" target-form="form-horizontal">确 定</button><else/>
+			<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button></empty>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div>
+	</div>
+	</form>
+	</div>
+</div>
+</block>
+<block name="script">
+ <script type="text/javascript" src="__STATIC__/bgcolor/js/jquery.bigcolorpicker.js"></script>
+<script type="text/javascript">
+$(":input[f='bnn']").bigColorpicker(function(el,color){
+	$(el).attr("style",'background-color:'+color);
+	$(el).next('.bgcolor').val(color);
+});
+$(":input[f='btn']").bigColorpicker(function(el,color){
+	$(el).attr("style",'background-color:'+color);
+	$(el).next('.ftcolor').val(color);
+});
+</script>
+</block>

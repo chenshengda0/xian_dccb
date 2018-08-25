@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/wodejioayi.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header " style="background-color: #1f2229;">
+		    <a class="mui-icon iconfont icon-fanhui mui-pull-left" href="{:U('center')}"></a>
+		    <h1 class="mui-title">我的交易</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="list1">
+		 		<ul>
+		 			<li class="aa active">求购</li>
+		 			<li class="aa">出售</li>
+		 			<li class="aa">交易</li>
+		 			<li class="aa" style="border-right:none">已完成</li>
+		 		</ul>
+		 		<p style="clear: both;"></p>
+		 	</div>
+		 	<div class="aa1 cur">
+		 	    <notempty name="res1">
+		 	     <ul class="mui-table-view">
+		 	        <volist name="res1" id="vo">
+		 	          <li class="mui-table-view-cell mui-collapse">
+			 	        <a class="mui-navigate-right" href="#"><span>{$vo['createtime']|date="Y-m-d H:i:s",###}</span></a>
+			 	        <div class="mui-collapse-content">
+			 	            <div class="f">
+			 	            	<p>订单号：<span>{$vo['tag']}</span></p>
+			 	            	<p>类型：<span>求购</span></p>
+			 	            	<p>数量：<span>{$vo['shuiliang']}</span></p>
+			 	            	<p>价格：<span>{$vo['danjia']}</span></p>
+			 	            	<p>总价：<span>{$vo['price']}</span></p>
+			 	            	<p>挂单时间：<span>{$vo['createtime']|date="Y-m-d H:i:s",###}</span></p>
+			 	            </div>
+			 	          <p class="an ajax-get" style="margin-bottom:10px !important;" href="{:U('quxiao',array('id'=>$vo['id']))}">取消交易</p>  
+			 	        </div>
+			 	        
+			 	       </li>
+		 	        </volist>
+			 	    
+		 	    	    
+		 	       </ul>
+		 	    </notempty>
+		 		
+		 	</div>		 	
+		 	<div class="aa1">
+		 	<notempty name="res2">
+		 	  <div class="main">
+		 	       <volist name="res2" id="vo">
+		 	          <ul>
+						<li>
+							数量：<span>{$vo['shuiliang']}</span>
+						</li>
+						<li>
+							价格：<span>{$vo['danjia']}</span>
+						</li>
+						<li>
+							总价：<span>{$vo['price']}</span>
+						</li>
+						<li>
+							时间：<span>{$vo['createtime']|date="Y-m-d H:i:s",###}</span>
+						</li>
+						<li>
+							状态：<span>等待中</span>
+						</li>
+						<p class="but ajax-get" href="{:U('quxiao',array('id'=>$vo['id']))}">放弃出售</p>
+					</ul>
+		 	       </volist>
+				</div>
+		 	</notempty>
+		 	</div>
+          
+          
+          
+		 	<div class="aa1 ">
+		 	     <volist name="res3" id="v3">
+		 	           <if condition="$v3['youid'] eq $uid">
+		 	                <div class="main">
+					 			
+								<ul class="mui-table-view">
+									 <li class="mui-table-view-cell">
+                                       订单号：<span>{$v3['tag']}     <a href="{:U('sent',array('id'=>$v3['id'],'type'=>'out'))}">查看详情</a></span>
+									</li>
+                              </ul>
+                         </div>
+				
+		 		       <elseif condition="$v3['myid'] eq $uid"/>
+		 		             <div class="main">
+						 			<div class="img1"></div>
+									<ul class="mui-table-view">
+									 <li class="mui-table-view-cell ">
+                                       订单号：<span>{$v3['tag']}   <a href="{:U('sent',array('id'=>$v3['id'],'type'=>'in'))}">查看详情</a></span>
+										</li>
+									
+                               </ul>
+                         </div>
+                         
+                         <else/>
+					   
+		 	           </if>
+		 	     </volist>
+		 	</div>
+          
+          
+		 	<div class="aa1">
+		 	<notempty name="res4">
+		 		<ul class="mui-table-view">
+		 		 <volist name="res4" id="vo">
+		 	    <li class="mui-table-view-cell mui-collapse">
+		 	        <a class="mui-navigate-right" href=" ">
+		 	        	<span>{$vo['youtime']|date="Y-m-d H:i:s",###}</span><p class="mui-pull-right"style="margin-right: 20px;"><if condition="$vo['myid'] eq $uid">{$vo['youname']}<else/>{$vo['myname']}</if></p >
+		 	        </a>
+		 	        <div class="mui-collapse-content">
+		 	            <div class="main">
+								<ul>
+									<li>
+										数量：<span>{$vo['shuiliang']}</span>
+									</li>
+									<li>
+										价格：<span>{$vo['danjia']}</span>
+									</li>
+									<li>
+										总价：<span>{$vo['price']}</span>
+									</li>
+									<li>
+											手续费：<span>{$vo['shouxu']}</span>
+										</li>
+                                
+                                  
+										<li>
+											时间：<span>{$vo['youtime']|date="Y-m-d H:i:s",###}</span>
+										</li>
+										<li>
+											买卖：<span><if condition="$vo['myid'] eq $uid">卖出<else/>买入</if></span>
+										</li>
+										
+									    <li>
+											状态：<span>{$vo['status']|get_sstatus}</span>
+										</li>
+									
+								</ul>
+							</div>
+		 	        </div>
+		 	    </li>
+		 	    </volist>		 	    		    
+		 	</ul>
+		 	</notempty>		 		
+		 	</div>
+		 	
+		 
+		 	
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/sc_img.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script>
+		var aa = $('.aa');
+		var aa1 = $('.aa1');
+		aa.click(function() {
+			aa.removeClass('active');
+			aa1.removeClass('cur');
+			$(this).addClass('active');
+			aa1.eq(aa.index(this)).addClass('cur');
+		});
+		$('.img1').click(function(){
+			$('.xinxi').show();			
+		})
+		$('.xinxi-1').click(function(e){
+			e.stopPropagation()
+		})
+		$('.xinxi').click(function(){
+			$('.xinxi').hide();
+		})
+      function toDou(n){
+          if(n<10){
+              return '0'+n;	
+          }else{
+              return n;	
+          }
+      }
+
+	
+	var oDiv=document.getElementById('div1');
+    var now=new Date();
+    var futrue = {$time}*1000;
+	if(futrue<=now){
+		 oDiv.innerHTML='00时00分00秒';
+		
+	}else{
+      	function CountDown(){
+          
+			
+	        now=new Date();
+			var s=parseInt((futrue-now.getTime())/1000);	
+			var d=parseInt(s/86400);
+			s%=86400; //s=s%86400
+			
+			var h=parseInt(s/3600);
+			s%=3600;
+			
+			var m=parseInt(s/60);
+			s%=60;
+			
+			oDiv.innerHTML=toDou(h)+'时'+toDou(m)+'分'+toDou(s)+'秒';
+			if(toDou(h)=='00' && toDou(m)=='00' && toDou(s)=='00'){
+				 clearInterval(ding);
+			}
+		}
+		CountDown();
+		setInterval(CountDown,1000);
+		
+	}
+	
+
+	</script>
+</html>

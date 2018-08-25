@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/index.css" />
+      <title>新闻详情</title>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header"  style="background-color: #1f2229">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">新闻详情</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="main1">
+				<div class="new_title">
+					<p>{$title}</p>
+					
+				</div>
+				<!--<div class="img">
+					<img src="__IMG__/banner.jpg" alt="" />
+					
+				</div>-->
+				<div class="new_words">
+					{$document}
+				</div>
+				<div class="time">
+					<p class="mui-pull-left">推送时间</p>
+					<p class="mui-pull-right"><span>{$time|date="Y-m-d H:i:s",###}</span></p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+</html>
+

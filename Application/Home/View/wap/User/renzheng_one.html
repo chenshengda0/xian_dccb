@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/renzheng.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header" >
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">实名认证</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="main1">
+				<div class="jindu1"></div>
+				<form action="{:U('')}" method="post" class="form-horizontal" style="margin-top: -10px;">
+					<li class="top1">
+					    &nbsp;&nbsp;&nbsp;&nbsp;<span>姓名：</span><input type="text" value="{$user['realname']}" name="realname" class="mui-input-clear mui-ellipsis" placeholder="请输入您的真实姓名，否则无法收款">
+					</li>
+					<li class="top1">
+					    <span>身份证：</span><input name="card" id="code" type="text"  value="{$user['IDcard']}" class="mui-input-clear mui-ellipsis" placeholder="请输入您的身份证号码">
+					</li>				
+				<div class="buts">
+					<p class="x"><input type="submit" class="ajax-post" target-form='form-horizontal' value="提交"/></p>
+					
+					 <p class="ajax-get" href="{:U('check_one')}">下一步</p>
+				</div>
+			</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__JS__/pages/renzheng_1.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+</html>

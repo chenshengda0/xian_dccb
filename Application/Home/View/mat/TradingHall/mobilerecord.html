@@ -1,0 +1,49 @@
+<extend name="public/base"/>
+<block name='style'>
+<style>
+</style>
+</block>
+<block name="body">
+<include file='Public/search' />
+  <div class="block-area" id="tableHover">
+          <div class="table-responsive overflow">
+              <table class="table table-bordered table-hover tile">
+                  <thead>
+                      <tr>
+                          <td>申请日期</td><td>运营商</td><td>充值手机号</td><td>充值金额</td><td>充值日期</td><td>申请状态</td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <notempty name="_list">
+           			<volist name="_list" id="vo"  mod="2">
+	               <tr>
+	              		<td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+	              		<td>
+	          				<eq name='vo.mobiletype' value='1'>移动</eq>
+	          				<eq name='vo.mobiletype' value='2'>联通</eq>
+	          				<eq name='vo.mobiletype' value='3'>电信</eq>
+	          			</td>
+	          			<td>{$vo.mobile}</td>
+	          			<td>{$vo.money}</td>
+			  			<td><if condition="$vo.status neq 0">{$vo.handtime|date="Y-m-d",###}<else/>正在处理...</if></td>
+	    	 			<td><if condition="$vo.status neq 0">已到账<else/>正在处理...</if></td>
+	              </tr>
+           		</volist>
+          		 <else/>
+           		<tr><td colspan="5" class="text-center"> aOh!充值记录!</td></tr>
+       		</notempty>              
+                  </tbody>
+              </table>
+          </div>
+         <div class="btn-group page">{$_page}</div>
+ </div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+    </script>
+<script type="text/javascript">
+        //导航高亮
+        highlight_subnav("{:U('rechargeRecord')}");
+    </script>
+</block>

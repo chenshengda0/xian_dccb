@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/wodejioayi.css"/>
+      <style>
+      		  table{width:100%;}
+              table tr {height:40px;text-align:center;}
+              table tr th{}
+              table tr td{text-align:center;}
+              .main{padding:0;}
+      </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header " style="background-color: #1f2229;">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">奖金明细</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="list1">
+		 		<ul>
+		 			<li class="aa active" style="width:20%">个人算力</li>
+		 			<li class="aa" style="width:20%">分享算力</li>
+		 			<li class="aa" style="width:20%">共享算力</li>
+                  	<li class="aa" style="width:20%">团队算力</li>
+		 			<li class="aa" style="border-right:none;width:20%">总合计</li>
+		 		</ul>
+		 		<p style="clear: both;"></p>
+		 	</div>
+		 	<div class="aa1 cur">
+		 	   
+		 	    
+		 	        <volist name="geren" id="vo">
+		 	         <div class="main">
+		 	           <table  border="" cellspacing="" cellpadding="">
+                                  <tr>
+                                      <th style="width:20%">来源</th>
+                                      <th style="width:20%">去向</th>
+                                      <th style="width:20%">金额</th>
+                                      <th style="width:20%">剩余</th>
+                                      <th style="width:20%">时间</th>
+                                  </tr>
+                                  <tr>
+                                     <td>{$vo['userid']|get_unm}</td>
+                                      <td>{$vo['targetuserid']|get_unm}</td>
+                                      <td>{$vo['money']}</td>
+                                    <td>{$vo['hasmoney']}</td>
+                                      <td>{$vo['createtime']|date="Y-m-d H:i:s",###}</td>
+                                  </tr>
+                              </table>
+                        </div>
+		 	        </volist>
+		 	</div>		 	
+		 	<div class="aa1">
+		 
+		 
+		 	       <volist name="fenxiang" id="v">
+		 	        	 <div class="main">
+		 	           		<table  border="" cellspacing="" cellpadding="">
+                                  <tr>
+                                      <th style="width:20%">来源</th>
+                                      <th style="width:20%">去向</th>
+                                      <th style="width:20%">金额</th>
+                                      <th style="width:20%">剩余</th>
+                                      <th style="width:20%">时间</th>
+                                  </tr>
+                                  <tr>
+                                      <td>{$v['userid']|get_unm}</td>
+                                      <td>{$v['targetuserid']|get_unm}</td>
+                                      <td>{$v['money']}</td>
+                                      <td>{$v['hasmoney']}</td>
+                                      <td>{$v['createtime']|date="Y-m-d H:i:s",###}</td>
+                                  </tr>
+                              </table>
+                        </div>
+		 	       </volist>
+			
+		 
+		 	</div>
+          
+          
+          
+		 	<div class="aa1 ">
+		 	     <volist name="gongxiang" id="v3">
+		 	               <div class="main">
+		 	           		<table  border="" cellspacing="" cellpadding="">
+                                  <tr>
+                                      <th style="width:20%">来源</th>
+                                      <th style="width:20%">去向</th>
+                                      <th style="width:20%">金额</th>
+                                      <th style="width:20%">剩余</th>
+                                      <th style="width:20%">时间</th>
+                                  </tr>
+                                  <tr>
+                                      <td>{$v3['userid']|get_unm}</td>
+                                      <td>{$v3['targetuserid']|get_unm}</td>
+                                      <td>{$v3['money']}</td>
+                                      <td>{$v3['hasmoney']}</td>
+                                      <td>{$v3['createtime']|date="Y-m-d H:i:s",###}</td>
+                                  </tr>
+                              </table>
+                        </div>
+				
+		 		      
+		 	     </volist>
+		 	</div>
+          
+          
+		 	<div class="aa1">
+		 		 <volist name="tuandui" id="v4">
+					 <div class="main">
+		 	           		<table  border="" cellspacing="" cellpadding="">
+                                  <tr>
+                                      <th style="width:20%">来源</th>
+                                      <th style="width:20%">去向</th>
+                                      <th style="width:20%">金额</th>
+                                      <th style="width:20%">剩余</th>
+                                      <th style="width:20%">时间</th>
+                                  </tr>
+                                  <tr>
+                                      <td>{$v4['userid']|get_unm}</td>
+                                      <td>{$v4['targetuserid']|get_unm}</td>
+                                      <td>{$v4['money']}</td>
+                                      <td>{$v4['hasmoney']}</td>
+                                      <td>{$v4['createtime']|date="Y-m-d H:i:s",###}</td>
+                                  </tr>
+                              </table>
+                        </div>
+		 	    </volist>		 	    		    
+		 	</div>
+          
+          
+          <div class="aa1">
+		 		
+            
+             <div class="main">
+		 	           		<table  border="" cellspacing="" cellpadding="">
+                              
+                                  <tr>
+                                      <th style="width:40%">个人总算力</th>
+                                      <td>{$geren2}</td>
+                                  </tr>
+                              
+                                  <tr>
+                                      <th style="width:40%">分享总算力</th>
+                                      <td>{$fenxiang2}</td>
+                                  </tr>
+                              
+                              	  <tr>
+                              		<th style="width:40%">共享总算力</th>
+                                    <td>{$gongxiang2}</td>
+                              	  </tr>
+                              
+                              	  <tr>
+                              		<th style="width:40%">团队总算力</th>
+                                    <td>{$tuandui2}</td>
+                              	  </tr>
+                              
+                              	  <tr>
+                              		 <th style="width:40%">总算力</th>
+                                     <td><?php echo $geren2+$fenxiang2+$gongxiang2+$tuandui2 ?></td>
+                              	  </tr>
+                              	
+                              
+                              </table>
+                        </div>	    		    
+		 	</div>
+		 	
+		 
+		 	
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/sc_img.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script>
+		var aa = $('.aa');
+		var aa1 = $('.aa1');
+		aa.click(function() {
+			aa.removeClass('active');
+			aa1.removeClass('cur');
+			$(this).addClass('active');
+			aa1.eq(aa.index(this)).addClass('cur');
+		});
+		$('.img1').click(function(){
+			$('.xinxi').show();			
+		})
+		$('.xinxi-1').click(function(e){
+			e.stopPropagation()
+		})
+		$('.xinxi').click(function(){
+			$('.xinxi').hide();
+		})
+      function toDou(n){
+          if(n<10){
+              return '0'+n;	
+          }else{
+              return n;	
+          }
+      }
+
+	
+	
+	
+
+	</script>
+</html>

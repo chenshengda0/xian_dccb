@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/enter/zhuce.css" />
+		<style type="text/css">
+			.mid ul{
+				height: 50px;
+			}
+          .list1{
+            height:100%
+          }
+           .list1 input{
+             width:100%
+          }          
+          .mid li{
+            width: 50%;	
+            float: left;
+            font-size: 14px;
+            line-height: 50px;
+            text-align: center;
+          }
+          .list li{
+            width:88%;
+            margin:0 auto
+          }
+			.dd{
+				background: #FFFFFF;
+				color: #666;
+			}
+			.dd1{
+				display: none;
+			}
+			.active{
+				border-bottom:2px solid #1DBEFF;
+				color:#1DBEFF;
+			}
+			.cur{
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <h1 class="mui-title">找回密码</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mid">
+		 		<ul>
+		 			<li class="dd active">修改一级密码</li>
+		 			<li class="dd">修改二级密码</li>
+		 		</ul>
+		 	</div>
+          	<form action="{:U('savepass')}" method="post">
+                  <div class="dd1 cur">
+                      <div class="list list1" style="padding: 20px 10px;">	
+                          <li>
+                              <span class="">用户编号:{$user.usernumber|default=""}</span>
+                          </li>
+                          <li>
+                              <span class="mui-icon iconfont icon-mima"></span><input type="password" placeholder="请输入一级密码" name="password" class="mui-icon iconfont icon-yonghu1"/>
+                          </li>
+                          <li>
+                              <span class="mui-icon iconfont icon-mima"></span><input type="password" placeholder="请确认一级密码" name="rpassword" class="mui-icon iconfont icon-yonghu1"/>
+                          </li>	
+                         <input type="submit" value="确认" class="but" style="color:#fff;width:88%;font-size:16px" />
+                      </div>
+                    	<input type="hidden" name="uid" value="{$user.uid}">
+                      <input type="hidden"  name = 'jibie' value="1">
+                     
+                  </div>
+             </form>
+          	<form action="{:U('')}" method="post">
+                <div class="dd1">
+                    <div class="list list1" style="padding: 20px 10px;">
+                        <li>
+                            <span class="">用户编号:{$user.usernumber|default=""}</span>
+                        </li>
+                        <li>
+                            <span class="mui-icon iconfont icon-mima"></span><input type="password" placeholder="请输入二级密码" name="password" class="mui-icon iconfont icon-yonghu1"/>
+                        </li>
+                        <li>
+                            <span class="mui-icon iconfont icon-mima"></span><input type="password" placeholder="请确认二级密码" name="rpassword" class="mui-icon iconfont icon-yonghu1"/>
+                        </li>
+                        <input type="submit" value="确认" class="but" style="color:#fff;width:88%;font-size:16px" />
+                    </div>
+                  	<input type="hidden" name="uid" value="{$user.uid}">
+                    <input type="hidden" name="jibie" value="2">
+                </div>
+			</form>
+			
+		</div>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			var add = $('.mid .dd');
+			var add1 = $('.dd1');
+			add.click(function() {
+				add.removeClass('active');
+				add1.removeClass('cur');
+				$(this).addClass('active');
+				add1.eq($(this).index()).addClass('cur');
+			});
+		</script>
+	</body>
+</html>
+

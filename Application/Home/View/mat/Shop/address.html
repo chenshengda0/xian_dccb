@@ -1,0 +1,143 @@
+<extend name="wap/Base/base"/>
+<block name='style'>
+<style>
+</style>
+</block>
+<block name="body">
+<div class="widget">
+	<p><button type="button" onclick='addresSelz(this)' class="button button-magenta" >添加新地址</button><span style="margin-left:20px;font-size:18px;font-weight: bold;">共{$address_count}个收货地址</span></p> 
+	<div id='add_new_consignee' style='display:none'>
+		<form action="{:U('address')}" method="post" class="form-inline" onsubmit = "return checkForm();" >
+       		<div class="formRow">
+                 <label><span class="info_label">收件人姓名:</span></label>
+                 <div class="formRight">
+                 	<span class='oneTwo'><input class="contactField requiredField" type="text"  name='realname' id="realname"/></span>
+                 </div>
+                 <div class="clear"></div>
+            </div>  
+		   <div class="formRow">
+                 <label><span class="info_label">选择地区:</span></label>
+                 <div class="formRight" id="area">
+                 	{:hook('J_China_City',$param)}
+                 </div>
+                 <div class="clear"></div>
+           </div>  
+       		<div class="formRow">
+                 <label><span class="info_label">详细地址:</span></label>
+                 <div class="formRight">
+                 	<span class='oneTwo'><textarea name='address' id="address" class="contactField requiredField"></textarea></span>
+                 </div>
+                 <div class="clear"></div>
+            </div> 	  
+       		<div class="formRow">
+                 <label><span class="info_label">联系方式:</span></label>
+                 <div class="formRight">
+                 	<span class='oneTwo'><input class="contactField requiredField" type="text" name='cellphone' id='mobile'/></span>
+                 </div>
+                 <div class="clear"></div>
+            </div>   
+		   <div class="formRow">
+                 <label><span class="info_label">设置默认:</span></label>
+                 <div class="formRight">
+                 	<span class='oneTwo'><input id="isdefault"  name="default" type="checkbox" style="margin-top:8px;"/></span>
+                 </div>
+                 <div class="clear"></div>
+            </div> 
+		   <div class="formRow">
+                 	 
+                 	  <button type="submit" class="button-big button-blue">提交</button>
+                 <div class="clear"></div>
+            </div> 
+		</form>
+	</div>
+	<div >
+        <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+                  <tbody>
+           			<foreach name='address_list' item='vo'>
+           			    <tr>
+	              			<td>姓名：{$vo.realname}</td>
+							<td>电话：{$vo.cellphone}</td>
+						</tr>
+						<tr>
+	              			<td>地区：{:getCity($vo['area'])}</td>
+							<td>详情地址：{$vo.address}</td>
+						</tr>
+						<tr>
+	              			<td colspan = "2">操作：<span style="cursor:pointer;" id='{$vo.id}' class="rose-red">
+                     				<eq name='vo.status' value='1'>
+                      				默认地址
+                     				 <else/>
+                      				<a style="color:blue;display:inline-block;" class="ajax-get" href="{:U('Shop/shezhi?id='.$vo['id'])}">设置为默认地址</a>
+                     				</eq>
+                     				</span>
+                     				<a style="color:red;display:inline-block;" class="ajax-get" href="{:U('shop/deleteAddress?id='.$vo['id'])}">删除</a></td>
+						</tr>
+           		</foreach>
+                  </tbody>
+            </table>
+        </div>
+</div>
+</block>
+<block name="script">
+	<script>
+	function checkForm(){
+		if(!check_empty('realname','收件人姓名')){return false;}	
+		if(!check_empty('mobile','手机号')){return false;}
+		if(!check_phone('mobile','手机号')){return false;}
+		if(!check_empty('"address"','详细地址')){return false;}
+	}
+	
+	    function addresSelz(my) {                
+	        if ($("#add_new_consignee").css("display") == "none") {
+	            $("#add_new_consignee").css("display", "block");
+	        }
+	        else {
+	            $("#add_new_consignee").css("display", "none");
+	        }
+	    }  
+	  //设置默认
+/* 		function shezhi(e) { 
+			layer.confirm('确认要设置吗？', {
+			    btn: ['确定','取消'], //按钮
+			    shade: false //不显示遮罩
+			}, function(index){
+				layer.close(index);				 
+				$.ajax({
+					type:'post', //传送的方式,get/post
+					url:'{:U("Shop/shezhi")}', //发送数据的地址
+					data:{id:e.id},
+					dataType:"json",
+					success:function(data){
+						if(data.status)
+							window.location.reload();
+					},
+					error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+					alert(XMLHttpRequest+thrownError); }
+				})
+				 
+			});				 
+		} */
+		//删除
+		function shanchu(e) { 
+			layer.confirm('确认要删除吗？', {
+			    btn: ['确定','取消'], //按钮
+			    shade: false //不显示遮罩
+			}, function(index){
+				layer.close(index);				 
+				$.ajax({
+					type:'post', //传送的方式,get/post
+					url:'{:U("shop/deleteAddress")}', //发送数据的地址
+					data:{id:e.id},
+					dataType:"json",
+					success:function(data){		
+						if(data.status)
+							window.location.reload();
+					},
+					error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+					alert(XMLHttpRequest+thrownError); }
+				})  
+				 
+			});			
+		}
+	</script>
+</block>

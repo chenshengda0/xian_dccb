@@ -1,0 +1,91 @@
+.top1 {
+	width: 100%;	
+	margin-top: 10px;	
+	font-size: 14px;	
+}
+.top1 span {
+	color: #002E72;
+}
+.top1 input {
+	width: 75%;
+	border: none;
+}
+.top1 p{
+	background-color: #FFFFFF;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 10px;
+}
+.top1 input {
+	width: 75%;
+	color: #424242;
+	margin-bottom: 2px;
+}
+.x {
+	width: 80%;
+	border-radius: 3px;
+	margin: 20px auto;
+  	text-align:center;
+    color:#fff;
+	line-height: 30px;
+	background-color: #21AE37;
+
+}
+
+.z_mask {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	display: none;
+}
+.z_alert {
+	width: 280px;
+	height: 140px;
+	border-radius: 4px;
+	background: #fff;
+	color: #333333;
+	font-size: 16px;
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -140px;
+	margin-top: -120px;
+}
+.z_alert .title {
+	width: 100%;
+	height: 45px;
+	font-size: 14px;
+	line-height: 45px;
+	border-bottom: 1px solid #EEEEEE;
+}
+.buts1 {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	border-top: 1px solid #ddd;
+}
+.buts1>span {
+	margin-top: 0;
+	display: inline-block;
+	width: 49%;
+	height: 35px;
+	float: left;
+	font-size: 14px;
+}
+.z_cancel {
+	border-right: 1px solid #ddd;
+}
+.z_alert input {
+	height: 35px !important;
+	width: 80% !important;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #DDDDDD;
+	border-radius: 5px !important;
+}

@@ -1,0 +1,381 @@
+/*******************************************
+ * 自定义配色css文件放在defaut_color的同级目录,然后在 "系统/配置管理" 中为"COLOR_STYLE"增加一行配置项
+ *********************************************/
+
+/********************************************
+ * base.css
+ * 描述：重置页面元素并设置布局样式
+ * 作用范围： 全局
+ *******************************************/
+html,body,input,textarea,select,legend{
+	color:#404040;
+	/*全局默认文字颜色*/
+}
+a {
+	color: #056dae;
+	/*全局默认链接颜色*/
+}
+a:hover{
+	color: #529ABF;
+	/*全局默认链接悬停颜色*/
+}
+
+/************************************* 
+ * style.css
+ *************************************/
+#main-content{
+	margin-top: 38px;
+}
+.main{
+	background-color: #fff;
+	padding-top: 45px;
+}
+.columns-mod .hd{
+	background: #EDF6FA;
+}
+
+.header{
+	height: 88px;
+	line-height: 88px;
+	background: url(../images/news_color/topbg.gif) repeat-x;
+}
+.header .logo{
+    margin-left: 0;
+}
+.header .topleft{
+	height: 88px;
+	background: url(../images/news_color/topleft.jpg) no-repeat;
+	float: left;
+	width: 300px;
+}
+.topleft img {
+	margin-top: 12px;
+	margin-left: 10px;
+	width: 271px;
+	height: 70px;
+}
+.main-nav li{
+	width: 87px;
+	height: 88px;
+	text-align: center;
+}
+
+.main-nav li a{
+	display: block;
+	height: 88px;
+	-moz-transition: none;
+	transition: background-color 0.3s linear;
+	-moz-transition: background-color 0.3s linear;
+	-webkit-transition: background-color 0.3s linear;
+	-o-transition: background-color 0.3s linear;
+	color: #d6e8f1;
+	line-height: 88px;
+}
+.main-nav  a:hover{
+	display: block;background:#000;color:#fff;background: none repeat scroll 0% 0% rgb(43, 127, 181);
+	text-decoration: none;
+}
+.main-nav .current{
+    background: url(../images/news_color/navbg.png) no-repeat;
+}
+.main-nav .current a {
+    background: url(../images/news_color/navbg.png) no-repeat;
+    color: #ffffff;
+}
+.header .user-bar{
+	padding: 16px 0;
+	background: url(../images/news_color/topright.jpg) no-repeat right;
+	width: 172px;
+	margin-right: 0;
+}
+.header .user-bar .user-entrance{
+	float:right;
+	margin-right: 20px;
+}
+.header .user-menu{
+	top:53px;
+	right: 0;
+}
+/*.main-nav li img{
+	margin-top: 10px;
+}
+.main-nav li em.icon_1{
+	background: url(../images/news_color/icon01.png) no-repeat;
+	width: 45px;
+	height: 45px;
+	display: block;
+	margin: 0 21px;
+	margin-top: 10px;
+}*/
+.main-nav li h2{
+	font-size: 14px;
+	color: #d6e8f1;
+}
+.sidebar{
+	padding-top: 38px;
+	background: url(../images/news_color/leftline.gif) repeat-y #f0f9fd right;
+}
+.lefttop {
+	background: url(../images/news_color/lefttop.gif) repeat-x;
+	height: 40px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 40px;
+}
+.lefttop a{
+	color: #ffffff;
+}
+.lefttop span {
+	margin-left: 8px;
+	margin-top: 10px;
+	margin-right: 8px;
+	background: url(../images/news_color/leftico.png) no-repeat;
+	width: 20px;
+	height: 21px;
+	float: left;
+}
+.subnav{
+	padding-left: 0;
+}
+.subnav h3{
+	background: url(../images/news_color/leftmenubg.png) repeat-x;
+	color: #000;
+	margin-right: 0;
+}
+.subnav h3 .recycle,
+.subnav h3 .icon{
+	margin: 10px 8px 0 12px;
+}
+.subnav h3 a{
+	color: #000;
+}
+.side-sub-menu > li{
+	margin: 2px 0;
+}
+.side-sub-menu > li > .item{
+	color: #000;
+}
+.side-sub-menu > li > .item:hover,
+.side-sub-menu > li.hover > .item {
+	background: none repeat scroll 0% 0% rgba(43, 127, 181,0.5);
+	color: #fff;
+}
+.side-sub-menu > .current > .item, .side-sub-menu > .current > .item:hover, .side-sub-menu > .current.hover > .item{
+	background: url(../images/news_color/libg.png) repeat-x;
+	color: #fff;
+}
+.side-sub-menu > .current > i{
+	display: block;
+	background: url(../images/news_color/sj.png) no-repeat;
+	width: 6px;
+	height: 11px;
+	position: absolute;
+	right: 0;
+	z-index: 10000;
+	top: 9px;
+	right: -1px;
+}
+
+.subnav h3 .icon {
+	background: url(../images/bg_icon.png) no-repeat -124px -22px;
+}
+.subnav h3 .icon-fold{
+	background-position: -100px -22px;
+}
+/********************************************** 
+ * module.css 
+ * 描述：定义常用组件样式
+ * 作用范围: 公共，组件模块
+ ***********************************************/
+
+/*普通按钮*/
+.btn,.btn:hover{
+	background-color: #f3f7f8;
+	color: #000;
+	border: solid 1px #d3dbde;
+	padding: 0 10px;
+	border-radius: 3px;
+	height: 33px;
+	line-height: 33px;
+}
+.btn span{
+	float: left;
+	margin-right: 5px;
+	margin-top: 4px;
+}
+.btn span em{
+	width: 24px;
+	height: 24px;
+	display: block;
+	background: url(../images/news_color/btn_icon.png) no-repeat;
+}
+.btn span em.on{}
+.btn span em.off{}
+.btn span em.add{ background-position: 0 0;}
+.btn span em.del{ background-position: 0 -30px;}
+.btn-arrowdown {
+	background-position: -50px -25px;
+}
+
+/*************************************************
+ * common.css 
+ * 描述：定义公共类名
+ * 作用范围: 公共，独立样式
+ *************************************************/
+
+#top-alert{
+	top:74px;
+}
+
+.alert-success {
+	border-color: #3C96C8;
+	background-color: #3EAFE0;
+	color:#fff;
+}
+.alert .close{
+	color: #ffffff;
+	opacity: 1;
+}
+#top-alert .close{
+	top:104px;
+}
+
+/*交互按钮*/
+.submit-btn, .submit-btn:hover{
+	width: 137px;
+	height: 35px;
+	background: url(../images/news_color/btnbg.png) no-repeat;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	cursor: pointer;
+}
+.btn-return, .btn-return:hover{
+	width: 137px;
+	height: 35px;
+	background-color: #DDDDDD;
+	color: #555;
+}
+
+.page div{
+	float: right;
+}
+.page a:hover
+ {
+    text-decoration: none;
+    background-color: #046DAF;
+    color: #fff;
+}
+.page .current{
+	background:#046DAF;
+	color: #fff;
+}
+
+/*表单 input*/
+.text,.textarea,select{
+	border-top: solid 1px #a7b5bc;
+	border-left: solid 1px #a7b5bc;
+	border-right: solid 1px #ced9df;
+	border-bottom: solid 1px #ced9df;
+	background: url(../images/news_color/inputbg.gif) repeat-x;
+}
+.text{
+	text-indent: 10px;
+}
+.category .hd{
+	background: #F0F5F7;
+	font-weight: bold;
+	border-top: solid 1px #b6cad2;
+	border-bottom: solid 1px #b6cad2;
+	color: #000;
+}
+
+/*********************************************
+ * table.css 
+ * 描述：定义数据表格样式
+ * 作用范围: 公共，表格模块
+ **********************************************/
+ .ipt-table {
+	margin: 10px 0;
+}
+.ipt-table caption {
+    height: 30px;
+    line-height: 30px;
+    font-weight: 700;
+}
+.ipt-table thead th,
+.ipt-table tbody td {
+    padding:8px;
+    height: 19px;
+    line-height: 19px;
+    font-weight: 400;
+}
+.ipt-table thead th {
+    text-align: left;
+    color:#fff;
+    background-color: #353535;
+}
+.ipt-table tbody tr {
+	background-color: #fefefe;
+	color: #686868;
+}
+.ipt-table tbody tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.ipt-table table{
+	border: solid 1px #c7c7c7;
+	width: 100%;
+    border-collapse: collapse;
+}
+.ipt-table thead th{
+	color:#2C2C2C;
+	background-color: #F0F5F7;
+	border-bottom: solid 1px #b6cad2;
+	border-top: 1px solid #b3cad2;
+	text-align:left;
+}
+
+.ipt-table tbody td{
+	border-right: dotted 1px #c7c7c7;
+	text-align: left;
+}
+.ipt-table tbody td.data_r{
+	text-align: right;
+	padding-right: 15px;
+}
+.ipt-table tbody td.data_l{
+	text-align: left;
+}
+
+/*列表表格样式*/
+.data-table table{
+	border: solid 1px #c7c7c7;
+}
+.data-table thead th{
+	color: #000;
+	background-color: #F0F5F7;
+	border-bottom: solid 1px #b6cad2;
+	border-top: 1px solid #b3cad2;
+	text-align: center;
+}
+.data-tabletbody tr:nth-child(even) {
+	background-color: #f5f8fa;
+}
+.data-table tbody td{
+	border-right: dotted 1px #c7c7c7;
+	text-align: left;
+}
+.data-table tbody td.data_r{
+	text-align: right;
+	padding-right: 15px;
+}
+.data-table tbody td.data_l{
+	text-align: left;
+}
+
+
+
+
+
+

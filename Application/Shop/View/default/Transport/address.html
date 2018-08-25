@@ -1,0 +1,86 @@
+<extend name="Base/user"/>
+ <link rel="stylesheet" href="__CSS__/haojudian.css" type="text/css" />
+ <link rel="stylesheet" href="__CSS__/member.css" type="text/css" />
+<style>
+.goods{
+	display:none
+}
+
+</style>  
+<block name="content">    
+    	<div class="member_tit"><span class="Mt_left">{$meta_title}</span> </div>
+        <div class="member_cont">
+        	<div class="add_box">
+            	<include file='Public/address'/>
+                <div class="add_ul sett_ul">
+                	<ul>
+                		<foreach name='list' item='vo'>
+                			<li style="<eq name='vo.status' value='1'>border: 1px solid green</eq>" id='add{$vo.id}'>                        	                         
+	                            <p class="add_name">收货人：{$vo.realname}</p>
+	                            <p class="add_name">联系电话：{$vo.cellphone}</p>
+	                            <p class="add_name">所在地区：{$vo.area}</p>
+	                            <p class="add_name">详情地址：{$vo.address}</p>
+	                            <div class="add_btnBox">
+	                            	<eq name='vo.status' value='1'>
+	                            		<span class="gay">默认地址</span>
+	                            		<else/>
+	                            		<span onclick="shezhi('{$vo.id}');return false;" style="cursor:pointer;" id='{$vo.id}' class="rose">设置为默认</span>
+	                            	</eq>
+	                            	
+	                            	<a href="javascript:void(0)" onclick="delAddress('{$vo.id}');return false;" id='{$vo.id}' class="rose">删除</a>                            	
+	                            	<a href="{:U('updateAddress',array('id'=>$vo['id']))}"  id='{$vo.id}' class="rose">修改</a>                            	
+	                            </div>                           
+                        	</li> 
+                		</foreach>
+                		 <li onclick="addresSelz(this)" id='add-add'>
+                            <input type="radio" style="display: none" name="customerAddress" class="consignee_radio" id="consignee_radio_new" value="" />
+                            <a href="javascript:void(0)" id="addres_new" class="new_add">使用新地址</a>
+                            <span class="duihao"></span>
+                        </li>                	       
+                    </ul>
+                    <div class="clearfloat"></div>
+                </div>
+            </div>
+       </div> 
+ 
+<script type="text/javascript">
+//保存收货人地址
+function delAddress(id) {
+	$.ajax({
+		type:'post', //传送的方式,get/post
+		url:'{:U("Transport/deleteAddress")}', //发送数据的地址
+		data:{id:id},
+		dataType: "json",
+		success:function(data){
+			if (data.status) {
+				layer.alert(data.msg);
+				 window.location = '__SELF__ ';
+			}else{
+				 layer.alert(data.msg);
+			}		
+		},
+		error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+			layer.alert("表单错误，"+XMLHttpRequest+thrownError); }
+	});
+	
+}
+function shezhi(id){
+	$.ajax({
+		type:'post', //传送的方式,get/post
+		url:'{:U("Transport/shezhi")}', //发送数据的地址
+		data:{id:id},
+		dataType: "json",
+		success:function(data){
+			layer.alert(data);
+			setTimeout(function () {
+				 window.location = '__SELF__ ';	
+            }, 1000);
+			
+		},
+		error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+			layer.alert("表单错误，"+XMLHttpRequest+thrownError); }
+	});
+}
+</script>
+</block>
+<include file="Public:footer" />

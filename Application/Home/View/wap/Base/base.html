@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="__MOBILE__/images/splash/splash-icon.png">
+<link rel="apple-touch-startup-image" href="__MOBILE__/images/splash/splash-screen.png" 			media="screen and (max-device-width: 320px)" />  
+<link rel="apple-touch-startup-image" href="__MOBILE__/images/splash/splash-screen_402x.png" 		media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" /> 
+<link rel="apple-touch-startup-image" sizes="640x1096" href="__MOBILE__/images/splash/splash-screen_403x.png" />
+<link rel="apple-touch-startup-image" sizes="1024x748" href="__MOBILE__/images/splash/splash-screen-ipad-landscape" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : landscape)" />
+<link rel="apple-touch-startup-image" sizes="768x1004" href="__MOBILE__/images/splash/splash-screen-ipad-portrait.png" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : portrait)" />
+<link rel="apple-touch-startup-image" sizes="1536x2008" href="__MOBILE__/images/splash/splash-screen-ipad-portrait-retina.png"   media="(device-width: 768px)	and (orientation: portrait)	and (-webkit-device-pixel-ratio: 2)"/>
+<link rel="apple-touch-startup-image" sizes="1496x2048" href="__MOBILE__/images/splash/splash-screen-ipad-landscape-retina.png"   media="(device-width: 768px)	and (orientation: landscape)	and (-webkit-device-pixel-ratio: 2)"/>
+
+<title>{$title}|{:C('WEB_SITE')}</title>
+
+<link href="__MOBILE__/css/style.css"     		rel="stylesheet" type="text/css">
+<link href="__MOBILE__/css/framework.css" 		rel="stylesheet" type="text/css">
+<link href="__MOBILE__/css/owl.carousel.css" 	 rel="stylesheet" type="text/css">
+<link href="__MOBILE__/css/owl.theme.css" 		rel="stylesheet" type="text/css">
+<link href="__MOBILE__/css/swipebox.css"		 rel="stylesheet" type="text/css">
+<link href="__MOBILE__/css/colorbox.css"		 rel="stylesheet" type="text/css">
+<link href="__MOBILE__/css/page.css"		 rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="__MOBILE__/js/jquery.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/jqueryui.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/jquery.swipebox.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/colorbox.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/snap.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/contact.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/custom.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/framework.js"></script>
+<script type="text/javascript" src="__MOBILE__/js/framework.launcher.js"></script>
+<include file="wap/Public/js" />
+
+</head>
+<body>
+
+
+<div class="top-deco"></div>
+
+<div class="content">
+	<div class="header">
+    	<a href="#" class="homepage-logo">
+        	<img src="{:C('HOME_LOGO')}" alt="img">
+        </a>
+        <a href="__APP__/home/user/index.html" class="go-home"></a>
+        <a href="#" class="go-menu"></a>
+        <a href="#" class="go-back">关闭</a>        
+    </div>
+    
+    
+     <div class="navigation"> 
+    	<div class="corner-deco"></div>
+    	<div class="navigation-wrapper">   	      				
+					<think:nav name="nav">
+						<eq name="nav.pid" value="0"> 
+						 <php>
+		                      $children=D('Channel')->where(array('pid'=>$nav['id'],'status'=>1))->order('sort asc')->select();
+		                      if($children){
+		                  </php>
+		                  <div class="navigation-item">
+		                        <a class="features-icon has-submenu" href="#"><span>{$nav.title}</span><strong>{:count($children)}</strong></a>
+		                        	<em class="dropdown-menu"></em>
+		                        
+		                        <div class="submenu">
+									 <volist name="children" id="subnav"> 
+				                         <a href="{$subnav.url|get_nav_url}">{$subnav.title}<em></em></a>
+									</volist>
+							 	</div>
+						 </div>
+						<php>}else{</php>
+						 <div class="navigation-item">
+                      		<a class="home-icon" href="{$nav.url|get_nav_url}"><span>{$nav.title}</span></a>
+                      		<em class="dropdown-menu"></em>                     		
+                    	</div>
+						<php>}</php> </eq>
+					</think:nav>		
+			</div>
+		</div> 
+    <div class="decoration"></div>
+    	
+   <div class="landing-navigation">
+    <div class="landing-navigation-tablet-top-adjustment"></div>
+    	
+    	<a href="{:U('User/registuser')}">
+        	<div></div>
+          <img class="nav-image" src="__MOBILE__/images/general-nature/1s.png" alt="img">
+            <em>注册{:C('COM_TITLE')}</em>
+      </a>
+      <a href="{:U('TradingHall/wdReply')}">
+            <div></div>
+          <img class="nav-image" src="__MOBILE__/images/general-nature/3s.png" alt="img">
+            <em>申请提现</em>
+        </a>
+    	<a href="{:U('Message/liuyan')}">
+        	<div></div>
+          <img class="nav-image" src="__MOBILE__/images/general-nature/7s.png" alt="img">
+            <em>{:C('COM_TITLE')}留言</em>
+        </a>
+        
+        <a href="{:U('Index/logout')}">
+            <div></div>
+          <img class="nav-image" src="__MOBILE__/images/general-nature/9s.png" alt="img">
+            <em>安全退出</em>
+        </a>
+        <div class="clear"></div>
+        <div class="landing-navigation-tablet-bottom-adjustment"></div> 
+    </div>
+     <!-- <div class="decoration"></div> -->
+  <!--   
+   <div class="content">						
+	<h3 class = "center-text">{$title}</h3>															
+	</div>
+	<div class="decoration"></div> -->		
+  <block name="body"></block>
+    <div class="decoration"></div>
+    
+    <div class="footer">
+    
+    	
+        <div class="clear"></div>
+        <p class="copyright">
+        	{:C('WEB_SITE_ICP')}
+        </p>
+        
+    </div>  
+</div>
+
+<div style="height:28px;"></div>
+<div class="bottom-deco"></div>
+<div class="clear"></div>
+<block name="script">
+	<script>   
+  var  x 
+  var  y = window.setInterval(test,1000);  
+  function  test() {   
+	  var   d=new Date() 
+	  if   (d.getTime() - x > 1000 * 60 * 8){
+		  window.clearInterval(y);
+		  $.ajax({
+				url:"__MODULE__/index/logout",
+				type:"post",
+				success,	
+			})	
+	  }   
+  }   
+  function   test1()   {   
+	  var d=new Date() 
+	  x = d.getTime();
+  }    
+  </script> 
+</block>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

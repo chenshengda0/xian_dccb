@@ -1,0 +1,169 @@
+<extend name="wap/Base/base"/>
+<block name="body">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+<div class="decoration"></div>
+<div class="widget">
+ 
+<form action="{:U()}" method="post" class='form'>
+   <fieldset class="step" >
+   	<div class="formRow">
+          <label style="display:inline-block;margin-top:10px;margin-bottom:10px;" class="field-title contactNameField">{:C('COM_TITLE')}编号:</label>
+          <span class = "text-highlight highlight-dark">{$userinfo['usernumber']}[{$userinfo['realname']|default='佚名'}]</span>
+          <div class="clear"></div>
+     </div>
+     <div class="formRow">
+          <label  style="display:inline-block;margin-top:5px;margin-bottom:5px;" class="field-title contactNameField">{$Think.const.HASMONEY}余额:</label>
+          <span class = "text-highlight highlight-dark">{$userinfo['hasmoney']}</span>
+          <label class="field-title contactNameField" style = "color:red">
+          		(手续费{$wdfee}%,最低提现金额{$wdleast},并且必须是{$wdmultiple}&nbsp;的整数倍)
+          </label>
+          <div class="clear"></div>
+     </div>
+     <div class="formRow">
+         <label class="field-title contactNameField">提现金额:</label>
+         <div class="formRight">
+         	<span class='oneTwo'><input class="contactField requiredField" type="text" name="money" id="money" value="" /></span>
+         </div>
+         <div class="clear"></div>
+     </div>
+      <div class="formRow">
+         <label class="field-title contactNameField">手机号:</span></label>
+         <div class="formRight">
+         	<span class='oneTwo'><input disabled class="contactField requiredField" type="text" name="mobile" id="mobile" value="{$userinfo['mobile']}" maxlength="11" /></span>
+         </div>
+         <div class="clear"></div>
+     </div>
+     <if condition="(C('MOBILE_MESSAGE_CLOSE') eq 1) OR (C('MOBILE_MESSAGE_CLOSE') eq 2)">
+        <div class="formRow">
+            <label class="field-title contactNameField">短信验证码:</label>
+                 <div class="formRight">
+                     <span class='oneTwo'><input class='contactField requiredField' type="text"  name="mobile_code" id="mobile_code"  value=""  /></span>
+                     <span class='oneTwo'><input class="button button-magenta" id="get_code" onclick="getCode(this);" value="获取验证码" type="button" /></span>
+                 </div>
+             <div class="clear"></div>
+          </div>
+      </if>            
+      <div class="formRow">
+         <label class="field-title contactNameField">银行卡号:</label>
+         <div class="formRight">
+         	<span class='oneTwo'><input class="contactField requiredField" type="text" name="banknumber" id="banknumber" value="{$userinfo['banknumber']}" maxlength="20"  /></span>
+         </div>
+         <div class="clear"></div>
+     </div>
+      <div class="formRow">
+           <label class="field-title contactNameField">开户银行:</label>
+           <div class="formRight">
+           <span class='oneTwo'><select class="contactField requiredField"  name="bankname" >
+                  <foreach name="allow_bank" item="vo">
+					<option value="{$vo}" <eq name="userinfo['bankname']" value="$vo">selected</eq> >{$vo}</option>
+				</foreach>
+               </select></span>
+           </div>
+           <div class="clear"></div>
+        </div>
+        <div class="formRow">
+         <label class="field-title contactNameField">开户行地址:</label>
+         <div class="formRight">
+         	<span class='oneTwo'><input class="contactField requiredField" type="text" name="bankaddress" value=""/></span>
+         </div>
+         <div class="clear"></div>
+     </div>
+        <div class="formRow">
+         <label style="display:inline-block;" class="field-title contactNameField">开户人:</label>
+         <div class="formRight" style="display:inline-block;margin-top:15px;margin-bottom:15px;">
+         	<span class = "text-highlight highlight-dark">{$userinfo['bankholder']}</span>
+         </div>
+         <div class="clear"></div>
+     </div>
+     <div class="formRow">
+         <label class="field-title contactNameField">申请原因:</label>
+         <div class="formRight">
+         	<span class='oneTwo'>
+         		<textarea class="contactTextarea requiredField" name='message' placeholder="请控制在120个字已内"></textarea>
+			</span>
+         </div>
+         <div class="clear"></div>
+     </div>
+       </fieldset>
+     
+  	<div class="wizButtons"> 
+		<span class="wNavButtons">
+			 <input class='from-ipt' type="hidden" name="uid"  value="{$userinfo['uid']}"/>
+             <input class="button-big button-blue ajax-post"  value="确定" type="submit" target-form='form'/>
+             <input class="button-big button-green"  value="重置" type="reset" />
+             <input class="button-big button-dark"  value="返回" type="button"  onclick="javascript:history.back();"/>
+         </span>
+	</div>
+     <div class="clear"></div>
+</form>
+
+<div class="clear"></div>  
+
+</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+    var InterValObj; //timer变量，控制时间
+    var count = 120; //间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+    /*获取短信验证码*/
+    function getCode(obj){
+    	mobile = $("#mobile").val();
+    	$.ajax({
+			url:"__URL__/getMobileCode",
+			type:"post",
+			data:{mobile:mobile},
+			success:function(da){
+				if(da){
+					curCount = count;
+					$(obj).val("请在" + curCount + "秒内输入验证码");
+					$(obj).attr("disabled", "true");
+					$(obj).attr("style", "color:red");
+					InterValObj = window.setInterval(SetRemainTime, 1000);
+				}
+			}
+		})	
+    }
+    function SetRemainTime() {
+        if (curCount == 0) {                
+            window.clearInterval(InterValObj);//停止计时器
+            $("#get_code").removeAttr("disabled");//启用按钮
+            $("#get_code").removeAttr("style");//启用按钮
+            $("#get_code").val("重新发送验证码");
+        }
+        else {
+            curCount--;
+            $("#get_code").val("请在" + curCount + "秒内输入验证码");
+        }
+    }
+</script>
+    <script type="text/javascript">
+    /*手机号*/
+	$("#money").blur(function() {
+		if(!check_empty('money','提现金额')){return false;}
+		if(!check_number('money','提现金额')){return false;}
+		checkMoney();
+	});
+    /*手机号*/
+	$("#mobile").blur(function() {
+		if(!check_empty('mobile','手机号')){return false;}
+		if(!check_phone('mobile','手机号')){return false;}
+	});
+    /*银行卡号*/
+	$("#banknumber").blur(function() {
+		if(!check_empty('banknumber','银行卡号')){return false;}
+		if(!check_number('banknumber','银行卡号')){return false;}
+		if(!check_Size('banknumber','银行卡号','16','19')){return false;}
+	});
+    
+	/* function checkMoney(){
+		var hasmoney = "{$logininfo.hasmoney}"
+		var money=$("#money").val();
+		if(money-hasmoney>0){check_Error('money',"提现金额大于账户余额");}
+	} */
+    
+        //导航高亮
+        highlight_subnav("{:U('wdReply')}");
+    </script>
+</block>

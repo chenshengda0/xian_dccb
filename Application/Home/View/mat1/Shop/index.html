@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+                <link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/foot1.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <h1 class="mui-title">矿机商城</h1>
+		</header>
+		<div class="mui-content list">
+		    <ul class="mui-table-view">
+                        <foreach name='goodlist' item='vo'>
+		        <li class="mui-table-view-cell mui-media">
+                            <a href="{:U('Shop/xiangqing',array('id'=>$vo['id']))}">
+		                <img class="mui-media-object mui-pull-left" src="{$vo.goods_ico|get_cover=path}">
+		                <div class="mui-media-body">
+		                    {$vo.goods_name}
+		                	<p>产量：<span>{$vo.chanliang}</span>{$Think.const.MONEY}/小时</p>
+		                	<p>运行周期：<span>720小时</span></p>
+		                	<p class="price">价格：<span class="pre">{$vo.ms_price}</span>{$Think.const.MONEY}</p>
+		                </div>
+		            </a>
+		        </li>
+                        </foreach>
+		       
+		        
+		    </ul>
+			
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item link  mui-active" data-link="{:U('Shop/index')}">
+	    		<span class="mui-icon iconfont icon-shangcheng"></span>
+	       	 	<span class="mui-tab-label">商城</span>	        
+		    </a>
+		    <a class="mui-tab-item link" data-link="{:U('Kung/wodekj')}">
+		        <span class="mui-icon iconfont icon-che1"></span>
+		        <span class="mui-tab-label">矿机</span>
+		    </a>
+		    <a class="mui-tab-item link" data-link="{:U('Kung/center')}">
+		        <span class="mui-icon iconfont icon-jiaoyi"></span>
+		        <span class="mui-tab-label">交易</span>
+		    </a>
+		    <a class="mui-tab-item link" data-link="{:U('User/index')}">
+	    		<span class="mui-icon iconfont icon-wode"></span>
+	        	<span class="mui-tab-label">我的</span>
+		    </a>
+		</nav>
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script src="__HOME__/wap/js/enter/enter.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+</html>

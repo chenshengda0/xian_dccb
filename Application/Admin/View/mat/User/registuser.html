@@ -1,0 +1,200 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <form action="{:U('register')}" method="post" class="form-horizontal">
+        <div class="widget-box">
+            <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                <h5>基本信息</h5>
+            </div>
+            <div class="widget-content nopadding">
+            <!--    <div class="control-group">
+                    <label class="control-label"><span class='require'>*</span>会员编号</label>
+                    <div class="controls">
+                        <input type="text" name='usernumber' id='usernumber' value="{$userinfo['usernumber']}" class=" input-big span4">
+                        <input type="button" class="btn" onclick="checkusernum();" value="验证用户编号">
+                        <span id="backinfo"></span> </div>
+                </div>-->
+               <!-- <if condition='C("IS_MORE_LEVEL") eq 1'>
+                    <div class="control-group">
+                        <label class="control-label"><span class='require'>*</span>会员级别</label>
+                        <div class="controls">
+                            <select name="userrank">
+                                <foreach name="userrank" item="vo">
+                                    <option value="{$vo[1]}">{$vo[3]}</option>
+                                </foreach>
+                            </select>
+                            <span></span> </div>
+                    </div>
+                </if>-->
+                <!-- <div class="control-group">
+                 <label class="control-label"><span class='require'>*</span>报单中设置</label>
+                 <div class="controls">
+                     <LABEL class='radio inline'><input class="btn btn-info" type="radio" checked name='isbill' value='0'/><span>否</span></LABEL>
+                     <LABEL class='radio inline'><input class="btn btn-info" type="radio" name='isbill' value='1'/><span>是</span></LABEL>
+                   <span></span> </div>
+               </div> -->
+                <div class="control-group">
+                    <label class="control-label"><span class='require'>*</span>真实姓名</label>
+                    <div class="controls">
+                        <input type="text" name="realname" id="realname" value="{$userinfo['realname']}"  class=" input-big span4">
+                        <span></span> </div>
+                </div>
+             
+                <div class="control-group">
+                    <label class="control-label"><span class='require'>*</span>手机号</label>
+                    <div class="controls">
+                        <input type="text" name="mobile" id="mobile" value="" maxlength="11" class=" input-big span4">
+                        <span></span> </div>
+                </div>
+
+            </div>
+            <notempty name='table'>
+                <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>关系信息</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <div class="control-group">
+                        <label class="control-label"><span class='require'>*</span>推荐人</label>
+                        <div class="controls">
+                            <input type="text" name="tuijiannumber" id="tuijiannumber" value="{$userinfo['tuijiannumber']}" class=" input-big span4">
+                            <span class='require'><!--(如果修改了推荐人请重新获取报单中心)--></span> </div>
+                    </div>
+                    <!--<div class="control-group">
+                        <label class="control-label"><span class='require'>*</span>报单中心</label>
+                        <div class="controls">
+                            <input type="text" name="billnumber" id="billnumber" value="{$userinfo['billcenternumber']}"  class=" input-big span4">
+                            <input type="button" class="btn" onclick="getservercenter();" value="获取报单中心">
+                            <span></span> </div>
+                    </div>
+                     <div class="control-group">
+                        <label class="control-label"><span class='require'>*</span>接点人</label>
+                        <div class="controls">
+                            <input type="text"  name="parentnumber" id="parentnumber" value="{$userinfo['parentnumber']}" class=" input-big span4" />
+                            姓名：<span class="pname"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class='require'></span> </div>
+                    </div> -->
+                </div></notempty>
+            <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                <h5>安全信息</h5> <span class='require' style="line-height: 36px;">(默认密码:123456)</span>
+            </div>
+            <div class="widget-content nopadding">
+                <div class="control-group">
+                    <label class="control-label"><span class='require'>*</span>一级密码</label>
+                    <div class="controls">
+                        <input type="password" name="password1" id="password1" value="123456" class=" input-big span4">
+                        <span id="backinfo"></span> </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><span class='require'>*</span>确认一级密码</label>
+                    <div class="controls">
+                        <input type="password" name="repassword1" id="repassword1" value="123456" class=" input-big span4">
+                        <span></span> </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><span class='require'>*</span>二级密码</label>
+                    <div class="controls">
+                        <input type="password" name="password2" id="password2" value="123456" class=" input-big span4">
+                        <span></span> </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><span class='require'>*</span>确认二级密码</label>
+                    <div class="controls">
+                        <input type="password" name="repassword2" id="repassword2" value="123456" class="input-big span4">
+                        <input type="button" class="btn" id="moren" value="重置密码">
+                        <span></span> </div>
+                </div>
+            </div>
+            <div class="widget-content nopadding">
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success ajax-post" target-form='form-horizontal'>提交</button>
+                    <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+                </div></div>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script src="__JS__/check.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            createNumber();
+            tuijiannumber=$('#tuijiannumber').val();
+            billcenternumber=$('#billnumber').val();
+            parentnumber=$('#parentnumber').val();
+            $.post('__URL__/getRealname',{tnumber:tuijiannumber,bnumber:billcenternumber,pnumber:parentnumber},function(data){
+                $('.tname').html(data.tuijianname);
+                $('.bname').html(data.billname);
+                $('.pname').html(data.parentname);
+            })
+        })
+        i = 1;
+        $('#moren').click(function(){
+            if(i%2){
+                $("input[type='password']").val('');
+            }else{
+                $("input[type='password']").val(123456);
+            }
+            i = i+1;
+        });
+
+        $('#usernumber').blur(function(){
+            checkusernum();
+        });
+
+    </script>
+    <script type="text/javascript">
+        function createNumber(){
+            $.ajax({
+                url:"__URL__/getUsernumber",
+                type:"post",
+                success:function(da){
+                    $("#usernumber").val(da);
+                }
+            })
+        }
+        function checkusernum()
+        {
+            usernumval=$("#usernumber").val();
+            //alert(usernumval);
+            $.ajax({
+                url:"__URL__/checkusernum",
+                type:"post",
+                data:{usernum:usernumval},
+                success:function(da){
+                    if(da==-1){
+                        $("#backinfo").html("该用户编号己存在！");
+                        $("#backinfo").css("color","#800");
+                    }else if(da==-2){
+                        $("#backinfo").html("会员编号不能为空！");
+                        $("#backinfo").css("color","#800");
+                    }else{
+                        $("#backinfo").html("该用户编号可以使用！");
+                        $("#backinfo").css("color","#080");
+                    }
+                }
+            })
+        }
+    </script>
+
+    <script type="text/javascript">
+        function getservercenter()
+        {
+            var tuijiannumber=$("#tuijiannumber").val();
+            $.ajax({
+                url:"__URL__/getServercenter",
+                type:"post",
+                data:{usernumber:tuijiannumber},
+                success:function(da){
+                    if(da==-1){
+                        $("#binfo").html("推荐人不存在！");
+                        $("#binfo").css("color","#800");
+                        $("#binfo").show();
+                    }else{
+                        $("#billnumber").val(da);
+                    }
+                }
+            })
+        }
+        highlight_subnav("{:U('User/registuser')}");
+    </script>
+</block>

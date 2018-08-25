@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/xiangqing.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header " >
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">购买</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="xiangqing">
+				<span></span>
+				<span>矿机详情</span>
+				<span></span>
+			</div>
+			<div class="list">
+				<table border="" cellspacing="" cellpadding="">					
+					<tr>
+						<td>矿机类型</td>
+						<td>{$goodlist['goods_name']}</td>						
+					</tr>
+					<tr>
+						<td>运算周期</td>
+						<td>{$goodlist['shouming']}小时</td>						
+					</tr>
+					<tr>
+						<td>算力</td>
+						<td><span>{$goodlist['suanli']}</span>GH/S</td>						
+					</tr>
+					<tr>
+						<td>12小时产量</td>
+						<td><span>{$goodlist['chanliang']*12}</span>NWTT</td>						
+					</tr>
+					<tr>
+						<td>72小时产量</td>
+						<td><span>{$goodlist['chanliang']*72}</span>NWTT</td>						
+					</tr>
+					<tr>
+						<td>720小时产量</td>
+						<td><span>{$goodlist['chanliang']*720}</span>NWTT</td>						
+					</tr>					
+				</table>
+			</div>
+			<div class="boot">
+				<p class="mui-pull-left">合计：<span class="g">{$goodlist['ms_price']}</span><span class="g">NWTT</span></p>
+				<p class="mui-pull-right buy" >立即购买</p>
+			</div>
+			<div class="z_mask">				           
+	            <div class="z_alert">
+	            	<!--<b>提示</b>-->
+	                <p>是否确认购买这台矿机</p>
+	                <p>
+	                    <span class="z_cancel">取消</span>
+	                    <span class="z_sure  ajax-get" href="{:U('Shop/kuangji_by',array('id'=>$id))}">确定</span>
+	                </p>
+	            </div>
+		    </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__JS__/pages/xiangqing.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+</html>

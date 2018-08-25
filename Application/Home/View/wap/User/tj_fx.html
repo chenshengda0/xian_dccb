@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>推荐分享</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.box{width: 100%;height: auto;float: left;}
+    	.box p{width: 100%;padding: 5px 15px 5px 15px;margin: 0;}
+    	.anniu{width: 90%;height: 40px;background: #f93333;
+    	color: #fff;float: left;margin-left: 5%;border: none;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">推荐分享</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+        <p>
+            {$instro}
+        </p>
+
+    	</div>
+    	<button class="anniu" onclick="copyUrl()"  value="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];?>">分享好友</button>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+    <script type="text/javascript">
+        function copyUrl()
+        {
+            var clipBoardContent=this.location.href;
+
+            document.execCommand("Copy",clipBoardContent);
+            alert("复制成功!");
+        }
+    </script>
+</body>
+</html>
+

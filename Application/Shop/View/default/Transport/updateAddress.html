@@ -1,0 +1,124 @@
+<extend name="Base/user"/>
+ <link rel="stylesheet" href="__CSS__/haojudian.css" type="text/css" />
+ <link rel="stylesheet" href="__CSS__/member.css" type="text/css" />
+<style>
+.goods{
+	display:none
+}
+
+</style>  
+<block name="content">    
+    	<div class="member_tit"><span class="Mt_left">{$meta_title}</span> </div>
+        <div class="member_cont">
+        	<div class="add_box">
+<p class="a_tit1">{$meta_title}</p>
+<div class="account">
+    <div class="items">
+        <span class="label">收件人姓名：</span>
+        <div class="fl">
+            <input type="text" class="itxts" id='realname' value='{$data.realname}'><em>*</em>
+        </div>
+        <div class="clearfloat"></div>
+    </div> 
+    <div class="items">
+        <span class="label">所在区域：</span>
+        <div class="fl" id='area'>
+             {:hook('J_China_City',$param)}<em>*</em>
+        </div>
+        <div class="clearfloat"></div>
+    </div>                      
+    <div class="items">
+        <span class="label">详细地址：</span>
+        <div class="fl">
+            <textarea class="itxtare" id="address">{$data.address}</textarea><em>*</em>
+        </div>
+        <div class="clearfloat"></div>
+    </div>
+    <div class="items">
+        <span class="label">联系方式：</span>
+        <div class="fl">
+            <input type="text" class="itxts" style="width: 176px;" id="phone" value='{$data.cellphone}'><em>*</em>
+                    </div>
+                    <div class="clearfloat"></div>
+                </div>
+			<div class="items">     
+					<span class="label">设置默认地址：</span>                           
+                    <div class="fl">
+                    	<input id="isdefault" <eq name='data.status' value='1'>checked="checked"</eq> name="default"	type="checkbox" class="cart_n_box">
+                   </div>
+                    <div class="clearfloat"></div>
+              </div>
+                <div class="items">                                
+                    <div class="fl">                                    
+                        <div class="fl_btn"><a href="javascript:void(0)" onclick="updateAddress();return false;" class="rose">保存</a><a href="javascript:noneAddres()"  class="gay">取消</a></div>
+       				 </div>
+        			<div class="clearfloat"></div>
+    		</div>        
+</div>
+</div>
+            </div>
+ 
+<script type="text/javascript">
+//保存收货人地址
+function updateAddress() {
+	if ($.trim($("#phone").val()) == "") {
+		layer.alert("手机号码不能为空!");
+        return;
+    }
+	if ($.trim($("#realname").val()) == "") {
+		layer.alert("收件人不能为空!");
+        return;
+    }
+	var r = /^((0?1[3578]\d{9})|(\d{3,4}-)?\d{7,8})$/;
+    if (!r.test($("#phone").val())
+    		) {
+        $("#phone").css("background-color", "#ff9999");
+        layer.alert("请输入正确的手机号格式!");
+        return;
+    }
+    
+
+	if (document.getElementById("isdefault").checked==true) {
+	      var info=1;
+	}else {
+	     var info=0;
+	}
+	var dr=$("#address").val();	//获取收货人地址	
+	var na=$("#realname").val();//获取收货人地址
+	var ph=$("#phone").val();//获取收货人电话	
+	
+	var pr=$("#J_province").val();//收货人所在省
+	var ci=$("#J_city").val();//收货人所在市
+	var di=$("#J_district").val();//收货人所在县	
+	
+	var area = pr+','+ci+','+di;
+	var atype = '{$atype}';
+	var id = '{$data.id}';
+	 
+	$.ajax({
+		type:'post', //传送的方式,get/post
+		url:'{:U("Transport/updateAddress")}', //发送数据的地址
+		data:{id:id,realname:na,cellphone:ph,area:area,address:dr,isdefault:info},
+		dataType: "json",
+		success:function(data){
+			if (data.status) {
+	        	layer.msg(data.info,3,1);
+	        	setTimeout(function () {
+	                window.location.href = data.url
+	            }, 1000);
+	        	 return false;
+	        } else {
+	           layer.msg(data.info,2,3);
+	           setTimeout(function () {
+	               window.location.href = data.url
+	           }, 1000);
+	        }
+		},
+		error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+			alert("表单错误，"+XMLHttpRequest+thrownError); }
+	});
+	
+}
+</script>
+</block>
+<include file="Public:footer" />

@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+/*分页样式*/
+.page {
+	padding:10px 0;
+	float:right;
+    *zoom: 1;
+}
+.page:before,
+.page:after {
+    display: table;
+    content: "";
+}
+.page:after {
+    clear:both;
+}
+.page a,
+.page span {
+    float: left;
+    margin-left: 1px;
+    padding: 0 14px;
+    height: 30px;
+    line-height: 30px;
+    color: #000;
+    border: 1px solid #CCCCCC;
+}
+.page a:hover
+ {
+    text-decoration: none;
+   	border: 1px solid #046DAF;
+}
+.page .current {
+	border: 1px solid #046DAF;
+}
+.page .next,
+.page .prev {
+    font-family: "宋体";
+    font-weight: bold;
+}
+.page .rows {
+	border-right: 1px solid #CCCCCC;
+}
+
+/*分页跳转*/
+.page .jump{
+	width:190px;
+	*position: relative; 
+}
+.page span #inp,.page span button{
+	margin:0;
+	padding:0;
+	width:10%;
+	min-width:50px;
+	text-align:center;
+	border: none;
+	
+	/* display: table-cell; */
+	background:rgba(0,0,0,0);
+	*position: absolute;
+}
+
+.page span button{
+	min-width:30px;
+} 
+

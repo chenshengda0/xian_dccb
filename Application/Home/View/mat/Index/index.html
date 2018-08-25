@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/login.css" />
+		<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="__MAT__/js/check.js"></script>
+	</head>
+	<body>
+		<div class="mui-content">
+		    <div class="xx">
+				<img src="__IMG__/China.png" alt="" />
+			</div>
+			<div class="logo">
+		    	<img src="{:C('HOME_LOGIN_LOGO')}" alt="" />
+		    </div>
+			<form action="{:U('login')}" method="post" id="form" class="denglu form-horizontal">
+				<input class="a" type="text" placeholder="手机号" name="username" id="username" />
+				<input class="b" type="password" placeholder="密码" name="password" id="password" />
+				<p class="forget link" data-link="{:U('forget_pass')}">忘记密码？</p>
+				
+				<input type="submit" value="登录"  target-form='form-horizontal' id="submit"/>
+				<p class="zhuce link" data-link="{:U('register/index')}">还没账号？立即注册</p>
+			</form>
+		</div>
+		<div class="mask">
+			<p><img src="__IMG__/alert1.png"/></p>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;Members of the Chinese region can only login to China
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script>
+	$("#username").blur(function() {
+		if(!check_empty('username','会员账号')){flag='false';return false;}else{
+		   flag='true';
+		}
+		
+	});
+	
+	var a=1;
+	$('.xx').click(function(){
+		if(a==0){
+			a=1;
+			$('.a').attr('placeholder','手机号');
+			$('.b').attr('placeholder','密码');
+			$('.forget').html('忘记密码？');
+			$('#submit').val('登录');
+			$('.zhuce').html('还没账号？立即注册');
+			$('.xx img').attr('src','__IMG__/China.png');
+		}else{
+			
+            $('.a').attr('placeholder','Tel');
+			$('.b').attr('placeholder','Passwords');
+			$('.forget').html('Forget Password?');
+			$('#submit').val('Login');
+			$('.zhuce').html('No account number? Immediate registration');
+			$('.xx img').attr('src','__IMG__/America.png')
+			a=0
+		}
+		
+	});
+	$('#form').submit(function(){
+		
+	    if(flag=='true'){
+	    	if(a==0){
+				$('.mask').show();
+				setTimeout(function(){
+					$('.mask').hide();
+				},1200)
+				return false;
+		    }else{
+		    	return true;
+		    }
+	    }else{
+	    	return false;
+	    }
+		
+	})
+	
+	</script>
+</html>

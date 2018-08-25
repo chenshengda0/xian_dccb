@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/password.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">修改密码</h1>
+		</header>
+		
+		<div class="mui-content">		   
+			 <div class="mid">
+			 	<div>
+			 		<ul>
+			 			<li class="dd active">修改一级密码</li>
+			 			<li class="dd">修改二级密码</li>
+			 		</ul>
+			 	</div>
+			 	<form action="{:U('updatePwd1')}" method="post" class="form">
+			 	<div class="dd1 cur">
+			 		 <input type="password" name="oldpwd1" placeholder="请输入原登录密码"/>
+			 		 <input type="password" name="newpwd1" placeholder="请输入新登录密码"/>
+			 		 <input type="password" name="rnewpwd1" placeholder="请输入新登录密码"/>
+			 		 <input type="submit" value="修改">
+			 	</div>
+			 	</form>
+			 	<form action="{:U('updatePwd2')}" method="post" class="form">
+			 	<div class="dd1">
+			 		 <input type="password" name="oldpwd2" placeholder="请输入原安全密码"/>
+			 		 <input type="password" name="newpwd2" placeholder="请输入新安全密码"/>
+			 		 <input type="password" name="rnewpwd2" placeholder="请输入新安全密码"/>
+			 		 <input type="submit" value="修改">
+			 	</div>
+			 	</form>			 	
+			 </div>		
+		</div>
+		
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/index/password.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		
+		</script>
+	</body>
+</html>
+
+

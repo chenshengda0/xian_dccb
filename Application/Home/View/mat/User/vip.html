@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/vip1.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">VIP会员</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="top1"></div>
+			<div class="main1">
+				<p class="title">为何成为VIP会员</p>
+				<p>1.匹配后短信通知</p>
+				<p>2.交易手续费减少</p>
+				<p>3.24h自动收益一次</p>
+			</div>
+			<div class="buts">
+				<p class="agl">NWTT购买</p>
+				<p class="rmb">RMB购买</p>
+			</div>
+			<div class="z_mask">			
+				<div class="z_alert">
+					<p style="color: #333;">NWTT购买</p>				
+						<form action="" class="form form-horizontal" method="post">
+							<div class="inp">
+								<input type="password" name="password" placeholder="请输入支付密码"/>
+							</div>
+						<p>注意：购买VIP将消耗您&nbsp;<b style="color:#00b008">{$vip_pay}</b>&nbsp;NWTT币</p>
+						<p class="but">
+							<span class="z_cancel">取消</span>
+							<input type="submit" class="z_sure ajax-post" target-form='form-horizontal' value="支付"/>
+						</p>
+					</form>	
+				</div>			
+			</div>
+			<div class="z_mask1">			
+				<div class="z_alert1">
+					<p style="color: #333;">RMB购买</p>				
+					<div class="a">请在客服中心联系客服</div>
+					
+				</div>
+		</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script type="text/javascript">
+		$('.agl').click(function(){		
+			$('.z_mask').show();
+		})
+		$('.z_cancel').click(function(){
+			$('.z_mask').hide();
+		})
+		$('.rmb').click(function(){		
+			$('.z_mask1').show();
+		})
+		$('.z_alert1,.z_alert').click(function(e){
+			e.stopPropagation()
+		})
+		$('.z_mask1,.z_mask').click(function(){
+			$('.z_mask1,.z_mask').hide();
+		})
+		
+	</script>
+</html>

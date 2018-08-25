@@ -1,0 +1,56 @@
+    <div class="topNav">
+        <div class="wrapper">
+            <div class="welcome"><a href="#" title=""><img src="__MAT__/images/userPic.png" alt="" /></a><span>Hi, {$logininfo.realname}|{$logininfo.usernumber}!</span></div>
+            <div class="userNav">
+                <ul>
+                    <li><a href="{:U('User/updatemembermsg')}" title=""><img src="__MAT__/images/icons/topnav/profile.png" alt="" /><span>{$logininfo.realname}资料</span></a></li>
+                    <li class="dd"><a title=""><img src="__MAT__/images/icons/topnav/messages.png" alt="" /><span>留言</span><span class="numberTop">{$liucount}</span></a>
+                        <ul class="userDropdown">
+                            <li><a href="{:U('Message/liuyan')}" title="" class="sAdd">写留言</a></li>
+                            <li><a href="{:U('Message/liuyanList',array('type'=>1))}" title="" class="sInbox">收件箱</a></li>
+                            <li><a href="{:U('Message/liuyanList',array('type'=>2))}" title="" class="sOutbox">发件箱</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="ajax-get confirm" href="{:U('Index/logout')}" title=""><img src="__MAT__/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- Title area -->
+    <div class="titleArea">
+        <div class="wrapper">
+        <div class='top-title'>
+            <div class="pageTitle">
+                <h2>{$title}</h2><span></span>
+            </div>
+             <div class="middleNav">
+                <ul><li><a><span>可提现日期</span></a></li>
+                	<foreach name='wdtime' item="vo">
+                    	<li><a><span>{$vo}日</span></a></li>
+                    </foreach>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="line-line"></div>
+    
+    <!-- Page statistics and control buttons area -->
+    <div class="statsRow">
+        <div class="wrapper">
+        	<div class="controlB">
+            	<ul>
+            		<li><a href="{:U('User/registuser')}" title=""><img src="__MAT__/images/icons/control/32/hire-me.png" alt="" /><span>注册{:C('COM_TITLE')}</span></a></li>
+                	<li><a href="{:U('TradingHall/wdReply')}" title=""><img src="__MAT__/images/icons/control/32/bank.png" alt="" /><span>申请提现</span></a></li>
+                    <li><a href="{:U('TradingHall/tfReply')}" title=""><img src="__MAT__/images/icons/control/32/special-offer.png" alt="" /><span>{:C('COM_TITLE')}转积分</span></a></li>
+                    <li><a href="{:U('Message/liuyan')}" title=""><img src="__MAT__/images/icons/control/32/comment.png" alt="" /><span>{:C('COM_TITLE')}留言</span></a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+      <div class="line-line"></div>

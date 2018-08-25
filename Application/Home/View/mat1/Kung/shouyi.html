@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/kuangjishouyi.css" />
+		
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		   <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">矿机收益</h1>
+		</header>
+		<div class="mui-content">
+			 <div class="mid">
+			 	<div>
+			 		<ul>
+			 			<li class="dd active">运行中云矿机</li>
+			 			<li class="dd">已停止云矿机</li>
+			 		</ul>
+			 	</div>
+			 	<div class="dd1 cur">
+			 		 <div class="table">
+				 		<table border="" cellspacing="" cellpadding="">
+				 			<tr>
+				 				<th>矿机名称</th>
+				 				
+				 				<th>运行时间（h）</th>
+				 				<th>收入（{$Think.const.MONEY}）</th>
+				 				<th>操作</th>
+				 			</tr>
+				 			<foreach name='list1' item='vo'>			 			
+					 			<tr>
+					 				<td>{$vo.goods_name}</td>
+					 				
+					 				<td>{$vo.ttime|get_hour}h</td>
+					 				<td>{$vo.cchanliang}</td>
+					 				<td><a href="javascript:void(0);" onclick="auditing({$vo['iid']})"><p>获取收益</p></a></td>
+					 			</tr>
+				 			</foreach>
+				 			
+				 		</table>
+				 	</div>
+			 	</div>
+			 	<div class="dd1">
+			 		 <div class="table">
+				 		<table border="" cellspacing="" cellpadding="">
+				 			<tr>
+				 				<th>矿机名称</th>
+				 				
+				 				<th>运行时间（h）</th>
+				 				<th>收入（{$Think.const.MONEY}）</th>
+				 				<th>状态</th>
+				 				
+				 			</tr>
+				 			<foreach name='list2' item='vo'>				 			
+					 			<tr>
+					 				<td>{$vo.goods_name}</td>
+					 				
+					 				<td>{$vo.ttime|get_hour}h</td>
+					 				<td>{$vo.cchanliang}</td>
+					 				<td>已报废</td>
+					 				<!--<td><a href="javascript:void(0);" onclick="qiyong({$vo['iid']})">启用</a></td>-->
+					 			</tr>
+				 			</foreach>
+				 		</table>
+				 	</div>
+			 	</div>	
+			 	
+			 </div>		
+		</div>
+      	<script type="text/javascript" src="__PUBLIC__/layui/layui.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/static/jquery-1.8.3.min.js"></script>
+		
+		
+		<script src="__HOME__/wap/js/mui.js"></script>
+		
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/index/kuangjishouyi.js"></script>
+		
+		<script type="text/javascript">
+			mui.init();
+			//获取收益
+			function auditing(id){
+				
+				 if(confirm("确定要获取当前收益吗")){
+					 $.ajax({
+						    url:"{:U('huoqu')}",//请求的url地址
+						    dataType:"json",//返回的格式为json
+						    async:true,//请求是否异步，默认true异步，这是ajax的特性
+						    data:{id:id},//参数值
+						    type:"POST",//请求的方式
+						   	success:
+						   		function(req){
+								   	layui.use(['layer'], function(){
+
+                                            var info = req.k;
+
+                                            layer.alert(info); 
+						   		   })
+						   	},
+						   
+						    error:
+						    	function(){
+						    	layui.use(['layer'], function(){
+
+                                           
+
+                                            layer.alert('收取失败'); 
+						   		   })
+						    }
+						});
+				 }
+			}
+			function qiyong(iid){
+				id=iid;
+				if(confirm("确定要启动吗")){
+					 $.ajax({
+						    url:"{:U('qiyong')}",//请求的url地址
+						    dataType:"json",//返回的格式为json
+						    async:true,//请求是否异步，默认true异步，这是ajax的特性
+						    data:{id:id},//参数值
+						    type:"POST",//请求的方式
+						   	success:
+						   		function(req){
+						   			
+						   				
+						   				layui.use(['layer'], function(){
+
+                                            var info = req.k;
+
+                                            layer.alert(info); 
+						   		        })
+						   			
+						   			
+						   		
+						   	},
+						   
+						    error:
+						    	function(){
+						    	//layer.alert('启用失败');
+						    }
+						});
+				 }
+			}
+		</script>
+	</body>
+</html>
+
+

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>交易大厅</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.qiehuan{width: 100%;height: 40px;float: left;
+    	display: flex;justify-content: space-between;padding: 0 5px 0 5px;margin-top: 5px;}
+    	.qiehuan a{display: inline-block;width: 49%;
+    	height: 40px;border: 1px solid #3d4651;
+    	color: #fff;border-radius: 4px;text-align: center;line-height: 40px;}
+    	.wenzi{width: 100%;height: auto;padding: 5px 10px 5px 10px;
+    	float: left;background: #282f37;margin-top: 5px;}
+    	.wenzi p span{color: #a9a7a7;}
+    	.act{background: #292c33;}
+    	.active{background: #313840;}
+    	.boxs{float: left;}
+    	.wenzi p{width: 100%;display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">交易大厅</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="qiehuan" id="qiehuan">
+    		<a href="javascript:;" class="active">
+    			售卖
+    		</a>
+    		<a href="javascript:;">
+    			求购
+    		</a>
+    	</div>
+
+
+    	<div class="boxs">
+			<volist name="smai" id="vo">
+				
+					<div class="wenzi">
+						<p>
+							<h4 style="color: #fff;">用户:{$vo.myname}</h4>
+						</p>
+						<p class="ps">
+							<span>售卖数量:{$vo.shuiliang}</span>	<span>售卖价格:{$vo.price}</span>
+						</p>
+             	 	<p class="ps">
+						
+						</p>
+            		<p class="but g1" onclick="sure1({$vo['id']})">买入TA</p>
+					</div>
+				
+			</volist>
+    	</div>
+
+
+
+    	<div class="boxs" style="display: none;">
+			<volist name="gmai" id="va">
+				
+					<div class="wenzi">
+						<p>
+							<h4 style="color: #fff;">用户:{$va.youname}</h4>
+						</p>
+						<p class="ps">
+							<span>求购数量:{$va.shuiliang}</span>	<span>求购价格:{$va.price}</span>
+						</p>
+             	 	<p class="ps">
+						
+						</p>
+            		<p class="but g1" onclick="sure1({$vo['id']})">买入TA</p>
+					</div>
+				
+			</volist>
+    	</div>
+
+
+
+    	<div style="width: 100%;height: 49px;float: left;"></div>
+			<div class="foot">
+				<a href="{:U('Kung/center')}"  style="width:33%">
+					<p><img src="__H-W__/images/jy.png" alt=""  /></p>
+					<p>交易</p>
+				</a>
+				<a href="{:U('Kung/index')}" class="act"  style="width:33%">
+					<p><img src="__H-W__/images/zx.png" alt="" /></p>
+					<p>资讯</p>
+				</a>
+				<!--<a href="{:U('trading_hall/rechargeReply')}" >
+					<p><img src="__H-W__/images/cz.png" alt="" /></p>
+					<p>充值</p>
+				</a>-->
+				<a href="{:U('user/index')}"  style="width:33%">
+					<p><img src="__H-W__/images/wd.png" alt="" /></p>
+					<p>我的</p>
+				</a>
+    		</div>
+    </div>
+    <script src="__H-W__/js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    mui.init();
+    			var as = document.getElementById("qiehuan").getElementsByTagName("a");
+				var boxs = document.getElementsByClassName("boxs");
+				    for(var i = 0;i<as.length;i++){
+				    as[i].index = i;
+				    as[i]. onclick= function(){
+				        for(var j = 0;j<as.length;j++){
+				         	as[j].className = "";
+				        }
+				        this.className = "active";
+				        for(var i=0;i<boxs.length;i++){
+            				boxs[i].style.display = "none";
+        			}				
+        				boxs[this.index].style.display = "block";        
+				  }
+				 }
+      
+      function sure(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定卖给他吗?',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['确定','取消'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('pipei')}",{id:id,mai:2}, success, "json");
+		            	 return false;
+		            }, no: function(){
+		            	 
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+        $('.jj').click(function(){
+			$('.z_mask').show();
+		});
+		$('.z_cancel').click(function(){
+			$('.z_mask').hide();
+		});
+		$('.z_sure').click(function(){
+			$('.z_mask').hide();
+			//ajax
+		});
+	function sure1(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定买他的吗?',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['确定','取消'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('pipei')}",{id:id,mai:1}, success, "json");
+		            	 return false;
+		            }, no: function(){
+		            	 
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+      	 function success(data) {
+	        if (data.status) {
+	        	layer.msg(data.info,3,1);
+	        	setTimeout(function () {
+	        		var index = layer.load('正在跳转，请耐心等待');
+	                window.location.href = data.url
+	            }, 1000);
+	        	 return false;
+	        } else {
+	           layer.msg(data.info,2,3);
+	        }
+	    }  
+    </script>
+
+
+</body>
+</html>
+

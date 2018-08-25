@@ -1,0 +1,77 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>{$meta_title}</h5>
+</div>
+	<form id="form" action="{:U('')}" method="post" class="form-horizontal" >
+	<div class="widget-content nopadding">
+ 		<div class="control-group">
+			<label class="control-label">用户编号</label>
+			<div class="controls">
+				 <input type="text" class="text input-large" name="usernumber" id="usernumber" value="{$userinfo['usernumber']}">
+				 <span class="check-tips" id='info'></span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">扣币数量</label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="money" id="money" value="">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">扣币币种</label>
+			<div class="controls">
+              <label class="inline radio"><input type="radio" name="moneytype" checked="checked"  value="2" />总钱包</label>
+			<label class="inline radio"><input type="radio" name="moneytype" value="1" />在线钱包</label>
+			 <label class="inline radio"><input type="radio" name="moneytype" value="3" />动态钱包</label>
+			<!-- <label class="inline radio"><input type="radio" name="moneytype" value="5" />{$Think.const.HASCP}</label> -->
+			</div>
+		</div>
+		 <div class="form-actions">
+              <button type="submit" class="btn btn-success ajax-post" target-form='form-horizontal'>提交</button>
+              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+           </div></div>
+	</form>
+</div>	
+</block>
+
+<block name="script">
+	<script type="text/javascript">	
+	$(function(){
+    	$('.form-actions').hide();
+    });
+    $('#usernumber').blur(function(){
+    	getRealname();
+    });
+function getRealname(){
+	usernumval=$("#usernumber").val();
+	$.ajax({
+		url:"__URL__/getRealname",
+		type:"post",
+		data:{unumber:usernumval},
+		success:function(da){
+			if(da){
+				if(da==-1){
+					$("#info").html('该会员注册时没有填写真实姓名');
+					$("#info").css("color","#800");
+					$("#info").show();
+					$('.form-actions').show();
+				}else{
+					$("#info").html(da);
+					$("#info").css("color","#800");
+					$("#info").show();
+					$('.form-actions').show();
+				}
+			}else{
+				$('.form-actions').hide();
+				layer.alert('该会员不存在');
+			}
+		}
+	})
+}
+		//导航高亮
+	highlight_subnav("{:U('TradingHall/moneyDec')}");
+	</script>
+</block>

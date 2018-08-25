@@ -1,0 +1,46 @@
+
+/* 商品弹出层样式 */
+
+.inner {
+    width: 600px;
+    padding: 20px 20px 20px 60px;
+    height: 420px;
+}
+.image_fl {
+    float: left;
+    margin: 3px 20px 5px 0;
+    border: #fff 4px solid;
+    width: 258px;
+    height: 258px;
+}
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+.col_half {
+    width: 310px;
+    float: right;
+    height: 250px;
+}
+
+
+/* 商城地址管理 */
+
+
+/* 地区select 样式 */
+#area select {
+    font-size: 14px;
+    padding: 6px 0px 6px 6px;
+    background: white;
+    border: 1px solid #DDD;
+    width: 16.3%;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 0 0 2px #f4f4f4;
+    -webkit-box-shadow: 0 0 0 2px #f4f4f4;
+    -moz-box-shadow: 0 0 0 2px #f4f4f4;
+    color: #656565;
+}
+
+

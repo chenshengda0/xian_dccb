@@ -1,0 +1,47 @@
+<extend name="Public/base" />
+
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+	<include file='Public/search3'/>
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+</div>
+ <div class="widget-content nopadding">
+ <table class="table table-bordered data-table">
+    <thead>
+        <tr>
+			<th class="">用户编号</th>
+			<th class="">充值币种</th>
+			<th class="">充值金额</th>
+			<th class="">充值时间</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>
+			<td>{$vo.targetusernumber}[{$vo.targetuserid|query_user='realname',###}]</td>
+			<td>{$vo['moneytype']|getMoneytype}</td>
+			<td>{$vo.money}元</td>
+			<td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+		</tr>
+		</volist>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div></div></div>
+  <else/>
+<include file='Public/emptylist' title="暂时还没有充值记录"/>
+</notempty>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+    //导航高亮
+    highlight_subnav("{:U('TradingHall/moneyIncRecord')}");
+	</script>
+</block>

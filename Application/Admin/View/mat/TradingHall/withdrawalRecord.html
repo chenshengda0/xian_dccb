@@ -1,0 +1,91 @@
+<extend name="Public/base" />
+
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+	<include file='Public/search2'/>
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+</div>
+ <div class="widget-content nopadding">
+ <table class="table table-bordered data-table">
+    <thead>
+        <tr>
+			<th>申请时间</th><th>会员编号</th><th>提现金额</th><th>实得金额</th><th>手续费</th><th>提现留言</th><th>申请状态</th><th>处理时间</th><th>操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>
+			
+	           <td>{$vo.createtime|date="Y-m-d",###}</td><td>{$vo.usernumber}[{$vo.userid|query_user='realname',###}]</td>
+	           <td>{$vo.money|get_sum=$vo['fee']}<td>{$vo.money}</td><td>{$vo.fee}</td>
+				<td>{$vo['message']}</td>
+				<td> <if condition="$vo.status eq 0 ">正在审核</if>
+					 <if condition="$vo.status eq 1 ">申请获批</if>
+					 <if condition="$vo.status eq -1 ">申请拒批</if>
+				</td>
+				<td>
+					<if condition="$vo.status neq 0 ">{$vo.handtime|date="Y-m-d",###}<else/>正在审核</if> 
+				</td>
+				<td style="<if condition='$vo.status neq 0 '>text-align:center;</if>">
+					<if condition="$vo.status eq 0 ">
+						<a class='btn btn-mini btn-danger'  href="javascript:void(0);" onclick="auditing({$vo['id']})">审批</a>
+					</if> 
+					<a class='btn btn-mini btn-info' href="{:U('withdrawal',array('id'=>$vo['id']))}">查看详情</a>
+				</td> 
+		</tr>
+		</volist>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div></div></div>
+ <else/>
+ <include file='Public/emptylist' title="暂时还没有提现记录"/>
+</notempty>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+	function auditing(id){
+		 $.layer({
+		        shade: [0],
+		        area: ['auto','auto'],
+		        dialog: {
+		            msg: '确定批准该会员的提现申请吗？',
+		            btns: 2,                    
+		            type: 4,
+		            btn: ['批准','拒批'],
+		            yes: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	$.post("{:U('agree')}",{id:id}, success, "json");
+		            	 return false;
+		            }, no: function(){
+		            	var index = layer.load('正在跳转，请耐心等待');
+		            	 $.post("{:U('refuse')}",{id:id},success, "json");
+		            	 return false;
+		            }
+		        }
+		    });
+	}
+	 function success(data) {
+	        if (data.status) {
+	        	layer.msg(data.info,3,1);
+	        	setTimeout(function () {
+	        		var index = layer.load('正在跳转，请耐心等待');
+	                window.location.href = data.url
+	            }, 1000);
+	        	 return false;
+	        } else {
+	           layer.msg(data.info,2,3);
+	        }
+	    }
+    //导航高亮
+    action = '{$Think.const.ACTION_NAME}';
+    highlight_subnav("{:U('"+action+"')}");
+	</script>
+</block>

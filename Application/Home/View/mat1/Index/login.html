@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/enter/enter.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="banner">
+		    	<img src="{:C('HOME_LOGIN_LOGO')}" alt="" />
+		    </div>
+		    <form id='login-form' action='{:U("login")}' method="post"  onsubmit="return bb()" class="mui-input-group">
+				<div class="main_one">
+                  	<p>
+						<span>选择语言：</span>
+						<select name="">
+						   <option value="0">请选择语言</option>
+							<option value="1" selected>中文</option>
+							<option value="2">English</option>
+							<option value="3">日本语</option>
+							<option value="4">Bahasa Indonesia</option>
+							<option value="5">Pilipino</option>
+						</select>
+					</p>
+					<p>
+						<span>用户名：</span>
+						<input type="text" placeholder="请输入账号" name="username" class="phone" id="acc"/>
+					</p>	
+					<p>
+						<span>密码：</span>
+						<input type="password" placeholder="请输入密码" name="password" class="password"/>
+					</p>
+					
+				</div>
+					
+			
+			<div class="mask">
+             
+              <p style="font-size:14px;color:#ffff">经系统检测:您属于中国区域会员,</p>
+              <p style="font-size:13px;color:#ffff">System detection: You belong to the Chinese region; Please select Chinese login;</p>
+              <p style="font-size:14px;color:#ffff"> 请选择中文登陆;</p>
+              <p style="font-size:13px;color:#ffff">Please select Chinese login;</p>
+              </div>	
+			<div style="padding: 0 27px;">
+				<input type="submit" id="login" value="登录" style=" width: 100%;margin: 10px auto;font-size:16px;text-align: center;line-height: 30px;color: #fff;
+    background: #03A3E8;border-radius: 5px;">
+              	<p style=" width: 100%;text-align:right ;color:#03A3E8;" class="link" data-link="{:U('forgetpass')}">忘记密码 ?</p>
+			</div>
+			<div class="link-area">
+				<!-- <a id='reg' class = "link" data-link="forget_pwd.html">忘记密码?</a>  -->
+			</div>
+			<div class="tip link" data-link="zhuce.html">
+				<!-- <span>还没有账号？</span><span>去注册吧</span> -->
+			</div>
+			
+			</form>
+		</div>
+		<script src="__HOME__/wap/js/mui.min.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		
+		<script type="text/javascript">
+			mui.init()
+			var flag;
+			$('#login').click(function(){
+				if($('select').val()==1){
+					 flag = true;
+					
+				}else{
+					
+					$('.mask').show();
+					setTimeout(function(){
+						$('.mask').hide();
+					},1000)
+					 flag = false;
+				    
+				}
+			})
+			function bb(){
+				
+				return flag;
+			}
+		</script>
+	</body>
+</html>

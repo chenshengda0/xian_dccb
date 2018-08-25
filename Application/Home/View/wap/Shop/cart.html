@@ -1,0 +1,118 @@
+<extend name="wap/Base/base"/>
+
+<block name="body">
+ <notempty name="cartlist">
+<div class="widget">
+<!-- <include file='Public/search' /> -->
+</div>
+         <div class="widget">
+            <div class="title" style='margin-top:5px;margin-bottom:5px;'><h6>购物车</h6></div>
+              <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+                  <tbody>
+		            <foreach name='cartlist' item='vo'>
+		            	<tr>
+	              			<td>商品编号：{$vo.goodid}</td>
+							<td>商品名称：{$vo.shop.goods_name}</td>
+						</tr>
+						<tr>
+	              			<td>商品价格：{$vo.price}</td>
+	              			<td>数量：{$vo.num}</td>
+						</tr>
+						<tr>
+							<td>总金额：{:get_take($vo['price'],$vo['num'])}</td>
+	              			<td>操作：<a style='cursor: pointer;display:inline-block;' onclick="deleteGood({$vo.goodid})" >删除</a></td>
+						</tr>
+						<tr>
+						</tr>
+		            </foreach>
+                  </tbody>
+              </table>
+ 		</div><div class="page"> {$_page}</div>
+     <form action="{:U('order')}" method="post">
+    	<p style='float:right'>
+    	总计金额：<span class='lgred'>￥{$sum_goods}</span> 元  
+    	<input type="button" onclick='makeorder2();' id='submit' value="提交订单" class="button-big button-blue"/>  
+    	<input class="button-big button-dark"  value="返回" type="button"  onclick="javascript:history.back();"/>
+    	</p>
+    </form>
+  <else/>
+    <include file='Public/emptylist' title="购物车没有商品"/>
+</notempty>   
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/layer1.93/layer.js"></script>
+<script type="text/javascript">
+function makeorder2(){
+		var html="<div><input type='radio' id='r1' name='selltype' value='2'/><label style='display:inline' for='r1'>剩余奖金币：{$hasmoney}</label>　|　<input type='radio' name='selltype' value='3' id='r2'/><label style='display:inline' for='r2'>复销币：{$hascp}<label></div>";
+		layer.open({
+			title:'请选择支付方式：',
+	    content: html,
+	    yes: function(index){
+	    	var selltype=$("input[name='selltype']:checked").val();
+	    	layer.close(index); //一般设定yes回调，必须进行手工关闭
+	    	layer.confirm('订单一旦提交无法修改，确定要提交该订单吗？', function(index1){
+	    		layer.close(index1);
+			 	layer.confirm('是否使用默认地址？', function(index2){	
+			 		layer.close(index2);
+			 		var load=layer.load(3, {time: 1*1000});
+			 		//表单验证成功后禁用按钮		
+			 		var totalprice="{$sum_goods}";
+			 		var hasmoney="{$hasmoney}";
+			 		var hascp="{$hascp}";
+			 		switch(selltype){
+			 		    case 2:if(totalprice-hasmoney>0){
+									layer.alert('对不起，您的奖金币不足，不能购物');
+									return false;
+								}
+			 		    break;
+			 		   case 3:if(totalprice-hasmoney>0){
+									layer.alert('对不起，您的奖金币不足，不能购物');
+									return false;
+							 }
+			 		   break;
+		 		   }
+			 		$.ajax({
+			 			type: "post",
+			            url: "{:U('createorder')}",
+			            data: {selltype:selltype},
+			            dataType: "json",
+			            success: function(data){
+			            	layer.msg(data.msg);
+			            	window.location.href=data.url;	
+			            }
+			 		});
+					$("#submit").attr({"disabled":"disabled"});				
+					
+			 	}, function(){
+			 		window.location.href="{:U('Shop/address')}";
+			 	});
+			 });
+	    }
+		});
+}
+	//删除购物车中商品
+	function deleteGood(goodid) {	
+		layer.confirm('你确定删除吗？',function(index){		
+			layer.close(index);
+			$.ajax({
+	            type:'post', //传送的方式,get/post
+	            url:"{:U('Shop/delItemByuid')}", //发送数据的地址
+	            data:{id:goodid},
+	            dataType: "json",
+	            success:function(data)
+	            {
+	                if(data.status){	               	 
+	                   window.location.reload();
+	                 }
+	            },
+	            error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+	                alert(XMLHttpRequest+thrownError); 
+	            }
+	         })
+			
+			 return false;
+		}); 	    
+	}
+	highlight_subnav("{:U('cart')}");
+	</script>
+</block>

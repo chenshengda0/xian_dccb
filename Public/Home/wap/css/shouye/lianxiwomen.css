@@ -1,0 +1,44 @@
+.main{
+	padding:10px 20px;
+	background: #FFFFFF;
+}
+textarea{
+	width: 100%;
+	padding: 5px;
+	height: 240px;
+	resize: none;
+	margin-top: 10px;
+	background: #EEEEEE;
+}
+.but{
+	margin: 10px auto;
+    width: 95%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #03A3E8;
+    border-radius: 5px;
+}
+.main>p{
+	width: 100%;
+	text-align: center;
+	color: #646464;
+	font-size: 18px;
+	margin: 5% 0;
+}
+.table{
+	width: 100%;
+	overflow-x:auto;
+}
+.table table{
+	width: 140%;
+}
+.table th,.table td{
+	line-height: 25px;
+	text-align: center;
+	padding: 5px;
+	font-size: 14px;
+	color: #666666;
+	border: 1px solid #BBBBBB;	
+}

@@ -1,0 +1,79 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>{$meta_title}</h5>
+</div>
+	<form method="post"  class="form-horizontal">
+	<div class="widget-content nopadding">
+		<input type="hidden" name="id" value="{$info.id}" />
+ 		<div class="control-group">
+			<label class="control-label">用户编号</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['usernumber']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"><span>充值币种</span></label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['type']|getMoneyType}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"><span>充值金额</span></label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['money']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"><span>汇款时间</span></label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['outtime']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">汇入账号</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['banknumber']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">汇出账户</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['out_banknumber']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">汇出银行</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['out_bankname']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">汇出账户开户人</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['out_bankholder']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">预留电话</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info['mobile']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">申请留言</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$info.message|default='无留言'}</span></div>
+		</div>
+		<eq name='info.status' value='0'>
+		<div class="control-group">
+			<label class="control-label">审批留言</label>
+			<div class="controls">
+				<textarea name="replyms" ></textarea><span class="tip">请控制在120个汉字以内</span>
+			</div>
+		</div>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-danger ajax-post confirm" url="{:U('brefuse')}" target-form='form-horizontal'>拒批</button>
+			<button type="submit" class="btn btn-success ajax-post confirm" url="{:U('bagree')}" target-form='form-horizontal'>同意</button>
+			 <button type="button" class="btn btn-info" onclick="javascript:history.back(-1);return false;">返回</button>
+		</div><else/>
+		<div class="control-group">
+			<label class="control-label">申批回复</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.replyms|default='无回复'}</span></div>
+		</div>
+		</eq>
+	</div>
+	</form>
+</div>
+	
+</block>
+
+<block name="script">
+<script type="text/javascript">	
+	//导航高亮
+	highlight_subnav("{:U('TradingHall/rechargeRecord')}");
+</script>
+</block>

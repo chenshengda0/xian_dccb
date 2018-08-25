@@ -1,0 +1,21 @@
+body{
+	background: #EEEEEE;
+}
+.mui-media-body{
+	position: relative;
+}
+.mui-content{
+	padding-bottom: 50px;
+}
+.price{
+	position: absolute;
+	right: 10px;
+	top: 65%;
+}
+.list img{
+	width: 42px;
+	height: 43px;
+}
+.pre{
+	color: #109add;
+}

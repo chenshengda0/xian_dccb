@@ -1,0 +1,123 @@
+<include file="Public:header"/>
+<script src="__JS__/all-nav.js" type="text/javascript"></script>
+<link rel="stylesheet" href="__CSS__/haojudian.css" type="text/css" />
+<style>
+
+.all_nav .active a{
+	color:red
+}
+</style>
+<div>
+
+<!--nav-->
+<div class="two_commod">
+    <div class="ny_bt ny_bts">
+        <a href="{:U('Index/index')}">首页</a>>
+        {$category_id|get_location_name}
+    </div>
+    <div class="all_nav all_navs">
+        <ul>
+            <li><a href="javascript:void()" class="y_bg">分类</a></li>
+            <foreach name='childList' item='vo'>
+            	<li <eq name="category_id" value="$vo.id">class="active"<else/></eq>><a  onclick='changecolor(this)' href="{:U('Index/goods',array('id'=>$vo['id']))}" >{$vo.title}</a></li>
+            </foreach>                            
+        </ul>
+    </div>    
+    <div class="all_nav all_navs sl_wrap" style="display: none">
+        <ul>
+            <li><a href="javascript:void()" class="y_bg">价格</a></li>
+            <li><a href="#">1-50</a></li>
+            <li><a href="#">50-100</a></li>
+            <li><a href="#">100-200</a></li>
+            <li><a href="#">200-300</a></li>
+            <li><a href="#">300以上</a></li>
+            <li><a href="#"><span>
+                <input type="text" value="" class="pic_money" />&nbsp;&nbsp;至&nbsp;&nbsp;<input type="text" value="" class="pic_money" /></span></a></li>
+        </ul>
+        <div class="clearfloat"></div>
+    </div>
+    <div class="all_nav all_navs sl_wrap ">
+        <ul>
+            <li><a href="javascript:void()" class="y_bg">排序</a></li>            
+            <li <eq name="order" value="1">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Index/goods',array('id'=>$category_id,'order'=>1,'sort'=>$see))}">人气<i></i></a></li>
+            <li <eq name="order" value="2">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Index/goods',array('id'=>$category_id,'order'=>2,'sort'=>$see))}">最新<i></i></a></li>
+            <li <eq name="order" value="3">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Index/goods',array('id'=>$category_id,'order'=>3,'sort'=>$see))}">价格<i></i></a></li>
+            <li <eq name="order" value="4">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Index/goods',array('id'=>$category_id,'order'=>4,'sort'=>$see))}">销量<i></i></a></li>
+        </ul>
+        <div class="clearfloat"></div>
+    </div>
+</div>
+<!--筛选条件-->
+<div class="Hot_charts">
+    <div class="Charts_box">
+        <div class="hot_comodity">
+            <div class="hot_comodTit"><a href="#">热销排行榜</a></div>
+            <div class="hot_comod">
+                <ul>
+                	<foreach name='hotList' item='vo' key='k'>
+            			<li>
+            				<a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" target="_blank" title="{$vo.goods_name}">
+	            			<if condition='$k lt 4'>
+	            				<img class="err-product pimg1" src="{$vo.goods_ico|get_cover='path'}"/>
+	            			<else/>
+	            			
+	            			</if>
+	            			</a>
+	            			<span class="recommend_price">{$vo.ms_price}</span>
+	            			<a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" class="recom_ul_tit" target="_blank" title='{$vo.goods_name}'>{$vo.goods_name|msubstr=0,9}<font color="#ff6600"></font></a>
+	            			<div class="clearfloat"></div>
+            			</li>
+            		</foreach>
+                </ul>
+            </div>
+        </div>       
+    </div>
+    <div class="comodity_date">
+        <div class="c_list">
+            <ul id="uldata">
+            	<foreach name='goodList' item='vo'>
+            		<li>
+            			<a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" target="_blank">
+            			<img class="err-product pimg1" data-img="1" src="{$vo.goods_ico|get_cover='path'}" title="{$vo.goods_name}" />
+            			</a>
+            			<a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" class="recom_ul_tit" target="_blank" title='{$vo.goods_name}'>{$vo.goods_name|msubstr=0,16}<font color="#ff6600"></font></a>
+            			<span class="recommend_price">￥{$vo.ms_price}</span> 
+            			<span class='recommend_price_02'><del>￥{$vo.tox_money_need}</del></span>     
+            			<span class='recommend_price_02' style='margin-left:30px' >	已销售：</span>
+            			<span class="recommend_price" style='padding:0px'>{$vo.sell_num}</span>                
+            		</li>            		
+            	</foreach>                           
+            </ul>
+            <img id="loadimg" style="margin-left: 470px; display: none" src="__IMG__/loading.gif" />
+        </div>        
+        <div class="clearfloat"></div>
+         <div class="page">
+        {$page}
+    </div>
+    </div>
+    <div class="clearfloat"></div>
+</div>       
+<script type="text/javascript">
+    //点击显现更多热销排行榜部分
+    $(document).ready(function () {
+        $(".div_zhan").click(function () {
+            $("#div_1").slideToggle("slow");
+        });
+    });
+    //更多品牌点击切换背景图片和显示全部品牌
+    $(document).ready(function () {
+        $(".sl_more").click(function () {
+            $(".sl_value").toggleClass("sl_main");
+            $(".sl_more i").toggleClass("a_text");
+        });
+    });
+
+</script>
+<script>
+function changecolor(my){
+	$(my).parent().addClass("active");
+    $(my).parent().siblings().removeClass("active");
+}
+</script>
+<!--中间部分-->
+<include file="Public:footer" />

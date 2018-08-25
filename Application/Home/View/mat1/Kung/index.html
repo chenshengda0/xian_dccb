@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/index.css" />
+	</head>
+	<body>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider" >
+			  <div class="mui-slider-group mui-slider-loop">
+			    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="__IMG__/banner.jpg">
+			      </a>
+			    </div>
+			    <!-- 第一张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="__IMG__/banner.jpg">
+			      </a>
+			    </div>
+			    <!-- 第二张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="__IMG__/banner.jpg">
+			      </a>
+			    </div>
+			    <!-- 第三张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="__IMG__/banner.jpg">
+			      </a>
+			    </div>			   
+			    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="__IMG__/banner.jpg">
+			      </a>
+			    </div>
+			  </div>
+			  <div class="mui-slider-indicator">
+			    <div class="mui-indicator mui-active"></div>
+			    <div class="mui-indicator"></div>
+			    <div class="mui-indicator"></div>			    
+			  </div>
+			</div>
+			<div id="main">
+				<div class="top">
+					<p><span class="iconfont icon-gonggao">&nbsp;&nbsp;</span>AGL币正式起航</p>
+				</div>
+				<div class="price">
+					<span>当前价：</span>
+					<p class="price-1"><b>0.23</b><span>USD</span></p>
+					<span class="change1 mui-pull-right">切换</span>
+				</div>
+				<div class="hangqing">
+					<span></span>
+					<span>行情趋势</span>
+					<span></span>
+				</div>
+				<div class="chart1" id="lineChart1"></div>
+				<div class="more"><p>最新资讯</p><p style="color: #284e76;">查看更多</p></div>
+				
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="__IMG__/new.jpg">
+				            <div class="mui-media-body">
+				                <span class="mui-ellipsis">AGL币的诞生与发展AGL币的诞生与发展</span>
+				                <p><span>2017-11-20</span>&nbsp;<span>14:30:30</span></p>
+				            </div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="__IMG__/new.jpg">
+				           <div class="mui-media-body">
+				                <span class="mui-ellipsis">AGL币的诞生与发展AGL币的诞生与发展</span>
+				                <p><span>2017-11-20</span>&nbsp;<span>14:30:30</span></p>
+				            </div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="__IMG__/new.jpg">
+				           <div class="mui-media-body">
+				                <span class="mui-ellipsis">AGL币的诞生与发展AGL币的诞生与发展</span>
+				                <p><span>2017-11-20</span>&nbsp;<span>14:30:30</span></p>
+				            </div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="__IMG__/new.jpg">
+				           <div class="mui-media-body">
+				                <span class="mui-ellipsis">AGL币的诞生与发展AGL币的诞生与发展</span>
+				                <p><span>2017-11-20</span>&nbsp;<span>14:30:30</span></p>
+				            </div>
+				        </a>
+				    </li>
+				</ul>
+				
+			</div>
+		</div>
+		<div class="foot">
+			<a href="index.html" class="foot-active">
+				<span class="iconfont icon-shouye2"></span>
+		       	<span>首页</span>
+			</a>
+			<a href="shangcheng.html">
+		        <span class="iconfont icon-sc1"></span>
+		       <span>商城</span>
+		    </a>
+		     <a href="jiaoyi.html">
+		        <span class="iconfont icon-icon"></span>
+		        <span>交易</span>
+		    </a>
+		    <a href="wode.html">
+		        <span class="iconfont icon-wode"></span>
+		        <span>我的</span>
+		    </a>
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/echarts3.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/pages/index.js"></script>
+	<script type="text/javascript">
+		mui.init();
+      
+	</script>
+</html>

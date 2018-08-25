@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/ghsy.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+			<h1 class="mui-title">分享收益</h1>
+		</header>
+		<div class="mui-content">
+			<div class="table">
+				<table border="" cellspacing="" cellpadding="">
+					<tr>
+						<th>相关会员</th>
+						<th>分享收益</th>
+						<!-- <th>说明</th> -->
+						<th>日期</th>
+					</tr>
+					<foreach name='result' item='vo'>
+					<tr>
+						<td>{$vo.usernumber}</td>
+						<td>{$vo.money}</td>
+						<!-- <td>12h</td> -->
+						<td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+					</tr>
+					</foreach>
+				</table>
+			</div>
+		</div>
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+	</body>
+
+</html>

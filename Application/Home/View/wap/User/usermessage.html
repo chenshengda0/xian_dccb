@@ -1,0 +1,58 @@
+<extend name="wap/Base/base"/>
+<block name="body">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+<div class="decoration"></div>
+ <div class="container no-bottom" id="tableHover">
+            <table class="table">
+            <tr>
+            	<th colspan = "2">
+					<div align="left">{:C('COM_TITLE')}信息</div>
+				</th>
+			</tr>	
+                <tr>
+                    <td align="center">{:C('COM_TITLE')}编号：{$uinfo.usernumber}</td>
+                    <td align="center">{:C('COM_TITLE')}姓名：{$uinfo.realname}</td>
+                 </tr>
+                <tr>   
+                    <td align="center">{:C('COM_TITLE')}级别：{$uinfo.userrank|get_userrank}</td>
+                    <td align="center">服务人数：{$uinfo.recom_num}</td>
+                   <!--  <td align="center">所属报单中心：{$logininfo.billcenterid|get_usernumber}</td> -->
+                </tr>
+                <tr>
+                    <td align="center">充值余额：{$uinfo.hasbill}</td>
+                    <td align="center">奖金余额：{$uinfo.hasmoney}</td>
+                 </tr>
+                <tr>
+                	<td align="center">已碰总单：{$uinfo.yipeng}</td>    
+                    <td align="center">已碰单数：{$uinfo.hastouch}</td>
+                    
+                </tr>
+                <tr>
+                    <td align="center" >销售左区总剩余单数：{$uinfo.left_bill}</td>
+                    <td align="center" >销售右区总剩余单数：{$uinfo.right_bill}</td>
+                 </tr>
+                 
+                <tr>  
+                    <td align="center">销售左区总单数：{$uinfo.left_bill_all}</td>
+                    <td align="center">销售右区总单数：{$uinfo.right_bill_all}</td>
+                </tr>
+                
+                <tr>
+                	<td>今日奖金收入：{$uinfo.total}</td>
+                    <td align="center">{:C('COM_TITLE')}编号：{$uinfo.uid|get_zhanghao}</td>
+                </tr>
+                
+            
+        </table>
+	</div>
+
+</block>
+<block name="script">
+    <script type="text/javascript">
+    highlight_subnav("{:U('User/index')}");
+    </script>
+</block>
+
+<block name="lishaojia">
+lishaojia
+</block>

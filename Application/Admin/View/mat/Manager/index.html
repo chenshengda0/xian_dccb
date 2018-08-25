@@ -1,0 +1,81 @@
+<extend name="Public/base"/>
+<block name="body">
+        <div class="fl" style='margin-bottom:10px;'>
+            <a class="btn" href="{:U('Manager/add')}">新 增</a>
+            <button class="btn ajax-post" url="{:U('Manager/changeStatus',array('method'=>'resumeUser'))}"
+                    target-form="ids">启 用
+            </button>
+            <button class="btn ajax-post confirm" url="{:U('Manager/changeStatus',array('method'=>'forbidUser'))}"
+                    target-form="ids">禁 用
+            </button>
+            <button class="btn ajax-post confirm" url="{:U('Manager/changeStatus',array('method'=>'deleteUser'))}"
+                    target-form="ids">删 除
+            </button>
+        </div>
+<div class="row-fluid">
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+          <div class='dataTables_wrapper'>
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                 <th style='text-align:left;'><input class="check-all" type="checkbox"/></th>
+                <th class="">管理员名</th>
+                <th class="">登录次数</th>
+                <th class="">最后登录时间</th>
+                <th class="">最后登录IP</th>
+                <th class="">状态</th>
+                <th class="">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <notempty name="_list">
+                <volist name="_list" id="vo">
+                    <tr>
+     					<td><eq name='vo.mid' value='1'><else/><input class="ids" type="checkbox" name="id[]" value="{$vo.mid}"/></eq></td>
+                        <!-- <td><a href="{:U('Admin/User/expandinfo_details',array('uid'=>$vo['uid']))}" >{$vo.mname|op_t}</a></td> -->
+                        <td>{$vo.mname|op_t}</td>
+                        <td>{$vo.login_count}</td>
+                        <td><span>{$vo.last_login_time|time_format}</span></td>
+                        <td><a href="http://ip138.com/ips138.asp?ip={$vo['last_login_ip']|long2ip}">{$vo['last_login_ip']|long2ip}</a>
+                        </td>
+                        <td>{$vo.status_text}</td>
+
+                        <td><eq name='vo.mid' value='1'><else/>
+                            <eq name="vo.status" value="1">
+                                <a href="{:U('Manager/changeStatus?method=forbidUser&id='.$vo['mid'])}"
+                                   class="btn ajax-get">禁用</a>
+                                <else/>
+                                <a href="{:U('Manager/changeStatus?method=resumeUser&id='.$vo['mid'])}"
+                                   class="btn ajax-get">启用</a>
+                            </eq>
+                            <a href="{:U('AuthManager/group?mid='.$vo['mid'])}" class="btn">授权</a>
+                            <a href="{:U('Manager/changeStatus?method=deleteUser&id='.$vo['mid'])}"
+                               class="btn confirm ajax-get">删除</a></eq>
+                        </td>
+
+                    </tr>
+                </volist>
+                <else/>
+                <td colspan="16" class="text-center"> aOh! 暂时还没有内容!</td>
+            </notempty>
+              </tbody>
+            </table>
+            <div class="page">
+             {$_page}
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav("{:U('Manager/index')}");
+    </script>
+</block>

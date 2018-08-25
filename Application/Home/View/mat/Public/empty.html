@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> -->
+<title>{$title}|{:C('WEB_SITE')}</title>
+<link href="__MAT__/css/main.css" rel="stylesheet" type="text/css" />
+<link href="__MAT__/css/page.css" rel="stylesheet" type="text/css" />
+<include file="Public/js" />
+</head>
+<body class="nobg errorPage">
+    <div class="topNav">
+        <div class="wrapper">
+            <div class="welcome"><a href="#" title=""><img src="__MAT__/images/userPic.png" alt="" /></a><span>Hi, {$logininfo.realname}!</span></div>
+            <div class="userNav">
+                <ul>
+                    <li><a href="#" title=""><img src="__MAT__/images/icons/topnav/profile.png" alt="" /><span>{$logininfo.realname}资料</span></a></li>
+                    <li class="dd"><a title=""><img src="__MAT__/images/icons/topnav/messages.png" alt="" /><span>留言</span><span class="numberTop">8</span></a>
+                        <ul class="userDropdown">
+                            <li><a href="#" title="" class="sAdd">写留言</a></li>
+                            <li><a href="#" title="" class="sInbox">收件箱</a></li>
+                            <li><a href="#" title="" class="sOutbox">发件箱</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="ajax-get confirm" href="{:U('Index/logout')}" title=""><img src="__MAT__/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div> 
+
+<!-- Main content wrapper -->
+<div class="errorWrapper">
+    <span class="sadEmo"></span>
+    <span class="errorTitle">Ahh,对不起！</span>
+    <span class="errorNum">页面存在</span>
+    <span class="errorDesc"></span>
+    <a href="{:U('User/index')}" title="" class="button dredB"><span>返回首页</span></a>
+</div>    
+    
+</body>
+</html>

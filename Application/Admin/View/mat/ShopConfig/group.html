@@ -1,0 +1,100 @@
+<extend name="Public/base"/>
+
+<block name="body">
+		<div class="widget-box">
+		<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>{$meta_title}</h5>
+        </div>
+	<form action="{:U('save')}" method="post" class="form-horizontal">
+	<div class="widget-content nopadding">
+		<volist name="list" id="config">
+		<div class="control-group">
+			<label class="control-label">{$config.title}</label><div class="controls">
+			<switch name="config.type">
+			<case value="0">
+				<input type="text"  name="config[{$config.name}]" value="{$config.value}" class="input-big span8">
+			</case>
+			<case value="1">
+			<input type="text" name="config[{$config.name}]" value="{$config.value}" class="input-big span8">
+			</case>
+			<case value="2">
+				<textarea class='span8 textarea' name="config[{$config.name}]">{$config.value}</textarea>
+			</case>
+			<case value="3">
+				<textarea class='span8 textarea' name="config[{$config.name}]">{$config.value}</textarea>
+			</case>
+			<case value="4">
+			<select name="config[{$config.name}]">
+				<volist name=":parse_config_attr($config['extra'])" id="vo">
+					<option value="{$key}" <eq name="config.value" value="$key">selected</eq>>{$vo}</option>
+				</volist>
+			</select>
+			</case>
+			<case value="5"><!--增加富文本和非明文-->
+				<textarea class='textarea' name="config[{$config.name}]">{$config.value}</textarea>
+                {:hook('adminArticleEdit', array('name'=>$field['names'],'value'=>$config.name,'id'=>$config.name))}
+			</case>
+			<case value="6">
+			<input type="password" class="text input-large" name="config[{$config.name}]" value="{$config.value}">
+			</case>
+			<case value="7">
+				<input type="file" id="upload_picture_{$config.name}" class="btn btn-lg m-r-5">
+				<div style="margin:10px;">
+				<eq name='config.value' value='0'>
+					<img class="profile-pic animated" style='width:271px;height:70px;' id="pic_{$config.name}" src="__IMG__/news_color/logo.png"/>
+					<else/>
+					<img class="profile-pic animated" style='width:271px;height:70px;' id="pic_{$config.name}" src="{$config.value|get_cover='path'}"/>
+				</eq>
+				</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_{$config.name}").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture{$config.name},
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture{$config.name}(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#icon_{$config.name}").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+							$("#pic_{$config.name}").attr("src",src);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+   
+   				<input type="hidden" name="config[{$config.name}]"  id="icon_{$config.name}" value="{$config.value|default=''}"/>
+			</case>
+			</switch>
+		<span class="require">({$config.remark})</span></div></div>
+		</volist>
+		 <div class="form-actions">
+              <button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
+              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+            </div></div>
+	</form>
+			</div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav("{:U('Config/group')}");
+	</script>
+</block>

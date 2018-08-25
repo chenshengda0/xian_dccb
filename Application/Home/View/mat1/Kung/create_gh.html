@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/kggh.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">创建公会</h1>
+		</header>
+		<div class="mui-content">
+			 <div class="mid">
+			 	
+			 	<form action="{:U('chuangjian')}" method="post">
+			 	<div class="dd1" style="display:block">
+			 		 <div class="list1">
+				    	<span>公会名称：</span><input type="text" name="gh_name" placeholder="请输入公会名称"/>
+				    	<span>公会宣言：</span><textarea placeholder="请输入公会宣言" name="gh_xuanyan"></textarea>
+				    	<span>公会QQ群：</span><input type="text" name="gh_qq" placeholder="请输入公会qq群"/>
+				    	<span>会长微信：</span><input type="text" name="gh_wx" placeholder="请输入会长微信"/>
+				    	<span>会长QQ：</span><input type="text" name="hz_qq" placeholder="请输入会长qq"/>
+				    	<span>会长手机：</span><input type="text" name="hz_phone" placeholder="请输入会长手机号"/>
+				   </div> 
+				   <input type="submit" class="but" value="创建">
+			 	</div>
+			 	</form>
+			 </div>
+		</div>		
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/index/kuangjishouyi.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		
+		</script>
+	</body>
+</html>
+
+
+

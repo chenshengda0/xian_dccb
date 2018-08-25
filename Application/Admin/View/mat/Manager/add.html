@@ -1,0 +1,46 @@
+<extend name="Public/base"/>
+
+<block name="body">
+      	<div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>{$meta_title}</h5>
+        </div>
+        <form action="{:U('')}" method="post" class="form-horizontal" >
+        <div class="widget-content nopadding">
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>管理员名</label>
+              <div class="controls">
+                <input type="text" name="username" value="" class=" input-big span4">
+                <span></span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>密码</label>
+              <div class="controls">
+                <input type="password" name="password" value="" class="input-big span4">
+                 <span class='require'>(不能小于6位数，且不能为纯数字)</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>确认密码</label>
+              <div class="controls">
+                <input type="password" name="repassword" value="" class="input-big span4">
+                <span></span> </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>邮箱</label>
+              <div class="controls">
+                <input type="text" name="email" value="" class=" input-big span4">
+                 <span class='require'>(用于找回密码)</span> </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
+              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+            </div>
+         </div></form></div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav("{:U('Manager/add')}");
+    </script>
+</block>

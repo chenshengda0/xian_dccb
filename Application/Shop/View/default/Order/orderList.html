@@ -1,0 +1,140 @@
+<extend name="Base/user"/>
+
+<block name="content">    
+	<div class="member_tit">
+        <span class="Mt_left">{$meta_title}</span>
+        <div class="Mt_right">
+            <form name="formSearch" action="{:U('User/order')}" method="post">
+                <span>订单编号：</span><input type="text" name="code" value=""><a href="javascript:formSearch.submit();" class="search">查询</a>
+            </form>
+        </div>
+    </div>
+    <div class="member_cont">
+        <div class="member_table">
+             <table>
+             	<thead>
+             		 <th>订购商品</th>                       
+                     <th>订单总额</th>                        
+                     <th>订单状态</th>
+                     <th>订单操作</th>
+             	</thead>
+             	<tbody>
+             		<foreach name='order' item='vo'>
+             			<tr><td class="order-detail" colspan='3'>订单号：<span>{$vo.orderid}</span>&nbsp;&nbsp;&nbsp;下单时间：<span>{$vo.create_time|date='Y-m-d H:i:s',###}&nbsp;&nbsp;&nbsp;
+             				<eq name="vo['status']" value='2'>发货时间：<span>{$vo.update_time|date='Y-m-d H:i:s',###}</eq>
+             				<eq name="vo['status']" value='3'>签收时间：<span>{$vo.update_time|date='Y-m-d H:i:s',###}</eq>
+					   </span></td>
+					   <td><gt name="vo['status']" value="2"><b><a href="javascript:void(0)" onclick="deleteBtn('{$vo['orderid']}');return false;"><img src="__IMG__/iconfont-lajixiang.png" style="width:20px;height:20px;vertical-align:middle"></a></b></gt></td>
+					   </tr>
+					   <tr>
+					   		<td width='66%' >
+					   			<table>
+                            		<foreach name="vo['id']" item='fo'>
+	                            		<tr>
+	                            			<td width='60%'   style='text-align:left'><a href="{:U('Index/goodsDetail?id='.$fo['goodid'])}" class="dl"> <img src="{$fo.goodid|getGoodPic}"  width="70" height="70"/></a>
+	                            			<span class="c3"><a href="{:U('Index/goodsDetail?id='.$fo['goodid'])}" target="_blank"  class="dd"> {$fo.goodid|get_good_name}</a></span></td>
+	                            			<td width='10%'><span class="c2">￥{$fo.price}</span></td>
+	                            			<td width='10%'><span class="c2">{$fo.num}</span> </td>                            			
+	                            		</tr>
+                            		</foreach>
+                           		</table>
+                   			</td>
+                   			<td width='10%'><p>￥{$vo.total}</p> </td>
+                            <td width='10%'>
+                            	<p>
+                            		<span style='display:block;color: #03ae87'>{$vo.status|get_order_status}</span>
+                            		<a href="{:U('Order/detail?id='.$vo['orderid'])}" target="_blank">订单详情</a>
+                            	</p>
+                            </td>
+                            <td width='14%'>
+                            	<eq name='vo.status' value='2'>
+                            		<a href="javascript:void(0);" onclick="confirmOrder('{$vo['orderid']}');" class="rose">确认订单</a>
+                            		<else/>暂无操作
+                            	</eq>
+                            </td>
+					   </tr>
+             		</foreach>
+             	</tbody>
+             </table>
+        </div>
+         <div class="page">
+				{$page}
+        </div>
+    </div>
+    <script type="text/javascript">
+    function confirmOrder(id){
+    	layer.confirm('确认签单吗？', function(index){
+    		 $.ajax({
+ 	            url: "{:U('Order/confirmOrder')}",
+ 	            type: "post",
+ 	            data:{id:id},
+ 	            dataType: 'JSON',
+ 	            success: function (data) {	           
+ 	            	 if (data.status) {
+ 	                	layer.msg(data.info,3,1);
+ 	                	setTimeout(function () {
+ 	                        window.location.href = data.url
+ 	                    }, 1000);
+ 	                	 return false;
+ 	                } else {
+ 	                   layer.msg(data.info,2,3);
+ 	                   setTimeout(function () {
+ 	                       window.location.href = data.url
+ 	                   }, 1000);
+ 	                }
+ 	            },
+ 	            error: function (XMLHttpRequest, textStatus, errorThrown) {
+ 	                alert(errorThrown);
+ 	            }
+ 	        });
+    	});
+    }
+    function submitpay(formid){    	
+		$(formid).submit();
+	}
+	//取消订单
+	function cancalBtn(id) {		
+	    if (confirm("确定要取消该订单")) {
+	        $.ajax({
+	            url: "{:U('user/cancel')}",
+	            type: "post",	 
+	          	data:{id:id},
+	            dataType:'JSON',
+	            success: function (data) {            	
+	                 if (data.status) {
+	                    alert("订单已取消");
+	                    location.reload();
+	                } else {
+	                    alert("订单取消失败");
+	                } 
+	            },
+	            error: function (XMLHttpRequest, textStatus, errorThrown) {
+	                alert(errorThrown);
+	            }
+	        });
+	    }
+	}
+	//删除订单
+	function deleteBtn1(id) {
+	    if (confirm("确定要删除该订单")) {
+	        $.ajax({
+	            url: "{:U('user/delete')}",
+	            type: "post",
+	            data:{id:id},
+	            dataType: 'JSON',
+	            success: function (data) {	           
+	                if (data.status) {
+	                    alert("订单已删除");
+	                    location.reload();
+	                } else {
+	                    alert("订单删除失败");
+	                }
+	            },
+	            error: function (XMLHttpRequest, textStatus, errorThrown) {
+	                alert(errorThrown);
+	            }
+	        });
+	    }
+	}
+</script>
+</block>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>密码中心</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.qie{width: 100%;height: 40px;float: left;margin-top: 10px;
+    	display: flex;justify-content: space-between;padding: 0 5px 0 5px;}
+    	.qie a{display: inline-block;width: 49%;
+    	height: 40px;border: 1px solid #3d4651;
+    	color: #fff;text-align: center;line-height: 40px;border-radius: 5px;}
+    	.mi{width: 100%;height: auto;float: left;margin-top: 15px;}
+    	.mi p{margin: 0;width: 100%;height: 40px;float: left;}
+    	.pd{margin: 0;height: 40px;width: 90%;margin-left: 5%;
+    	float: left;background: #313840;border-bottom: 1px solid #3d4651;}
+    	.mi p span{display: inline-block;width: 25%;color:#fff;height: 40px;text-align: center;line-height: 40px;float: left;}
+    	.mi p input{width: 75%;height: 40px;float: left;background: none;border: none;font-size: .98em;}
+    	.qd{width: 90%;height: 40px;background: #f93333;
+    	color: #fff;border: none;}
+    	.active{background: #313840;}
+    	#huoqu{width: 40%;float: left;margin-top: 4px;background: none;color: #f93333;border: none;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left" href="{:U('index')}"></a>
+        <h1 class="mui-title">密码中心</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="qie" id="qie">
+    		<a href="##" class="active">修改登录密码</a>
+    		<a href="##">修改交易密码</a>
+    	</div>
+    	<div class="mi">
+			<form action="{:U('edit_pass',array('method'=>1))}" method="post" class="form-horizontal">
+
+					<p class="pd">
+						<span>新密码</span>
+						<input type="text" name="newpwd1" placeholder="输入新密码"/>
+					</p>
+					<p class="pd">
+						<span>确认新密码</span>
+						<input type="text" name="rnewpwd1" placeholder="再次输入新密码"/>
+					</p>
+              
+                <p class="pd">
+                    <span>短信验证码</span>
+                    <input type="text" placeholder="验证码" name="code" style="width: 30%;"/>
+                    <button id="huoqu" type="button" onclick = "check()">
+                        获取验证码
+                    </button>
+                </p>
+					<p style="margin-top: 30px;text-align: center;">
+						<button class="qd" type="submit">确定</button>
+					</p>
+			</form>
+    	</div>
+    	<div class="mi" style="display: none;">
+            <form action="{:U('edit_pass',array('method'=>3))}" method="post" class="form-horizontal">
+    		<p class="pd">
+    			<span>新密码</span>
+    			<input type="text" name="newpwd1" placeholder="输入新密码"/>
+    		</p>
+    		<p class="pd">
+    			<span>确认新密码</span>
+    			<input type="text"  name="rnewpwd1" placeholder="再次输入新密码"/>
+    		</p>
+    		<p class="pd">
+    			<span>短信验证码</span>
+    			<input type="text" placeholder="验证码" name="code" style="width: 30%;" />
+    			<button id="huoqu" type="button"  onclick = "check()">
+    				获取验证码
+    			</button>
+    		</p>
+    		<p style="margin-top: 30px;text-align: center;">
+    			<button class="qd" type="submit">确定</button>
+    		</p>
+            </form>
+    	</div>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+    <script type="text/javascript">
+    mui.init();
+    		var as = document.getElementById("qie").getElementsByTagName("a");
+				var mi = document.getElementsByClassName("mi");
+				    for(var i = 0;i<as.length;i++){
+				    as[i].index = i;
+				    as[i]. onclick= function(){
+				        for(var j = 0;j<as.length;j++){
+				          as[j].className = "";
+				        }
+				        this.className = "active";
+				        for(var i=0;i<mi.length;i++){
+            				mi[i].style.display = "none";
+        			}				
+        				mi[this.index].style.display = "block";        
+				  }
+				 }
+    </script>
+    <script type="text/javascript">
+        var phone = {$phone};
+        msg = '手机号为'+phone+'?';
+        function check() {
+
+            $.layer({
+                shade: [0],
+                area: ['250px','150px'],
+
+                dialog: {
+                    msg: msg,
+                    btns: 2,
+                    type: 4,
+                    btn: ['确定','取消'],
+                    yes: function(){
+                        var index = layer.load('正在跳转，请耐心等待');
+
+                        $.ajax({
+                            type: "post",
+                            url: "{:U('duanxin')}",
+                            data: {mobile:phone},
+                            dataType: "json",
+                            success: function(data){
+                                mui.alert(data.info);
+                            }
+                        });
+                        layer.close(index);
+
+
+                        return false;
+                    }, no: function(){
+                        var index = layer.load('正在跳转，请耐心等待');
+                        layer.close(index);
+                    }
+                }
+            });
+
+        }
+
+    </script>
+</body>
+</html>
+

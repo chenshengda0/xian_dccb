@@ -1,0 +1,68 @@
+.top{
+	width: 100%;
+	height: 155px;
+	text-align: center;
+	background: url(../../imgs/bg-04.jpg) no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	position: relative;
+}
+.top-t{
+	margin-top: 40px;
+	line-height: 40px;
+}
+.top-t p{
+	color: #FFFFFF
+}
+.top-t p:nth-child(2){
+	font-size: 36px;
+}
+.top-b{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 45px;
+	background: rgba(25,25,25,.3);
+	padding: 2px 0;
+}
+.top-b li{
+	width: 50%;
+	float: left;
+	height: 40px;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+.top-b li p{
+	color: #FFFFFF;
+}
+.wr{
+	color: #333333;
+	height: 30px;
+	line-height: 30px;
+	padding: 10px 0;
+	background-color: #FFFFFF !important;
+}
+.t{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	background-color: #c2c2c2;
+	padding:0 10px;
+}
+.t p{
+	color: #FFFFFF;
+}
+.main{
+	margin-top: 10px;
+}
+.money{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background-color: #e5e5e5;
+	padding:0 10px;
+	color:#424242;
+}

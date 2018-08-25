@@ -1,0 +1,73 @@
+<extend name="public/base"/>
+<block name="body">
+<form action="{:U('mobileRecharge')}" method="post">
+   <div class="block-area" id="select">
+     <div  class="row"><div class="col-lg-3">
+     	 <h6><label  class="control-label iptlabel">话费余额 </label>&nbsp;
+     	 <span class="label label-default">{$uinfo.hasshop}</span></h6>
+     </div></div>
+     
+      <div class="form-group ipt">
+              <label  class="control-label iptlabel">充值金额</label>
+               <select class="form-control m-b-10"  name="money" style="display:inline-block;width:33%;max-width:100px;">
+               	<volist name='money_arr' id='vo'>
+               		<option value="{$vo}">{$vo}元</option>
+               	</volist>
+       			</select>
+              <span id='moneyerr'  class="label"></span>
+      </div>
+       <div class="form-group ipt">
+              <label  class="control-label iptlabel">手机号</label>
+              <input type="text" class="form-control input-sm inlineform"  name="mobile" id="mobile" value="{$uinfo['mobile']}" maxlength="11">
+              <span id='mobileerr'  class="label"></span>
+      </div>
+      
+      <div class="form-group ipt">
+              <label  class="control-label iptlabel">运营商</label>
+              <select class="form-control m-b-10"  name="mobiletype" style="display:inline-block;width:33%;max-width:100px;">
+					<option value="1">移动</option>
+					<option value="2">联通</option>
+					<option value="3">电信</option>
+       		</select>
+      </div>
+   <div class="block-area">
+        <button class="btn btn-lg m-r-5" type='submit'>提交申请</button>
+        <button class="btn btn-lg m-r-5" type='button' onclick="javascript:history.back();">取消申请</button>
+   </div>
+   </div>
+</form>
+</block>
+<block name="script">
+    <script type="text/javascript">
+    $(function(){
+    	hasshop = "{$uinfo.hasshop}";
+    	if(hasshop<=0){
+    		$("button:submit").hide();
+    		$("button:button").text('话费余额不足无法充值');
+    	}
+    })
+    /*手机号*/
+	$("#mobile").blur(function() {
+		if(!check_empty('mobile','手机号','mobileerr')){$("#mobile").focus();return false;}
+		if(!check_phone('mobile','手机号','mobileerr')){$("#mobile").focus();return false;}
+		else{check_Ok('mobileerr');}
+	}); 
+    /*手机号*/
+	$("#money").blur(function() {
+		if(!check_empty('money','手机号','moneyerr')){$("#money").focus();return false;}
+		else{check_Ok('moneyerr');}
+	}); 
+    $("form").submit(function(){
+		var self = $(this);
+		if(!check_empty('mobile','手机号','mobileerr')){$("#mobile").focus();return false;}
+		if(!check_phone('mobile','手机号','mobileerr')){$("#mobile").focus();return false;}
+		if(!check_empty('money','手机号','moneyerr')){$("#money").focus();return false;}
+		$.post(self.attr("action"),self.serialize(),success, "json");
+		 return false;
+	 });
+    </script>
+    <script type="text/javascript">
+  	//导航高亮
+    highlight_subnav("{:U('mobileRecharge')}");
+	</script>
+</block>

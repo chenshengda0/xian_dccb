@@ -1,0 +1,94 @@
+.top{
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	background: url(../../imgs/bg-03.jpg) no-repeat;
+	background-size:cover;
+	overflow: hidden;
+}
+.top p{
+	margin-top: 20px;
+	color: #FFFFFF;
+	font-size: 16px;
+}
+.top span{
+	display: block;
+	margin-top: 10px;
+	color: #004272;
+	font-size: 24px;
+	font-weight: 600;
+}
+.list1{
+	background: #FFFFFF;
+	margin-bottom: 10px;
+}
+.list1 ul{
+	height: 50px;
+}
+.list1 li{
+	cursor: pointer;
+	width: 50%;	
+	float: left;
+	font-size: 14px;
+	line-height: 50px;
+	text-align: center;	
+	border-bottom: 2px solid #cfcfcf;
+}
+.dd,.aa{
+	background: #FFFFFF;
+	color: #262626;
+}
+.active{
+	border-bottom: 2px solid #00296d !important;
+	color: #00296d;
+}
+.dd1,.aa1{
+	display: none;
+}
+.dd1 li{
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 1px solid #cfcfcf;
+	background-color: #FFFFFF;
+	padding: 0 10px;
+}
+.cur{
+	display: block;
+}
+.pre{
+	display: inline-block;
+	width: 50px;
+	line-height: 25px;
+	background-color: #002E72;
+	text-align: center;
+	color: #FFFFFF;
+	border-radius: 30px;
+	margin-left: 20px;
+}
+.list2 li{
+	position: relative;
+}
+.but{
+	position: absolute;
+	right: 10px;
+	top: 30%;
+    width: 60px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    background-color: #002E72;
+    border-radius: 5px;
+}
+.list2 .mui-table-view .mui-media-object.mui-pull-left{
+	margin-top:10px;
+	border-radius:0;
+}
+.mui-table-view .mui-media-object.mui-pull-left{
+	margin-top:0px;
+	border-radius: 50%;
+}
+.list2 img {
+    max-width: 60px !important;
+    height: 60px !important;  
+}

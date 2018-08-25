@@ -1,0 +1,76 @@
+<extend name="wap/Base/base"/>
+<block name='style'>
+</block>
+<block name="body">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>验证密保</h1></div>
+<div class="decoration"></div>
+<div>
+	<div align = "center" style = "margin-top:20px"><h2>尊敬的{$userinfo['realname']},请务必认真正确填写每一个问题的答案，否则密码将无法修改</h2></div>
+	
+	<div class="clear"></div>
+</div>
+<div class="widget">
+<form action="{:U('updatePwd')}" method="post" class="form">
+   <fieldset class="step" >
+   		<input type="hidden" name="type" value="answer" />
+	 	<input type="hidden" name="uid" value="{$userinfo['uid']}" />
+       <div class="formRow">
+            <label class="field-title contactNameField">*问题一：</label>
+            <div class="formRight">
+            	<span class='oneTwo'><input class="contactField requiredField" type="text" name="question1" value="{$userinfo.question1}" disabled /></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+         <div class="formRow">
+            <label class="field-title contactNameField">*答案一：</label>
+            <div class="formRight">
+            	<span class='oneTwo'><input class="contactField requiredField" value="" name="answer1" type="text"  /></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formRow">
+            <label class="field-title contactNameField">*问题二：</label>
+            <div class="formRight">
+            	<span class='oneTwo'><input class="contactField requiredField" type="text" name="question2" value="{$userinfo.question2}" disabled /></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+         <div class="formRow">
+            <label class="field-title contactNameField">*答案二：</label>
+            <div class="formRight">
+            	<span class='oneTwo'><input class="contactField requiredField" value="" name="answer2" type="text"  /></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formRow">
+            <label class="field-title contactNameField">*问题三：</label>
+            <div class="formRight">
+            	<span class='oneTwo'><input class="contactField requiredField" type="text" name="question3" value="{$userinfo.question3}" disabled /></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+         <div class="formRow">
+            <label class="field-title contactNameField">*答案三：</label>
+            <div class="formRight">
+            	<span class='oneTwo'><input class="contactField requiredField" value="" name="answer3" type="text"  /></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </fieldset>
+ 	<div class="wizButtons hideblock"> 
+		<span class="wNavButtons">
+              <input class="button-big button-blue" value="验证密保" type="submit" target-form='form' />
+              <input class="button-big button-dark"  value="返回" type="button"  onclick="javascript:history.back();"/>
+         </span>
+	</div>
+    <div class="clear"></div>
+</form>
+</div>
+
+</block>
+<block name="script">
+<script type="text/javascript">
+  //导航高亮
+ highlight_subnav("{:U('updatePwd')}");
+</script>
+</block>

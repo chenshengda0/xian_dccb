@@ -1,0 +1,132 @@
+<extend name="Public/base"/>
+<block name="style">
+
+</block>
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+<div class="fl">
+    <a class="btn btn-info" href="{:U('User/registuser')}">新 增</a>
+    <button class="btn btn-success ajax-post" url="{:U('User/freezeStatus',array('method'=>'unfreeze'))}"
+            target-form="ids">启 用</button>
+    <button class="btn ajax-post btn-danger confirm" url="{:U('User/freezeStatus',array('method'=>'freeze'))}"
+            target-form="ids">冻结</button>
+ </div>
+ <include file='Public/search7'/>
+ <div class='clear'></div>
+</div>
+<div class="row-fluid">
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+          <div class='dataTables_wrapper'>
+            <table class="table table-bordered data-table" style="max-width:100%;">
+              <thead>
+                <tr>
+                		<th style='text-align:left;'><input class="check-all" type="checkbox"/></th>
+                  		<th>{$Think.const.USERNUMBER}<i class="change-sort icon-sort icon-sort-down" data-field='uid'></i></th>
+						<th>{$Think.const.REALNAME}</th>
+                  		<th>会员手机号</th>
+						<!-- <th>{$Think.const.ISBILL}<i class="change-sort icon-sort" data-field='isbill'></i></th> -->
+						<!--<if condition='C("IS_MORE_LEVEL") eq 1'>
+						<!-- <th>{$Think.const.USERRANK}<i class="change-sort icon-sort" data-field='userrank'></i></th> -->
+						<!--<th>注册级别<i class="change-sort icon-sort" data-field='userrank'></i></th>
+						</if>
+		                <th>是否vip</th>
+		                <th>{$Think.const.HASMONEY}</th>-->
+		                      <th>总钱包</th>
+                  		<th>在线钱包</th>
+                  <th>动态钱包</th>
+                    <th>静态钱包</th>
+                    <th>孵化仓</th>
+                  <th>孵化钱包</th>
+		                <th>{$Think.const.TUIJIANMUMBER}</th>
+		                <!-- <th>{$Think.const.PARENTNUMBER}</th> --> 
+		               <!--  <th>{$Think.const.BILLCENTER}</th> -->   
+		                <th>{$Think.const.REG_TIME}</th>
+		              <!--   <th>激活时间</th> -->
+		                 <th>{$Think.const.TATUS}<i class="change-sort icon-sort" data-field='status'></i></th>
+						
+		                <th>{$Think.const.OP}</th>
+						
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="_list" id="vo">
+                    <tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
+                    	<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}"/></td>
+                        <td>{$vo.usernumber}</td>
+                        <td>{$vo.realname}</td>
+                        <td>{$vo.mobile}</td>
+                        <!--  <td>{$vo.isbill|get_billcenter}</td>  -->
+                       <!-- <if condition='C("IS_MORE_LEVEL") eq 1'>
+						<td>{$vo.userrank|get_userrank}</td>
+						</if> 
+                       <td><if condition='$vo["is_vip"] eq 1'><span style="color:red">是</span><else/>否</if></td>-->
+                        <td>{$vo.hasmoney|format_num}</td>
+                           <td>{$vo.hasbill|format_num}</td>
+                           <td>{$vo.hascp|format_num}</td>
+                             <td>{$vo.hasjifen|format_num}</td>
+                             <td>{$vo.hasfh|format_num}</td>
+                      <td>{$vo.hassf|format_num}</td>
+                       
+                       	<td>{$vo.tuijianid|get_usernumber}</td>
+                       <!-- 	<td>{$vo.parentid|get_usernumber}</td> -->
+                       <!-- 	<td>{$vo.billcenterid|get_usernumber}</td> -->
+                       	<td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
+						<!-- <td>{$vo.active_time|date="Y-m-d H:i:s",###}</td> -->
+						<td>{$vo.status|get_user_status}</td>
+
+                        <td> 
+                        <!--<if condition = "$vo.userrank gt 1">
+                        <a class="btn btn-mini btn-info"  href="{:U('User/fenhong',array('id'=>$vo['uid']))}" >发分红</a>
+                        <else/>
+                       
+                        </if>-->
+                        
+ 						<a class="btn btn-mini btn-info"  href="javascript:void(0);" target="_blank" onclick="login('{$vo.uid}','{$vo.password}');">访问前台</a>
+ 						<eq name="vo.status" value="1">
+		                    <a class="btn btn-mini btn-info  ajax-get" href="{:U('User/freezeStatus',array('id'=>$vo['uid'],'method'=>'freeze'))}">冻结</a>
+		                    <else/>           
+	                       <a class="btn btn-mini btn-danger  ajax-get" href="{:U('User/freezeStatus',array('id'=>$vo['uid'],'method'=>'unfreeze'))}">解冻</a>
+	                    </eq>
+ 						<a class="btn btn-mini btn-info"  href="{:U('TradingHall/moneyInc',array('id'=>$vo['uid']))}" >充币</a>
+ 					<!--	<a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('is_vip',array('id'=>$vo['uid']))}" >冲VIP</a>-->
+ 						<a class='btn btn-mini btn-success' href="{:U('User/uinfo',array('id'=>$vo['uid']))}">更多操作>></a>
+ 						  <!--  <eq name="vo.isbill" value="1">
+		                    	<a class="btn btn-mini btn-success  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}">取消报单中心</a>
+		                    <else/>           
+	                            <a class="btn btn-mini btn-info  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}" >设为报单中心</a>
+	                        </eq>
+ 						<a class="btn btn-mini btn-info " href="{:U('User/updateMemberMsg',array('id'=>$vo['uid']))}" >修改</a>
+                        <a class="btn btn-mini btn-info " href="{:U('User/updateMemberPsd',array('id'=>$vo['uid']))}" >改密</a>  -->
+                        </td>
+                    </tr>
+                </volist>
+              </tbody>
+            </table>
+            <div class="page">
+             {$_page}
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+ <else/>
+<include file='Public/emptylist' title="暂时没有会员"/>
+</notempty>
+</block>
+<block name="script">
+<script type="text/javascript">
+		function login(uid,psd){
+			var index = layer.load('正在登陆，请耐心等待');
+			var url = "index.php?a=Home/Index/adminLogin";
+			$.post(url,{id:uid,psd:psd},tartet_success, "json");
+			return false;
+		}
+		
+		highlight_subnav("{:U('User/norenzheng')}");
+	</script>
+</block>

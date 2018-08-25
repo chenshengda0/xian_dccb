@@ -1,0 +1,75 @@
+<extend name="Public/base"/>
+
+<block name="body">
+
+        <div class="search_box">
+            <a class="btn" href="{:U('DataTime/add')}">新 增</a>
+        </div>
+<div class="row-fluid">
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+          <div class='dataTables_wrapper'>
+        <table class="table table-bordered data-table">
+            <thead>
+            <tr>
+                <th class="">名称</th>
+                <th class="">最后运行时间</th>
+                <th class="">下次运行时间</th>
+                <th class="">周</th>
+                <th class="">天</th>
+                <th class="">时</th>
+                <th class="">分</th>
+                <th class="">状态</th>
+                <th class="">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <notempty name="_list">
+                <volist name="_list" id="vo">
+                    <tr>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.lastrun|time_format}</td>
+                        <td>{$vo.nextrun|time_format}</td>
+                        <td>
+							<if condition="$vo.weekday eq -1 ">*</if>
+							<if condition="$vo.weekday eq 1">周一</if>
+							<if condition="$vo.weekday eq 2">周二</if>
+							<if condition="$vo.weekday eq 3">周三</if>
+							<if condition="$vo.weekday eq 4">周四</if>
+							<if condition="$vo.weekday eq 5">周五</if>
+							<if condition="$vo.weekday eq 6">周六</if>
+							<if condition="$vo.weekday eq 7">周日</if>
+                        </td>
+                        <td>
+                        	<if condition="$vo.weekday eq -1 ">*</if>
+							<if condition="$vo.weekday gt 0">{$vo.day}</if>
+                       	</td>
+                        <td>{$vo.hour}</td>
+                        <td>{$vo.minute}</td>
+                        <td>{$vo.available}</td>
+                        <td>
+                            <a href="{:U('DataTime/update?cronid='.$vo['cronid'])}" class="authorize">修改</a>
+                            <a href="{:U('DataTime/delete?cronid='.$vo['cronid'])}" class="authorize">删除</a>
+                        </td>
+                    </tr>
+                </volist>
+                <else/>
+                <td colspan="9" class="text-center"> aOh! 暂时还没有{$meta_title}!</td>
+            </notempty>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav("{:U('DataTime/index')}");
+    </script>
+</block>

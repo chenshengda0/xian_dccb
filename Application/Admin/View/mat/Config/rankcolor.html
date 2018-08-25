@@ -1,0 +1,50 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__STATIC__/bgcolor/css/jquery.bigcolorpicker.css" type="text/css" />
+<div class="widget-content" style='border-bottom:none;padding: 0;'>
+    <p><a class='btn <eq name="type" value="0">btn-info</eq>' href="{:U('?type=0')}">级别颜色配置</a>
+       <!-- <a class='btn <eq name="type" value="1">btn-info</eq>' href="{:U('?type=1')}">职务颜色配置</a> -->
+    </p>
+ </div>
+<div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>{$meta_title}</h5>
+        </div>
+	<form action="{:U('rankColor')}" method="post" class="form-horizontal">
+	<input type="hidden" name='type' value='{$type}'>
+	<div class="widget-content nopadding">
+	<volist name="reg_type" id="vo">
+	<div class="control-group">
+		<label class="control-label" style='color:{$vo.6}'>{$vo.4}</label>
+		<div class="controls">
+			<input type="button" f="bnn"  style="background-color:{$vo.5};color:{$vo.6}" class="btn" value='背景色'>
+			<input type="hidden" class="text input-small bgcolor" name="color[]"  value="">
+			<input type="button" f="btn"  style="background-color:{$vo.6};color:{$vo.5}" class="btn" value='字体色'>
+			<input type="hidden" class="text input-small ftcolor" name="ftcolor[]"  value="">
+			<input type="hidden" class="text input-small" name="rank[]" value="{$vo.1}">
+		</div>
+	</div>
+	</volist>
+	 <div class="form-actions">
+              <button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
+              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+     </div>
+</div>
+	</form>
+	</div>
+</block>
+<block name="script">
+ <script type="text/javascript" src="__STATIC__/bgcolor/js/jquery.bigcolorpicker.js"></script>
+<script type="text/javascript">
+$(":input[f='bnn']").bigColorpicker(function(el,color){
+	$(el).attr("style",'background-color:'+color);
+	$(el).next('.bgcolor').val(color);
+});
+$(":input[f='btn']").bigColorpicker(function(el,color){
+	$(el).attr("style",'background-color:'+color);
+	$(el).next('.ftcolor').val(color);
+});
+highlight_subnav("{:U('Config/rankColor')}");
+</script>
+</block>

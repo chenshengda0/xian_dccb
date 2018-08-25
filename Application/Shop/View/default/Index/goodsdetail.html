@@ -1,0 +1,352 @@
+<include file="Public:header"/>
+<link rel="stylesheet" href="__CSS__/haojudian.css" type="text/css" />
+<link rel="stylesheet" href="__STATIC__/zoom/zoom.css" type="text/css" />
+ <style>
+     #autoImg {
+         width: 800px;
+         padding: 0px;
+         overflow: hidden;
+         margin-left: auto;
+         margin-right: auto;
+     }
+      #autoImg .content img {
+          border: 0 none;
+      }
+</style>
+<!--nav-->
+<div class="Commod_nav">
+	<div class="ny_bt">
+    	<a href="{:U('Index/index')}">首页</a>>
+        {$goodinfo.category_id|get_location_name}     
+        ><a href="{:U('Index/goodsDetail',array('id'=>$goodinfo['id']))}">{$goodinfo.goods_name}</a>
+    </div>
+    <div class="all_nav">
+    	<ul>
+        	<li><a href="javascript:void()" class="y_bg">分类 </a></li>
+        	<foreach name='childList' item='vo'>
+        		<li><a href="{:U('Index/goods',array('id'=>$vo['id']))}" >{$vo.title}</a></li>
+        	</foreach>
+        </ul>              
+    </div>
+</div>
+<div class="yz_box">
+	<div class="prod_mb_top">
+        <div class="prod_mb_tr">
+            <div class="prod_mb_tr_t">
+                <h3>{$goodinfo.goods_name}<font color="#ff6600"> </font></h3>
+            </div>
+            <div class="prod_mb_tr_m">            	
+                <div class="prod_rol">
+                	<strong>￥{$goodinfo.ms_price}</strong>
+                	<span class="discount">市场价格：￥{$goodinfo.tox_money_need}</span>
+                </div>
+                <div class="prod_rol"><span class="youhui">优惠</span>
+                	<span class="hui">￥{$goodinfo['tox_money_need']-$goodinfo['ms_price']}</span>
+                </div>
+               <!--  <div class="prod_evaluation">
+                	评价<a href="javascript:void(0);" class="detail_star">★★★★★</a>0 人评价</div> -->
+                <div class="prod_rol">近期销售：<span class="red">{$goodinfo.sell_num}</span> 件</div>
+                
+                 
+                  <form action="{:U('Order/order')}" name="orderform" id="orform" method="post" onsubmit="return trySubmit()">
+					<input type="hidden" name="id[]" value="{$goodinfo.id}"/> 
+					<input type="hidden" name="price[]" id="inputprice" value="{$goodinfo.ms_price}"/> 
+					<input type="hidden" name="sort[]"  value="{$goodinfo.id}"/> 
+					<input type="hidden" name="parameters[]" id="inputparameters" value="{$goodinfo.parameters}"/> 
+					<div class="prod_rol"><span class="NUb">数量</span><a href="javascript:void(0);" class="dd_p">-</a><input name="num[]" id="txtbc" type="text" value="1" class="dd_input"><a href="javascript:void(0);" class="dd_n">+</a></div> 
+ 				</form>
+                <div class="prod_btn">
+                    <input type="hidden" value="0" id="depot" />
+                	<a href="javascript:void(0);" onclick="zaixian();return false;" class="prod_nowBuy">立即购买</a>
+                    <a href="javascript:void(0);" onclick="buy({$goodinfo.id});return false;" class="prod_gwc">加入购物车</a> 
+                    <!-- 购物车计算浮动层 begin -->
+	             <div id="showIncludeCart" style="display:none;">
+		             <a class="buy_pop_close" onclick="jQuery('#showIncludeCart').hide();" title="关闭"></a>
+		             <div class="buy_icon"></div>
+		             <div class="buy_pop_top"><div class="title">此商品已成功放入购物车</div>
+		             <div class="font">购物车共 <font id="totalnum" class="red"></font> 件宝贝<span>合计 <font class="red" id="fee"></font> 元</span></div>
+		             <div class="btn_continue">
+		             <div class="pop_btn_r" ><a onclick="jQuery('#showIncludeCart').hide();return false;" href="javascript:vod(0);">继续购物</a></div>
+		             <div class="btn_cart"><a href="{:U('Shopcart/index')}">去购物车结算</a></div>
+		             </div>
+	             </div>
+            </div> 
+         <!-- 购物车计算浮动层 over -->                               
+                </div>
+                <p><span>收藏产品：<a href="javascript:vod(0);" onclick="favor({$goodinfo.id});return false;">
+                	<img title="收藏按钮" src="__IMG__/favor.jpg"></a>
+				</span></p>   
+            </div>            
+           <div class="clearfloat"></div>
+       
+        </div>
+        <div class="prod_mb_tl">
+         <script src="__STATIC__/zoom/jquery.js" type="text/javascript"></script>
+         <script src="__STATIC__/zoom/cloud-zoom.1.0.2.min.js" type="text/javascript"></script>
+            <div class="prev" id="prev"></div>
+            <div class="next" id="next"></div>
+            <span id="prevTop"></span><span id="nextTop"></span>
+            <div class="picBox" id="picBox">
+                <ul style="left: 0px;">
+                     <li>
+                     	<img id="imgone" src="{$goodinfo.goods_ico|get_cover='path'}" width="350" height="350" /></li> 
+                  <volist name='goodinfo.pics' id='v'>
+                	 <li><img src="{$v|get_cover='path'}" width="350" height="350" /></li>  
+                </volist>                           
+                </ul>
+            </div>
+            <div class="listBox" id="listBox">
+                <ul style="width: 248px; left: 0px;">
+                <li><img id="imgone" src="{$goodinfo.goods_ico|get_cover='path'}" width="50" height="50" /></li> 
+                <volist name='goodinfo.pics' id='v'>
+                	 <li><img src="{$v|get_cover='path'}" width="50" height="50" /></li>  
+                </volist>
+                </ul>
+            </div>
+        </div>       
+        <div class="clearfloat"></div>
+    </div>
+</div> 
+<!--商品详情部分-->   
+<!--             <div class="prod_recommend">
+	            <div class="recommend_tit"><a href="#">猜你喜欢</a></div>
+	            <div class="recommend_ul">
+    	            <ul>
+	    	            <foreach name='viewlist' item='vo'>
+		    	            <li><a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" target="_blank">
+		    	            	<img class="err-product pimg1" src="{$vo['goods_ico']|get_cover='path'}"/></a>
+	            	            <a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" class="recom_ul_tit">{$vo.title}</a>
+	                            <span class="recommend_price">￥{$vo.ms_price}</span><a href="javascript:void(0);" onclick="smAddToCart.add(this,1,1,3)" class="recommend_gwc">加入购物车</a>                        
+	                        </li>
+	    	            </foreach>                          
+                    </ul>
+                </div>
+                <div class="clearfloat"></div>
+            </div> -->
+<!--相关推荐END-->
+<div class="Hot_charts">
+	<div class="Charts_box">
+    	<div class="hot_comodity">
+        	<div class="hot_comodTit"><a href="#">热销排行榜</a></div>
+            <div class="hot_comod">
+            	<ul>
+            		<foreach name='hotList' item='vo' key='k'>
+            			<li>
+            				<a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" target="_blank" title="{$vo.goods_name}">
+	            			<if condition='$k lt 4'>
+	            				<img class="err-product pimg1" src="{$vo.goods_ico|get_cover='path'}"/>
+	            			<else/>
+	            				{$vo.goods_name|msubstr=0,16}
+	            			</if>
+	            			</a>
+	            			<span class="recommend_price">￥{$vo.ms_price}</span> 
+           			<span class='recommend_price_02'><del>￥{$vo.tox_money_need}</del></span>     
+           			<span class='recommend_price_02' style='margin-left:15px' >	已销售：</span>
+           			<span class="recommend_price" style='padding:0px'>{$vo.sell_num}</span>  
+	            			
+	            			<div class="clearfloat"></div>
+            			</li>
+            		</foreach>                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="comodity_date">
+    	<div class="tabtitle">
+                <ul>
+                  <li class="onli">商品介绍</li>
+               <!--    <li>商品评论</li> -->
+                  <li>商品咨询</li>
+                </ul>
+                <div class="clearfloat"></div>
+          </div>
+          <div class="tabbox">
+          	 <div class="onbox subbox">
+             	<div class="c_i_box">
+                    <div class="comodity_introduction">
+                        <div class="introduction_deta">
+                            <span class="introduct_name">商品名称：</span>
+                            <span class="introduct_cont">{$goodinfo.goods_name}</span>
+                        </div>
+                        <!-- <div class="introduction_deta">
+                            <span class="introduct_name">品牌：</span>
+                            <span class="introduct_cont">婴幼儿营养品</span>
+                        </div> -->
+                        <div class="clearfloat"></div>
+                    </div>
+                </div>
+                <div class="comodity_content">
+                	<div class="com_cont_tit"><img src="__IMG__/commend_tit1.png"/></div>
+
+                        <div id="autoImg">
+                            <div class="content">
+                                {$goodinfo.goods_detail}
+                            </div>
+                        </div>
+                </div>
+             </div>
+<!--              <div class="subbox">
+             	<div class="comodity_evaluation">
+                	<div class="com_cont_tit"><img src="__IMG__/commend_tit2.png"/></div>
+                    <div class="good_evalua">
+                    	<div class="g_v_left">
+                        	<a href="javascript:void(0)">100%</a>
+                            <p>好评度</p>
+                        </div>
+                        <div class="g_v_right">
+                        	<p>发表评价注意事项</p>
+                            <p>1:评价应客观公正，对交易过程进行如实描述</p>
+                            <p>2:不得包含任何形式的广告信息</p>
+                            <p>3:不得包含谩骂、辱骂及人身攻击的内容</p>
+                        </div>
+                        <div class="clearfloat"></div> 
+                    </div>
+                   <div class="all_evaluation">
+                   	   <div class="evaluation_tit"><a href="javascript:void(0);">全部评价</a></div>
+                       <div id="divdata">
+                           </div>
+
+                          
+                         <div class="star_text">购买之后，可以向郑州云超市商品发表评论。<a class="lan" id="comment" href="/goods/GoodsCommentAdd?GoodsId=4122">[发表评价]</a></div>
+
+                   </div>
+                </div>
+             </div> -->
+             <div class="subbox">
+             	<div class="comodity_evaluation">
+                	<div class="com_cont_tit"><img src="/Theme/Dimestore2/pimages2/commend_tit3.png"/></div>
+                    <div class="comodity_consultation">
+                    	<div class="tishi">温磬提示：郑州云超市商城向您保证所售商品均为正品行货，还为您提供具有竞争力的商品价格和运费政策，请您放心购买！</div>
+                      	<div class="consulta_tishi">
+                        	<span class="consulta_left">购买之前如有问题，请向郑州云超市咨询。<a href="/Goods/GoodsConsultAdd?GoodsId=4122" class="lan" target="_blank">[发表咨询]</a></span>
+                            <span class="consulta_righ">共 0 条</span>
+                        </div>
+                        <div id="divzx">
+                            </div>
+                    </div>
+                </div>
+             </div>
+          </div>    
+    </div>
+    <div class="clearfloat"></div>
+</div>
+    
+<script type="text/javascript">
+    $(document).ready(function () {   
+        $(".dd_n").click(function () {
+            if (parseInt($("input[class=dd_input]").val()) < 100) {
+                $("input[class=dd_input]").val((parseInt($("input[class=dd_input]").val()) + 1));
+            }
+        });
+        $(".dd_p").click(function () {
+            if (parseInt($("input[class=dd_input]").val()) > 1) {
+                $("input[class=dd_input]").val((parseInt($("input[class=dd_input]").val()) - 1));
+            }
+        });
+        $("input[class=dd_input]").blur(function () {           
+            var reg = /^([0-9]{1,})$/;
+            if (!reg.test($(this).val())) {
+                $(this).val("1");
+                alert("只能填写数字。");
+            }
+        });
+    });
+</script>   
+<script>
+	//在线支付
+	function zaixian(){		
+	    document.orderform.submit();
+	}
+  	//加入购物车
+    function buy(i){
+        var gid=i;//获取当前商品ID                          
+        var url='{:U("Shopcart/addItem")}';//处理函数地址
+        var gnum=$('#txtbc').val();//获取商品数量                   
+        var gprice='{$goodinfo.ms_price}';//价格
+        var gname='{$goodinfo.goods_name}';//获取商品名称      
+        $.ajax({
+            type: "post",//使用post方法访问后台
+            dataType: "json",//返回json格式的数据
+            url:'{:U("Shopcart/addItem")}', //发送数据的地址
+            data:{
+                id:gid,num:gnum,price:gprice,name:gname
+            },
+            success:function(data){                	
+                 if(data.status){
+                    $('#totalnum').text(data.other.cart_num);
+                    $('#fee').text(data.other.total);
+                    $('#showIncludeCart').fadeIn();
+                    $('#icartCount').text(data.other.cart_num);
+                    $('#icartCount').attr('style','display:block');
+                    $('#lefticartCount').text(data.other.cart_num);
+                    $('#lefticartCount').attr('style','display:block');
+                    addCart(data.list,data.other);
+                 }else{
+                      alert(data.info);
+                 }
+            },
+            error:function (XMLHttpRequest, ajaxOptions, thrownError) {
+                    alert(XMLHttpRequest+thrownError); 
+            }
+        });              
+    }	
+  	
+  	function addCart(list,other){
+  		len = list.length;
+  		html1 = '<h3>购物商品</h3><div class="cont"><ul id="ulCart" style="padding-bottom:5px;"> ';
+  		html2 = '<div class="left_nav_one_cont"><ul id="ulLeftCart">';
+  		html = '';
+  		for(i=0;i<len;++i){
+  			html += '<li bc="1">';
+  			html +='<p class="img"><a href=""><img src="'+list[i].goods_ico+'"></a></p>';
+  			html +='<p class="name"><a href="">'+list[i].goods_name+'</a></p>';
+  			html +='<p class="num"><b>￥'+list[i].price+'</b>x'+list[i].num+'<i><a href="javascript:void(0);" onclick="delCart('+list[i].goodid+')">删除</a></i></p>';
+  			html += '<div class="clearfloat"></div></li>';
+  		}
+  		htmlend1 ='</ul></div><div class="index_shopping_ment"><div class="index_shopping_ment_le">';
+  		htmlend1 +='共<b id="gbc">'+other.cart_num+'</b>件商品<p class="all">总计：<b id="ggj">￥'+other.total;
+  		htmlend1 +='</b></p></div><div class="index_shopping_ment_ri"><input class="btn-s" type="button" onclick="goCart();" value="去购物车结算"></div><div class="clearfloat"></div></div>';
+  		
+  		html1 = html1+html+htmlend1;
+  		html2 = html2+html+htmlend1;
+  		$('#divCart').empty();
+  		$('#divCart').append(html1);
+  		$('#divCartLeft').empty();
+  		$('#divCartLeft').append(html2);
+  	}
+  	    
+
+	//收藏商品
+	function favor(id) {
+			var favorid=id;
+		    $.ajax({
+			    type:'post', //传送的方式,get/post
+			    url:'{:U("User/favor")}', //发送数据的地址
+			    data:{id:favorid},
+			    dataType: "json",
+			    success:function(data){
+			        if(data.status=="1"){
+			        	alert(data.msg);
+			        }
+			       },
+			    error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+			    	alert(XMLHttpRequest+thrownError); }
+		    });  		
+	}
+	//切换商品下商品品论商品介绍切换
+    $(function () {
+        $('.titdiv').selftabs();
+        //实例1
+        $('.titdiv').selftabs({ titclass: 'titdiv', conclass: 'condiv', subdiv:'subdiv', hoverclass: 'onli', movestyle: 'mouseover' });
+
+    })
+    
+
+    
+</script>
+ <script src="__JS__/all-nav.js" type="text/javascript"></script>
+ <script src="__JS__/selftabs01.js" type="text/javascript"></script>
+ <!--商品详情图片滚动js-->
+ <script src="__JS__/tushow.js" type="text/javascript"></script>
+<include file="Public:footer" />

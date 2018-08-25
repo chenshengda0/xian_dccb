@@ -1,0 +1,39 @@
+<extend name="Public/base"/>
+<block name="body">
+<form action="{:U('liuyanReply')}" method="post" class="form-horizontal">
+         	<input type = "hidden" name='id' value ="{$id}" />
+         	<div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>{$meta_title}</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>留言用户</label>
+              <div class="controls">
+                <input type="text" name="usernumber" disabled value="{$fromuserid|get_username}" class="input-big span4">
+                <span></span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>留言内容</label>
+              <div class="controls">
+                 <textarea name="content" disabled  class="span4" >{$content}</textarea>
+                <span></span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>回复内容</label>
+              <div class="controls">
+                 <textarea name="reply"  class="span4" ></textarea>
+                <span></span> </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-success">提交</button>
+              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+            </div>
+         </div></div>
+    </form>
+</block>
+<block name="script">
+	<script type="text/javascript">
+		highlight_subnav("{:U('Message/liuyanList')}");
+	</script>
+</block>

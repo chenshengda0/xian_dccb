@@ -1,0 +1,117 @@
+<extend name="public/base"/>
+<block name='style'>
+<style>
+ .astyle{
+ 	width:93px;height:33px;display:inline-block;line-height:30px;font-size:16px;text-align:center;
+ }
+ .tcontent{line-height:30px;}
+ .tcontent a{color:red;}
+</style>
+</block>
+
+<block name="body">
+<div class="bod bgf h782">
+	<div class="table-title">查詢條件</div>
+	<div class="pt20 pb20">
+		<form action="{:U('')}" method="post">
+	        <!-- 高级搜索 -->
+			<div class="search-form" style="text-align:center;">
+				<div class="sleft">
+					<input   type="hidden" id="begintime" name="begintime" value="{$begintime}">
+					<input type="hidden" id="endtime"	name="endtime" value="{$endtime}">
+					<input  class="search_input" type="text" style="width:100px;"  id="select_begintime_id" readonly="readonly"  name="select_begintime" value="{$begintime}">
+					<a class="search_a" href="javascript:;" id="search_begin_id" ><label class="search_btn">开始日期</label></a>
+					<input class="search_input" type="text" style="width:100px;" id="select_endtime_id"	readonly="readonly"  name="select_endtime" value="{$endtime}">
+					<a class="search_a" href="javascript:;" id="search_end_id" ><label class="search_btn">结束日期</label></a>	
+					 <input type="submit" name="" value="查询" class="c_f right_btn01 c_p v_m ml" />
+				</div>
+			</div>
+		</form>
+	</div>
+<div class="table-title">{$title}</div>
+        <div class="pt5 pl10 pr10 mx_list">
+         <table width="100%" class="t_c">
+			<tr class="bgcolor">
+				<td>创建时间</td><td>商家编号</td><td>消费金额</td><td>申请说明</td><td>状态</td>
+			</tr>
+			<notempty name="_list">
+            <volist name="_list" id="vo">
+	        <tr>
+	           <td>{$vo.createtime|date="Y-m-d",###}</td>
+	           <td>{$vo.touserid|query_user='usernumber',###}</td><td>{$vo.money}</td>
+				<td><if condition="$vo.status neq -1">{$vo.message}<else/>{$vo.cause}</if></td>
+				<td>
+					<if condition="$vo.status eq 0">等待商家确认</if>
+					<if condition="$vo.status eq 1">商家确认</if>
+					<if condition="$vo.status eq -1">商家拒认</if>
+				</td>
+               </tr>
+            </volist>
+            <else/>
+            <td colspan="8" class="text-center"> aOh! 暂时还没有内容!</td>
+      	</notempty>
+	</table>
+   	<div class="page">
+			{$_page}
+	</div>
+</div>
+</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		$('#select_begintime_id').datetimepicker({
+			yearOffset:0,
+			lang:'ch',
+			timepicker:false,
+			format:'Y-m-d',
+			formatDate:'Y-m-d',
+		});
+		
+		$('#select_endtime_id').datetimepicker({
+			yearOffset:0,
+			lang:'ch',
+			timepicker:false,
+			format:'Y-m-d',
+			formatDate:'Y-m-d',
+		});
+		
+		$("#search_begin_id").click( function () { 
+			$('#select_begintime_id').datetimepicker('show');
+		});
+		
+		$("#search_end_id").click( function () { 
+			$('#select_endtime_id').datetimepicker('show');
+		});
+		 
+		$("form").submit( function () {
+			$("#begintime").val($("#select_begintime_id").val());
+			$("#endtime").val($("#select_endtime_id").val());
+		} );
+ 
+        //搜索功能
+        $("#search").click(function () {
+            var url = $(this).attr('url');
+            var query = $('.search-form').find('input').serialize();
+            query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+            query = query.replace(/^&/g, '');
+            if (url.indexOf('?') > 0) {
+                url += '&' + query;
+            } else {
+                url += '?' + query;
+            }
+            window.location.href = url;
+        });
+        //回车搜索
+        $(".search-input").keyup(function (e) {
+            if (e.keyCode === 13) {
+                $("#search").click();
+                return false;
+            }
+        });
+    </script>
+<script type="text/javascript">
+        //导航高亮
+        highlight_subnav("{:U('cpRecord')}");
+    </script>
+</block>

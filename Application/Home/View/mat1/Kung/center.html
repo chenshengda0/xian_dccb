@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/foot3.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">交易中心</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="top">
+		    	<ul>
+		    		<li>涨幅：<span>{$arr['fu']}%</span></li>
+		    		<li>量：<span>{$arr['liang']}</span></li>
+		    		<li>低：<span>{$arr['low']}</span></li>
+		    		<li>高：<span>{$arr['hight']}</span></li>
+                  
+		    	</ul>
+		    </div>
+			 <p class="tit">今日币价：{$arr['eve_price']}</p>
+			 <div class="mid">
+			 	<div>
+			 		<ul>
+			 			<li class="dd active">分时线</li>
+			 			<li class="dd">日线</li>
+			 		</ul>
+			 	</div>
+			 	<div class="dd1 cur">
+			 		 <div class="chart" id="lineChart1"></div>
+			 	</div>
+			 	<div class="dd1">
+			 		  <div class="chart" id="lineChart2"></div>
+			 	</div>			 	
+			 </div>
+			 
+			 <div class="mid">
+			 	<div>
+			 		<ul>
+			 			<li class="ddd active">买入{$Think.const.MONEY}</li>
+			 			<li class="ddd">卖出{$Think.const.MONEY}</li>
+			 		</ul>
+			 	</div>
+			 	<div class="ddd1 cur">
+			 	<form action="{:U('center2')}" method="post" >
+			 		 <input type="text"  name="shuliang" placeholder="请输入要购买数量" />
+			 		 <input type="text" name="danjia" placeholder="请输入购买单价" />
+			 		 <input type="submit" value="提交" class="but"/>
+			 	</form> 
+			 	</div>
+			 	<div class="ddd1">
+			 	<form action="{:U('center1')}" method="post">
+			 		 <input type="text" name="shuliang1" placeholder="请输入要卖出数量" />
+			 		 <input type="text" name="danjia1" placeholder="请输入卖出单价" />
+			 		 <input type="submit" value="提交" class="but"/>
+			 	</form> 
+			 		
+			 	</div>	
+			 	<table border="">
+			 			<tr>
+			 				<th>昵称</th>
+			 				<th>挂出数量</th>
+			 			
+			 				<th>总价（$）</th>
+			 				<th>状态</th>
+			 			</tr>
+			 			<foreach  name="list" item="vo" >
+					 			<tr>
+					 			
+					 				<td><if condition="$vo.mm eq 1">{$vo['myname']}
+					 				    <else /> {$vo['youname']}
+					 				    </if>
+					 				</td>
+					 				<td>{$vo['shuiliang']}</td>
+					 				
+					 				<td>{$vo['price']}</td>
+					 				<if condition="$vo.myid eq $uid or $vo.youid eq $uid">
+                                      <td>
+                                      等待中
+                                         </td>
+                                      <else/>
+                                  		<td>
+                                      <!--<a href="{:U('pipei',array("id"=>$vo['id']))}">{$vo['status']|get_sstatus}</a>-->
+                                      <a href="javascript:void(0);" onclick="pipei({$vo['id']})">{$vo['mm']|get_mmm}</a>
+                                      </td>
+                                  </if>
+					 			</tr>
+			 			</foreach>
+			 	</table>		 	
+			 </div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item link" data-link="{:U('Shop/index')}">
+	    		<span class="mui-icon iconfont icon-shangcheng"></span>
+	       	 	<span class="mui-tab-label">商城</span>	        
+		    </a>
+		    <a class="mui-tab-item link" data-link="{:U('Kung/wodekj')}">
+		        <span class="mui-icon iconfont icon-che1"></span>
+		        <span class="mui-tab-label">矿机</span>
+		    </a>
+		    <a class="mui-tab-item link mui-active" data-link="{:U('Kung/center')}">
+		        <span class="mui-icon iconfont icon-jiaoyi"></span>
+		        <span class="mui-tab-label">交易</span>
+		    </a>
+		    <a class="mui-tab-item link" data-link="{:U('User/index')}">
+	    		<span class="mui-icon iconfont icon-wode"></span>
+	        	<span class="mui-tab-label">我的</span>
+		    </a>
+		</nav>
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/echarts3.js">	</script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+      	<script type="text/javascript" src="__PUBLIC__/layui/layui.js"></script>
+		
+		<script type="text/javascript">
+			mui.init();
+			var add = $('.mid .dd');
+			var add1 = $('.dd1');
+			add.click(function() {
+				add.removeClass('active');
+				add1.removeClass('cur');
+				$(this).addClass('active');
+				add1.eq($(this).index()).addClass('cur');
+			});
+			var addd = $('.mid .ddd');
+			var addd1 = $('.ddd1');
+			addd.click(function() {
+				addd.removeClass('active');
+				addd1.removeClass('cur');
+				$(this).addClass('active');
+				addd1.eq($(this).index()).addClass('cur');
+			});
+			var myChart1 = echarts.init(document.getElementById('lineChart1'));
+			var option1 = {
+				tooltip: {
+					trigger: 'axis',
+					formatter: "元/个"
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					top: '15%',
+					containLabel: true
+				},
+				xAxis: {
+					type: 'category',
+					axisLabel: {
+						formatter: '{value} '
+					},
+					data: ['', '', '', '', '']
+				},
+				yAxis: {
+					type: 'value',
+					axisLine: {
+						onZero: false
+					},
+					axisLabel: {
+						formatter: '{value} $'
+					},
+					boundaryGap: false
+				},
+				series: [{
+					name: '',
+					type: 'line',
+					smooth: true,
+					lineStyle: {
+						normal: {
+							width: 1,
+							shadowColor: 'rgba(0,0,0,0.4)',
+							shadowBlur: 10,
+							shadowOffsetY: 10
+						}
+					},
+					data: {$arr['fenxian']}
+				}]
+			};
+			myChart1.setOption(option1);
+			
+			
+			var myChart2 = echarts.init(document.getElementById('lineChart2'));
+			var option2 = {
+				tooltip: {
+					trigger: 'axis',
+					formatter: "元/个"
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					top: '15%',
+					containLabel: true
+				},
+				xAxis: {
+					type: 'category',
+					axisLabel: {
+						formatter: '{value} '
+					},
+					data: ['', '', '', '', '']
+				},
+				yAxis: {
+					type: 'value',
+					axisLine: {
+						onZero: false
+					},
+					axisLabel: {
+						formatter: '{value} $'
+					},
+					boundaryGap: false
+				},
+				series: [{
+					name: '',
+					type: 'line',
+					smooth: true,
+					lineStyle: {
+						normal: {
+							width: 1,
+							shadowColor: 'rgba(0,0,0,0.4)',
+							shadowBlur: 10,
+							shadowOffsetY: 10
+						}
+					},
+					data: {$arr['rixian']}
+				}]
+			};
+			myChart2.setOption(option2);
+			$(document).click(function () {
+		        myChart1.resize();
+		        myChart2.resize();
+		    })
+          
+          
+			function pipei(id){
+				
+				 if(confirm("确定要匹配该订单吗")){
+					 $.ajax({
+						    url:"{:U('pipei')}",//请求的url地址
+						    dataType:"json",//返回的格式为json
+						    async:true,//请求是否异步，默认true异步，这是ajax的特性
+						    data:{id:id},//参数值
+						    type:"POST",//请求的方式
+						   	success:
+						   		function(req){
+								   		layui.use(['layer'], function(){
+
+                                              var info = req.k;
+
+                                              layer.alert(info); 
+						   				})
+						   	},
+						   
+						    error:
+						    	function(){
+						    	layui.use(['layer'], function(){
+
+						   			
+							   		
+					   				layer.alert('匹配失败'); 
+						   		})
+						    }
+						});
+				 }
+			}
+		</script>
+	</body>
+</html>
+

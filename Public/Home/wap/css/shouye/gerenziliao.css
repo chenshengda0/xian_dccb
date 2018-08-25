@@ -1,0 +1,38 @@
+body{
+	background:#EEEEEE
+}
+.main{
+	 font-size: 16px;
+}
+.list1{
+	padding:20px 5px;
+	background: #FFFFFF;
+}
+.list1 span{
+	display: inline-block;
+	width:25%;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: right;
+}
+.list1 input{
+	width: 70%;
+}
+.list1 span,.list input{
+	float: left;
+}
+.but{
+	margin: 10px auto;
+    width: 90%;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #03A3E8;
+    border-radius: 5px;
+}
+.main>p{
+	width: 100%;
+	text-align: center;
+	color: #1DBEFF;
+	margin-top: 10%;
+}

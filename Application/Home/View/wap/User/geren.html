@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/geren.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">个人资料</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="top">
+				<!-- <input type="file" id="photo" id="photo" style="display: none;"> -->
+				
+			<form action="{:U('uploadPicture')}" method="post" enctype="multipart/form-data"  id='formFile' name='formFile'  target='frameFile'>
+				<input id="upload" name="file" accept="image/*" type="file" style="display: none"/>
+			</form>
+			<if condition="$info['photo']">
+				<img src="{$info['photo']|get_cover='path'}" class="img" alt="" id="pic" />
+			<else/>
+				<label for="photo">					
+					<img class="img" id="pic" src="__IMG__/tou.jpg" alt="" />
+				</label>
+			</if>
+			 <iframe id='frameFile' name='frameFile' style='display: none;'>
+		 			
+	         </iframe>
+				
+			</div>
+			<ul class="mui-table-view">
+		        <li class="mui-table-view-cell">
+		        	<span class="mui-pull-left">昵称</span>
+		        	<p class="mui-pull-right">{$info['usernumber']}</p>			          
+		        </li>
+		        <li class="mui-table-view-cell">
+		           <span class="mui-pull-left">手机</span>
+		        	<p class="mui-pull-right">{$info['mobile']}</p>	
+		        </li>
+		        <li class="mui-table-view-cell">
+		        	<span class="mui-pull-left">真实姓名</span>
+		        	<p class="mui-pull-right">{$info['realname']}</p>			          
+		        </li>
+		        <li class="mui-table-view-cell">
+		           <span class="mui-pull-left">会员等级</span>
+		        	<p class="mui-pull-right">{$info['userrank']|get_userrank}</p>	
+		        </li>
+		        <li class="mui-table-view-cell link" data-link="{:U('qianming')}">
+		            <a class="mui-navigate-right">
+		                <span>个性签名</span>
+		            </a>
+		            <p class="mui-pull-right mui-ellipsis qianming">{$info['qianming']}</p>
+		        </li>
+		    </ul>
+			<!--<div class="buts">
+			   <notempty name="daili">
+                 	 <p class="link" data-link="{:U('dl_shouyi')}">代理商收益</p>
+			       
+			   <else/>
+                 	 <notempty name="resutlt">
+			             <p>等待审批中</p>
+			         <else/>
+			               <p class="link" data-link="{:U('daili')}">申请代理商</p> 
+			         </notempty>
+			        
+			      
+			        
+			   </notempty>
+				<p class="ajax-get" href="{:U('shangjia')}">申请成商家</p>
+			</div>    -->
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/layui/layui.js"></script>
+	<script type="text/javascript" src="__JS__/pages/geren.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script>
+	
+	     $(function() {
+			$("#pic").click(function () {
+				$("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+				$("#upload").on("change",function(){
+						$("#formFile").submit();
+						var objUrl = getObjectURL(this.files[0]) ; //获取图片的路径，该路径不是图片在本地的路径
+						if (objUrl) {
+						$("#pic").attr("src", objUrl) ; //将图片路径存入src中，显示出图片
+						}
+					});
+				});
+			});
+			//建立一個可存取到該file的url
+			function getObjectURL(file) {
+                var url = null ;
+              if (window.createObjectURL!=undefined) { // basic
+                url = window.createObjectURL(file) ;
+              } else if (window.URL!=undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+             } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+             }
+              return url ;
+			}
+      )}
+	</script>
+	</script>
+</html>

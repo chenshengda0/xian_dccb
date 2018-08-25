@@ -1,0 +1,17 @@
+数据库连接修改
+
+\yimaoinclude\yimaodatabase.php
+
+
+用户名  admin    密码   11112222    
+
+
+----------------------------------------------------
+提供3种数据库附加方式。。。。
+将数据库还原或直接放到数据库文件夹即可，
+------------------------------------------------
+除商业用户，其他人不要来问我，。。。。
+-----------------------------
+将以下地址复制到浏览器访问即可找我们，，谢谢！
+
+http://webchat.tq.cn/sendmain.jsp?action=chat&version=vip&admiuin=9559148%3Cype=0&iscallback=1&page_templete_id=68987&is_message_sms=0&is_send_mail=0&uin=9559148

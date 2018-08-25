@@ -1,0 +1,2 @@
+感谢你的支持，完整商业版，请购买，售价6000/套，不讲价。谅解！<br>
+<a href="http://webchat.tq.cn/sendmain.jsp?action=chat&version=vip&admiuin=9559148%3Cype=0&iscallback=1&page_templete_id=68987&is_message_sms=0&is_send_mail=0&uin=9559148"  target=_blank style="color:red;">购买咨询点这里</a> 

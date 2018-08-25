@@ -1,0 +1,219 @@
+<extend name="base/base"/>
+
+<block name="style">
+	<link rel="stylesheet" href="__STATIC__/ztree/zTreeStyle/zTreeStyle.css" type="text/css">
+</block>
+<block name="body">
+ <div class="block-area">
+    <div class="tab-container tile">
+    			<ul class="nav tab nav-tabs">
+    				 <li class="active"><a href="javascript:viod(0);">{$title}</a></li>
+                            <li ><a id="expandAllBtn" onclick="return false;"  href="">全部展开</a></li>
+                     		<li class="active"><a id="resetBtn" onclick="return false;" href="">全部折叠</a></li>
+                     		<li><a href="{:U('tTree')}">返回根节点</a></li>
+                </ul>
+               <div class="tab-content">
+                   <div class="tab-pane active" id="home">
+                   <div class="modal" style="position: relative; display: block; background: rgba(255, 255, 255, 0.75);">
+                     <ul style="width:100%; overflow:auto;"id="tree" class="ztree"></ul>   
+					</div>
+                   </div>
+               </div>
+           </div>
+   <div class="clearfix"></div>
+ </div>
+</block>
+<block name='script'>
+<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.excheck-3.5.js"></script>
+<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.exedit-3.5.js"></script>
+<script type="text/javascript" >
+ 	var zTree;
+      var demoMsg = {
+			async:"正在进行异步加载，请等一会儿再点击...",
+			expandAllOver: "全部展开完毕",
+			asyncAllOver: "后台异步加载完毕",
+			asyncAll: "已经异步加载完毕，不再重新加载",
+			expandAll: "已经异步加载完毕，使用 expandAll 方法"
+		}
+		var setting = {
+			async: {
+				enable: true,
+				url:"__CONTROLLER__/getPtree/rootid/{$rootid}/uid/{$uid}",
+				autoParam:["uid"],
+				dataFilter: filter,
+				type: "get"
+			},
+            data: {
+                 key:{
+                         name:"usernumber",
+                         title:"title",
+                     },
+			},
+			view: {
+				nameIsHTML: true
+			},
+			callback: {
+				beforeAsync: beforeAsync,
+				onAsyncSuccess: onAsyncSuccess,
+				onAsyncError: onAsyncError
+			}
+		};
+         
+     
+              //3
+		function filter(treeId, parentNode, childNodes) {
+			if (!childNodes) return null;			
+			for (var i=0, l=childNodes.length; i<l; i++) {       
+				var uid = childNodes[i].uid;
+				childNodes[i].icon= "__STATIC__/ztree/zTreeStyle/img/diy/vip.png";
+				childNodes[i].target= "_self";
+				if(childNodes[i].status==0){
+					childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:red'>[未激活]</span>";
+					childNodes[i].url= "__CONTROLLER__/noActiveUserList/id/"+uid;
+					childNodes[i].title= "请激活";
+				}else{
+					childNodes[i].title= childNodes[i].usernumber;
+					childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:green'>["+childNodes[i].userrank+"]</span>";
+					childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:red'>["+childNodes[i].reg_type+"]</span>";
+					
+					if(uid !='{$rootid}'){
+						childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:green'>[可注册]</span>";
+					}
+					childNodes[i].url= "__CONTROLLER__/registuser/puid/"+uid;
+					
+				}
+			}
+			return childNodes;
+		}
+              //2
+		function beforeAsync() {
+			curAsyncCount++;
+		}
+		
+              //4
+		function onAsyncSuccess(event, treeId, treeNode, msg) {
+			curAsyncCount--;
+			if (curStatus == "expand") {
+				//alert('1');
+				expandNodes(treeNode.children);
+			} else if (curStatus == "async") {
+				asyncNodes(treeNode.children);
+			}
+
+			if (curAsyncCount <= 0) {
+				//alert('2');
+				if (curStatus != "init" && curStatus != "") {
+					
+					$("#demoMsg").text((curStatus == "expand") ? demoMsg.expandAllOver : demoMsg.asyncAllOver);
+					asyncForAll = true;
+				}
+				curStatus = "";
+			}
+		}
+
+		function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+                       alert('onAsyncError');
+			curAsyncCount--;
+
+			if (curAsyncCount <= 0) {
+				curStatus = "";
+				if (treeNode!=null) asyncForAll = true;
+			}
+		}
+
+		var curStatus = "init", curAsyncCount = 0, asyncForAll = false,
+		goAsync = false;
+		function expandAll() {
+                  //alert('expandAll');
+			if (!check()) {
+				return;
+			}
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			if (asyncForAll) {
+				$("#demoMsg").text(demoMsg.expandAll);
+				zTree.expandAll(true);
+			} else {
+				expandNodes(zTree.getNodes());
+				if (!goAsync) {
+					$("#demoMsg").text(demoMsg.expandAll);
+					curStatus = "";
+				}
+			}
+		}
+		function expandNodes(nodes) {
+			if (!nodes) return;
+			curStatus = "expand";
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			for (var i=0, l=nodes.length; i<l; i++) {
+				zTree.expandNode(nodes[i], true, false, false);
+				if (nodes[i].isParent && nodes[i].zAsync) {
+					expandNodes(nodes[i].children);
+				} else {
+					goAsync = true;
+				}
+			}
+		}
+
+		function asyncAll() {
+                  // alert('asyncAll');
+			if (!check()) {
+				return;
+			}
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			if (asyncForAll) {
+				$("#demoMsg").text(demoMsg.asyncAll);
+			} else {
+				asyncNodes(zTree.getNodes());
+				if (!goAsync) {
+					$("#demoMsg").text(demoMsg.asyncAll);
+					curStatus = "";
+				}
+			}
+		}
+		function asyncNodes(nodes) {
+                  // alert('asyncNodes');
+			if (!nodes) return;
+			curStatus = "async";
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			for (var i=0, l=nodes.length; i<l; i++) {
+				if (nodes[i].isParent && nodes[i].zAsync) {
+					asyncNodes(nodes[i].children);
+				} else {
+					goAsync = true;
+					zTree.reAsyncChildNodes(nodes[i], "refresh", true);
+				}
+			}
+		}
+
+		function reset() {
+                   //alert('reset');
+			if (!check()) {
+				return;
+			}
+			asyncForAll = false;
+			goAsync = false;
+			$("#demoMsg").text("");
+			$.fn.zTree.init($("#tree"), setting);
+		}
+
+		function check() {
+                   //alert('check');
+			if (curAsyncCount > 0) {
+				$("#demoMsg").text(demoMsg.async);
+				return false;
+			}
+			return true;
+		}
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#tree"), setting);
+			$("#expandAllBtn").bind("click", expandAll);
+			$("#resetBtn").bind("click", reset);
+		});
+</script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav("{:U('pTree')}");
+    </script>
+</block>

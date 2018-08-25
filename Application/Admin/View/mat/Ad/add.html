@@ -1,0 +1,158 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+		<div class="widget-box">
+			<form action="{:U()}" method="post" class="form-horizontal">
+				<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          			<h5>基本信息</h5>
+        		</div>
+				<div class="widget-content nopadding">
+					<div class="control-group">
+              			<label class="control-label"><span class='require'>（广告所属分类）</span>推广所属一级分类</label>
+              			<div class="controls">
+                			<select name="ypid">
+								<volist id="vo" name="list">
+									<option value="{$vo.id}">{$vo.title}</option>									
+								</volist>
+							</select>
+                		 </div>
+            		</div>
+					<div class="control-group">
+              			<label class="control-label"><span class='require'>（名称不能为空）</span>推广图片名称</label>
+              			<div class="controls">
+                			<input type="text" name="title" value="" class=" input-big span4" value="{$info.title|default=''}">
+               			 </div>
+           			 </div>
+					 <div class="control-group">
+              			<label class="control-label"><span class='require'>（首页推广）</span>位置</label>
+              			<div class="controls">
+                			<input type="text" name="place" class=" input-big span4" value="{$info.place|default='1'}">
+               			 </div>
+           			 </div>
+					 <div class="control-group">
+              			<label class="control-label">链接(u函数调用或者写全路径,若保留为空值则根据关键字跳转到搜索页面)</label>
+              			<div class="controls">
+                			<input type="text" name="url" class=" input-big span4" value="{$info.url|default=''}">
+               			 </div>
+           			 </div>
+					 <!-- <div class="control-group">
+              			<label class="control-label">活动商品(商品id,用逗号隔开如3,14,56,99)</label>
+              			<div class="controls">
+                			<input type="text" name="partner" class=" input-big span4" value="{$info.partner|default=''}">
+               			 </div>
+           			 </div> -->
+							
+					<div class="control-group">
+						<label class="control-label">描述</label>
+						<div class="controls">
+							<label class="textarea input-large">
+								<textarea name="description">{$info.description|default=''}</textarea>
+							</label>
+						</div>
+					</div>
+  					<!-- <div class="control-group">
+              			<label class="control-label">图片</label>
+              			<input type="file" id="upload_picture">
+              			<input type="hidden" name="icon" id="icon" value="{$info['icon']|default=''}"/>
+              			<div class="controls">
+                			<notempty name="info['icon']">
+								<div class="upload-pre-item"><img src="{$info.icon|get_cover='path'}"/></div>
+							</notempty>
+               			 </div>
+           			 </div> -->
+           			 
+					<div class="control-group">
+						<label class="item-label" style = "margin-left:150px;margin-top: 15px">图片</label>
+						<input type="file" id="upload_picture">
+						<input type="hidden" name="icon" id="icon" value="{$info['icon']|default=''}">
+						<div class="upload-img-box" style = "margin-left:150px;margin-top: 15px">
+						<notempty name="info['icon']">
+							<div class="upload-pre-item"><img src="{$info.icon|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					
+					<div class="control-group">
+              			<label class="control-label"><span class='require'>（1-可用，2-禁用）</span>状态</label>
+              			<div class="controls">
+                			<input type="text" name="status" class=" input-big span4" value="{$info.status|default='1'}">
+               			 </div>
+           			 </div>
+					
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#icon").val(data.id);
+				        	src = data.url || data.path;//'__ROOT__' +
+				        	$("#icon").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+				</div>
+				<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          			<h5>固定推广参数配置</h5>
+        		</div>
+				<div class="widget-content nopadding">
+					<div class="control-group">
+              			<label class="control-label">标示（-1:不选择  1：新品  2：热点  3：推荐）</label>
+             		 	<div class="controls">
+                			<input type="text" name="mark" value="{$info.mark|default='-1'}" class=" input-big span4">
+               			 </div>
+            		</div>
+            		<div class="control-group">
+              			<label class="control-label">关键字</label>
+             		 	<div class="controls">
+                			<input type="text" name="keywords" value="{$info.keywords|default=''}" class=" input-big span4">
+               			 </div>
+            		</div>				
+				</div>
+            	<div class="control-group">
+					<input type="hidden" name="id" value="{$info.id|default=''}">					
+					<button type="submit" id="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+					<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+				</div>		
+		</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">		
+		$(function(){
+			showTab();
+			$("input[name=reply]").change(function(){
+				var $reply = $(".form-item.reply");
+				parseInt(this.value) ? $reply.show() : $reply.hide();
+			}).filter(":checked").change();
+		});
+		//导航高亮
+		highlight_subnav('{:U('Ad/index')}');
+	</script>
+</block>

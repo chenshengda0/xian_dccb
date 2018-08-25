@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>推广中心</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.tuijian{position: relative;z-index: 9;font-size: .9em;margin-top: 10px;}
+    	.box{width: 100%;height: auto;float: left;}
+    	.erweima{width: 80%;height: 378px;margin-left: 10%;margin-top: 10%;
+    	background-image: url(images/bj.png);background-size: 100% 100%;float: left;}
+    	.erweima_t{width: 100%;height: 280px;float: left;text-align: center;}
+    	.erweima_t img{width: 200px;height: 200px;margin-top: 40px;}
+    	.erweima_b{float: left;width: 100%;height: 98px;}
+    	.erweima_b p{margin: 0;color: #333;margin-top: 5px;
+    	padding: 0 10px 0 10px;font-size: .9em;}
+    	.fen{float: left;width: 100%;height: 40px;margin-top: 30px;text-align: center;}
+    	.fen a{color: #fff;display: inline-block;padding: 2px 2px 2px 2px;border-bottom: 1px solid #fff;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">推广中心</h1>
+        <!--<a href="{:U('team')}" class="mui-pull-right tuijian">我的推荐</a>-->
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+    		<div class="erweima">
+    			<div class="erweima_t">
+					<div id="output"></div>
+
+    			</div>
+    			<div class="erweima_b">
+    				<p style="margin-top: 30px;">
+    					<span style="color:#FFFFFF">推广码：{$logininfo.usernumber}</span>
+    				</p>
+    				<p>
+    					<span style="color:#FFFFFF">推广地址：<span id="inp" style="color:#FFFFFF">http://{$_SERVER['HTTP_HOST']}/index.php?a=Home/Register/index/id/{$id}</span></span>
+    				</p>
+    			</div>
+    		</div>
+    		<div class="fen">
+    			<a href="##"  class="but">分享给好友</a>
+    		</div>
+    	</div>
+    </div>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__JS__/jquery.qrcode.min.js"></script>
+	<script type="text/javascript" src="__JS__/clipboard.min.js"></script>
+	<script type="text/javascript">
+        var a=($('#inp').html());
+        jQuery(function(){
+            jQuery('#output').qrcode(a);
+        })
+        $('.but').on('click',function(){
+            var e=$("#inp");//对象是contents
+            e.select();
+            tag=document.execCommand("Copy"); //执行浏览器复制命令
+            if(tag){
+                alert('复制内容成功');
+            }
+
+        })
+
+	</script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+<extend name="Public/base"/>
+<block name="body">
+   <div class="fl" style='margin-bottom:10px;'>
+           <a class="btn ajax-get confirm" href = "{:U('deleteData')}">清空所有数据</a>
+           <a class="btn ajax-get confirm" href = "{:U('deleteBonus')}">清空奖金数据</a>
+        </div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+	 highlight_subnav("{:U('index')}");
+    </script>
+</block>

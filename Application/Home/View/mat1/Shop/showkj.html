@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/foot2.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">运行</h1>
+		</header>
+		<div class="mui-content">
+		    <p class="tit">我的：{$res['goods_name']}</p>
+		    <div class="img"><img src="__HOME__/wap/img/index/kuangji.gif"/></div>
+		    <p class="tit">{$res['cchanliang']}{$Think.const.MONEY}</p>	
+		    <div class="list1">
+		    	<span>我的算力：</span><input type="text" value="{$res1}GH/s" disabled="disabled"/>
+		    	<span>累计获得：</span><input type="text" value="{$res2|default='0'}{$Think.const.MONEY}"disabled="disabled"/>
+		    	<span>全网算力：</span><input type="text" value="{$res3}GH/s"disabled="disabled"/>
+
+		    </div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item link" data-link="{:U('Shop/index')}">
+	    		<span class="mui-icon iconfont icon-shangcheng"></span>
+	       	 	<span class="mui-tab-label">商城</span>	        
+		    </a>
+		    <a class="mui-tab-item link mui-active" data-link="{:U('Shop/showkj')}">
+		        <span class="mui-icon iconfont icon-che1"></span>
+		        <span class="mui-tab-label">矿机</span>
+		    </a>
+		    <a class="mui-tab-item link" data-link="{:U('kung/jiaoyi')}">
+		        <span class="mui-icon iconfont icon-jiaoyi"></span>
+		        <span class="mui-tab-label">交易</span>
+		    </a>
+		    <a class="mui-tab-item link" data-link="{:U('User/index')}">
+	    		<span class="mui-icon iconfont icon-wode"></span>
+	        	<span class="mui-tab-label">我的</span>
+		    </a>
+		</nav>
+		
+		
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+</html>
+

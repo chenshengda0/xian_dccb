@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/liushui.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">我的矿机</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="list1">
+		 		<ul>
+		 			<li class="aa active" style="border-right: 1px solid #e8e8e8;">运行中云矿机</li>
+		 			<li class="aa">已过期云矿机</li>
+		 		</ul>
+		 		<p style="clear: both;"></p>
+		 	</div>
+		 	<div class="aa1 list2 cur">
+		 	<notempty name="yunxing">
+		 	
+				 	
+				 		<ul class="mui-table-view">
+				 		
+				 		<volist name="yunxing" id="vo">
+				 		  
+				 		  <li class="mui-table-view-cell mui-media">			       
+				               <img class="mui-media-object mui-pull-left" src="{$vo['goods_ico']|get_cover=path}">
+				               <div class="mui-media-body">
+				                  <span>{$vo['goods_name']}</span>
+				                   <div class="mui-ellipsis">
+				                   		<p>编号：<span>{$vo['kuangjicode']}</span></p>
+				                   		<p>日期：<span>{$vo['ccreatetime']|date="Y-m-d",###}</span></p>
+				                   		<p>剩余：<span>{$vo['allttime']/3600|get_live}小时</span></p>		                   					                   		
+				                   </div>
+				               </div>
+				               <if condition="$vo['sstatus'] eq 1">
+				                  <p class="but link" data-link="{:U('yunxingkj',array('iid'=>$vo['iid']))}">查看</p>
+				               <else/>
+				                  <p class="but ajax-get" href="{:U('qiyong',array('iid'=>$vo['iid']))}">启动</p>
+				               </if>
+				               
+					       </li>
+				 		
+				 		</volist>
+					       		   
+					   </ul>
+				 
+		 	
+		 	
+		 	</notempty>
+		 		</div>
+		 		<div class="aa1 list2">
+		 	<notempty name="baofei">
+				 	
+				 		<ul class="mui-table-view">
+				 		<volist name="baofei" id="vo">
+						       <li class="mui-table-view-cell mui-media">
+					               <img class="mui-media-object mui-pull-left" src="__IMG__/new.jpg">
+					               <div class="mui-media-body">
+					                  <span>{$vo['goods_name']}</span>
+					                   <div class="mui-ellipsis">
+					                   		<p>编号：<span>{$vo['kuangjicode']}</span></p>
+					                   		<p>报废日期：<span>{$vo['stoptime']|date="Y-m-d",###}</span></p>
+					                   		<p>总产量：<span>{$vo['allcchanliang']}</span></p>		                   		
+					                   </div>
+					               </div>
+					              <p class="but link" data-link="{:U('yunxingkj',array('iid'=>$vo['iid']))}">查看</p>
+						       </li>
+				      </volist>
+					       		   
+				       
+				   </ul>
+				 
+		 	 </notempty>
+		 	 	</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script type="text/javascript">
+		var aa = $('.aa');
+		var aa1 = $('.aa1');
+		aa.click(function() {
+			aa.removeClass('active');
+			aa1.removeClass('cur');
+			$(this).addClass('active');
+			aa1.eq(aa.index(this)).addClass('cur');
+		});
+		
+	</script>
+</html>

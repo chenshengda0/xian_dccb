@@ -1,0 +1,99 @@
+<extend name="Base/user"/>
+
+     <block name="content">
+     	<div class="info-wrap">   
+   	<div class="count">
+	    <dl><dt>	<img src="">	</dt>
+			<dd>	Hi,<a href="javascript:void(0)" class="pinkred" title="wpf"><span class='nickname'>{:get_nickname(session ( 'user_auth.uid' ))}</span></a> 欢迎您光临<span class="nickname"> {$webtitle}</span>！</dd>
+			<dd>您的上一次登录时间是：{$time|date='Y-m-d H:i',###}</dd>
+			<dd>当前{$Think.const.HASSHOP}：<span class="nickname">{$uinfo.hasshop|default='0'} </span>&nbsp;&nbsp;当前{$Think.const.HASCP}：<span class="nickname"> {$uinfo.hascp|default='0'} </span>&nbsp;&nbsp;
+		</dl>
+    </div>
+		<div class="qiandao">
+			
+		</div>
+</div>
+<notempty name='order'>
+	<div class="member_tit" style='margin-top:10px;'>
+        <span class="Mt_left">待确认订单</span>
+    </div>
+    <div class="member_cont">
+        <div class="member_table">
+             <table>
+             	<thead>
+             		 <th>订购商品</th>                       
+                     <th>订单总额</th>                        
+                     <th>订单状态</th>
+                     <th>订单操作</th>
+             	</thead>
+             	<tbody>
+             		<foreach name='order' item='vo'>
+             			<tr><td class="order-detail" colspan='3'>订单号：<span>{$vo.orderid}</span>&nbsp;&nbsp;&nbsp;下单时间：<span>{$vo.create_time|date='Y-m-d H:i:s',###}&nbsp;&nbsp;&nbsp;
+             				<eq name="vo['status']" value='2'>发货时间：<span>{$vo.update_time|date='Y-m-d H:i:s',###}</eq>
+             				<eq name="vo['status']" value='3'>签收时间：<span>{$vo.update_time|date='Y-m-d H:i:s',###}</eq>
+					   </span></td>
+					   <td><gt name="vo['status']" value="2"><b><a href="javascript:void(0)" onclick="deleteBtn('{$vo['orderid']}');return false;"><img src="__IMG__/iconfont-lajixiang.png" style="width:20px;height:20px;vertical-align:middle"></a></b></gt></td>
+					   </tr>
+					   <tr>
+					   		<td width='66%' >
+					   			<table>
+                            		<foreach name="vo['id']" item='fo'>
+	                            		<tr>
+	                            			<td width='60%'   style='text-align:left'><a href="{:U('Index/goodsDetail?id='.$fo['goodid'])}" class="dl"> <img src="{$fo.goodid|getGoodPic}"  width="70" height="70"/></a>
+	                            			<span class="c3"><a href="{:U('Index/goodsDetail?id='.$fo['goodid'])}" target="_blank"  class="dd"> {$fo.goodid|get_good_name}</a></span></td>
+	                            			<td width='10%'><span class="c2">￥{$fo.price}</span></td>
+	                            			<td width='10%'><span class="c2">{$fo.num}</span> </td>                            			
+	                            		</tr>
+                            		</foreach>
+                           		</table>
+                   			</td>
+                   			<td width='10%'><p>￥{$vo.total}</p> </td>
+                            <td width='10%'>
+                            	<p>
+                            		<span style='display:block;color: #03ae87'>{$vo.status|get_order_status}</span>
+                            		<a href="{:U('Order/detail?id='.$vo['orderid'])}" target="_blank">订单详情</a>
+                            	</p>
+                            </td>
+                            <td width='14%'>
+                            	<eq name='vo.status' value='2'>
+                            		<a href="javascript:void(0);" onclick="confirmOrder('{$vo['orderid']}');" class="rose">确认订单</a>
+                            		<else/>暂无操作
+                            	</eq>
+                            </td>
+					   </tr>
+             		</foreach>
+             	</tbody>
+             </table>
+        </div>
+    </div>
+     </notempty>
+        <script type="text/javascript">
+    function confirmOrder(id){
+    	layer.confirm('确认签单吗？', function(index){
+    		 $.ajax({
+ 	            url: "{:U('Order/confirmOrder')}",
+ 	            type: "post",
+ 	            data:{id:id},
+ 	            dataType: 'JSON',
+ 	            success: function (data) {	           
+ 	            	 if (data.status) {
+ 	                	layer.msg(data.info,3,1);
+ 	                	setTimeout(function () {
+ 	                        window.location.href = data.url
+ 	                    }, 1000);
+ 	                	 return false;
+ 	                } else {
+ 	                   layer.msg(data.info,2,3);
+ 	                   setTimeout(function () {
+ 	                       window.location.href = data.url
+ 	                   }, 1000);
+ 	                }
+ 	            },
+ 	            error: function (XMLHttpRequest, textStatus, errorThrown) {
+ 	                alert(errorThrown);
+ 	            }
+ 	        });
+    	});
+    }
+</script>
+     </block>

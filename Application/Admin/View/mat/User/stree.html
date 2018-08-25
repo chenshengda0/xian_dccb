@@ -1,0 +1,43 @@
+<extend name="Public/base" />
+<block name="style">
+<link rel="StyleSheet" href="__STATIC__/ztree/dTree/dtree/dtree.css" type="text/css" />
+   <style>
+  </style>
+</block>
+<block name="body">
+<div>
+	<div class="main-title">
+		<h2>{$meta_title}</h2>
+	</div>	
+</div>  
+    <div class="tb-unit posr" style='margin-top:10px;'>
+    	<script type="text/javascript" src="__STATIC__/ztree/dTree/dtree/vertdtree.js"></script>
+  <SCRIPT type="text/javascript" >
+	mytree = new dTree('mytree');
+	var info = eval({$info});
+	for(i=0;i<info.length;i++){
+		if(info[i]['parentid']==0){
+			info[i]['parentid'] = -1;
+		}
+		//alert(info[i].znum);
+		if(info[i].znum<2){
+			info[i]['usernumber']=info[i]['usernumber']+'[可注册]';
+			info[i]['url'] = "__CONTROLLER__/registuser/puid/"+info[i].uid;
+		}else{
+			info[i]['url'] = '__ACTION__/uid/'+info[i].uid;
+		}
+		mytree.add(info[i].uid, info[i]['parentid'], info[i]['usernumber'],info[i]['url'] ,info[i]['usernumber'], '', '');
+	}
+
+	document.write(mytree);
+  </SCRIPT>
+    </div>
+<!-- /表格列表 -->
+</block>
+<block name="script">
+
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:U('User/sTree')}');
+</script>
+</block>

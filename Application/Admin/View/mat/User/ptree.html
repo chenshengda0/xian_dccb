@@ -1,0 +1,274 @@
+<extend name="Public/base" />
+<block name="style">
+<link rel="stylesheet" href="__STATIC__/ztree/zTreeStyle/zTreeStyle.css" type="text/css">
+   <style>
+  </style>
+</block>
+<block name="body">
+<div>
+	<div class="main-title">
+		<h2>{$meta_title}</h2>
+	</div>	
+	<!-- 高级搜索 -->
+	 <div class="cf">  			
+        <form action="__CONTROLLER__/userTree" method="post" class="form-horizontal">  
+			<div class="search-form">
+				<div class="sleft">
+				<input type="text" name="usernumber" class="search-input" value="{:I('usernumber')}" placeholder="请输入用户编号">
+				<button class="btn submit-btn" id="submit" type="submit"  >查询</button>
+				</div>
+			</div>
+		</form>
+    </div>
+    <!-- 表格列表 -->
+    <div class="tb-unit posr" style='margin-top:10px;'>
+        	[ <a id="expandAllBtn" href="#" onclick="return false;">全部展开</a> ] &nbsp;&nbsp;&nbsp;
+			[ <a id="resetBtn" href="#" onclick="return false;">全部折叠</a> ]<br/>
+			<ul id="tree" class="ztree"></ul>
+    </div>
+</div>  
+    <div>
+    </div>
+<!-- /表格列表 -->
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.excheck-3.5.js"></script>
+<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.exedit-3.5.js"></script>
+  <SCRIPT type="text/javascript" >
+  	var action = "{$action}";
+  	var zTree;
+	//var zNodes;
+      var demoMsg = {
+			async:"正在进行异步加载，请等一会儿再点击...",
+			expandAllOver: "全部展开完毕",
+			asyncAllOver: "后台异步加载完毕",
+			asyncAll: "已经异步加载完毕，不再重新加载",
+			expandAll: "已经异步加载完毕，使用 expandAll 方法"
+		}
+		var setting = {
+			async: {
+				enable: true,
+				url:"__CONTROLLER__/getPtree/rootid/{$rootid}/uid/{$uid}",
+				autoParam:["uid"],
+				dataFilter: filter,
+				type: "get"
+			},
+            data: {
+                key:{
+                        name:"usernumber",
+                        title:"title",
+                    },
+			},
+			view: {
+				nameIsHTML: true
+			},
+			callback: {
+				beforeAsync: beforeAsync,
+				onAsyncSuccess: onAsyncSuccess,
+				onAsyncError: onAsyncError
+			}
+		};
+              
+              //3
+		function filter(treeId, parentNode, childNodes) {
+                 
+			if (!childNodes) return null;
+			for (var i=0, l=childNodes.length; i<l; i++) {
+                          
+				var uid = childNodes[i].uid;
+				childNodes[i].icon= "__STATIC__/ztree/zTreeStyle/img/diy/pop.png";				
+				childNodes[i].target= "_SELF";
+				if(childNodes[i].status==0){
+					childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:red'>[未激活]</span>"
+					childNodes[i].url= "__CONTROLLER__/activeUser/id/"+uid;
+					childNodes[i].title = "点击激活"
+				}else{
+					childNodes[i].title = childNodes[i].usernumber;
+					childNodes[i].usernumber =childNodes[i].usernumber+"<span>["+childNodes[i].realname+"]</span>";
+					if(childNodes[i].znum<1){
+						childNodes[i].url= "__CONTROLLER__/registuser/puid/"+uid;
+						childNodes[i].title = "点击注册";
+					}
+					
+				}
+			}
+			return childNodes;
+		}
+              //2
+		function beforeAsync() {
+			curAsyncCount++;
+		}
+		
+              //4
+		function onAsyncSuccess(event, treeId, treeNode, msg) {
+			curAsyncCount--;
+			if (curStatus == "expand") {
+				expandNodes(treeNode.children);
+			} else if (curStatus == "async") {
+				asyncNodes(treeNode.children);
+			}
+
+			if (curAsyncCount <= 0) {
+				if (curStatus != "init" && curStatus != "") {
+					$("#demoMsg").text((curStatus == "expand") ? demoMsg.expandAllOver : demoMsg.asyncAllOver);
+					asyncForAll = true;
+				}
+				curStatus = "";
+			}
+		}
+
+		function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+                       alert('onAsyncError');
+			curAsyncCount--;
+
+			if (curAsyncCount <= 0) {
+				curStatus = "";
+				if (treeNode!=null) asyncForAll = true;
+			}
+		}
+
+		var curStatus = "init", curAsyncCount = 0, asyncForAll = false,
+		goAsync = false;
+		function expandAll() {
+                  //alert('expandAll');
+			if (!check()) {
+				return;
+			}
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			if (asyncForAll) {
+				$("#demoMsg").text(demoMsg.expandAll);
+				zTree.expandAll(true);
+			} else {
+				expandNodes(zTree.getNodes());
+				if (!goAsync) {
+					$("#demoMsg").text(demoMsg.expandAll);
+					curStatus = "";
+				}
+			}
+		}
+		function expandNodes(nodes) {
+                  // alert('expandNodes');
+			if (!nodes) return;
+			curStatus = "expand";
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			for (var i=0, l=nodes.length; i<l; i++) {
+				zTree.expandNode(nodes[i], true, false, false);
+				if (nodes[i].isParent && nodes[i].zAsync) {
+					expandNodes(nodes[i].children);
+				} else {
+					goAsync = true;
+				}
+			}
+		}
+
+		function asyncAll() {
+                  // alert('asyncAll');
+			if (!check()) {
+				return;
+			}
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			if (asyncForAll) {
+				$("#demoMsg").text(demoMsg.asyncAll);
+			} else {
+				asyncNodes(zTree.getNodes());
+				if (!goAsync) {
+					$("#demoMsg").text(demoMsg.asyncAll);
+					curStatus = "";
+				}
+			}
+		}
+		function asyncNodes(nodes) {
+                  // alert('asyncNodes');
+			if (!nodes) return;
+			curStatus = "async";
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			for (var i=0, l=nodes.length; i<l; i++) {
+				if (nodes[i].isParent && nodes[i].zAsync) {
+					asyncNodes(nodes[i].children);
+				} else {
+					goAsync = true;
+					zTree.reAsyncChildNodes(nodes[i], "refresh", true);
+				}
+			}
+		}
+
+		function reset() {
+                   //alert('reset');
+			if (!check()) {
+				return;
+			}
+			asyncForAll = false;
+			goAsync = false;
+			$("#demoMsg").text("");
+			$.fn.zTree.init($("#tree"), setting);
+		}
+
+		function check() {
+                   //alert('check');
+			if (curAsyncCount > 0) {
+				$("#demoMsg").text(demoMsg.async);
+				return false;
+			}
+			return true;
+		}
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#tree"), setting);
+			$("#expandAllBtn").bind("click", expandAll);
+			$("#resetBtn").bind("click", reset);
+		});
+  </SCRIPT>
+<script type="text/javascript">
+    +function($){
+        /* 分类展开收起 */
+        $(".category dd").prev().find(".fold i").addClass("icon-unfold")
+            .click(function(){
+                var self = $(this);
+                if(self.hasClass("icon-unfold")){
+                    self.closest("dt").next().slideUp("fast", function(){
+                        self.removeClass("icon-unfold").addClass("icon-fold");
+                    });
+                } else {
+                    self.closest("dt").next().slideDown("fast", function(){
+                        self.removeClass("icon-fold").addClass("icon-unfold");
+                    });
+                }
+            });
+
+        var auth_groups = [{$authed_group}];
+        $('.cate_id').each(function(){
+            if( $.inArray( parseInt(this.value,10),auth_groups )>-1 ){
+                $(this).prop('checked',true);
+            }
+        });
+	    $('select[name=group]').change(function(){
+		    location.href = this.value;
+	    });
+	    
+	    
+	    $('.icon-user').mouseover(function(){
+	    	$('.help-inline').show();
+	    });
+	    
+	    /* 头部管理员菜单 */
+        $(".user-nickname-show").mouseenter(function () {
+            var userMenu = $(this).children(".user-more-info");
+            userMenu.removeClass("hidden");
+            clearTimeout(userMenu.data("timeout"));
+        }).mouseleave(function () {
+                    var userMenu = $(this).children(".user-more-info");
+                    userMenu.data("timeout") && clearTimeout(userMenu.data("timeout"));
+                    userMenu.data("timeout", setTimeout(function () {
+                        userMenu.addClass("hidden")
+                    }, 100));
+        });
+	    
+	    
+	    
+    }(jQuery);
+    //导航高亮
+    highlight_subnav('{:U('User/pTree')}');
+</script>
+</block>

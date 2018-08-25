@@ -1,0 +1,137 @@
+<extend name="Public/base"/>
+
+<block name="body">
+
+    <div class="data-table table-striped">
+		<form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+            <label class="item-label">项目名称{$info.cronid}<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" id="name" name="name" value="{$info.name|default=''}">（用于显示项目的名称）
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">项目地址<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" id="filename" name="filename" value="{$info.filename|default=''}">（用于显示项目的地址）
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">月份选择<span class="check-tips"></span></label>
+            <select name="month"  id="month" class="search-select">
+            
+					<eq name="month" value="-1"><option selected="selected"   value="-1">*</option><else/>
+					<option   value="-1">*</option></eq>
+                    <for start='1' end='13'>
+                	<option <eq name="info.month" value="$i">selected="selected"</eq>  value="{$i}">{$i}月</option>
+                	</for>
+					
+			</select>（用于选择更新的月份）
+        </div>
+        <div class="form-item">
+            <label class="item-label">星期选择<span class="check-tips"></span></label>
+            <select name="weekday"  id="weekday" class="search-select" value="{$info.weekday|default=''}">
+					<eq name="weekday" value="-1"><option selected="selected"   value="-1">*</option><else/><option   value="-1">*</option></eq>
+					 <volist name="week_list" id="wl">
+                   	 <option <eq name="info.weekday" value="$key">selected="selected"</eq> value="{$key}">{$wl}</option>
+                    </volist>
+			</select>（用于选择为周几更新）
+        </div>
+        <div class="form-item">
+            <label class="item-label">日期选择<span class="check-tips"></span></label>
+            <select name="day"  id="day" class="search-select">
+				<eq name="$info.day" value="-1"><option selected="selected"   value="-1">*</option><else/><option   value="-1">*</option></eq>
+				 <for start='1' end='32'>
+                <option <eq name="info.day" value="$i">selected="selected"</eq> value="{$i}">{$i}日</option>
+                </for>
+
+			</select>（用于选择日期）
+<!--             <div class="controls">
+                <input type="text" class="text input-large" id="day" name="day" value="{$info.day|default=''}">（用于输入日期）
+            </div> -->
+        </div>
+        <div class="form-item">
+            <label class="item-label">时间选择<span class="check-tips"></span></label>
+            <select name="hour"  id="hour" class="search-select">
+            		<eq name="$info.hour" value="-1"><option selected="selected"   value="-1">*</option><else/><option   value="-1">*</option></eq>
+					<for start='0' end='24'>
+                <option <eq name="info.hour" value="$i">selected="selected"</eq>  value="{$i}">{$i}时</option>
+                </for>
+			</select>（用于选择小时）
+            <!-- <div class="controls">
+                <input type="text" class="text input-large" id="hour" name="hour" value="{$info.hour|default=''}">（显示小时）
+            </div> -->
+        </div>
+        <div class="form-item">
+            <label class="item-label">分钟数<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" id="minute" name="minute" value="{$info.minute|default=''}">（用于分钟填写，可以多填，需要用逗号隔开）
+            </div>
+        </div>
+         <div class="form-item">
+            <label class="item-label">状态<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" name="available" value="1" <eq name="info.available" value="1">checked="checked"</eq>  />启用 <input type="radio" name="available" value="0" <eq name="info.available" value="0">checked="checked"</eq>/>禁用
+            </div>
+        </div>
+        <div class="form-item">
+        	<input type="hidden" name="cronid" id="cronid"  value="{$info.cronid}">  
+            <!-- <input type="hidden" name="title" id="title"  value="{$info.title|default=''}">   -->
+            <button class="btn submit-btn" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+        
+         </form>
+    </div>
+    
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+    $("form").submit(function() {
+	    if(!check_empty('minute','分钟')){
+	        return false;
+	        }
+	      
+	    if(!check_neq('minute','分钟')){
+	        return false;
+	        }
+	    
+	    function check_empty(str,info){
+	        var str=$("#"+str).val();
+	        if(str==false){
+	            alert(info+'不能为空');
+	            return false;
+	        }else{
+	            return true;    
+	        }
+	    }
+	    function check_number(str,info){
+	        var reg = new RegExp("^[0-9]*$");
+	        var str=$("#"+str).val();
+	        if(!reg.test(str)){
+	            alert(info+'必须为数字');
+	            return false;
+	        }else{
+	            return true;
+	        }
+	    }
+        function check_neq(str,info){
+            var str=$("#"+str).val();            
+            if(str>100001){
+                alert(info+'金额不能大于100000元！');
+                return false;
+            }else{
+                return true;
+            } 
+        }
+    });
+
+    
+    
+    
+    
+        //导航高亮
+        highlight_subnav("{:U('DataTime/index')}");
+    </script>
+</block>

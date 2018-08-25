@@ -1,0 +1,45 @@
+<extend name="public/base"/>
+<block name='style'>
+<style>
+	#usertab span{
+		display:inline-block;
+		width:16px;
+		height:16px;
+		margin-left:6px;
+	}
+</style>
+</block>
+
+<block name="body">
+<div class="formPage">
+  <div class="formbg">
+   <div class="big_title">{$title}</div>
+    <div class="content_form">				
+        <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="inputTable">
+            <tr>
+                <th><label>加盟商账号：<empty name="userinfo['nickname']"><else/>/{$userinfo['nickname']}</empty></label></th>
+                <td>{$userinfo['usernumber']}</td>
+                <th><label>电子积分总额：</label></th>
+                <td>{$userinfo['elc_money']}</td>
+                <th><label>电子积分余额：</label></th>
+                <td>{$userinfo['hasmoney']}</td>
+            </tr>
+            <tr>
+                <th><label>管理人数:</label></th>
+                <td>{$userinfo['recom_num']}</td>
+				<th><label>创业区人数:</label></th>
+                <td>{$leftTuijian}</td>
+                <th><label>财富区人数：</label></th>
+                <td>{$rightTuijian}</td>
+            </tr>
+        </table>
+    </div>
+  </div>
+</div>
+</block>
+<block name="script">
+    <script type="text/javascript"> 
+        //导航高亮
+        highlight_subnav("{:U('User/showMemberMsg')}");
+    </script>
+</block>

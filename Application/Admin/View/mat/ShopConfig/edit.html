@@ -1,0 +1,123 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>{$info['id']?'编辑':'新增'}配置</h2>
+	</div>
+	<form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+			<label class="item-label">配置标识<span class="check-tips"></span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="name" value="{$info.name|default=''}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">配置标题<span class="check-tips">（用于后台显示的配置标题）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="title" value="{$info.title|default=''}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">排序<span class="check-tips">（用于分组显示的顺序）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-small" name="sort" value="{$info.sort|default=0}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">配置类型<span class="check-tips">（系统会根据不同类型解析配置值）</span></label>
+			<div class="controls">
+				<select name="type">
+					<volist name="Think.config.CONFIG_TYPE_LIST" id="type">
+						<option value="{$key}">{$type}</option>
+					</volist>
+				</select>
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">配置值<span class="check-tips">（配置值）</span></label>
+			<div class="controls">
+				<label class="textarea input-large">
+				<eq name='info.type' value="7">
+				<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+				<div style="margin:10px;">
+				<eq name='info.value' value='0'>
+					<img class="profile-pic animated" style='width:271px;height:70px;' id="pic" src="__IMG__/news_color/logo.png"/>
+					<else/>
+					<img class="profile-pic animated" style='width:271px;height:70px;' id="pic" src="{$info.value|get_cover='path'}"/>
+				</eq>
+				</div>
+				<div class="controls" style="margin-left:75px;margin-bottom:30px;">
+					<input type="file" id="upload_picture" class="btn btn-lg m-r-5">
+				</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#icon").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+							$("#pic").attr("src",src);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<input type="hidden" name="value"  id="icon" value="{$info.value|default=''}"/>
+   				<else/>
+   				<textarea name="value">{$info.value|default=''}</textarea>
+			</eq>
+				</label>
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">配置项<span class="check-tips">（如果是枚举型 需要配置该项）</span></label>
+			<div class="controls">
+				<label class="textarea input-large">
+					<textarea name="extra">{$info.extra|default=''}</textarea>
+				</label>
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">说明<span class="check-tips">（配置详细说明）</span></label>
+			<div class="controls">
+				<label class="textarea input-large">
+					<textarea name="remark">{$info.remark|default=''}</textarea>
+				</label>
+			</div>
+		</div>
+		<div class="form-item">
+			<input type="hidden" name="id" value="{$info.id|default=''}">
+			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div>
+	</form>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		Think.setValue("type", {$info.type|default=0});
+		Think.setValue("group", {$info.group|default=0});
+		//导航高亮
+		highlight_subnav('{:U('Config/index')}');
+	</script>
+</block>

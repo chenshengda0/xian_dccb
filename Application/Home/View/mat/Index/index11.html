@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<style type="text/css">
+			body,html{
+				width: 100%;
+				height: 100%;
+			}
+			.mui-content{
+				width: 100%;
+				height: 100%;
+				background: url(__HOME__/wap/img/index/bj.gif) no-repeat;
+				background-size:100% 100%;
+				position: relative;
+              	margin-top:-22px
+			}
+			.ev{
+				width: 80%;
+				height: 80px;
+				background: url(__HOME__/wap/img/index/12.png) no-repeat;
+				background-size:100% 100%;
+				position: absolute;
+				top: 53%;
+				left: 10%;
+			}
+			.but{
+				width: 80%;
+				height: 60px;
+				background: url(__HOME__/wap/img/index/an.png) no-repeat;
+				background-size:100% 100%;
+				position: absolute;
+				top: 72%;
+				left: 10%;
+			}
+			@-webkit-keyframes music{
+				from{
+					-moz-transform:rotate(0deg) ;
+					-webkit-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				to{
+					-moz-transform:rotate(360deg) ;
+					-webkit-transform: rotate(360deg);
+					transform:rotate(360deg);
+					
+				}
+			}
+			.zhuan{
+				-moz-animation:music 5s linear 0s infinite ;
+				-webkit-animation: music 5s linear 0s infinite;
+				animation: music 5s linear 0s infinite;
+			}
+
+			 .music_btn{
+				position: relative;
+				width:38px;
+				height:38px;
+				left: 84%;
+				top:20px;
+				z-index: 9000;
+			}
+			.music{
+				position: absolute;
+				width:38px;
+				height:38px;
+				background: url(__HOME__/wap/img/index/music_on.png) no-repeat;
+				background-size: 100% 100%;
+				z-index: 9000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="music_btn">
+				<div class="music zhuan"></div>
+			</div>
+			<audio src="__HOME__/wap/img/index/mbg.mp3" loop="loop" autoplay="autoplay" id="bgm"></audio>
+		   <div class="ev"></div>
+		   <div class="but link" data-link="{:U('login')}"></div>
+		</div>		
+		<script src="__HOME__/wap/js/mui.min.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			$('.music').click(function(){
+			var o=document.getElementById('bgm');
+				if(o.paused){
+				o.play();	
+				$('.music').addClass('zhuan');
+				$('.music').css({"background":"url(__HOME__/wap/img/index/music_on.png) no-repeat","background-size":'100% 100%'})
+			}else{
+				o.pause();
+				$('.music').removeClass('zhuan');
+				$('.music').css({"background":"url(__HOME__/wap/img/index/music_off.png) no-repeat","background-size":'100% 100%'})
+			}
+		});
+		</script>
+	</body>
+</html>
+
+
+

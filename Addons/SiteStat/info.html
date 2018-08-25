@@ -1,0 +1,38 @@
+ <div class="container-span top-columns cf">
+	<dl class="show-num-mod">
+		<dt><i class="count-icon user-count-icon"></i></dt>
+		<a target="_blank" href="{:U('User/userindex')}" title="用户总个数" >
+		<dd>
+			<strong>{$info.userall}</strong>
+			<span>会员数量</span>
+		</dd></a>
+	</dl>
+	<dl class="show-num-mod">
+		<dt><i class="count-icon category-count-icon"></i></dt>
+				<a target="_blank" href="{:U('user/noactiveuserlist')}" title="新增会员"><dd>
+			<strong>{$info.newuser}</strong>
+			<span>新增会员</span>
+		</dd></a>
+	</dl>
+	<dl class="show-num-mod">
+		<dt><i class="count-icon user-action-icon"></i></dt>
+				<a target="_blank" href="{:U('message/liuyanlist')}" title="会员留言"><dd>
+			<strong>{$info.message}</strong>
+			<span>会员留言</span>
+		</dd></a>
+	</dl>
+	<dl class="show-num-mod">
+		<dt><i class="count-icon doc-count-icon"></i></dt>
+				<a target="_blank" href="{:U('trading_hall/withdrawalrecord')}" title="提现申请"><dd>
+			<strong>{$info.wd}</strong>
+			<span>提现申请</span>
+		</dd></a>
+	</dl>
+		<dl class="show-num-mod">
+		<dt><i class="count-icon doc-modal-icon"></i></dt>
+				<a target="_blank" href="{:U('shop/verify')}" title="新增订单"><dd>
+			<strong>{$info.order}</strong>
+			<span>新增订单</span>
+		</dd></a>
+	</dl>
+</div>

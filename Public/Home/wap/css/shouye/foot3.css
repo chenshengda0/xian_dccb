@@ -1,0 +1,108 @@
+body{
+	background: #EEEEEE;
+}
+.mui-content{
+	height: 100%;
+	padding-bottom: 60px;
+	overflow-y: auto;
+}
+.top ul{
+	height: 50px;
+}
+.top li{
+	width: 24.88%;	
+	float: left;
+	color: #FFFFFF;
+	font-size: 14px;
+	line-height: 50px;
+	padding-left: 5px;
+	background: #1dbeff;
+}
+.tit{
+	background: #FFFFFF;
+	width: 210px;
+	text-align: center;
+	line-height: 30px;
+	color: #0fa3f8;
+	font-size: 16px;
+	border: 1px solid #0fa3f8;
+	border-radius: 5px;
+	margin: 10px auto;
+}
+.mid{
+	background: #FFFFFF;
+	margin-top: 10px;
+}
+.mid ul{
+	height: 50px;
+}
+.mid li{
+	width: 50%;	
+	float: left;
+	font-size: 14px;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 1px solid #EEEEEE;
+}
+.dd{
+	background: #FFFFFF;
+	color: #1DBEFF;
+}
+
+.dd1{
+	width: 100%;
+	height: 200px;
+	display: none;
+}
+.ddd{
+	background: #FFFFFF;
+	color: #1DBEFF;
+}
+
+.ddd1{
+	width: 100%;
+	margin-top: 10px;
+	background: #FFFFFF;	
+	display: none;
+}
+.ddd1 input{
+	width: 70%;
+	margin-left: 15%;
+}
+.active{
+	background: #1DBEFF;
+	color: #FFFFFF;
+}
+.cur{
+	display: block;
+}
+.chart {
+	width: 100%;
+	height: 200px;
+	background: #FFFFFF !important;
+}
+table{
+	font-size: 14px;
+	width: 100%;
+	color: #656565;
+	border: none;	
+	text-align: center;
+}
+table tr{
+	font-weight: 600;
+	border-top: 1px solid #BBBBBB;
+	line-height: 30px;
+}
+table tr:last-child{
+	border-bottom: 1px solid #BBBBBB;
+}
+.but{
+	margin: 20px auto;
+    width:50%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #03A3E8;
+    border-radius: 5px;
+}

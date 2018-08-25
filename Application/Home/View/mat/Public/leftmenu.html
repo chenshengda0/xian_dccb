@@ -1,0 +1,49 @@
+<div id="leftSide">
+    <div class="logo"><a href="{:U('User/index')}"><img src="{:C('HOME_LOGO')}" width='150' height='71' alt="" /></a></div>
+    <div class="sidebarSep mt0"></div>
+    <ul id="menu" class="nav">
+     <think:nav name="nav">
+	<eq name="nav.pid" value="0"> 
+	 <php>
+	                  $children=D('Channel')->where(array('pid'=>$nav['id'],'status'=>1))->order('sort asc')->select();
+	                  if($children){
+	              </php>
+	              <li class="tables">
+	                <if condition ="($nav.id eq 3)" > 
+	                     	<if condition ="($logininfo.isbill eq 1)" > 
+	                    <a class="exp"  href="#">
+	                     	<span>{$nav.title}</span><strong>{:count($children)}</strong>
+	                     </a>
+	                     <ul class="sub">
+					 	<volist name="children" id="subnav"> 
+	                       <li><a href="{$subnav.url|get_nav_url}">{$subnav.title}</a></li>
+						</volist>
+			 	</ul>
+			 	</if>
+				 		<else/>
+				 		
+				 		 <a class="exp"  href="#">
+	                     	<span>{$nav.title}</span><strong>{:count($children)}</strong>
+	                     </a>
+	                     <ul class="sub">
+					 	<volist name="children" id="subnav"> 
+	                       <li><a href="{$subnav.url|get_nav_url}">{$subnav.title}</a></li>
+						</volist>
+						</ul>
+						</if>
+			 </li>
+			 
+			 	
+			 
+		<php>}else{</php>
+		 <li class="dash">
+	          <a class="active" href="{$nav.url|get_nav_url}">
+	             <span>{$nav.title}</span></a>
+	        </li>
+		<php>}</php> </eq>
+	</think:nav>
+    </ul>
+</div>
+<script type="text/javascript">
+
+</script>

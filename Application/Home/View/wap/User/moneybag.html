@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>我的资产</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.box{width: 100%;height: auto;float: left;}
+    	.zichan{width: 100%;height: 130px;
+    	float: left;background: #313840;border-top: 1px solid #3d4651;border-bottom: 1px solid #3d4651;}
+    	.zichan p{width: 100%;float: left;margin: 0;color: #fff;}
+    	.shuzi{height: 50px;line-height: 50px;
+    	display: flex;justify-content: space-between;padding: 0 20px 0 20px;}
+    	.shuzi span{display: inline-block;color: #fff;font-size: 1.1em;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left" href="{:U('user/index')}"></a>
+        <h1 class="mui-title">我的资产</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+    		<div class="zichan">
+    			<p style="height: 80px;line-height: 80px;text-align: center;">
+    				<span style="font-size: 1.2em;">文化影视链币（CFC）</span>
+    			</p>
+    			<p class="shuzi">
+    				<span>可用<b style="color: #08a627;">{$logininfo.hasmoney}个</b></span>
+    				<span>冻结<b style="color: #ff3434;">{$dongjie}个</b></span>
+    				<span>合计<b style="color: #04d38d;"><?php echo $logininfo['hasmoney']+$dongjie?>个</b></span>
+    			</p>
+    		</div>
+    	</div>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+</body>
+</html>
+

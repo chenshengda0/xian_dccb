@@ -1,0 +1,96 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class='opt_box'>
+<div class="fl">
+    <if condition = "$type eq 1"> <a class="btn btn-primary"  href="{:U('Message/liuyanList',array('type'=>2))}" >进入发件箱</a></if>
+	<if condition = "$type eq 2"> <a class="btn btn-primary"  href="{:U('Message/liuyanList',array('type'=>1))}" >进入收件箱</a></if>           
+	<a class="btn btn-info"  href="{:U('Message/liuyan')}">写留言</a>
+ </div>
+ <include file='Public/search'/>
+ <div class='clear'></div>
+</div>
+<notempty name="_list">
+<div class="row-fluid">
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+          <div class='dataTables_wrapper'>
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                 	<th>留言日期</th>					        
+					<th>{$thtitle}</th>					        
+	         		<th>留言标题</th>
+	         		<th>留言内容</th>
+	   				<th>回复内容</th>
+	         		<th>留言状态</th>
+	         		<th>处理日期</th>
+	         		<th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="_list" id="vo">
+                <tr>
+            		 <td>{$vo.create_time|date="Y-m-d H:i",###}</td>
+	                    	  <td><if condition="$type eq 1">{$vo.fromuserid|get_username}</if>
+	                    	  	<if condition="$type eq 2">{$vo.touser|get_username}</if>
+	                    	  </td>
+					          <td>{$vo.title}</td>
+					          <td>
+					          	<a class='messcon' href="javascript:void(0);" title='点击查看更多' onclick="lmsg('{$vo['content']}')">{$vo.content}</a>
+					          </td>
+					          <td>
+					          		<empty name="vo['reply']">暂无回复<else/>
+					          		<a class='messcon'  href="javascript:void(0);"  title='点击查看更多' onclick="lmsg('{$vo['reply']}')">{$vo.reply}</a></empty>
+					          </td>
+					          <td>
+						          <if condition="$vo.status eq 0 ">未处理</if>
+						          <if condition="$vo.status eq 1 ">已处理</if>
+					          </td>
+					          <td>
+					          	<if condition="$vo.status eq 0 ">无</if>
+						         <if condition="$vo.status eq 1 ">{$vo.reply_time|date="Y-m-d H:i",###}</if>
+					          </td>					     					         
+					          <td style='text-align:center;'>
+					          		
+					          		<if condition="$type eq 1">
+						          		<if condition="$vo.status eq 0 ">						        
+						          			<a class="btn btn-mini btn-info" href="{:U('Message/liuyanReply',array('id'=>$vo['id'],'fromuserid'=>$vo['fromuserid']))}" >回复<br/></a></if>		          		
+						          		<if condition="$vo.status eq 1 ">
+						          			<a class="ajax-get btn btn-mini btn-danger"  href="{:U('MessagedeleteLiuyan',array('id'=>$vo['id'],'type'=>$type))}" >删除<br/></a>
+						          		</if>
+					          		</if>
+					          		<if condition="$type eq 2">
+					          			<a class="ajax-get btn btn-mini btn-danger"  href="{:U('Message/deleteLiuyan',array('id'=>$vo['id'],'type'=>$type,'status'=>$vo['status']))}" >删除<br/></a>					          							          		
+					          		</if>
+					          </td>
+                    </tr>
+                </volist>
+              </tbody>
+            </table>
+            <div class="page">
+             {$_page}
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+       <else/>
+       <eq name = "type" value="1">
+        <include file='Public/emptylist' title="收件箱为空"/>
+        <else/>
+        <include file='Public/emptylist' title='发件箱为空'/>
+        </eq>     
+  </notempty>
+</block>
+<block name="script">
+<script type="text/javascript">
+	function lmsg(content){
+		 layer.alert(content,12);
+	}
+    //导航高亮
+   highlight_subnav("{:U('Message/liuyanList')}");
+</script>
+</block>

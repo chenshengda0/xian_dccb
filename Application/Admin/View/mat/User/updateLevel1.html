@@ -1,0 +1,55 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="widget-box">
+   <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+     <h5>基本信息</h5> </div>
+   <form action="{:U('')}" method="post" class="form-horizontal">	
+        <div class="widget-content nopadding">
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>会员编号</label>
+              <div class="controls">
+                <input type="text" readonly name="usernumber" id="usernumber" value="{$uinfo.usernumber}"  class=" input-big span4">
+                <span></span></div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">会员姓名</label>
+              <div class="controls">
+              <span class='require spn-info'>{$uinfo.realname}</span>
+            </div></div>
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>升级方式</label>
+              <div class="controls">
+                  <LABEL class='radio inline'><input class="btn btn-info" type="radio" checked name='uptype' value='1'/><span>扣币升级</span></LABEL>
+                  <LABEL class='radio inline'><input class="btn btn-info" type="radio" name='uptype' value='0'/><span>空单升级</span></LABEL>
+                  <LABEL class='radio inline'><span class='require'>(只对级别升级有效)</span></LABEL> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>升级类型</label>
+              <div class="controls">
+                  <LABEL class='radio inline'><input class="btn btn-info" type="radio" checked name='lvtype' value='2'/><span>会员级别</span></LABEL>
+                  <LABEL class='radio inline'><span class='require'>(当前级别：{$uinfo.userrank|get_userrank})</span></LABEL> </div>
+            </div>
+               <div class="control-group">
+              <label class="control-label"><span class='require'>*</span>会员级别</label>
+              <div class="controls">
+                <select  name="userrank">
+				<foreach name="userrank" item="vo">
+					<option value="{$vo}">{$vo|get_userrank}</option>
+				</foreach>
+				</select>
+                <span></span> </div>
+            </div>
+        </div>
+ <div class="form-actions">
+      <button type="submit" class="btn btn-success ajax-post" target-form='form-horizontal'>提交</button>
+      <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+ </div>
+  </form>
+ </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+	highlight_subnav("{:U('User/userindex')}");
+    </script>		
+</block>

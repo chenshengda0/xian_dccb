@@ -1,0 +1,129 @@
+<extend name="Public/base"/>
+
+<block name="body">
+ <div class="search_box">
+         <volist name="buttonList" id="button">
+             <{$button.tag} {$button.attr}>{$button.title|htmlspecialchars}</{$button.tag}>
+         </volist>
+ </div>
+<div class="row-fluid">
+<div class="widget-box">
+
+<div class="widget-title"> 
+<span class="icon"><i class="icon-th"></i></span>
+<h5>{$meta_title}</h5></div>
+          
+<div class="widget-content nopadding">
+<div class='dataTables_wrapper'>
+        <table class='table table-bordered data-table'>
+            <!-- 表头 -->
+            <thead>
+            <tr>
+                <th class="row-selected row-selected">
+                    <input class="check-all" type="checkbox"/>
+                </th>
+                <volist name="keyList" id="field">
+                    <th>{$field.title|htmlspecialchars}</th>
+                </volist>
+            </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+            <volist name="list" id="e">
+                <tr>
+                    <td><input class="ids" type="checkbox" value="{$e['id']}" name="ids[]"></td>
+                    <volist name="keyList" id="field">
+                        <td>{$e[$field['name']]}</td>
+                    </volist>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="page">
+        {$pagination}
+    </div>
+    </div>
+</div></div>
+    <script type="text/javascript" src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script type="text/javascript">
+    url = "{$current}"
+    highlight_subnav("{:U('"+url+"')}");
+        $(document).on('submit', '.form-dont-clear-url-param', function(e){
+            e.preventDefault();
+            var seperator = "&";
+            var form = $(this).serialize();
+            var action = $(this).attr('action');
+            if(action == ''){
+                action = location.href;
+            }
+            var new_location = action + seperator + form;
+
+            location.href = new_location;
+
+            return false;
+        });
+    </script>
+    <script>
+        $(function(){
+            $('.tox-confirm').click(function(e){
+                var text = $(this).attr('data-confirm');
+                var result = confirm(text);
+                if(result) {
+                    return true;
+                } else {
+                    e.stopImmediatePropagation();
+                    e.stopPropagation();
+                    e.preventDefault();
+                    return false;
+                }
+            })
+        });
+
+        $(document).ready(function () {
+            $('.popup-gallery').each(function () { // the containers for all your galleries
+                $(this).magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+                    tLoading: '正在载入 #%curr%...',
+                    mainClass: 'mfp-img-mobile',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+
+                    },
+                    image: {
+                        tError: '<a href="%url%">图片 #%curr%</a> 无法被载入.',
+                        titleSrc: function (item) {
+                            /*           return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';*/
+                            return '';
+                        },
+                        verticalFit: false
+                    }
+                });
+            });
+        });
+        function conf(obj,text,url){
+    		layer.confirm('确定执行'+text+'操作吗?', function(index){
+    			var index = layer.load('正在执行，请耐心等待');
+    			 $.get(url,success, "json");
+    			 return false;
+    		});
+    		
+    		function success(data) {
+    		    if (data.status) {
+    		    	layer.msg(data.info,3,1);
+    		    	setTimeout(function () {
+    		    		var index = layer.load('正在跳转...');
+    		            window.location.href = data.url
+    		        }, 2000);
+    		    } else {
+    		    	layer.msg(data.info,3,3);
+    		}
+    	}
+    </script>
+    <script type="text/javascript" src="__PUBLIC__/Core/js/ext/magnific/jquery.magnific-popup.min.js"></script>
+</block>

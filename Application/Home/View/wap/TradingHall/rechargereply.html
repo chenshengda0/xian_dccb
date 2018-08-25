@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>充值</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	header a{margin-top: 10px;font-size: .9em;color: #999;}
+    	.act{background: #292c33;}
+    	.box{float: left;width: 100%;height: auto;}
+    	.box button{width: 95%;height: 40px;background: #f93333;color: #fff;border: none;margin-left: 2.5%;}
+    	.box p{width: 100%;float: left;color: #fff;padding: 0 10px 0 10px;}
+    	.jine{width: 95% !important;height: 40px;border-bottom: 1px solid #313840;margin-left: 2.5%;}
+    	.box input{background: none !important;float: left;width: 70%;height: 40px;border: none;}
+    	.jine span{display: inline-block;10%;float: left;
+    	height: 40px;text-align: center;line-height: 40px;color: #fff;font-weight: bold;font-size: 1.1em;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">充值</h1>
+        <a href="{:U('trading_hall/rechargerecord')}" class="mui-pull-right">充值记录</a>
+    </header>
+    <div class="mui-content">
+        <form action="{:U('rechargeReply')}" method="post" class='form'>
+            <div class="box">
+                <p style="text-align: center;margin-top: 20px;">
+                    <span>手机号码：{$logininfo.mobile}</span>
+                </p>
+
+
+                <p>
+                    <span>汇款账号</span>
+                </p>
+                <p class="jine">
+                    <span></span>
+                    <input type="text" name="out_banknumber" />
+                </p>
+
+                <p>
+                    <span>开户银行</span>
+                </p>
+                <p class="jine">
+                    <span></span>
+                    <input type="text" name="out_bankname" />
+                </p>
+
+                <p>
+                    <span>开户人</span>
+                </p>
+                <p class="jine">
+                    <span></span>
+                    <input type="text" name="out_bankholder" />
+                </p>
+
+                <p>
+                    <span>充值金额</span>
+                </p>
+                <p class="jine">
+                    <span>￥</span>
+                    <input type="text" name="money" />
+                </p>
+
+                <p style="margin-top: 35px;">
+                    <button type="submit">申请充值</button>
+                </p>
+            </div>
+        </form>
+    	<div style="width: 100%;height: 49px;float: left;"></div>
+        <div class="foot">
+            <a href="{:U('Kung/center')}">
+                <p><img src="__H-W__/images/jy.png" alt="" /></p>
+                <p>交易</p>
+            </a>
+            <a href="{:U('Kung/index')}">
+                <p><img src="__H-W__/images/zx.png" alt="" /></p>
+                <p>资讯</p>
+            </a>
+            <a href="{:U('trading_hall/rechargeReply')}" class="act">
+                <p><img src="__H-W__/images/cz.png" alt="" /></p>
+                <p>充值</p>
+            </a>
+            <a href="{:U('user/index')}">
+                <p><img src="__H-W__/images/wd.png" alt="" /></p>
+                <p>我的</p>
+            </a>
+        </div>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+</body>
+</html>
+

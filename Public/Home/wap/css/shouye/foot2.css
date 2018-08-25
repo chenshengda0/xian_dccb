@@ -1,0 +1,50 @@
+body{
+	background: #EEEEEE;
+}
+.mui-content{
+	padding-bottom: 50px;
+}
+.tit{
+	background: #FFFFFF;
+	width: 210px;
+	text-align: center;
+	line-height: 30px;
+	color: #0fa3f8;
+	font-size: 16px;
+	border: 1px solid #0fa3f8;
+	border-radius: 5px;
+	margin: 10px auto;
+}
+.list1{
+	padding: 20px;
+	background: #FFFFFF;
+}
+.img{
+	width: 100%;
+	height: 270px;
+	position: relative;
+}
+.img img{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width:350px;
+	height: 257px;
+	margin-left: -175px;
+	margin-top: -124px;
+}
+.list1 span{
+	display: inline-block;
+	width: 30%;
+	font-size: 16px;
+	line-height: 40px;
+	text-align: right;
+}
+.list1 input{
+	width: 70%;
+}
+.list1 span,.list input{
+	float: left;
+}
+/*********************/
+

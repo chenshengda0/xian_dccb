@@ -1,0 +1,86 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+ <h5>{$meta_title}</h5></div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+    <div class="widget-content nopadding">
+        <div class="control-group">
+            <label class="control-label">标题</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="{$info.title|default=''}">
+                <span class="check-tips">（用于后台显示的配置标题）</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">排序</label>
+            <div class="controls">
+                <input type="text" class="text input-small" name="sort" value="{$info.sort|default=0}">
+                <span class="check-tips">（用于分组显示的顺序）</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">链接</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="url" value="{$info.url|default=''}">
+                <span class="check-tips">（U函数解析的URL或者外链）</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">上级菜单</label>
+            <div class="controls">
+                <select name="pid">
+                    <volist name="Menus" id="menu">
+                        <option value="{$menu.id}">{$menu.title_show}</option>
+                    </volist>
+                </select>
+                <span class="check-tips">（所属的上级菜单）</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">分组</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="group" value="{$info.group|default=''}">
+                <span class="check-tips">（用于左侧分组二级菜单）</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">是否隐藏</label>
+            <div class="controls">
+                <input type="radio" name="hide" value="1">是
+                <input type="radio" name="hide" value="0">否
+                <span class="check-tips"></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">仅开发者模式可见</label>
+            <div class="controls">
+                <input type="radio" name="is_dev" value="1">是
+                <input type="radio" name="is_dev" value="0">否
+                <span class="check-tips"></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">说明</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="tip" value="{$info.tip|default=''}">
+                <span class="check-tips">（菜单详细说明）</span>
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" name="id" value="{$info.id|default=''}">
+            <button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
+             <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+        </div></div>
+    </form></div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        Think.setValue("pid", {$info.pid|default = 0});
+        Think.setValue("hide", {$info.hide|default = 0});
+        Think.setValue("is_dev", {$info.is_dev|default = 0});
+        //导航高亮
+        highlight_subnav("{:U('index')}");
+    </script>
+</block>

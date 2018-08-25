@@ -1,0 +1,66 @@
+<extend name="public/base"/>
+<block name='style'>
+</block>
+<block name="body">
+ <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<form action="{:U()}" method="post">
+   <div class="block-area">
+		<div style="margin:10px;">
+			<eq name='face' value='0'>
+				<img class="profile-pic animated" style='width:200px;height:200px;' id="pic" src="__NEW__/img/woman.jpg"/>
+				<else/>
+				<img class="profile-pic animated" style='width:200px;height:200px;' id="pic" src="{$face|getThumbImageById}"/>
+			</eq>
+		</div>
+		<div class="controls" style="margin-left:75px;margin-bottom:30px;">
+			<input type="file" id="upload_picture" class="btn btn-lg m-r-5">
+		</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#icon").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+							$("#pic").attr("src",src);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+   
+   		<input type="hidden" name="face"  id="icon" value="{$info.face|default=''}"/>
+        <button class="btn btn-lg m-r-5">确认</button>
+   </div>
+</form>
+<div class="block-area">
+        <br/><br/><br/><br/><br/><br/>
+   </div>
+</block>
+<block name="script">
+
+<script type="text/javascript">
+  //导航高亮
+  highlight_subnav("{:U('updateMemberMsg')}");
+</script>
+</block>

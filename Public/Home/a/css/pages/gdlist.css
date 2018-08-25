@@ -1,0 +1,29 @@
+.top{
+	width: 100%;
+	height: 140px;
+	background: url(../../imgs/bg-06.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.list{
+	width: 100%;
+	height: 70px;
+	background-color: #FFFFFF;
+	padding: 10px 20px;
+	margin-bottom: 5px;
+}
+
+.list .name{
+	font-size: 16px;
+	margin-bottom:10px;
+}
+.g{
+	color: #002d73;
+	font-size: 14px;
+}
+.mui-collapse-content p{
+	text-indent: 2em;
+	color: #424242;
+}
+.mui-table-view{
+	font-size: 14px;
+}

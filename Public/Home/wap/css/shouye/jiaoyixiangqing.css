@@ -1,0 +1,76 @@
+body,.mui-content{
+	background: #FFFFFF !important;
+}
+.photo{
+	width: 100%;
+	height: 200px;
+	position: relative;
+}
+.z_photo{
+	position: relative;
+	width: 120px;
+	height: 120px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -60px;
+	margin-top: -60px;
+}			
+.z_file{
+	width: 120px;
+	height:120px;
+	position: absolute;
+	bottom: 0;
+	border: 1px solid #000;
+}
+#file{
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}
+.z_addImg{
+	float: left;
+	width:120px;
+	height: 120px;
+	background: #fff;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+.z_addImg>img{
+	width:100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+/**********************/
+.list{
+	padding:20px 5px;
+	height: 300px;
+}
+.list span{
+	display: inline-block;
+	width:27%;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+}
+.list input{
+	width: 70%;
+	background: #EEEEEE;
+}
+.list span,.list input{
+	float: left;
+}
+.but{
+	margin: 10px auto;
+    width: 80%;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #03A3E8;
+    border-radius: 5px;
+}

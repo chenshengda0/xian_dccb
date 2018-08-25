@@ -1,0 +1,82 @@
+<extend name="Base/user"/>
+ <link rel="stylesheet" href="__CSS__/member.css" type="text/css" />
+<style>
+.goods{
+	display:none
+}
+</style>  
+<block name="content">    
+
+        <div class="member_tit">
+            <span class="Mt_left">我的订单</span>
+            <div class="Mt_right">
+                <form name="formSearch" action="{:U('User/order')}" method="post">
+                    <span>订单编号：</span><input type="text" name="code" value=""><a href="javascript:formSearch.submit();" class="search">查询</a>
+                </form>
+            </div>
+        </div>
+        <extend name="index"/>
+ <link rel="stylesheet" href="__CSS__/member.css" type="text/css" />
+
+<block name="content">
+        <div class="member_cont">
+            <div class="order_box">
+                <div class="order_nub">订单号：<span class="rose_red">{$order.orderid}</span></div>
+                <div class="order_ok">订单状态：<span class="rose_red">{$order.status|get_order_status}</span></div>
+                <div class="clearfloat"></div>
+            </div>       
+            <div class="sh_box">
+                <div class="member_one T_T">收货人信息</div>
+                <div class="sh_bor">
+                    <p>收货人：{$trans.realname}</p>
+                    <p>所在区域：{$trans.area}</p>
+                    <p>详细地址：{$trans.address}</p>                   
+                    <p>联系方式：{$trans.cellphone}</p>                   
+                </div>
+            </div>
+            <div class="shipping_box">
+                <div class="member_two T_T">支付方式</div>
+                <div class="sp">
+                    <p>
+                    	<eq name='order.ispay' value='1'>支付宝</eq>
+	                    <eq name='order.ispay' value='2'>{$Think.const.HASMONEY}</eq>
+	                    <eq name='order.ispay' value='5'>{$Think.const.HASSHOP}</eq>
+                    </p> 
+                </div>
+            </div>
+            <div class="list_box">
+                <div class="member_three T_T">商品清单</div>
+                <div class="sp_list">
+                        <table collspacing="0" collpadding="0" width="100%">
+                            <tbody>
+	                            <tr>
+	                                <th width="40%">商品名称</th>
+	                                <th width="20%">购买单价(元)</th>
+	                                <th width="20%">购买数量</th>
+	                                <th width="20%">小计(元)</th>
+	                            </tr>                                
+                                 <foreach name='detaillist' item='vo'>
+	                                 <tr>
+	                                  <td width="40%">
+	                                        <div class="sp_a">
+	                                            <a href="{:U('Index/goodsDetail?id='.$vo['goodid'])}">
+	                                                <img src=" {$vo.goodid|getGoodPic}"></a><a href="{:U('Index/goodsDetail?id='.$vo['goodid'])}"> {$vo.goodid|get_good_name}</a>
+	                                        </div>
+	                                    </td>
+	                                    <td width="20%">¥{$vo.price}</td>
+	                                    <td width="20%">{$vo.num}</td>
+	                                    <td width="20%" style="color: #f00;">¥{$vo.total}</td>
+	                                </tr>
+                                 </foreach>
+                            </tbody></table>
+                </div>
+                <div class="spr_box">                  
+                    <p class="sp_r"><span>总商品金额：</span><span class="nickname" style='display:initial'>￥{$order.pricetotal}</span> 元</p>                   
+                </div>
+            </div>
+        </div>   
+</block>
+<include file="Public:footer" />
+        
+</block>
+<include file="Public:footer" />

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/zhuce.css" />
+		<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="__MAT__/js/check.js"></script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header " >
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">注册</h1>
+		</header>
+		<div class="mui-content">
+			<div class="logo">
+		    	<img src="{:C('HOME_LOGIN_LOGO')}" alt="" />
+		    </div>
+		    <form action="{:U('register')}" method="post" id="form"  class="form-horizontal">
+				 <if condition="$userinfo['usernumber'] neq '' ">
+              
+				<input type="text" name='tuijiannumber' value="{$userinfo['usernumber']}" type="hidden" placeholder="推荐人" />
+                <else/>
+                <input type="text" name='tuijiannumber'   placeholder="推荐人" />
+              </if>
+				<input type="text" name="usernumber" id="usernumber"  placeholder="昵称" />
+				<div class="d" style="background-color:#fff;margin-bottom:20px;padding-right:10px">
+				   {:hook('J_China_City',$param)}
+				</div>
+				<input type="text" name="mobile" id="mobile" placeholder="手机" />
+				<div style="position: relative;">
+					<input type="text" name="yzm" placeholder="验证码"/>
+					<p class="huoqu">获取验证码</p>
+				</div>
+				
+				<input type="password" name="password1" id="password1" placeholder="登录密码" />
+				<input type="password" name="password2" id="password2" placeholder="支付密码" />
+				<!-- <input id="Txtcode" name="verify" class="form-control" type="text">
+				<img id="verifyImg" class="verifyImg" src="{:U('Home/verify')}"  onclick="changeVerify()"> -->
+				<input type="submit" value="注册" class="ajax-post" target-form='form-horizontal' id="submit"/>
+				 <div class="z_mask">
+		            <!--弹出框-->
+		            <div class="z_alert">
+		                <p class="title">请输入验证码</p>
+		          		<img src="{:U('Home/verify')}" alt="" id="verifyImg" class="img11 verifyImg" onclick="changeVerify()" />
+		          		<input type="number" name="code" id="code" value="" />
+		                <p class="buts1">
+		                    <span class="z_cancel">取消</span>
+		                    <span class="z_sure" style="color:#002f72;">确定</span>
+		                </p>
+		            </div>
+		        </div>
+				
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	
+
+	<script>
+	
+	$("#usernumber").blur(function() {
+		if(!check_empty('usernumber','会员编号')){return false;}
+		if(!checkusernum()){return false;}
+	});
+	/*手机号*/
+	$("#mobile").blur(function() {
+		if(!check_empty('mobile','手机号')){return false;}
+		if(!check_phone('mobile','手机号')){return false;}
+	});
+	$("#password1").blur(function() {
+		if(!check_empty('password1','登录密码')){return false;}
+		if(!checkusernum()){return false;}
+	});
+	$("#password2").blur(function() {
+		if(!check_empty('password2','支付密码')){return false;}
+		if(!checkusernum()){return false;}
+	});
+	$('.huoqu').click(function(){
+		$('.z_mask').show();
+	})
+	$('.z_cancel').click(function(){
+		$('.z_mask').hide();
+	})
+	$('.z_sure').click(function(){
+		code = $("#code").val();
+		mobile=$("#mobile").val();
+		
+		$.post("{:U('yanzhengma')}",{mobile:mobile,code:code}, su, "json");
+	})
+	
+	function su(data) {
+	        if (data.status) {
+	        	layer.msg(data.info,3,1);
+	        	$('.z_mask').hide();
+	        	/* setTimeout(function () {
+	        		var index = layer.load('正在跳转，请耐心等待');
+	                window.location.href = data.url
+	            }, 1000); */
+	        	
+	        	return false;
+	        } else {
+	           layer.msg(data.info,2,3);
+	           $('.z_mask').hide();
+	        }
+	    }
+	/* 登陆 验证码切换 */
+	$("#verifyImg").click(function () { 
+		verifytrun('verifyImg');
+	});
+	 function verifytrun(verify){
+		   var verifyimg = $("#"+verify).attr("src");
+	      	if (verifyimg.indexOf('?') > 0) {
+	           $("#"+verify).attr("src", verifyimg + '&random=' + Math.random());
+	       } else {
+	           $("#"+verify).attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+	       }
+	   }
+	 
+	</script>
+</html>

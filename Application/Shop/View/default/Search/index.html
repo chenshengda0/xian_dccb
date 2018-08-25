@@ -1,0 +1,42 @@
+<include file="Public:header" />     
+<script src="__JS__/all-nav.js" type="text/javascript"></script>
+<link rel="stylesheet" href="__CSS__/haojudian.css" type="text/css" />   
+<div class="two_commod">
+    <div class="ny_bt ny_bts">
+        <a href="{:U('Index/index')}">首页</a><i>></i><a href="javascript:void(0);">搜索结果</a> <i>></i><a href="javascript:void(0);" style='color:red'>{$keyword}</a>
+
+    </div>
+    <div class="all_nav all_navs sl_wrap ">
+        <ul>
+        	<li><a href="javascript:void()" class="y_bg">排序</a></li>  
+            <li <eq name="order" value="1">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Search/index',array('searchtext'=>$keyword,'order'=>1,'sort'=>$see))}">人气<i></i></a></li>
+            <li <eq name="order" value="2">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Search/index',array('searchtext'=>$keyword,'order'=>2,'sort'=>$see))}">最新<i></i></a></li>
+            <li <eq name="order" value="3">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Search/index',array('searchtext'=>$keyword,'order'=>3,'sort'=>$see))}">价格<i></i></a></li>
+            <li <eq name="order" value="4">class="active"<else/></eq>><a onclick='changecolor(this)' class="{$value}" href="{:U('Search/index',array('searchtext'=>$keyword,'order'=>4,'sort'=>$see))}">销量<i></i></a></li>
+        </ul>
+        <div class="clearfloat"></div>
+    </div>
+</div>
+<div class="commodity_lister mar_auto mar15">
+    <div class="commodity_lister_cont">
+        <ul id="uldata">
+        	<foreach name="goodList" item="vo">
+        		<li>
+        			<p class="img"><a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}">
+                        <img class="err-product pimg1" data-img="1" src="{$vo.goods_ico|get_cover='path'}" title="{$vo.goods_name}"></a></p>
+                    <p class="name"><a href="{:U('Index/goodsDetail',array('id'=>$vo['id']))}" title='{$vo.goods_name}'>{$vo.goods_name|msubstr=0,19} <font color="#ff6600"></font></a></p>
+                    <span class="recommend_price">￥{$vo.ms_price}</span> 
+           			<span class='recommend_price_02'><del>￥{$vo.tox_money_need}</del></span>     
+           			<span class='recommend_price_02' style='margin-left:30px' >	已销售：</span>
+           			<span class="recommend_price" style='padding:0px'>{$vo.sell_num}</span>  
+	        	</li>
+	        </foreach>              
+        </ul>
+           
+        <div class="clearfloat"></div>  
+        <div class="page">
+        	{$page}
+    	</div>
+    </div>
+</div>
+<include file="Public:footer" />

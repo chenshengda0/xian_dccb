@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<title>{$title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- CSS -->
+<link rel="stylesheet" href="__LOGIN__/css/supersized.css">
+<link rel="stylesheet" href="__LOGIN__/css/login.css">
+<link href="__LOGIN__/css/bootstrap.min.css" rel="stylesheet">
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+	<script src="__LOGIN__/js/html5.js"></script>
+<![endif]-->
+<script src="__LOGIN__/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="__LOGIN__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__LOGIN__/js/tooltips.js"></script>
+<script type="text/javascript">
+//支持Enter键登录
+	document.onkeydown = function(e){
+		if($(".bac").length==0)
+		{
+			if(!e) e = window.event;
+			if((e.keyCode || e.which) == 13){
+				var obtnLogin=document.getElementById("submit_btn")
+				obtnLogin.focus();
+			}
+		}
+	}
+	$(function(){
+		//提交表单
+		$('#submit_btn').click(function(){
+			show_loading();
+			if($('#pwd').val() == ''){
+				show_err_msg('请输入密码！');	
+				$('#pwd').focus();
+			}else if($('#repwd').val() == ''){
+				show_err_msg('请输入确认密码');
+				$('#repwd').focus();
+			}else if($('#repwd').val()!=$('#pwd').val()){
+				show_err_msg('请确保两次密码一致');
+				$('#repwd').focus();
+			}else{
+				//ajax提交表单，#login_form为表单的ID。 如：
+				$('#reset').ajaxSubmit(function(data) {
+					if(data.status){
+						show_msg(data.info,data.url);	
+					}else{
+						show_err_msg(data.info);
+					}
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body>
+<div class="page-container">
+	<div class="main_box" style='height:400px;'>
+		<div class="login_box">
+			<div class="login_logo">
+				<h2>{$title}</h2>
+			</div>
+			<div class="login_form">
+				<form id='reset'  method="post" action="{:U('doReset')}" >
+				 	<input type="hidden" name="uid" value="{$uid}" />
+					<div class="form-group">
+						<label for="pwd" class="t">新密码：</label> 
+						<input id='pwd' class="form-control x319 in" type="password"   name="password" value="" >
+					</div>
+					<div class="form-group">
+						<label for="repwd" class="t">确认新密码：</label> 
+						<input id='repwd' class="password form-control x319 in" type="password" name="repassword" value=""  >
+					</div>
+					<div class="form-group space">
+						<label class="t"></label>　　　
+						<button type="button"  id="submit_btn" class="btn btn-primary btn-lg">重置密码</button>
+						<input onclick="javascript:history.back(-2);return false;" type="button" value="返回登陆" class="btn btn-default btn-lg">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="bottom">{:C('WEB_SITE_ICP')} <a href="#"></a></div>
+	</div>
+</div>
+<!-- Javascript -->
+<script src="__LOGIN__/js/supersized.3.2.7.min.js"></script>
+<script src="__LOGIN__/js/supersized-init.js"></script>
+<script type="text/javascript">
+ </script>
+</body>
+</html>

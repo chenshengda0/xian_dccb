@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{$meta_title}|{:C('SHOP_TITLE')}</title>    
+    <meta name="keywords" content="{$keywords}" />
+    <meta name="description" content="{$description}" />    
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="Bookmark" href="favicon.ico" />
+    <link href="__CSS__/base.css" rel="stylesheet"/>
+	<link href="__CSS__/index_style.css" rel="stylesheet"/>
+	<link href="__CSS__/left_nav.css" rel="stylesheet"/>
+    <script src="__JS__/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="__JS__/jquery.circliful.js" type="text/javascript"></script>
+    <script src="__JS__/index-nav.js" type="text/javascript"></script>
+    <script src="__JS__/w_swich.js" type="text/javascript"></script>
+    <script src="__JS__/slides.jquery.js" type="text/javascript"></script>   
+    <script type="text/javascript" src="__STATIC__/jquery.cookie.js"></script>
+    <script type="text/javascript" src="__STATIC__/layer/laydate/laydate.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/extend/layer.ext.js" ></script> 
+    <script type="text/javascript">
+        function AddFavorite(title, url) {
+            try {
+                window.external.addFavorite(url, title);
+            }
+            catch (e) {
+                try {
+                    window.sidebar.addPanel(title, url, "http://{$Think.server.HTTP_HOST}");
+                }
+                catch (e) {
+                    alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请使用Ctrl+D进行添加");
+                }
+            }
+        };  
+        $(document).ready(function () {    
+        	$(".all-goods").css('display','block');
+        	$('.item-childs').hover(function(){
+        		$('.all-childs').css('display','block');        		
+        	},function(){
+        		$('.all-childs').css('display','none');          
+            });
+        });    
+     
+    </script>
+</head>
+<body>
+<div>
+        <a name="zero"  style="margin-top:3px"></a>
+        <div class="header_box">
+            <div class="header_top" >
+                <div class="mar_auto">
+					<span class="about">
+						<a href="javascript:void(0);" onclick="AddFavorite('__APP__',location.href)" class="one">收藏本站</a>
+						<a style='background:#f2f2f2' href="{:U('Order/tobeconfirmed')}">订单中心</a>
+						<a style='background:#f2f2f2' href="{:U('Home/User/index')}">会员中心</a>
+						<!-- <a style='background:#f2f2f2' href="{:U('Help/index',array('id'=>$helplink))}">帮助中心</a> -->
+					</span>
+					<span class="re">
+						<span class='name'>&nbsp;&nbsp;您好，
+						<a style='background:#eeeeee;' href="{:U('Home/User/index')}"><span class='red'>{:query_user('realname',session ( 'user_auth.uid' ))}</span></a>
+						欢迎光临<span class='red'>{:C('SHOP_TITLE')}</span>！
+						<a href="{:U('Home/Index/logout')}">[退出]</a></span>";
+					</span>    
+                    <div class="clearfloat"></div>
+                </div>
+            </div>
+            <div class="header">
+                <div class="header_left">
+                    <a href="" class="h_logo" title="{$webtitle}">
+                        <img src="{:C('SHOP_LOGO')}" width='240' height='90' alt="" /></a>
+                </div>
+          
+                <div class="header_right" id="settleup-2013">
+                    <a href="{:U('Shopcart/index')}" class="gwc" id="settleup-url tab_t3">去购物车结算</a>
+                    <span id="icartCount" class="gwc_nub">{$cart_num}</span>
+                    <div class="index_shopping no_cont" style="display:none;">
+                        <div class="index_shopping_b" id="divCart"> 
+                        <notempty name='cartlist'>
+                        	<h3>购物商品</h3><div class="cont">
+                    		<ul id="ulCart" style='padding-bottom:5px;'> 
+                        	<volist name='cartlist' id='vo'>
+                        		<li bc="1">
+                        			<p class="img"><a href=""><img src="{$vo.goodid|get_goods='goods_ico'|get_cover=path}"></a></p>
+                        			<p class="name"><a href="">{$vo.goodid|get_goods='goods_name'}</a></p>
+                        			<p class="num"><b>￥{$vo.price}</b>x{$vo.num}<i><a href="javascript:void(0);" onclick="delCart({$vo.goodid})">删除</a></i></p>
+                        			<div class="clearfloat"></div>
+                        		</li>
+                        	</volist>
+                        	</ul></div>
+                        	<div class="index_shopping_ment">
+	                    		<div class="index_shopping_ment_le">共<b id="gbc">{$cart_num}</b>件商品<p class="all">总计：<b id="ggj">￥{$total}</b></p></div>
+	                    		<div class="index_shopping_ment_ri">
+	                    			<input class="btn-s" type="button" onclick='goCart();'  value="去购物车结算">
+	                    		</div>
+	                    		<div class="clearfloat"></div>
+                    		</div>
+                        <else/>
+                        	<div class="no_shopping"><h3>购物车中还没有商品,赶紧选购吧！</h3></div>
+                        </notempty>
+                        </div>
+                     </div>
+                    </div>
+                <div class="header_search">
+                    <div class="search_btn">
+                        <form id="searchForm" method="post" action="{:U('Search/index')}">
+                            <input type="text" value="输入关键字" name="searchtext" onfocus="this.value=''" class="search_inp" />
+                            <input type="submit" value="" class="search_button" />
+                        </form>
+                    </div>
+                   <!--  <div class="search_bottom">
+                        
+                        <a href="http://www.zzycs.com/goods?id=5397" target='_blank'>樱桃</a><a href="http://www.zzycs.com/catalog?id=136-323" target='_blank'>烧烤工具</a><a href="http://www.zzycs.com/search/index?searchtext=%E7%89%B9%E4%BB%B7" target='_blank'>临期特价</a><a href="http://www.zzycs.com/search?searchtext=%E7%B2%BD%E5%AD%90&t=1" target='_blank'>粽子</a><a href="http://www.zzycs.com/search/index?searchtext=牛奶" target='_blank'>牛奶</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!--头部-->
+        <div class="nav-wrap">
+            <div class="nav">
+                <div class="goods">
+                    <div>
+                        <h2><a href="javascript:void(0);" class="all" id="all">全部商品分类</a> </h2>
+                    </div>
+                    <div class="all-goods index_goods btnone" id="all-goods" style='display:none'>
+                    	<foreach name="sub_menu" item="vo">
+						    <div class="item">
+                                <div class="product">
+                                    <h3><a href="{$vo.href}">{$vo.title}</a> </h3>
+                                    <s style="display: block;"></s>
+                                </div>
+                                <div class="product-wrap pos{$key}">           
+	                                <div class="cf">
+	                                    <div class="fl wd252 pr20">
+	                                        <ul class="cf">
+	                                        	<foreach name="vo['children']" item='fo'>
+	                                        		 <li><a href="{$fo.href}" target="_blank">{$fo.title}</a> </li>	
+	                                        	</foreach>	                                                                                                 
+	                                        </ul>
+	                                    </div>
+	                                </div>
+                            	</div>
+                            </div>
+						</foreach>
+                    </div>
+                </div>
+                <ul class="nav-list cf">
+                		<li>
+		                	<a href="{:U('Index/index')}"  class="<eq name='vo.url|get_nav_active_02' value='1'>'on'</eq>">首页</a>
+	                	</li>
+                	<foreach name='channelList' item='vo'>              			
+              			<li class='item-childs'>
+                			<a href='{$vo.href}' id="{$vo.id}" style='width:120px;'>{$vo.title}
+                			<div class='all-childs' style='width:120px;'>
+                				<ul>	                			
+                				</ul>
+                			</div>
+                			</a>		                			
+                		</li>
+                	</foreach>                      
+                </ul>
+            </div>
+        </div>
+<script>
+
+</script>
+<script>
+	$(function(){
+		val = $('#icartCount').text();
+		if(val==0){
+			$('#icartCount').attr('style','display:none');
+		}
+		
+		$("#settleup-2013").mouseenter(function () {
+			$('.index_shopping,.no_cont').attr('style','display:block')
+        }).mouseleave(function () {
+        	$('.index_shopping,.no_cont').attr('style','display:none')
+         });
+		
+		$(".item-childs a").mouseenter(function () {
+			$('.all-childs').children('ul').children('li').remove();
+			var id= $(this).attr("id");
+			var current_this = $(this);
+			$.ajax({
+				type:'post', //传送的方式,get/post
+				url:'{:U("Home/getCate")}', //发送数据的地址
+				data:{pid:id},
+			 	dataType: "json",
+				success:function(data){
+					//debugger;
+					if(data){
+						current_this.children('.all-childs').children('ul li').remove();
+						len = data.length;
+						for(i=0;i<len;i++){
+							var html = '<li><a href="'+data[i].href+'">'+data[i].title+'</a></li>';
+							current_this.children('.all-childs').children('ul').append(html); 
+						}
+					}else{
+					}
+				},
+				error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+					alert(XMLHttpRequest+thrownError); 
+				}
+			});	
+        }).mouseleave(function () {
+        	$('.all-childs').children('ul').children('li').remove();  
+          });
+	}) 
+	
+		function goCart(){
+			 window.location.href = "{:U('Shopcart/index')}";
+		}
+
+		function delCart(id){
+			$.ajax({
+				type:'post', //传送的方式,get/post
+				url:'{:U("Shopcart/delItemByuid")}', //发送数据的地址
+				data:{id:id},
+			 	dataType: "json",
+				success:function(data){
+					 if (data.status) {
+					    	layer.msg(data.info,3,1);
+					    	setTimeout(function () {
+					            window.location.href = data.url
+					        }, 2000);
+					    } else {
+					    	layer.msg(data.info,3,3);
+					    	setTimeout(function () {
+					            window.location.href = data.url
+					        }, 2000);
+					  }
+				}
+			});	
+		}
+ </script>

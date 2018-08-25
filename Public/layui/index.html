@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/layui.css" />
+		<script type="text/javascript" src="layui.js"></script>
+		<script type="text/javascript" src="lay/modules/form.js"></script>
+		<style type="text/css">
+			html,body,.mui-content,form{
+				width: 100%;
+				height: 100%;
+				background:#FFFFFF;
+			}
+			.con{	
+				text-align: center;
+			}
+			
+			.z_photo{
+				position: relative;
+				width: 100%;
+				height: 260px;
+			}
+						
+			.z_file{
+				width: 120px;
+				height:120px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -60px;
+				margin-top: -60px;
+				border: 1px solid #000;
+			}
+			#file{
+				opacity: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.z_addImg{
+				float: left;
+				width:120px;
+				height: 120px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -60px;
+				margin-top: -60px;
+				background: #fff;
+				text-align: center;
+				position: relative;
+				overflow: hidden;
+			}
+			.z_addImg>img{
+				width:100%;
+				height: 100%;
+				/*position: absolute;
+				top: 50%;
+				left: 50%;*/
+				
+				/*transform: translate(-50%,-50%);
+				-webkit-transform: translate(-50%,-50%);*/
+			}
+			.but{
+				clear: both !important;
+				margin: 10px 10% !important;
+			    width: 80%;
+			    font-size: 16px !important;
+			    text-align: center;
+			    line-height: 40px !important;
+			    color: #fff;
+			    background: #03A3E8;
+			    border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<form class="layui-form" action="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码框</label>
+    <div class="layui-input-inline">
+      <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux">辅助文字</div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">选择框</label>
+    <div class="layui-input-block">
+      <select name="city" lay-verify="required">
+        <option value=""></option>
+        <option value="0">北京</option>
+        <option value="1">上海</option>
+        <option value="2">广州</option>
+        <option value="3">深圳</option>
+        <option value="4">杭州</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">复选框</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="like[write]" title="写作">
+      <input type="checkbox" name="like[read]" title="阅读" checked>
+      <input type="checkbox" name="like[dai]" title="发呆">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">开关</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="switch" lay-skin="switch">
+    </div>
+  </div>
+
+</form>
+
+	</body>
+	<!--<script src="jquery-1.7.2.js"></script>-->
+	<!--<script src="sc_img.js"></script>-->
+	<script type="text/javascript">
+		layui.use(['layer'], function(){
+//		var layer = layui.layer;
+//		  layer.msg('Hello World');
+			layer.alert('酷毙了');
+//		layer.msg('不开心。。', {icon: 5});
+//		layer.confirm('纳尼？', {
+//		  btn: ['确定'] ,//可以无限个按钮
+//		  yes: function(index, layero){
+//		    //按钮【按钮三】的回调
+//		  }
+//		});
+		 var form = layui.form;
+  
+		  //监听提交
+//		  form.on('submit(formDemo)', function(data){
+//		    layer.msg(JSON.stringify(data.field));
+//		    return false;
+//		  });
+		
+		});
+		
+	</script>
+</html>

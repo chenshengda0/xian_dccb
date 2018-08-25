@@ -1,0 +1,266 @@
+<extend name="wap/Base/base"/>
+<block name="body" >
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+<div class="decoration"></div>
+        <div class="widget">
+        <form action="{:U('register')}"  method="post"  class="form" id="form">       
+            <div class="title" style='margin-top:5px;margin-bottom:5px;'><h6>基本信息</h6></div>
+                <fieldset class="step" >
+                    <div class="formRow">
+                        <label class="field-title contactNameField">{:C('COM_TITLE')}编号:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="text" name="usernumber" id="usernumber"  value=""  /></span>
+                        	<span class='oneTwo'><input class="button button-magenta" onclick="checkusernum();" value="验证编号" type="button" id = "zone" /></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        
+                        <label ><span class="req">*</span>{:C('COM_TITLE')}姓名:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="text" name="realname" id="realname" value="" /></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                     <if condition='C("IS_MORE_LEVEL") eq 1'>
+                     <div class="formRow">
+                        <label class="field-title contactNameField">{:C('COM_TITLE')}级别:</label>
+                        <div class="formRight">
+                        <span class='oneTwo'><select class="contactField requiredField"  name="userrank" >
+                               <foreach name="userrank" item="vo">
+									<option value="{$vo[1]}">{$vo['3']}</option>
+								</foreach>
+                            </select></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div></if>
+                    <div class="formRow">
+                        <label ><span class="req">*</span>{:C('COM_TITLE')}身份证号:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input   class="contactField requiredField" type="text" name="IDcard"  value="" maxlength="18" /></span>
+                        	<span class="tip">(请填写本人身份证号，身份证号只能修改一次)</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label ><span class="req">*</span>{:C('COM_TITLE')}手机号:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="text" name="mobile" id="mobile"  value="" maxlength="11" /></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- <div class="formRow">
+                        <label ><span class="req">*</span>开户银行:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><select class="contactField requiredField"  name="bankname" >
+                               <foreach name="allow_bank" item="vo">
+									<option value="{$vo}"  >{$vo}</option>
+								</foreach>
+								</select></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label ><span class="req">*</span>银行卡号:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" name="banknumber"  id="banknumber" value="" maxlength="20" /></span>
+                        	<span class="tip">(开户人必须是{:C('COM_TITLE')}姓名)</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div> -->
+                    
+                    
+                    
+                </fieldset>
+                <div class="clear"></div>
+                       <div class="title" style='margin-top:5px;margin-bottom:5px;'><h6>关系信息</h6></div>
+                <fieldset class="step" >
+                    <div class="formRow">
+                        <label class="field-title contactNameField">推荐人编号:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="text" name='tuijiannumber' id="tuijiannumber" value="{$userinfo['tuijiannumber']}" /></span>
+                        	<span class="tip"></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow" style="display:none">
+                        <label class="field-title contactNameField">报单中心:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="text" name="billnumber" id="billnumber" value="{$userinfo['billcenternumber']}"/></span>
+                        	<span class="tip"></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div> 
+                    <div class="formRow"  style="display:none">
+                        <label class="field-title contactNameField">接点人:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="text" name="parentnumber" id="parentnumber" value="{$userinfo['parentnumber']}" readonly/></span>
+                        	<span class="tip"></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>                  
+                </fieldset>
+                <div class="title" style='margin-top:5px;margin-bottom:5px;'><h6>安全信息</h6>
+                	<span class="field-title contactNameField" >(默认密码为123456)</span>
+                	<span class="btn" ><input class="button button-magenta" id='set' value="重置" type="button" /></span>
+                </div>
+                <fieldset class="step" >
+                    <div class="formRow">
+                        <label class="field-title contactNameField">一级密码:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="password"  name="password1" id="password1" value="123456" /></span>
+                        	<span class='oneTwo'></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label class="field-title contactNameField">确认一级密码:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="password"  name="repassword1" id="repassword1" value="123456" /></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label class="field-title contactNameField">二级密码:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="password" name="password2" id="password2" value="123456" /></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label class="field-title contactNameField">确认二级密码:</label>
+                        <div class="formRight">
+                        	<span class='oneTwo'><input class="contactField requiredField" type="password"  name="repassword2" id="repassword2" value="123456" /></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </fieldset>     
+				<div class="wizButtons"> 
+					<span class="wNavButtons">
+                        <input class="button-big button-blue"  value="确定" type="submit" target-form='form'/>
+                        <input class="button-big button-green"  value="重置" type="reset" />
+                        <input class="button-big button-dark"  value="返回" type="button"  onclick="javascript:history.back();"/>
+                    </span>
+				</div>
+                <div class="clear"></div>
+        </form>
+        </div>
+        
+</block>
+
+<block name="script">
+	<script type="text/javascript">	
+	
+	$(function(){
+		//createNumber();
+	})
+	 function createNumber(){
+    	$.ajax({
+			url:"__URL__/getUsernumber",
+			type:"post",
+			success:function(da){
+				$("#usernumber").val(da);
+			}
+		})	
+    }
+	i = 0;
+	$('#set').click(function(){
+		if(i%2){
+			$("input[type='password']").val(123456);
+		}else{
+			$("input[type='password']").val('');
+		}
+		i = i+1;
+	});
+	
+	/*得到接点人信息*/
+	$("#parentnumber").blur( function() {
+		searchParentnumber();
+		}); 
+	
+	
+	/*验证用户编号*/
+	$("#usernumber").blur(function() {
+		if(!check_empty('usernumber','{:C("COM_TITLE")}编号')){return false;}
+		if(!checkusernum()){return false;}
+	});
+	/*真实姓名*/
+	$("#realname").blur(function() {
+		if(!check_empty('realname','{:C("COM_TITLE")}姓名')){return false;}
+	}); 
+	
+	
+	/*手机号*/
+	$("#mobile").blur(function() {
+		if(!check_empty('mobile','手机号')){return false;}
+		if(!check_phone('mobile','手机号')){return false;}
+	}); 
+	
+	/*一级密码*/
+	$("#password1").blur(function() {
+		if(!check_empty('password1','一级密码')){return false;}
+		if(!check_Size('password1','一级密码','6','30')){return false;}
+	});
+	/*重复一级密码*/
+	$("#repassword1").blur(function() {
+		if(!check_empty('repassword1','一级密码')){return false;}
+		if(!check_Same('password1','一级密码','repassword1','重复一级密码')){return false;}
+	});
+	
+	/*二级密码*/
+	$("#password2").blur(function() {
+		if(!check_empty('password2','二级密码')){return false;}
+		if(!check_Size('password2','二级密码','6','30')){return false;}
+	}); 
+	/*重复二级密码*/
+	$("#repassword2").blur(function() {
+		if(!check_empty('repassword2','一级密码')){return false;}
+		if(!check_Same('password2','二级密码','repassword2','重复二级密码')){return false;}
+	});
+    </script>
+    <script type="text/javascript">
+	function checkusernum(){
+		usernumval=$("#usernumber").val();
+		var data = true;
+		//alert(usernumval);
+		$.ajax({
+			url:"__URL__/checkusernum",
+			type:"post",
+			data:{usernum:usernumval},
+			async:false,
+			success:function(da){
+				if(da==-1){
+					check_Error('usernumber',"{:C('COM_TITLE')}编号已存在");
+					data = false;
+				}else if(da==-2){
+					check_Error('usernumber',"{:C('COM_TITLE')}编号不能为空");
+					data = false;
+				}else{
+					check_Ok('usernumber');	
+				}
+			}
+		});
+		return data;
+	}
+    </script>
+    
+<script type="text/javascript">
+	function getservercenter(){
+		var tuijiannumber=$("#tuijiannumber").val();
+		$.ajax({
+			url:"__URL__/getServercenter",
+			type:"post",
+			data:{usernumber:tuijiannumber},
+			success:function(da){
+				if(da==-1){
+					check_Error('tuijiannumber',"推荐人不存在！");
+				}else{
+					$("#billnumber").val(da);	
+				}
+			}
+		})	
+	}
+ 
+	highlight_subnav("{:U('registuser')}");
+</script>
+</block>

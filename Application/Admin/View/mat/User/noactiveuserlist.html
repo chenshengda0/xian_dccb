@@ -1,0 +1,75 @@
+<extend name="Public/base"/>
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+<div class="fl">
+    <a class="btn btn-info" href="{:U('User/registuser')}">新 增</a>
+    <!-- <button class="btn ajax-post btn-danger confirm" url="{:U('User/emptyActive')}"
+            target-form="ids">空单激活</button> -->
+ </div>
+ <div class='clear'></div>
+</div>
+<div class="row-fluid">
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+          <div class='dataTables_wrapper'>
+            <table class="table table-bordered data-table"  style="max-width:100%;">
+              <thead>
+                <tr>
+                	<th style='text-align:left;'><input class="check-all" type="checkbox"/></th>
+                	<th>{$Think.const.USERNUMBER}</th>
+					<th>{$Think.const.REALNAME}</th>
+                	<th>{$Think.const.TUIJIANMUMBER}</th>
+                	<if condition='C("IS_MORE_LEVEL") eq 1'> 
+                	<th>注册级别</th> 
+                	</if>
+                 	<th>{$Think.const.BILLCENTER}</th>   
+                	<th>{$Think.const.REG_TIME}</th>
+                	<th>{$Think.const.OP}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="_list" id="vo">
+                <tr>
+                		<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}"/></td>
+            			<td>{$vo.usernumber}</td>
+                        <td>{$vo.realname}</td>
+                       	<td>{$vo.tuijianid|get_usernumber}</td>
+                       	<if condition='C("IS_MORE_LEVEL") eq 1'>
+                       	<td>{$vo.oldrank|get_userrank}</td>
+                       	</if>
+                       	<td>{$vo.billcenterid|get_usernumber}</td>
+						<td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
+						 <td>
+                             <eq name="vo.status" value="0">
+                              	<!-- <a href="{:U('User/emptyActive',array('id'=>$vo['uid']))}"
+                                   class="btn btn-mini btn-success confirm ajax-get">空单激活</a> -->
+                                	<a href="{:U('User/activeUser',array('id'=>$vo['uid']))}" class="btn btn-mini btn-success confirm">激活</a>
+                                <a href="{:U('User/deleteMember',array('id'=>$vo['uid']))}" class=" btn btn-mini btn-danger">删除</a>
+                            </eq>
+                        </td>
+                    </tr>
+                </volist>
+              </tbody>
+            </table>
+            <div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix page">
+             {$_page}
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+<else/>
+<include file='Public/emptylist' title="暂时没有未激活会员"/>
+</notempty>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav("{:U('User/noActiveUserList')}");
+    </script>
+</block>

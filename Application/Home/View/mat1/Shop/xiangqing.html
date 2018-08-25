@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/xiangqing.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">商品详情</h1>
+		</header>
+            <foreach name='goodlist' item='vo'>
+		<div class="mui-content">
+			<div class="tit">{$vo.goods_name}</div>
+			<div class="img1">
+				<img src="{$vo.goods_ico|get_cover=path}" class="xq_img"/>
+			</div>
+			<div class="list">
+                            
+				<div>
+					<ul style="display: block;">
+						<li>价格：<span>{$vo.ms_price}{$Think.const.MONEY}</span></li>
+						<li>运行周期：<span>720</span>小时</li>
+						<li>算力：<span>{$vo.suanli}</span>GH/S</li>
+						<li>总收益：<span>{$vo.total}</span>{$Think.const.MONEY}</li>
+						<li>产量：<span>{$vo.chanliang}</span>{$Think.const.MONEY}/小时</li>
+					</ul>
+				</div>	
+                            
+				<p>({$Think.const.MONEY}可在交易中心获得)</p>
+			</div>
+		</div>
+                </foreach>
+		<div class="boot">
+			<p class="num mui-pull-left">价格：<span>{$vo.ms_price}{$Think.const.MONEY}</span></p>
+                        <p class="but"><a style="color: #FFFFFF;" href="{:U('Shop/kuangji_by',array('id'=>$id))}">立即购买</a></p>
+		</div>
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script src="__HOME__/wap/js/enter/enter.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+</html>
+

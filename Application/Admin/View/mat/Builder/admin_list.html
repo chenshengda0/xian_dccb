@@ -1,0 +1,72 @@
+<extend name="Public/base"/>
+<block name="body">
+ <div class="search_box">
+         <volist name="buttonList" id="button">
+             <{$button.tag} {$button.attr}>{$button.title|htmlspecialchars}</{$button.tag}>
+         </volist>
+ </div>
+<div class="row-fluid">
+<div class="widget-box">
+<div class="widget-title"> 
+<span class="icon"><i class="icon-th"></i></span>
+<h5>{$meta_title}</h5></div>
+<div class="widget-content nopadding">
+<div class='dataTables_wrapper'>
+        <table class='table table-bordered data-table'>
+            <!-- 表头 -->
+            <thead>
+            <tr>
+                <th class="row-selected row-selected">
+                    <input class="check-all" type="checkbox"/>
+                </th>
+                <volist name="keyList" id="field">
+                    <th>{$field.title|htmlspecialchars}</th>
+                </volist>
+            </tr>
+            </thead>
+            <!-- 列表 -->
+            <tbody>
+            <volist name="list" id="e">
+                <tr>
+                    <td><input class="ids" type="checkbox" value="{$e['id']}" name="ids[]"></td>
+                    <volist name="keyList" id="field">
+                        <td>{$e[$field['name']]}</td>
+                    </volist>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="page">
+        {$pagination}
+    </div>
+    </div>
+</div></div>
+    <script>
+        function conf(obj,text,url){
+    		layer.confirm('确定执行'+text+'操作吗?', function(index){
+    			var index = layer.load('正在执行，请耐心等待');
+    			 $.get(url,success, "json");
+    			 return false;
+    		});
+    		function success(data) {
+    		    if (data.status) {
+    		    	layer.msg(data.info,3,1);
+    		    	setTimeout(function () {
+    		    		var index = layer.load('正在跳转...');
+    		            window.location.href = data.url
+    		        }, 2000);
+    		    } else {
+    		    	layer.msg(data.info,3,3);
+    		    }
+    		}
+    	}
+    </script>
+</block>
+<block name="script">
+ <script>
+url = "{$current}"
+    	highlight_subnav("{:U('"+url+"')}");
+    </script>
+</block>

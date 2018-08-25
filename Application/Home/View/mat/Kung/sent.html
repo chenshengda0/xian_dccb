@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/wodejioayi.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header ">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">交易详情</h1>		 
+		</header>
+		<div class="mui-content">
+			
+
+		 	<div class="aa1 cur">
+		 	     <notempty name="res3">
+		 	           <if condition="$res3['youid'] eq $uid">
+		 	                <div class="main">
+					 			<div class="img1"><img src="__IMG__/tou.jpg" alt="" /></div>
+								<ul>
+									<li>
+										订单号：<span>{$res3['tag']}</span>
+									</li>
+									<li>
+										昵称：<span>{$res3['youname']}</span>
+									</li>
+									<li>
+										数量：<span>{$res3['shuiliang']}</span>
+									</li>
+									<li>
+										价格：<span>{$res3['danjia']}</span>USD
+									</li>
+									<li>
+										总价：<span>{$res3['price']}</span>USD
+									</li>
+                                     <li>
+										RMB：<span><?php echo $res3['shuiliang']*$res3['danjia']*$bonus["huilv"]?>RMB</span>
+									</li>
+									<li>
+										时间：<span>{$res3['time']|date="Y-m-d H:i:s",###}</span>
+									</li>
+									<li>
+										状态：<span><if condition="$res3['status'] eq 3">已打款<else/>等待中</if></span>
+									</li>
+									<if condition="$res3['status'] eq 2">
+										<li>
+											离打款时间还剩&nbsp;<span id="div1" style="color: #ff362a;"></span>
+										</li>
+									<else/>
+									    <li>
+											离对方收款时间还剩&nbsp;<span id="div1" style="color: #ff362a;"></span>
+										</li>
+									</if>
+									<li>
+										付款截图
+										<div class="z_photo">
+										    <div class="z_file">
+										     <form action="{:U('mj_tj')}" method="post" enctype="multipart/form-data" name="form1" id="myform">
+								                <input type="hidden" name="id" value="{$res3['id']}">
+								                <input type="file" name="file" id="file" value="" accept="image/*" multiple onchange="imgChange('z_photo','z_file');" />			
+							                </div>
+												<if condition="$res3['status'] eq 2">
+												    
+												<else/>
+												        <div class="z_addImg">
+									                    <img src="{$res3['pinzheng']}">
+											            </div>
+											            <p style="clear:both"></p>
+												</if>		        	
+							           </div>
+							            <div class="bottom">
+											
+											<if condition="$res3['status'] eq 2">
+											    <div class="but1 ajax-get" href="{:U('quxiao_dd',array('id'=>$res3['id']))}">取消订单</div>
+											    <input type="hidden" name="id" value="{$res3['id']}">
+											    <input type="submit" value="确认打款" class="but2">
+											   
+											 
+											<else/>
+											   
+											</if>
+											</form>
+									    </div>
+										<div class="z_mask">				           
+								            <div class="z_alert">
+								                <p>确定要删除这张图片吗？</p>
+								                <p>
+								                    <span class="z_cancel">取消</span>
+								                    <span class="z_sure">确定</span>
+								                </p>
+								            </div>
+									    </div>
+									</li>				
+								</ul>
+							</div>
+							<div class="xinxi">
+					 			<div class="xinxi-1">
+					 				<div class="xinxi-top">
+					 					<div class="img"><img src="__IMG__/tou.jpg" alt="" /></div>
+					 					<p class="qianming mui-ellipsis">携手共创美好家园</p>
+					 					<p class="jibie">LV.<span>2</span></p>
+					 				</div>
+					 				<ul class="main1">
+									<li>
+										昵称：<span>{$myinfo['usernumber']}</span>
+									</li>
+									<li>
+										手机号：<span>{$myinfo['mobile']}</span>
+									</li>
+									<li>
+										微信号：<span>{$myinfo['wechat']}</span>
+									</li>
+									<li>
+										支付宝：<span>{$myinfo['alipay']}</span>
+									</li>
+									<li>
+										真实名：<span>{$myinfo['realname']}</span>
+									</li>
+									<li>
+										卡号：<span>{$myinfo['banknumber']}</span>
+									</li>
+									<li>
+										开户行：<span>{$myinfo['bankname']}</span>
+									</li>
+									</ul>
+					 			</div>
+		 		             </div>
+		 		       <elseif condition="$res3['myid'] eq $uid"/>
+		 		             <div class="main">
+						 			<div class="img1"><img src="__IMG__/tou.jpg" alt="" /></div>
+									<ul>
+										<li>
+											订单号：<span>{$res3['tag']}</span>
+										</li>
+										<li>
+											昵称：<span>{$res3['myname']}</span>
+										</li>
+										<li>
+											数量：<span>{$res3['shuiliang']}</span>
+										</li>
+										<li>
+											价格：<span>{$res3['danjia']}</span>USD
+										</li>
+										<li>
+											总价：<span>{$res3['price']}</span>USD/
+										</li>
+                                        <li>
+											RMB：<span><?php echo $res3['price']*$bonus["huilv"]?>RMB</span>
+										</li>
+										<li>
+											时间：<span><if condition="$res3['status'] eq 2">{$res3['time']|date="Y-m-d H:i:s",###}<else/>{$res3['dk_time']|date="Y-m-d H:i:s",###}</if></span>
+										</li>
+										<li>
+											状态：<span><if condition="$res3['status'] eq 3">已打款<else/>等待打款</if></span>
+										</li>
+										<if condition="$res3['status'] eq 2">
+										
+										<else/> 
+											<li>
+												离确认收款时间&nbsp;<span id="div1" style="color: #ff362a;"></span>
+											</li>
+											<li>
+												付款截图
+												<div class="z_photo">   
+												  
+												
+												        <div class="z_addImg">
+									                    <img src="{$res3['pinzheng']}">
+											            </div>
+											            <p style="clear:both"></p>
+															
+											    </div>
+												
+											</li>
+										</if>			
+									</ul>
+								</div>
+								<if condition="$res3['status'] eq 3">
+									<div class="bottom">
+										<div class="but1">未收到款投诉</div>
+										
+										 <div class="but2 ajax-get" href="{:U('mj1_tj',array('id'=>$res3['id']))}">确认收款</div>
+										
+										
+									</div>
+								</if>
+								<div class="xinxi">
+						 			<div class="xinxi-1">
+						 				<div class="xinxi-top">
+						 					<div class="img"><img src="__IMG__/tou.jpg" alt="" /></div>
+						 					<p class="qianming mui-ellipsis">携手共创美好家园</p>
+						 					<p class="jibie">LV.<span>2</span></p>
+						 				</div>
+						 				<ul class="main1">
+										<li>
+											昵称：<span>{$youinfo['usernumber']}</span>
+										</li>
+										<li>
+											手机号：<span>{$youinfo['mobile']}</span>
+										</li>
+										<li>
+											微信号：<span>{$youinfo['wechat']}</span>
+										</li>
+										<li>
+											支付宝：<span>{$youinfo['alipay']}</span>
+										</li>
+										<li>
+											真实名：<span>{$youinfo['realname']}</span>
+										</li>
+										<li>
+											卡号：<span>{$youinfo['banknumber']}</span>
+										</li>
+										<li>
+											开户行：<span>{$youinfo['bankname']}</span>
+										</li>
+										</ul>
+						 			</div>
+						 		</div>
+					   <else/>
+					   
+					   
+		 	           </if>
+		 	     </notempty>
+		 	</div>
+
+		 	
+		 
+		 	
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/sc_img.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script>
+		var aa = $('.aa');
+		var aa1 = $('.aa1');
+		aa.click(function() {
+			aa.removeClass('active');
+			aa1.removeClass('cur');
+			$(this).addClass('active');
+			aa1.eq(aa.index(this)).addClass('cur');
+		});
+		$('.img1').click(function(){
+			$('.xinxi').show();			
+		})
+		$('.xinxi-1').click(function(e){
+			e.stopPropagation()
+		})
+		$('.xinxi').click(function(){
+			$('.xinxi').hide();
+		})
+      function toDou(n){
+          if(n<10){
+              return '0'+n;	
+          }else{
+              return n;	
+          }
+      }
+
+	
+	var oDiv=document.getElementById('div1');
+    var now=new Date();
+    var futrue = {$time}*1000;
+	if(futrue<=now){
+		 oDiv.innerHTML='00时00分00秒';
+		
+	}else{
+      	function CountDown(){
+          
+			
+	        now=new Date();
+			var s=parseInt((futrue-now.getTime())/1000);	
+			var d=parseInt(s/86400);
+			s%=86400; //s=s%86400
+			
+			var h=parseInt(s/3600);
+			s%=3600;
+			
+			var m=parseInt(s/60);
+			s%=60;
+			
+			oDiv.innerHTML=toDou(h)+'时'+toDou(m)+'分'+toDou(s)+'秒';
+			if(toDou(h)=='00' && toDou(m)=='00' && toDou(s)=='00'){
+				 clearInterval(ding);
+			}
+		}
+		CountDown();
+		setInterval(CountDown,1000);
+		
+	}
+	
+
+	</script>
+</html>

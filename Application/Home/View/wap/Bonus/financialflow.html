@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/wodejioayi.css"/>
+      <style>
+        table{width:100%;}
+        table tr {height:40px;text-align:center;}
+        table tr th{}
+        table tr td{text-align:center;}
+        .main{padding:0;}
+      </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header " style="background-color: #1f2229;">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">交易流水</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="list1">
+		 		<ul>
+		 			<li class="aa active">转入</li>
+		 			<li class="aa">转出</li>
+		 			<li class="aa">挂售</li>
+		 			<li class="aa" style="border-right:none">手续费</li>
+		 		</ul>
+		 		<p style="clear: both;"></p>
+		 	</div>
+		 	<div class="aa1 cur">
+		 	   
+		 	   
+		 	        <volist name="zhuanru" id="vo">
+		 	          <div class="main">
+		 	           <table  border="" cellspacing="" cellpadding="">
+                                  <tr>
+                                     <th style="width:25%">来源</th>
+                                      <th style="width:25%">去向</th>
+                                      <th style="width:25%">金额</th>
+                                      <th style="width:25%">时间</th>
+                                  </tr>
+                                  <tr>
+                                     <td>{$vo['userid']|get_unm}</td>
+                                      <td>{$vo['targetuserid']|get_unm}</td>
+                                      <td>{$vo['money']}</td>
+                                      <td>{$vo['createtime']|date="Y-m-d H:i:s",###}</td>
+                                  </tr>
+                              </table>
+                        </div>
+		 	        </volist>
+			 	    
+		 	    	    
+		 	    
+		 	    
+		 		
+		 	</div>		 	
+		 	<div class="aa1">
+		 	
+		 	 
+		 	       <volist name="zhuanchu" id="v">
+                      <div class="main">
+		 	           <table  border="" cellspacing="" cellpadding="">
+                                  <tr>
+                                     <th style="width:25%">来源</th>
+                                      <th style="width:25%">去向</th>
+                                      <th style="width:25%">金额</th>
+                                      <th style="width:25%">时间</th>
+                                  </tr>
+                                  <tr>
+                                     <td>{$v['userid']|get_unm}</td>
+                                      <td>{$v['targetuserid']|get_unm}</td>
+                                      <td>{$v['money']}</td>
+                                      <td>{$v['createtime']|date="Y-m-d H:i:s",###}</td>
+                                  </tr>
+                              </table>
+                        </div>
+		 	       </volist>
+				
+		 
+		 	</div>
+          
+          
+          
+		 	<div class="aa1 ">
+		 	     <volist name="guashou" id="v3">
+		 	          
+		 	                <div class="main">
+                               <table  border="" cellspacing="" cellpadding="">
+                                  <tr>
+                                     <th style="width:25%">来源</th>
+                                      <th style="width:25%">去向</th>
+                                      <th style="width:25%">金额</th>
+                                      <th style="width:25%">时间</th>
+                                  </tr>
+                                  <tr>
+                                     <td>{$v3['userid']|get_unm}</td>
+                                      <td>{$v3['targetuserid']|get_unm}</td>
+                                      <td>{$v3['money']}</td>
+                                      <td>{$v3['createtime']|date="Y-m-d H:i:s",###}</td>
+                                  </tr>
+                              </table>
+                         </div>
+				
+		 		      
+		 	     </volist>
+		 	</div>
+          
+          
+		 	<div class="aa1">
+		
+		 		
+		 		 <volist name="shouxu" id="v4">
+		 	   
+		 	      
+		 	        <div class="main">
+                     <table  border="" cellspacing="" cellpadding="">
+                        <tr>
+                            <th style="width:25%">账户</th>
+                            <th style="width:25%">金额</th>
+                            <th style="width:50%">时间</th>
+                        </tr>
+                        <tr>
+                            <td>{$v4['targetuserid']|get_unm}</td>
+                            <td>{$v4['money']}</td>
+                            <td>{$v4['createtime']|date="Y-m-d H:i:s",###}</td>
+                        </tr>
+                    </table>
+					</div>
+		 	   
+		 	    </volist>		 	    		    
+                   
+		 	</div>
+		 	
+		 
+		 	
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/sc_img.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script>
+		var aa = $('.aa');
+		var aa1 = $('.aa1');
+		aa.click(function() {
+			aa.removeClass('active');
+			aa1.removeClass('cur');
+			$(this).addClass('active');
+			aa1.eq(aa.index(this)).addClass('cur');
+		});
+		$('.img1').click(function(){
+			$('.xinxi').show();			
+		})
+		$('.xinxi-1').click(function(e){
+			e.stopPropagation()
+		})
+		$('.xinxi').click(function(){
+			$('.xinxi').hide();
+		})
+      function toDou(n){
+          if(n<10){
+              return '0'+n;	
+          }else{
+              return n;	
+          }
+      }
+
+	
+	
+	
+
+	</script>
+</html>

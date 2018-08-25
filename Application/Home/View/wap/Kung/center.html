@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>交易大厅</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.act{background: #292c33;}
+    	.top{width: 100%;height: 160px;float: left;}
+    	.top_t{width: 100%;height: 80px;float: left;text-align: center;}
+    	.top_t p{margin: 0;width: 100%;float: left;}
+    	.top_t p span{color: #fff;}
+    	.top_c{width: 100%;height: 30px;padding: 0 5px 0 5px;float: left;display: flex;justify-content: space-between;}
+    	.top_c span{display: inline-block;padding: 0 5px 0 5px;
+    	color: #fff;font-size: .75em;line-height: 30px;text-align: center;}
+    	.top_b{width: 95%;height: 50px;float: left;margin-left: 2.5%;
+    	display: flex;justify-content: space-between;text-align: center;border-bottom: 1px solid #3d4651;}
+    	.top_b p{margin: 0;color: #a9a7a7;}
+    	.top_c img{width: 14px;height: 16px;vertical-align: middle;margin-bottom: 3px;margin-left: 2px;}
+    	.xuan{width: 95%;height: 104px;margin-left:2.5%;float: left;display: flex;justify-content: space-between;}
+    	.xuan div{width: 33.33%;height: 104px;text-align: center;}
+    	.xuan div p{margin: 0;margin-top: 5px;color: #fff;}
+    	.xuan div p img{width: 33px;height: 33px;margin-top: 15px;}
+    	#main{width: 100%;height: 250px;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">交易大厅</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="top">
+    		<div class="top_t">
+    			<p style="margin-top: 10px;">
+    				<h3 style="color: #fff;">BYL</h3>
+    			</p>
+    			<p>
+    				<span>百业链</span>
+    			</p>
+    		</div>
+    		<div class="top_c">
+    			<span>当前价格：<b style="color: #08a627;">{$mairu}</b></span>
+    			<span>高：<b style="color: #ff3434;">{$arr['hight']}</b><i><img src="images/shang.png"/></i></span>
+    			<span>低：<b style="color: #04d38d;">{$arr['low']}</b><i><img src="images/xia.png"/></i></span>
+    		</div>
+    		<div class="top_b">
+    			<div>
+    				<p><span>购买价</span></p>
+    				<p><span>{$mairu}</span></p>
+    			</div>
+    			<div>
+    				<p><span>出售价</span></p>
+    				<p><span>{$maichu}</span></p>
+    			</div>
+    			<div>
+    				<p><span>成交量</span></p>
+    				<p><span>{$cjl}</span></p>
+    			</div>
+    			<div>
+    				<p><span>成交额</span></p>
+    				<p><span>{$cje}</span></p>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="xuan">
+    		<div onclick="javascrtpt:window.location.href='{:U('kung/mairu')}'">
+    			<p><img src="__H-W__/images/mairu.png" alt="" /></p>
+    			<p>买入</p>
+    		</div>
+    		<div onclick="javascrtpt:window.location.href='{:U('kung/maichu')}'">
+    			<p><img src="__H-W__/images/maichu.png" alt="" /></p>
+    			<p>卖出</p>
+    		</div>
+    		<div onclick="javascrtpt:window.location.href='{:U('kung/jiaoyi')}'">
+    			<p><img src="__H-W__/images/jilu.png" alt="" /></p>
+    			<p>交易记录</p>
+    		</div>
+         
+    	</div>
+    	<div id="main" style="float: left;"></div>
+    	<div style="width: 100%;height: 49px;float: left;"></div>
+		<div class="foot">
+          <a href="{:U('Qd/index')}" >
+	    			<p><img src="__H-W__/images/cz.png" alt="" /></p>
+	    			<p>签到</p>
+	    		</a>
+          	<a href="{:U('user/index')}"  style="width:33%">
+				<p><img src="__H-W__/images/wd.png" alt="" /></p>
+				<p>我的</p>
+			</a>
+			<a href="{:U('Kung/center')}"  style="width:33%">
+				<p><img src="__H-W__/images/jy.png" alt="" class="act" /></p>
+				<p>交易</p>
+			</a>
+			<a href="{:U('Kung/index')}"  style="width:33%">
+				<p><img src="__H-W__/images/zx.png" alt="" /></p>
+				<p>公告</p>
+			</a>
+			
+		
+		</div>
+    </div>
+    <script src="__H-W__/js/jquery-3.1.0.min.js"></script>
+    <script src="__H-W__/js/echarts.min.js"></script>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+    <script type="text/javascript">
+    mui.init();
+    window.onload=function(){
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+
+//	    legend: {
+//	        data: ['公共利率', '最新利率'],
+//	        top:'12%',
+//	        textStyle: {
+//	                   color:['#fff']
+//	                }
+//	    },
+            grid: {
+                left: '-10px',
+                right: '4%',
+                bottom: '7%',
+                containLabel: true,
+            },
+            xAxis:  {
+                type: 'category',
+                boundaryGap: false,
+                data: ['<?php echo date("m/d",time()-60*60*24*7)?>','<?php echo date("m/d",time()-6*60*60*24)?>',
+                    '<?php echo date("m/d",time()-5*60*60*24)?>','<?php echo date("m/d",time()-4*60*60*24)?>',
+                    '<?php echo date("m/d",time()-3*60*60*24)?>','<?php echo date("m/d",time()-2*60*60*24)?>',
+                    '<?php echo date("m/d",time()-1*60*60*24)?>'],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#434750',
+                        width: '3'
+                    }
+                },
+                axisTick: {
+                    show: true,
+                    inside: true,
+                    lineStyle: {
+                        color: '#00ffff',
+                        width: '3',
+                        ype: 'dashed'
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#fff',
+                        type: 'dotted'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            yAxis: {
+                show: false,
+                type: 'value',
+                axisLabel: {
+                    show: false,
+                    formatter: '{value} %'
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                }
+            },
+            series: [
+                {
+                    name:'买入',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {
+                        normal: {
+                            color: '#fff'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'bottom'
+                        }
+                    },
+                    //白
+                    data:{$mr},
+
+                    lineStyle: {
+                        normal: {
+                            color: '#fff'
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                {
+                    name:'卖出',
+                    type:'line',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'bottom'
+                        }
+                    },
+                    data:{$mc},
+                    lineStyle: {
+                        normal: {
+                            color: '#00ffff'
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#00ffff'
+                        }
+                    }
+
+                },
+
+
+            ]
+        };
+        myChart.setOption(option);
+    }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,144 @@
+<!--左右浮动开始-->
+<div class="right_nav" id="left_nav">
+	<span class="number" id="lefticartCount">{$cart_num}</span>
+	<a href="{:U('Shopcart/index')}" class="one"></a>
+	<a href="{:U('Shopcart/index')}" class="two"></a>
+	<a href="javascript:;" class="three"></a>
+	<a href="javascript:;" class="four"></a>
+	<a href="javascript:;" class="five"></a>
+	<a href="#zero" class="six"></a>
+	
+	<div class="left_nav_one no_left_nav_one" id="divCartLeft" style="display:none;">
+	 	<notempty name='cartlist'>
+		<div class="left_nav_one_cont">
+		<ul id="ulLeftCart"> 
+		<volist name='cartlist' id='vo'>
+			<li bc="1">
+                <p class="img"><a href=""><img src="{$vo.goodid|get_goods='goods_ico'|get_cover=path}"></a></p>
+                <p class="name"><a href="">{$vo.goodid|get_goods='goods_name'}</a></p>
+                <p class="num"><b>￥{$vo.price}</b>x{$vo.num}<i><a href="javascript:void(0);" onclick="">删除</a></i></p>
+                <div class="clearfloat"></div>
+			</li> 
+		</volist>
+		</ul>
+		</div>
+		<div class="index_shopping_ment">
+			<div class="index_shopping_ment_le">共<b id="gbc1">{$cart_num}</b>件商品<p class="all">总计：<b id="ggj1">￥{$total}</b></p></div>
+			<div class="index_shopping_ment_ri"><input class="btn-s" type="button" onclick='goCart();' value="去购物车结算"></div>
+			<div class="clearfloat"></div>
+		</div>
+		<else/>
+		<div class="no_shopping"><h3>购物车中还没有商品,赶紧选购吧！</h3></div>
+		</notempty>
+	</div>
+	
+	
+	<div id="tab_3" class="left_nav_t"><img src="__IMG__/weixin02.jpg"></div>
+	<div id="tab_4" class="left_nav_s" >
+		<foreach name='qqlist' item='vo'>
+			<a style="color: #fff"
+			href="tencent://message/?uin={$key}&Site=__APP__&Menu=yes">{$vo}</a>
+		</foreach>		
+	</div>
+	<div id="tab_5" class="left_nav_sv" style=" height: auto;width:180px;">
+		<foreach name='phlist' item='vo'>
+		<span class="tel" style='padding:5px 10px;'>{$key}&nbsp;&nbsp;{$vo}</span>
+		</foreach>
+	</div>
+</div>
+
+<!--底部开始-->
+<div class="footer">
+	<div class="footer_box">
+		<div class="yz_box">
+			<foreach name='ids' key='k' item='vo'>
+				<dl class="ft{$k+1}">
+					<dt>{$vo.title}</dt>
+					<foreach name="vo['children']" item='fo'>
+						<dd>
+							<a style='background:#f2f2f2' href="{:U('Help/index',array('id'=>$fo['id']))}" target="_blank">{$fo.title}</a>
+						</dd>
+					</foreach>
+				</dl>
+			</foreach>			
+			<div class="clearfloat"></div>
+		</div>
+		<!-- <div class="ft_copy">
+			{$copyright} <a target="_blank"
+				href="http://www.miitbeian.gov.cn/">豫ICP备14005578号-1</a>
+		</div> -->
+		<div class="ft_copyImg">
+			<a
+				href="http://wj.haaic.gov.cn/TopICRS/certificateAction.do?id=201412050000011434"
+				target="_blank"> <img src="__IMG__/ftimg1.jpg" /></a> <a
+				href="http://www.12377.cn/?spm=1.7274553.1997523009.42.IQEhch">
+				<img src="__IMG__/ftimg2.jpg" />
+			</a> <a href="http://www.zx110.org/?tp=1.1.20.0.27.KlFYDqA-00-FFNer">
+				<img src="__IMG__/ftimg3.jpg" />
+			</a> <a href="http://www.cyberpolice.cn/wfjb/"> <img
+				src="__IMG__/ftimg4.jpg" /></a>
+		</div>
+	</div>
+</div>
+<!--底部结束-->
+</div>
+</body>
+<script src="__JS__/index.supermarket20141015.js" type="text/javascript"></script>
+<!--点击加入购物车-->
+<script type="text/javascript">
+$('.two,.left_nav_one').hover(function () {
+	$('#divCartLeft').show();
+}, function(){ 
+	$('#divCartLeft').hide(); 
+});
+    //浮动导航
+    function float_nav(dom) {
+        var right_nav = $(dom);
+        var nav_height = right_nav.height();
+        function right_nav_position(bool) {
+            var window_height = $(window).height();
+            var nav_top = (window_height - nav_height) / 8;
+            if (bool) {
+                right_nav.stop(true, false).animate({ top: nav_top + $(window).scrollTop() }, 600);
+            } else {
+                right_nav.stop(true, false).animate({ top: nav_top }, 300);
+            }
+            right_nav.show();
+        }
+        if (! +'\v1' && !window.XMLHttpRequest) {
+            $(window).bind('scroll resize', function () {
+                if ($(window).scrollTop() > 50) {
+                    right_nav_position(true);
+                } else {
+                    right_nav.hide();
+                }
+            })
+        } else {
+            $(window).bind('scroll resize', function () {
+                if ($(window).scrollTop() > 50) {
+                    right_nav_position();
+                } else {
+                    right_nav.hide();
+                }
+            })
+        }
+    }
+    float_nav('#float');
+    float_nav('#left_nav');
+    $(document).ready(function () {
+    	val = $('#lefticartCount').text();
+		if(val==0){
+			$('#lefticartCount').attr('style','display:none');
+		}
+        $('.four,.left_nav_s').hover(function () {
+            $("#tab_4").show();
+        }, function () { $("#tab_4").hide(); })
+        
+         $('.five,.left_nav_sv').hover(function () {
+            $("#tab_5").show();
+        }, function () { $("#tab_5").hide(); })
+        
+    });
+   
+</script>
+</html>

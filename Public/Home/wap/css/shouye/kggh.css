@@ -1,0 +1,112 @@
+body{
+	background: #EEEEEE;
+}
+.mid ul{
+	height: 50px;
+}
+.mid .tit1 li{
+	width: 33.3%;	
+	float: left;
+	font-size: 16px;
+	line-height: 50px;
+	text-align: center;
+}
+.dd{
+	background: #FFFFFF;
+	color: #666;
+}
+.dd1{
+	display: none;
+}
+.active{
+	border-bottom:2px solid #1DBEFF;
+	color:#1DBEFF;
+}
+.cur{
+	display: block;
+}
+.list1{
+	padding:20px 5px;
+	background: #FFFFFF;
+}
+.list1 span{
+	display: inline-block;
+	width:27%;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: right;
+}
+.list1 textarea{
+	resize: none;
+	width: 70%;
+	height: 100px;
+	padding:5px 7.5px;
+	background: #EEEEEE;
+	margin-bottom: 10px;
+}
+.list1 input{
+	width: 70%;
+	background: #EEEEEE;
+}
+.list1 span,.list input{
+	float: left;
+}
+#top{
+ 	width: 100%;
+ 	height: 200px;
+ 	background: #FFFFFF;
+ 	color:#666666;
+ 	overflow: hidden;
+ }
+.img1{
+	width: 82px;
+	height: 82px;
+	margin: 12px auto;
+}
+.img1 img{
+	width: 82px;
+	height: 82px;
+}
+.name{
+	width: 100%;
+	text-align: center;
+	font-size: 16px;
+}
+.ul1{
+	margin-top:20px;
+	font-size: 16px;
+}
+.ul1 li{
+	float: left;
+	width: 49%;
+	height: 40px;
+	text-align: center;
+}
+.ul1 li p{
+	color: #666;
+}
+table{
+	width: 100%;
+	margin-top: 10px;
+    background: #fff;
+}
+table th,table td{
+	line-height: 35px;
+	text-align: center;
+	padding: 5px;
+	font-size: 14px;
+	color: #666666;
+	border: 1px solid #BBBBBB;
+}
+table th{
+	color: #000;
+}
+.but{
+	margin: 10px auto;
+    width: 80%;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #03A3E8;
+    border-radius: 5px;
+}

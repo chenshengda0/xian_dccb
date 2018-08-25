@@ -1,0 +1,368 @@
+<extend name="wap/Base/base"/>
+<block name='style'>
+ <link rel="stylesheet" type="text/css" href="__SHOP__/css/base.css" />
+ <link rel="stylesheet" type="text/css" href="__SHOP__/css/shop.css" />
+ <link rel="stylesheet" type="text/css" href="__SHOP__/magnifying/css/lanrenzhijia.css" />
+   <link rel="stylesheet" type="text/css" href="__SHOP__/rolling/css/owl.carousel.css" />
+ </block>
+<block name="body">
+<include file="Public:top" />
+<div class="ipt-table table-striped">
+	<article id="content">
+    <section class="nc-detail">
+      <header class="nc-detail-hd clearfix">
+        <h3>{$ginfo.goods_name}</h3>       
+      </header>
+      <div class="nc-detail-bd">      
+        <aside class="nc-gallery">
+          <div class="zoom-section">          
+            <div id="preview" class="spec-preview"> 
+				<span class="jqzoom"><img style='width:312px;height:312px' jqimg="{$ginfo.goods_ico|get_cover='path'}" src="{$ginfo.goods_ico|get_cover='path'}" /></span> 
+			</div>		
+			<div class="spec-scroll"> <a class="prev">&lt;</a> <a class="next">&gt;</a>
+			  <div class="items">
+			    <ul>
+			      <li><img bimg="{$ginfo.goods_ico|get_cover='path'}" src="{$ginfo.goods_ico|get_cover='path'}" onmousemove="preview(this);"></li>
+			     <foreach name="ginfo['pics']" item='v'>
+			     	 <li><img bimg="{$v|get_cover='path'}" src="{$v|get_cover='path'}" onmousemove="preview(this);"></li>
+			     </foreach>
+			    </ul>
+			  </div>
+			</div>
+          </div>
+          <!-- S 收藏与分享 -->
+          <div class="ncs_share">
+            <div class="ncs-goods-handle fl">
+              <div class="handle-left"><i class="snslike-goods"></i><a href="javascript:void(0);" >喜欢</a></div>           
+            </div>
+            <div class="ncs-goods-handle fl ml10">
+              <div class="handle-left"><i class="share-goods"></i><a href="javascript:favor({$ginfo.id})">收藏商品</a></div>            
+            </div>
+             
+          </div>
+          
+          <!-- E 收藏与分享 --> 
+        </aside>
+        <!-- E 商品图片及收藏分享 --> 
+        <!-- S 商品基本信息 -->
+        <article class="nc-wrap">
+          <div class="nc-meta"> 
+            <!-- S 商品发布价格 -->
+            <dl class="nc-detail-price ">
+              <dt>市场价格：</dt>
+              <dd><h3>{$ginfo.tox_money_need}元</h3></dd>
+            </dl>
+            <dl class="nc-detail-price ">
+              <dt>商城价格：</dt>
+              <dd><strong nctype="goods_price">{$ginfo.ms_price}</strong>元</dd>
+            </dl>
+			<dl class="nc-detail-price ">
+              <dt>累计售出：</dt>
+              <dd><em><a href="#ncGoodsTraded">{$ginfo.sell_num}</a></em> 件</dd>
+            </dl>
+			<dl class="nc-detail-price ">
+              <dt>商品运费：</dt>
+              <dd>全国包邮</dd>
+            </dl>          
+        
+            <dl>
+              <dt>评　　价：</dt>
+              <dd><a href="#ncGoodsRate">0条评论</a></dd>
+            </dl>
+            <!-- E 描述相符评分及评价数量 --> 
+            <!-- S 商品类型及浏览数-->
+            <dl class="ncs-other">
+              <dt>商品类型：</dt>
+              <dd> <span><em>
+                                全新                                </em> <i class="ver-line"></i> <em>{$ginfo.view}</em> 次浏览</span>
+								<span> &nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">联系客服：</font><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$qq}&amp;site=qq&amp;menu=yes" title="QQ: {$qq}"><img border="0" src="__SHOP__/images/shop/qq.jpg" style=" vertical-align: middle;"></a></span>
+				</dd>
+            </dl>
+            <!-- E 商品类型及浏览数--> 
+          </div>
+          <div class="sep-line"></div>
+                    <div class="nc-key"> 
+          	<div class="nc-spec">
+            <!-- S 商品规格值-->
+            <dl>
+              <dt>产品规格：</dt>
+              <dd>
+              	 <empty name="ginfo.attrs">
+               		无规格分类
+               	 <else/>	
+                  <ul nctyle="ul_sign" id='a1'>
+                  <!-- 文字类型规格-->
+                  <foreach name='ginfo.attrs' item='v'>
+              			<li class="sp-txt"><a href="javascript:void(0)" onclick="selectSpec(this)">{$v}<i></i></a></li>
+              		</foreach>	
+                  </ul>
+                  </empty>
+                  </dd>
+            </dl>
+                        <dl>
+              <dt>颜色：</dt>
+              <dd>
+              <empty name="ginfo.colors">
+               		无颜色分类
+               	<else/>		          
+               		<ul nctyle="ul_sign" id='c1' data=''>       		
+              		<foreach name='ginfo.colors' item='v'>
+              			<li class="sp-txt"><a href="javascript:void(0)" onclick="selectSpec(this)">{$v}<i></i></a></li>
+              		</foreach>	
+              		</ul>			                	
+               	</empty>                 
+             </dd>
+            </dl>
+                                    <!-- E 商品规格值--> 
+            </div>
+            <!-- S 购买数量及库存 -->
+            <dl>
+              <dt>购买数量：</dt>
+              <dd class="nc-figure-input"> <a href="javascript:void(0)" class="decrease fl text-hidden">-</a>
+                <input type="text" name="" id="quantity" value="1" size="3" maxlength="6" class="fl" style="border-radius:0;width:34px">
+                <a href="javascript:void(0)" class="increase fl text-hidden">+</a> <em class="fl ml20">(当前库存<strong nctype="goods_stock">{$ginfo.goods_num}</strong>件)</em> </dd>
+            </dl>
+            <!-- E 购买数量及库存 --> 
+            <!-- S 提示已选规格及库存不足无法购买 -->
+            <dl class="nc-point" nctype="goods_prompt" style="display:none;">
+            </dl>
+            <!-- E 提示已选规格及库存不足无法购买 --> 
+            <!-- S 购买按钮 -->
+            <div class="nc-btn clearfix">                           
+              <a href="javascript:buy({$ginfo.id});" class="addcart fl ml10 text-hidden" title="添加到购物车"><!-- 加入购物车--></a> 
+              <!-- S 加入购物车弹出提示框 -->
+              <div class="ncs_cart_popup">
+                <dl>
+                  <dt>
+                    <h3>成功添加到购物车</h3>
+                    <a title="关闭" onclick="$('.ncs_cart_popup').css({'display':'none'});">关闭</a></dt>
+                  <dd>
+                    <p class="mb5">购物车共有 <i id="bold_num" class='red'></i> 种商品 总金额为：<i id="bold_mly" class="red"></i> 元</p>
+                    <p>
+                      <input type="submit" class="btn1" name="" value="查看购物车" onclick=location.href='{:U('Shop/cart')}'>
+                      <input type="submit" class="btn2" name="" value="继续购物" onclick="$('.ncs_cart_popup').css({'display':'none'});">
+                    </p>
+                  </dd>
+                </dl>
+              </div>
+              <!-- E 加入购物车弹出提示框 -->
+                          </div>
+            <!-- E 购买按钮 --> 
+          </div>
+                  </article>
+     
+      </div>
+      <div class="clear"></div>
+    </section>    
+
+    <section class="nc-promotion" style="display:none;">
+    <!--S 组合销售 -->
+    <div class="nc-bundling" id="nc-bundling" style="display:none;"></div>  
+    </section>
+    <section class="layout expanded">
+      <article class="nc-goods-main" id="main-nav-holder">
+        <nav class="tabbar pngFix" id="main-nav">
+          <div class="pr" style="z-index: 70;">
+            <ul id="categorymenu">
+              <li class="current"><a id="tabGoodsIntro" href="#shop-other"><span>商品详情</span></a></li>
+            </ul>
+            <div class="switch-bar"><a href="javascript:void(0)" id="abc">&nbsp;</a></div>
+            <div class="gotop"><a href="#header">&nbsp;</a></div>
+          </div>
+        </nav>
+        <section class="nc-s-c-s4 ncg-intro">
+          <div class="content bd" id="ncGoodsIntro">
+              <div class="default">
+             	{$ginfo.goods_detail}
+              </div>
+          </div>
+        </section>
+     
+       <section class="nc-s-c-s2 ncg-com-list">
+          <div class="title">
+            <h4>推荐商品</h4>
+          </div>
+          <div class="content">
+          	<div id="owl-demo">     
+          		<foreach name='tdinfo' item='v'>
+          			<dl>            		 
+	              	<dt><div class="item"><a href="{:U('Shop/goodsDetail',array('id'=>$v['id']))}" title='{$v.goods_name}'><img style='width:186px;height:186px' src="{$v.goods_ico|get_cover='path'}" alt="{$v.goods_name}"></a></div></dt>
+	               <dd><a href="{:U('Shop/goodsDetail',array('id'=>$v['id']))}">{$v.goods_name|msubstr=0,18}</a></dd>
+		  		   <dd class="ncg-price">价格：<em class="price">¥{$v.ms_price}</em>&nbsp;&nbsp;&nbsp;&nbsp;已销售：<em class="price">{$v.goods_num}</em></dd>
+	              </dl>
+            	</foreach>
+			</div>          
+            <div class="clear"></div>
+          </div>
+        </section>
+              </article>
+      <aside class="nc-sidebar">
+		<div class="nc-s-c-s1 ncs-top-bar mt10">
+		  <div class="title">
+		    <h4>商品排行</h4>
+		  </div>
+		  <div class="content">
+		    <ul class="ncs-top-tab pngFix">
+		      <li class="current"><a href="javascript:void(0)">最新商品排行</a></li>
+		      <li><a href="javascript:void(0)">热销商品排行</a></li>
+		    </ul>
+		    <div class="ncs-top-panel">
+		            <notempty name='ninfo'>
+					<foreach name='ninfo' item='v'>
+						<ol>			
+							<li>
+								<dl>
+									<dt>
+										<a href="{:U('Shop/goodsDetail',array('id'=>$v['id']))}"><img src="{$v.goods_ico|get_cover=path}" alt="{$v.goods_name}" title="{$v.goods_name}"></a>
+									</dt>			
+									<dd><a href="{:U('Shop/goodsDetail',array('id'=>$v['id']))}" title='{$v.goods_name}'>{$v.goods_name|msubstr=0,16}</a></dd>						
+									<dd class='collection'>价格：<em class="price">¥{$v.ms_price}</em>&nbsp;&nbsp;&nbsp;&nbsp;已销售：<em class="price">{$v.goods_num}</em></dd>
+									
+								</dl>
+							</li>
+						</ol>
+					</foreach>
+				<else/>
+				暂时没有内容
+				</notempty>
+           </div>
+		    <div class="ncs-top-panel hide">
+				<notempty name='rinfo'>
+					<foreach name='rinfo' item='v'>
+						<ol>			
+							<li>
+								<dl>
+									<dt>
+										<a href="{:U('Shop/goodsDetail',array('id'=>$v['id']))}"><img src="{$v.goods_ico|get_cover=path}" alt="{$v.goods_name}" title="{$v.goods_name}"></a>
+									</dt>			
+									<dd><a href="{:U('Shop/goodsDetail',array('id'=>$v['id']))}" title='{$v.goods_name}'>{$v.goods_name|msubstr=0,17}</a></dd>						
+									<dd class='collection'>价格：<em class="price">¥{$v.ms_price}</em>&nbsp;&nbsp;&nbsp;&nbsp;已销售：<em class="price">{$v.goods_num}</em></dd>
+									
+								</dl>
+							</li>
+						</ol>
+					</foreach>
+				<else/>
+				暂时没有内容
+				</notempty>
+			
+			</div>	
+		  </div>
+		</div>
+      </aside>
+    </section>
+  </article>
+</div>
+</block>
+<block name='script'>
+
+<script src="__SHOP__/js/shop.js" type="text/javascript"></script>
+<script src="__SHOP__/magnifying/js/jquery.jqzoom.js" type="text/javascript"></script>
+<script src="__SHOP__/magnifying/js/lanrenzhijia.js" type="text/javascript"></script>
+<script src="__SHOP__/rolling/js/owl.carousel.min.js" type="text/javascript"></script>
+<script>
+//收藏商品
+function favor(id) {
+	var favorid=id;
+    $.ajax({
+	    type:'post', //传送的方式,get/post
+	    url:'{:U("Shop/favor")}', //发送数据的地址
+	    data:{id:favorid},
+	    dataType: "json",
+	    success:function(data){
+	    	alert(data.info);
+	       },
+	    error:function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+	    	alert_error(XMLHttpRequest+thrownError); }
+    });  	
+}
+//商品规格选择js部分
+function buy(id)
+{ 
+	var B = false;
+	$('ul[nctyle="ul_sign"]').each(function(){
+		if(!$(this).find('a').hasClass('hovered')){
+	        B = true;
+		}
+	});	
+    if (B)
+    {
+        alert('请选择相关规格');
+        return;
+    }else{
+    	var attrs="{$ginfo.attrs}";
+    	if(attrs){
+    		var attr=$('#a1').attr('data');    		
+    	}    	
+    	var colors="{$ginfo.colors}";
+    	if(colors){
+    		var gcolor=$('#c1').attr('data');    		
+    	}    	
+    }
+    var quantity = parseInt($("#quantity").val());
+    if (!quantity>=1)
+    {
+        alert("请填写购买数量");
+        $("#quantity").val('1');
+        return;
+    }
+    var max = "{$ginfo.goods_num}";   
+    if(quantity > max){
+    	alert("您购买的商品数量，超出了该商品库存，请您重新选择商品数量");
+    	return;
+    }    
+    $.ajax({
+        type: "post",//使用post方法访问后台
+        dataType: "json",//返回json格式的数据
+        url:'{:U("Shop/cart")}', //发送数据的地址
+        data:{
+            id:id,num:quantity,color:gcolor,attr:attr
+        },
+        success:function(data){          	
+             if(data.status){
+            	$('#bold_num').text(data.species);
+            	$('#bold_mly').text(data.totalprice);
+            	$('#headCartCount').text(data.species);            	
+                $('.ncs_cart_popup').fadeIn();               
+             }else{
+            	 alert(data.info);
+             }
+        },
+        error:function (XMLHttpRequest, ajaxOptions, thrownError) {
+        	alert_error(XMLHttpRequest+thrownError); 
+        }
+    }); 
+}
+
+/* 选中某规格 num=1,2 */
+function selectSpec(liObj)
+{
+    $(liObj).addClass("hovered");
+    $(liObj).parents('li').siblings().find('a').removeClass("hovered");
+    $(liObj).parent().parent().attr("data",$(liObj).text());
+    var tipstr='';
+    if(true){
+    	 $('ul[nctyle="ul_sign"] li').each(function(){
+   			if($(this).find('.hovered').html() ){
+   				tipstr+=$(this).text()+' ';
+   			}   			
+    	  });
+    }
+    $('[nctype="goods_prompt"]').show().html('<dt>提示：</dt><dd><em class="yes fl">您选择了：'+tipstr+'</em></dd>');    
+}
+
+
+$(document).ready(function() {	 
+	  $("#owl-demo").owlCarousel({	 
+	      autoPlay: 3000, //Set AutoPlay to 3 seconds	 
+	      items : 4,
+	      itemsDesktop : [1199,3],
+	      itemsDesktopSmall : [979,3]	 
+	  });
+	 
+	});
+</script>
+<!-- <script src="__SHOP__/js/sns.js" type="text/javascript"></script> -->
+
+</block>
+

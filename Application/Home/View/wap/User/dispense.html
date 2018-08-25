@@ -1,0 +1,110 @@
+<extend name="wap/Base/base"/>
+
+<block name="body">
+<div class="widget">
+<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>手动分配学习账号</h1></div>
+	<form id="form" action="" method="post" class='form' >
+	 <fieldset class="step" >
+	  <input type="hidden" class='from-ipt' name="id"  value="{$userinfo['id']}">
+			
+	 	<div class="formRow">
+	 		<label style="display:inline-block;margin-top:10px;margin-bottom:10px;" class="field-title contactNameField">学习账号:</label>
+	 		<label style="display:inline-block;margin-top:10px;margin-bottom:10px;"><span>{$userinfo['hasmoney']}</span>
+          		<span class="tip">{$userinfo['cardnumber']}</span>
+          	</label>
+			<div class="clear"></div>
+		</div>
+ 		<div class="formRow">
+ 			<label><span class="info_label">用户编号:</span></label>	
+ 			<div class="formRight">     		
+         		<span class='oneTwo'><input class="contactField requiredField" type="text" name="usernumber" id="usernumber" value="" /></span>
+         		<span class="tip" id='info'></span>
+         </div>
+         <div class="clear"></div>			
+		</div>
+		
+		<div class="formRow">
+			<label><span class="info_label">是否绑定:</span></label>
+			<label><span id ="isok" style="font-size:20px;color:red;margin-left:15px;font-weight:bold;margin-top:10px;margin-bottom:10px;"> </span></label>
+			 <div class="clear"></div>
+		</div>
+		 </fieldset>
+		<div class="wizButtons">
+          <span class="wNavButtons">
+              <button type="submit" class="button-big button-blue" target-form='form-horizontal'>绑定</button>
+              <button type="button" class="button-big button-dark" onclick="javascript:history.back(-1);return false;">返回</button>           
+          </span>
+		</div>
+		<div class="clear"></div>
+	</form>
+</div>	
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+	 $(function(){
+		 	usernumval=$("#usernumber").val();
+		 	$('.form-actions').hide();
+		 	if(usernumval){
+		 		getRealname();
+		 	}
+	    });
+ 	    $('#usernumber').blur(function(){
+	    	usernumval=$("#usernumber").val();
+	    	if(usernumval){
+	    		getRealname();
+	    		searchZhanghao();
+	    	}else{
+	    		$("#info").html('请输入用户编号');
+	    	}
+	    	
+	    }); 
+	    
+	    
+ 	 function getRealname(){
+		usernumval=$("#usernumber").val();
+		$.ajax({
+			url:"__URL__/getRealname",
+			type:"post",
+			data:{unumber:usernumval},
+			success:function(da){
+				if(da){
+					if(da==-1){
+						$("#info").html('该销售产品时没有填写姓名');
+						$('.form-actions').show();
+					}else{
+						$("#info").html(da);
+						$("#info").css("color","#800");
+						$('.form-actions').show();
+					}
+				}else{
+					$('.form-actions').hide();
+					$("#info").html('用户不存在');
+				}
+			}
+		})
+	
+	}  
+	
+ 	   function searchZhanghao(){
+		var bianhao=$("#usernumber").val();
+	
+		$.ajax({
+			url:"__URL__/searchZhanghao",
+			type:"post",
+			data:{usernumber:bianhao},
+			success:function(daa){
+				if(daa == 1){
+					isok = "已绑定";
+				}else {
+					isok = "未绑定";
+				}			
+			$("#isok").text(isok);
+			}
+		})	
+	}    
+	
+	//导航高亮
+	highlight_subnav("{:U('User/dispense')}");
+	</script>
+</block>

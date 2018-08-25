@@ -1,0 +1,215 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class='opt_box'>
+<div class="fl">
+    <a class="btn btn-info" href="{:U('User/registuser')}">新 增</a>
+    <a class="btn btn-info" href="{:U('User/updateMemberPsd',array('id'=>$uinfo['uid']))}">重置密码</a>
+    <a class="btn btn-info" href="{:U('User/updateMemberMsg',array('id'=>$uinfo['uid']))}">修改资料</a>
+   <!-- <eq name="uinfo.isbill" value="1">
+		 <a class="btn btn-success  ajax-get" href="{:U('User/setBill',array('id'=>$uinfo['uid'],'type'=>0))}">取消报单中心</a>
+	<else/>           
+	     <a class="btn btn-info  ajax-get" href="{:U('User/setBill',array('id'=>$uinfo['uid'],'type'=>1))}" >设为一级报单中心</a>
+	     <a class="btn btn-info  ajax-get" href="{:U('User/setBill',array('id'=>$uinfo['uid'],'type'=>2))}" >设为二级报单中心</a>
+	     
+	</eq>-->
+	
+	<!-- <eq name="uinfo.isbill" value="2">
+		 <a class="btn btn-success  ajax-get" href="{:U('User/setBill',array('id'=>$uinfo['uid'],'type'=>0))}">取消报单中心</a>
+	<else/>           
+	     <a class="btn btn-info  ajax-get" href="{:U('User/setBill',array('id'=>$uinfo['uid'],'type'=>2))}" >设为区级报单中心</a>
+	</eq>
+	 <if condition='C("IS_MORE_LEVEL") eq 1'>
+	 	 <a class="btn btn-info " href="{:U('updateLevel',array('id'=>$uinfo['uid']))}" >修改会员级别</a>
+     </if> -->
+</div>
+ <div class='clear'></div>
+</div>
+<div class="widget-box form-horizontal">
+    <div class="widget-title"><span class="icon"> <i class="icon-align-justify"></i></span>
+       <h5>基本信息</h5></div>
+    	<div class="widget-content nopadding">
+         <table class="table table-bordered data-table">
+          <tbody>
+                    <tr>
+                       	<th>会员编号</th>
+                       	<td>{$uinfo.usernumber}</td>
+                       	<th>会员姓名</th>
+						<td>{$uinfo.realname}</td>
+						<th>身份证号</th>
+                       	<td>{$uinfo.IDcard|default='无'}</td>
+                       	<th>手机号</th>
+						<td>{$uinfo.mobile|default='无'}</td>
+                    </tr>
+                    <tr>
+
+                        <!-- 	<th>报单中心</th>
+                            <td colspan='6' >{$uinfo.isbill|get_billcenter}</td>-->
+                     </tr>
+              </tbody>
+            </table>
+         </div>
+         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>关系信息</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <div class="control-group">
+              <label class="control-label">推荐人</label>
+              <div class="controls">
+              	<span class='require spn-info'>{$uinfo.tuijianid|get_usernumber}</span>
+             	<button type='button'  class='btn btn-danger' onclick="changeTnumber('{$uinfo['uid']}');">修改</button> 
+            </div>
+          <div class="control-group">
+              <label class="control-label">在线钱包</label>
+              <div class="controls">
+                
+                 <if condition='$uinfo.qb1 eq 1' > <span class='require spn-info'>[已锁定]</span><else/><span class='require spn-info'>[未锁定]</span></if>
+             
+              	<button type='button' onclick="changeBnumber({$uinfo['uid']});" class='btn btn-danger'>修改</button>
+                </div>
+            </div>
+               <div class="control-group">
+              <label class="control-label">静态钱包</label>
+              <div class="controls">
+                
+                 <if condition='$uinfo.qb2 eq 1' > <span class='require spn-info'>[已锁定]</span><else/><span class='require spn-info'>[未锁定]</span></if>
+             
+              	<button type='button' onclick="changeBnumber1({$uinfo['uid']});" class='btn btn-danger'>修改</button>
+                </div>
+            </div>
+               <div class="control-group">
+              <label class="control-label">动态钱包</label>
+              <div class="controls">
+                
+                 <if condition='$uinfo.qb3 eq 1' > <span class='require spn-info'>[已锁定]</span><else/><span class='require spn-info'>[未锁定]</span></if>
+             
+              	<button type='button' onclick="changeBnumber2({$uinfo['uid']});" class='btn btn-danger'>修改</button>
+                </div>
+            </div>
+               <div class="control-group">
+              <label class="control-label">孵化钱包</label>
+              <div class="controls">
+                
+                 <if condition='$uinfo.qb4 eq 1' > <span class='require spn-info'>[已锁定]</span><else/><span class='require spn-info'>[未锁定]</span></if>
+             
+              	<button type='button' onclick="changeBnumber3({$uinfo['uid']});" class='btn btn-danger'>修改</button>
+                </div>
+            </div>
+              <script>
+                /*静态钱包*/
+                  function changeBnumber1(uid){
+                                $.ajax({
+                               type: "Post",
+                               url: "{:U('updateNew2')}",
+                               data: {uid:uid,bnumber:2},
+                               dataType: "json",
+                               success: function(date){
+                                  layer.alert(date.info);
+                                  location.reload();
+                               }
+                     
+                      })
+                  }
+  /*动态钱包*/
+function changeBnumber2(uid){
+	
+    		var index = layer.load('正在执行修改...');
+		  $.ajax({
+             type: "Post",
+             url: "{:U('updateNew3')}",
+             data: {uid:uid,bnumber:3},
+             dataType: "json",
+             success: function(date){
+             	layer.alert(date.info);
+              location.reload();
+             }
+       })
+    
+}
+                 /*动态钱包*/
+function changeBnumber3(uid){
+	
+    		var index = layer.load('正在执行修改...');
+		  $.ajax({
+             type: "Post",
+             url: "{:U('updateNew4')}",
+             data: {uid:uid,bnumber:4},
+             dataType: "json",
+             success: function(date){
+             	layer.alert(date.info);
+              location.reload();
+             }
+       })
+    
+}
+              
+              </script>
+              
+              
+              
+                <!--<div class="control-group">
+                  <label class="control-label">接点人</label>
+                  <div class="controls">
+                  <span class='require spn-info'>{$uinfo.parentid|get_usernumber}</span>
+                </div></div>-->
+               <!-- <if condition='C("SELECT_MODE") eq 2'>-->
+               <!-- <div class="control-group">
+                  <label class="control-label">钱包锁定</label>
+                  <div class="controls"><span class='require spn-info'>
+                      <if condition='$uinfo.qb1 eq 1' >左区</if>
+                      <if condition='$uinfo.zone eq 2' >右区</if>
+                  </span></div>
+                </div></if>
+             </div>-->
+         <div class="widget-content nopadding">
+          <div class="form-actions">
+              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+            </div></div>
+        </div>
+ </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+/*修改推荐人*/
+function changeTnumber(uid){
+	layer.confirm('确定修改该会员的推荐人吗？',function(){
+		layer.prompt({title: '推荐人编号'}, function(tnumber){
+    		//var index = layer.load('正在跳转，请耐心等待');
+			$.post("{:U('xg_tj')}",{uid:uid,mobile:tnumber},success, "json");
+    	});
+	})
+}
+/*在线钱包*/
+function changeBnumber(uid){
+	layer.confirm('确定锁定会员钱包？',function(){
+		var bnumber="";
+    		var index = layer.load('正在执行修改...');
+       $.ajax({
+             type: "Post",
+             url: "{:U('updateNew')}",
+             data: {uid:uid,bnumber:1},
+             dataType: "json",
+             success: function(date){
+             	layer.alert(date.info);
+                location.reload();
+             }
+       })
+      
+			
+    	
+	})
+}
+
+/*修改推荐人*/
+function out(uid){
+	layer.confirm('确定该会员出局吗？',function(index){
+		layer.close(index);
+		var index1 = layer.load('正在出局...');
+		$.post("{:U('out')}",{uid:uid},function(message){
+			layer.alert(message);
+			 window.location.reload();
+		});
+	})
+}
+highlight_subnav("{:U('User/userindex')}");
+</script>		
+</block>

@@ -1,0 +1,123 @@
+.mui-content{
+	padding-bottom: 70px;
+}
+.top{
+	width: 100%;
+	height: 135px;
+	background: url(../../imgs/bj_02.jpg) no-repeat;
+	background-size: 100% 100%;
+	color: #FFFFFF;
+	font-size: 16px;
+}
+.img img{
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin-top:30px;
+	margin-left: 25px;
+	border-radius: 50%;
+}
+.set{
+	position: absolute;
+	top: 1%;
+	right: 0;
+	width: 80px;
+	line-height:30px;
+	cursor: pointer;
+	background-color: #0c4e8c;
+	text-align: center;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+.set span{
+	font-size: 14px;
+	vertical-align: middle;
+}
+.name{
+	width: 60%;
+	float: left;
+	margin-top: 40px;
+	margin-left: 15px;
+}
+.qianming{
+	width: 100%;
+	margin-top: 15px;
+}
+.name-1{
+	display: inline-block;
+	margin-right: 10px;
+}
+.num{
+	font-size: 14px;
+	position: absolute;
+	top: 1%;
+	right: 2%;
+}
+.list1{
+	height: 55px;
+	width: 100%;
+	padding-top: 7px;
+	margin-bottom: 5px;
+	background-color: #FFFFFF;
+	font-size: 16px;
+}
+.list1 li{
+	float: left;
+	width: 49%;
+	height: 40px;
+	text-align: center;
+}
+.mui-grid-view.mui-grid-9{
+	background-color: #FFFFFF;
+}
+.hezuo{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #FFFFFF;
+	margin-top: 5px;
+	text-align: center;
+}
+.hezuo span:nth-child(2){
+	display: inline-block;
+	vertical-align:top;
+	margin-left: 5px;
+	margin-bottom: 10px;
+}
+.z_mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+ 	display: none;
+}
+.z_alert{
+    width: 300px;
+    height: 280px;
+    background: url(../../imgs/qiandao.png) no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left:-150px;
+    margin-top:-140px;
+}
+.z_alert p{
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	z-index: 99999;
+}
+.z_alert p:nth-child(1){	
+	color: #FFFFFF;
+	top: 50%;
+	font-size: 16px;	
+}	
+.z_alert p:nth-child(2){
+	color: #4ea1ff;
+	bottom: 15px;
+	font-size: 1em;
+}	

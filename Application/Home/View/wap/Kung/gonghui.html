@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/wodegonghui.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header ">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">我的公会</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="top">
+				 <if condition="$uinfo['is_gonghui'] eq 0">
+				    
+				     <p class="jj iconfont icon-jia link" data-link="{:U('create_gh')}">&nbsp;创建公会</p>
+				
+				</if>
+				<div class="img"><img src="__IMG__/touxiang.png"/></div>
+				     <if condition="$gonghui eq ''">
+				          <p class="name">对不起，您还没有公会</p>
+				     <else/>
+				          <p class="name">{$gonghui['gh_name']}的公会</p>
+				     </if>
+				     
+				
+			</div>
+			<div class="main" style="position:relative">
+			    <if condition="$uinfo['is_gonghui'] eq 1">
+			        <p class="iconfont icon-bianji bianji link" data-link="{:U('create_gh',array('id'=>$gonghui['id']))}"></p>
+			    </if>
+				<if condition="$gonghui neq ''">
+				    <ul>
+					<li>
+						公会的口号：<span class="mui-ellipsis a">{$gonghui['gh_xuanyan']}</span>
+					</li>
+					<li>
+						公会QQ群：<span>{$gonghui['gh_qq']}</span>
+					</li>
+					<li>
+						会长手机：<span>{$gonghui['hz_phone']}</span>
+					</li>
+					<li>
+						公会总人数：<span>{$uinfo['team']|default=0}</span>人
+					</li>
+					<li>
+						公会总算力：<span>{$total|default=0}</span>GH/s
+					</li>
+				</ul>
+				<else/>
+				
+				<ul>
+					<li>
+						团队总人数：<span>{$uinfo['team']}</span>人
+					</li>
+					<li>
+						团队总算力：<span>{$total|default=0}</span>GH/s
+                      
+					</li>
+				</ul>
+				
+				</if>
+              	
+			</div>
+			<notempty name="people">
+			<div class="boot">
+				<ul class="mui-table-view">
+				<volist name="people" id="vo">
+				    <li class="mui-table-view-cell mui-media">
+				        
+				        <span class="tel"><a href="tel:{$vo['mobile']}">
+                          <if condition="$vo['photo'] gt 0">
+				               <img class="mui-media-object mui-pull-left" src="{$vo['photo']|get_cover=path}">
+                            <else/>
+                            <img class="mui-media-object mui-pull-left" src=" __IMG__/touxiang.png">
+                             </if>
+				        </a></span>				      
+			              
+			            
+			           
+			            		
+			            
+			           
+			            <div class="mui-media-body">
+			                &nbsp;<span>{$vo['usernumber']}</span>
+			                <p class="mui-ellipsis"><span class="g">【<span>{$kuangji[$vo['uid']]|default=0}</span>】</span>台矿机正在产币</p>
+			            	<div class="mui-pull-right num">会友数：<span class="g">{$vo['team']}</span>个</div>
+			            </div>	
+				    </li>	
+				</volist>
+				   			    
+				</ul>
+			</div>
+			</notempty>
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+</html>

@@ -1,0 +1,79 @@
+.mid ul{
+	height: 50px;
+}
+.mid li{
+	width: 25%;	
+	float: left;
+	font-size: 14px;
+	line-height: 50px;
+	text-align: center;
+}
+.dd{
+	background: #FFFFFF;
+	color: #1DBEFF;
+}
+.dd1{
+	display: none;
+}
+.active{
+	background:#1DBEFF;
+	color:#FFFFFF;
+}
+.cur{
+	display: block;
+}
+.table{
+	width: 100%;
+	overflow-x: auto;
+	background: #FFFFFF;
+}
+.table table{
+	width: 200%;
+}
+.table th,.table td{
+	line-height: 35px;
+	text-align: center;
+	padding: 5px;
+	font-size: 14px;
+}
+.table th{
+	color: #FFFFFF;
+	background:#1DBEFF;
+	border: 1px solid #fff;
+}
+.table td{
+	color: #666666;
+	border: 1px solid #BBBBBB;
+	overflow: hidden;
+}
+.table td p{
+	width: 100%;
+	color: #FFFFFF;
+	background: #1DBEFF;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 30px;
+}
+.xiangqing{
+	width: 100%;
+	color: #FFFFFF;
+	background: #1DBEFF;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 30px;
+}
+table{
+	width: 100%;
+    background: #fff;
+}
+table th,table td{
+	line-height: 35px;
+	text-align: center;
+	padding: 5px;
+	font-size: 14px;
+	color: #666666;
+	border: 1px solid #BBBBBB;
+}
+table th{
+	color: #000;
+}

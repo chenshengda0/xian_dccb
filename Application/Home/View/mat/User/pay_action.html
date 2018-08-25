@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/edit_pass.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">{$title}</h1>		 
+		</header>
+		<div class="mui-content">
+			<form action="{:U('')}" method="post" class="form-horizontal">
+				<div class="top1">
+				    <span>{$title}：</span><input type="text" name = "zhanghao" value="{$zhanghao}" class="mui-input-clear mui-ellipsis" placeholder="请输入您的{$title}账号">
+				    
+				    <input type="hidden" name="method" value="{$method}">
+				</div>
+				<if condition="$method eq 3">
+				<div class="top1">
+				    <span>开户行：</span><input type="text" name = "bankname" value="{$bankname}" class="mui-input-clear mui-ellipsis" placeholder="请输入您的开户行">
+				</div>
+				</if>
+				<p class="x"><input type="submit" class="ajax-post" target-form='form-horizontal' value="确定"/></p>
+			</form>
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+</html>
+

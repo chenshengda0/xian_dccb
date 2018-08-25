@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/style.css" />
+		<link rel="stylesheet" href="__CSS__/pages/dailishang.css" />
+		<link rel="stylesheet" href="__CSS__/mui.picker.min.css" />
+		<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title">代理商申请</h1>		 
+		</header>
+		<div class="mui-content">
+			<form action="" method="post" class="form-horizontal">
+			{:hook('J_China_City',$param)}
+			<!-- <input id='showCityPicker' name="address" class="mui-btn mui-btn-block"  value="请选择地区"/> -->		
+		<div class="words">
+			<textarea name="content" placeholder="申请理由，必须填写"></textarea>
+			<span class="xz">(最多200字)</span>
+		</div>
+			<p class="x"><input type="submit" class='ajax-post' target-form='form-horizontal' value="确认申请"/></p>
+			
+			</form>
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__JS__/mui.picker.min.js"></script>
+	<script type="text/javascript" src="__JS__/city.data.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+			$.ready(function() {					
+				var cityPicker = new $.PopPicker({
+					layer: 2
+				});
+				cityPicker.setData(cityData);
+				var showCityPickerButton = doc.getElementById('showCityPicker');
+				var cityResult = doc.getElementById('showCityPicker');
+				showCityPickerButton.addEventListener('tap', function(event) {
+					cityPicker.show(function(items) {
+						cityResult.value = items[0].text+ items[1].text;
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);				
+			});
+		})(mui, document);
+	</script>
+</html>

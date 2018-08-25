@@ -1,0 +1,40 @@
+<extend name="Base/user"/>
+ <link rel="stylesheet" href="__CSS__/haojudian.css" type="text/css" />
+ <link rel="stylesheet" href="__CSS__/member.css" type="text/css" />
+<style>
+.goods{
+	display:none
+}
+
+</style>  
+<block name="content">    
+      <div class="member_tit">
+            <span class="Mt_left">我的收藏</span>
+        </div>
+        <div class="member_cont">
+            <div class="my_Focus">
+                <div class="Focus_tit">你共收藏了<span class="rose_red">{$favor_count}</span>个商品</div>
+                <div class="yb_ul">
+                    <ul>
+                    	<foreach name='favorlist' item='vo'>
+                    		<li>
+                                <a href="{:U('Index/goodsDetail?id='.$vo['goodid'])}">
+                                    <img width="228px" height="228px" class="pimg1" src="{$vo.goodid|getGoodPic}"></a>
+                                <a href="{:U('Index/goodsDetail?id='.$vo['goodid'])}" class="recom_ul_tit" title='{$vo.goodid|get_good_name}'>
+                                    {$vo.goodid|get_good_name|msubstr=0,19}
+                                </a>
+                                <div class="yb_d my_btn"><span class="recommend_price">￥{$vo.goodid|get_good_price}</span>
+                                <a href="{:U('User/cancelfavor?id='.$vo['goodid'])}" class="recommend_gay">取消收藏</a></div>
+                            </li>
+                    	</foreach>                            
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="page">
+				{$page}
+        </div>
+</block>
+<include file="Public:footer" />

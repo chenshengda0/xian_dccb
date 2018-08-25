@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/gonghuizhaomu.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">公会招募</h1>
+		</header>
+		<div class="mui-content">
+			<div class="img"><div id="output"></div></div>
+			<input type="text" value="http://{$_SERVER['HTTP_HOST']}/index.php?a=Home/Register/index/id/{$id}" class="inp" id="contents"/>
+			<p class="but" onClick="jsCopy();">复制链接</p>
+		</div>	
+		
+		<script src="__HOME__/wap/js/mui.min.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="__HOME__/wap/js/index/jquery.qrcode.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			var a=($('.inp').val())
+			jQuery(function(){
+				jQuery('#output').qrcode(a);
+			})
+          function jsCopy(){   
+		        var e=$("#contents");//对象是contents   
+		       	e.select(); 
+		        tag=document.execCommand("Copy"); //执行浏览器复制命令  		  
+		        console.log(tag)
+		        if(tag){  
+		          alert('复制内容成功');  
+		        }  
+		    }  
+		</script>
+	</body>
+</html>
+
+
+
+

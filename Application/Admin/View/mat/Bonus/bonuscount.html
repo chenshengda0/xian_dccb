@@ -1,0 +1,61 @@
+<extend name="Public/base" />
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+	<include file='Public/search'/>
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table" style="max-width:100%">
+    <thead>
+        <tr>
+			<th>{$Think.const.DATE_TIME}</th> 
+			<th>{$Think.const.USERNUMBER}</th>
+			  <th>{:getChangeType(1)}</th>
+			<th>{:getChangeType(4)}</th>
+			<th>{:getChangeType(3)}</th>
+			<th>{:getChangeType(5)}</th>
+		    <th>应发奖金累计</th> 
+		    <th>实发奖金累计</th>
+		     <th>{$Think.const.TAX}</th>
+		     <th>复消币</th>  
+		     <th>爱心基金</th>  
+		    <th>{$Think.const.OP}</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>				
+			<td>{$vo.count_date|date="Y-m-d",###}</td>
+			<td>{$vo.touserid|get_usernumber}[{$vo.touserid|query_user='realname',###}]</td>
+			<td>{$vo.bonus1|format_num}</td>
+			<td>{$vo.bonus4|format_num}</td>
+			<td>{$vo.bonus3|format_num}</td>
+			<td>{$vo.bonus5|format_num}</td>
+			<td>{$vo.allmoney|format_num}</td>
+			<td>{$vo.total|format_num}</td>
+			<td>{$vo.taxmoney|format_num}</td>
+			<td>{$vo.cpmoney|format_num}</td>
+			<td>{$vo.lovefund|format_num}</td>
+			<td><a href="{:U('Bonus/showMore',array('targetuserid'=>$vo['touserid'],'createtime'=>$vo['count_date']))}" >查看明细</a></td>
+		</tr>
+		</volist>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div></div></div>
+    <else/>
+ <include file='Public/emptylist' title="暂时没有奖金明细"/>
+ </notempty>
+</block>
+<block name="script">
+<script type="text/javascript">
+   //导航高亮
+   highlight_subnav("{:U('Bonus/bonusTotal')}");
+</script>
+</block>

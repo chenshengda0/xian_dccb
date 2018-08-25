@@ -1,0 +1,41 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.mui-content{
+	width: 100%;
+	height: 100%;
+	background: url(../../imgs/cont.jpg) no-repeat;
+	background-size:cover;
+	background-position-x: center;
+}
+.top{
+	width: 100%;
+	height: 100px;
+	background: url(../../imgs/cont1.jpg) no-repeat;
+	background-size: 100% 100%;
+	background-position-x: center;
+}
+.main{	
+	text-align: center;
+	overflow: hidden;
+}
+.main P{
+	color: #FFFFFF;
+	line-height: 30px;
+	
+}
+.tit{
+	font-size: 24px;
+	margin: 30px auto;
+}
+.k{
+	border: 1px solid #00B50D;
+	border-radius: 3px;
+	width: 70%;
+	text-align: center;
+	margin:auto;
+	margin-top: 20px;
+	background-color: #007230;
+}

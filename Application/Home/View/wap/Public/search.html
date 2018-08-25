@@ -1,0 +1,48 @@
+<div class='floatR'>
+	<form action="{:U()}" method="post" class='form'>
+			<foreach name='opt' item="vo">
+				<switch name="vo.type">    
+					<case value="input">
+						<span class='oneFive'><input type="{$vo.ipttype|default='text'}" id='{$vo.attr.id}' name="{$vo.name}" class="contactField requiredField" style = "min-width: 25%;display:inline-block;"value="{$vo.value}" placeholder="{$vo.title}"></span>
+					</case>    
+					<case value="select">
+						<span class='oneFive'><select name="{$vo.name}" class="contactField requiredField">
+							<foreach name="vo.option" item="v" key='k'>
+								<option value="{$k}" <eq name="k" value="$vo.value">selected</eq> >{$v}</option>
+							</foreach>
+						</select></span>
+					</case>    
+					<default />
+				</switch>
+			</foreach>
+			<button class="button-big button-blue"  type="submit" >查询</button>
+	</form>
+	</div>
+	
+<script>
+var start = {
+    elem: '#start',
+    format: 'YYYY-MM-DD',
+    min: '2010-01-01 00:00:00', //设定最小日期为当前日期
+    max: '2099-12-31 23:59:59', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+var end = {
+    elem: '#end',
+    format: 'YYYY-MM-DD',
+    min: '2010-01-01 00:00:00', //设定最小日期为当前日期
+    max: '2099-12-31 23:59:59', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+        start.max = datas; //结束日选好后，重置开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
+</script>

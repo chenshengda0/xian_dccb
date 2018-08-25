@@ -1,0 +1,57 @@
+<extend name="public/base"/>
+<block name='style'>
+<style>
+</style>
+</block>
+
+<block name="body">
+         <!-- Select -->
+         <form action="{:U('questionSet')}" method="post"  class="ajax-post">
+         <div class="block-area" id="select">
+         	<p>密保问题一：</p>
+             <select   id="question1" name="question1"  class="form-control input-lg m-b-10">
+                 <option></option>
+             </select>
+             <p>密保答案一：</p>
+             <input name="answer1" value="" class="form-control input-lg m-b-10" type="text" placeholder="请输入问题答案">
+             <p>密保问题二：</p>
+             <select  id="question2" name="question2"  class="form-control input-lg m-b-10">
+                 <option></option>
+             </select>
+             <p>密保答案二：</p>
+             <input name="answer2" value="" class="form-control input-lg m-b-10" type="text" placeholder="请输入问题答案">
+             <p>密保问题三：</p>
+             <select    id="question3" name="question3"  class="form-control input-lg m-b-10">
+                 <option></option>
+             </select>
+             <p>密保答案一：</p>
+             <input name="answer3" value="" class="form-control input-lg m-b-10" type="text" placeholder="请输入问题答案">
+              <button type="submit" class="btn btn-block m-b-10">确认</button>
+              <button type="reset" class="btn btn-block btn-alt">重置</button>
+         </div>
+         </form>
+<!-- /主体 --> 
+</block>
+<block name="script">
+<script type="text/javascript">
+  //导航高亮
+ highlight_subnav("{:U('Index/updateQuestion')}");
+</script>
+<script type="text/javascript">
+var questions=eval({$_list});
+var selectobj=['question1','question2','question3'];
+var select = new selectQ(questions,selectobj);
+$(function(){
+	select.init();	
+});
+$('#question1').change(function(){
+	select.change(0);
+});
+$('#question2').change(function(){
+	select.change(1);
+});
+$('#question3').change(function(){
+	select.change(2);
+});
+</script>
+</block>

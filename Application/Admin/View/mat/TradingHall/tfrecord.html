@@ -1,0 +1,45 @@
+<extend name="Public/base" />
+
+<block name="body">
+<notempty name="_list">
+<div class='opt_box'>
+	<include file='Public/search'/>
+	<div class='clear'></div>
+</div>
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+    <thead>
+        <tr>
+			<th>转币时间</th><th>转入币种</th><th>转出币种</th><th>转币金额</th><th>转出用户</th><th>转人用户</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>
+	         <td>{$vo.createtime|date="Y-m-d",###}</td>
+	         <td>{$vo.moneytype|getMoneyType}</td>
+	         <td>{$vo.outtype|getMoneyType}</td>
+	         <td>{$vo.money}</td>
+			<td> {$vo.usernumber}</td>
+			<td>{$vo.targetusernumber}</td>
+		</tr>
+		</volist>
+	</tbody>
+    </table>
+    <div class="page">
+        {$_page}
+    </div></div></div>
+    <else/>
+  <include file='Public/emptylist' title="暂时没有转账记录"/>
+</notempty>
+</block>
+<block name="script">
+	<script type="text/javascript">
+    //导航高亮
+    highlight_subnav("{:U('tfRecord')}");
+	</script>
+</block>

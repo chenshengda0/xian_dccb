@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>充值记录</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	.box{width: 100%;height: auto;float: left;}
+    	.box table tr th{color: #fff;font-weight: normal;background: #282f37;border-top: 1px solid #3d4651;border-bottom: 1px solid #3d4651;}
+    	.box table{width: 100%;}
+    	.box table tr{height: 40px;font-size: .95em;}
+    	.box table tr td{color: #a19fa0;text-align: center;border-bottom: 1px solid #3d4651;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left" href="{:U('user/index')}"></a>
+        <h1 class="mui-title">充值记录</h1>
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+    		<table>
+    			<tr>
+    				<th>订单状态</th>
+    				<th>充值金额</th>
+    				<th>充值时间</th>
+    			</tr>
+
+				<volist name="_list" id="vo"  mod="2">
+    			<tr>
+    				<td>
+						<if condition="$vo['status'] eq 1">
+							已到账
+						<elseif condition="$vo['status'] eq 0"/>
+							正在处理
+						<else/>
+							已拒绝
+						</if>
+					</td>
+    				<td>{$vo.money}</td>
+    				<td>{$vo.createtime|date="Y-m-d H:i:s",###}</td>
+    			</tr>
+				</volist>
+    		</table>
+    	</div>
+    </div>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+</body>
+</html>
+

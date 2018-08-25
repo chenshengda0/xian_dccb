@@ -1,0 +1,75 @@
+<div class="fr">	
+	<form action="{:U()}" method="post" id="wd" class="form-horizontal">
+		<div class="control-group">
+			<foreach name='opt' item="vo">
+				<switch name="vo.type">    
+					<case value="input">
+						<input type="{$vo.ipttype|default='text'}" id='{$vo.attr.id}' name="{$vo.name}" class="text {$vo.attr.class}" {$vo.attr.readonly} value="{$vo.value}" placeholder="{$vo.title}">&nbsp;
+					</case>    
+					<case value="select">
+						<select name="{$vo.name}">
+							<foreach name="vo.option" item="v" key='k'>
+								<option value="{$k}" <eq name="k" value="$vo.value">selected</eq> >{$v}</option>
+							</foreach>
+						</select>
+					</case>    
+					<default />
+				</switch>
+			</foreach>
+			<button class="btn" id="cha" type="submit" >查询</button>
+			<button class="btn" id="daochu" type="button" >导出数据</button>
+		</div>
+	</form>
+</div>
+ <script>
+ $('#cha').click(function(){
+		$("#wd").attr("action", "{:U('userIndex')}");
+		$('#wd').submit();
+	});
+	$('#daochu').click(function(){
+		$("#wd").attr("action", "{:U('import1')}");
+		$('#wd').submit();
+	});
+
+ 
+var start = {
+    elem: '#start',
+    format: 'YYYY-MM-DD',
+    min: '2010-01-01 00:00:00', //设定最小日期为当前日期
+    max: '2099-12-31 23:59:59', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+var end = {
+    elem: '#end',
+    format: 'YYYY-MM-DD',
+    min: '2010-01-01 00:00:00', //设定最小日期为当前日期
+    max: '2099-12-31 23:59:59', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+        start.max = datas; //结束日选好后，重置开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
+$("#search_begin_id").click( function () { 
+	laydate(start);
+});
+
+$("#search_end_id").click( function () { 
+	laydate(end);
+});
+
+//回车搜索
+$(".search-input").keyup(function (e) {
+    if (e.keyCode === 13) {
+        $("#search").click();
+        return false;
+    }
+});
+</script>

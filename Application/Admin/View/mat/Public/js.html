@@ -1,0 +1,47 @@
+<script type="text/javascript" src="__STATIC__/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__STATIC__/checkbrowser.js"></script>
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="__STATIC__/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+<script type="text/javascript" src="__STATIC__/layer/layecore/extend/layer.ext.js"></script>
+<script src="__MAT__/js/matrix.js"></script> 
+<script src="__MAT__/js/bootstrap.min.js"></script> 
+<script type="text/javascript">
+       var ThinkPHP = window.Think = {
+           "ROOT": "__ROOT__", //当前网站地址
+           "APP": "__APP__", //当前项目地址
+           "PUBLIC": "__PUBLIC__", //项目公共目录地址
+           "DEEP": "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
+           "MODEL": ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+           "VAR": ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"],
+           'URL_MODEL': "{:C('URL_MODEL')}",
+           'WEIBO_ID': "{:C('SHARE_WEIBO_ID')}"
+       }
+</script>
+<script type="text/javascript" src="__MAT__/js/think.js"></script>
+<script type="text/javascript">
+$(function(){
+	var filed = "{$sort.field}";
+	var idorder = "{$sort.idorder}";
+	var sort = $("i[data-field='"+filed+"']");
+	$(".change-sort").removeClass('icon-sort-up');
+	$(".change-sort").removeClass('icon-sort-down');
+	if(idorder == 1){
+		sort.addClass('icon-sort-up');
+		sort.removeClass('icon-sort-down');
+	}else{
+		sort.addClass('icon-sort-down');
+		sort.removeClass('icon-sort-up');
+	}
+	
+	$(".change-sort").click(function(){
+		var idorder = 1;//升序
+		var filed = $(this).attr('data-field');
+		if($(this).hasClass('icon-sort-up')){
+			idorder = 2;//降序
+		}
+		 window.location="__ACTION__/idorder/"+idorder+"/field/"+filed;
+	});
+	
+});
+</script>

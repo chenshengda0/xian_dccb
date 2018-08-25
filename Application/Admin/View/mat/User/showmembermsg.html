@@ -1,0 +1,43 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>显示用户信息</h2>
+    </div>
+    <div class="data-table table-striped">
+	    	 <table class="">
+	            <thead>
+	            	<tr><th class="" colspan="8">会员信息 </th> </tr>
+	            </thead>
+	            <tbody>
+                    <tr>
+						<td>会员编号</td><td>{$userinfo['usernumber']}</td>
+						<td>会员姓名</td><td>{$userinfo['nickname']}</td>
+					</tr>
+					<tr>
+						<td>会员职称</td><td>{$userinfo['userrank']|get_userrank}</td>
+						<td>银行名称</td><td>{$userinfo['bankname']}</td>
+                    </tr>   
+                     <tr>
+						<td>邮箱</td><td>{$userinfo['email']}</td>
+						<td>手机号</td><td>{$userinfo['mobile']}</td>
+						</tr>
+					<tr>
+						<td>QQ号</td><td>{$userinfo['qq']}</td>
+						<td>银行卡号</td><td>{$userinfo['bankcard']}</td>
+                    </tr>
+	            </tbody>
+	        </table>
+    </div>
+			 <div class="tb-unit-bar">
+                <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+            </div>  
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+  
+        //导航高亮
+        highlight_subnav("{:U('User/userIndex')}");
+    </script>
+</block>

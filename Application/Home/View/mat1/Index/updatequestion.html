@@ -1,0 +1,71 @@
+<extend name="wap/Base/base"/>
+<block name='style'>
+<style>
+</style>
+</block>
+
+<block name="body">
+	<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
+	<div class="decoration"></div>
+      <form action="{:U('questionSet')}" method="post">
+      <div id="select">
+         <div class="formFieldWrap">
+       		 	<label class="field-title contactNameField" for="contactNameField">密保问题一:</label>
+        	 	<select   id="question1" name="question1"  class="contactField requiredField">
+                <option></option>
+             </select>		
+   		</div>
+   		<div class="formFieldWrap">
+       		 	<label class="field-title contactNameField" for="contactNameField">密保答案一:</label>
+        	 	<input name="answer1" value="" class="contactField requiredField" type="text" placeholder="请输入问题答案">		
+   		</div>
+   		<div class="formFieldWrap">
+       		 	<label class="field-title contactNameField" for="contactNameField">密保问题 二:</label>
+        	 	<select   id="question2" name="question2"  class="contactField requiredField">
+                <option></option>
+             </select>		
+   		</div>
+   		<div class="formFieldWrap">
+       		 	<label class="field-title contactNameField" for="contactNameField">密保答案二:</label>
+        	 	<input name="answer2" value="" class="contactField requiredField" type="text" placeholder="请输入问题答案">		
+   		</div>
+   		<div class="formFieldWrap">
+       		 	<label class="field-title contactNameField" for="contactNameField">密保问题三:</label>
+        	 	<select   id="question3" name="question3"  class="contactField requiredField">
+                <option></option>
+             </select>		
+   		</div>
+   		<div class="formFieldWrap">
+       		 	<label class="field-title contactNameField" for="contactNameField">密保答案三:</label>
+        	 	<input name="answer3" value="" class="contactField requiredField" type="text" placeholder="请输入问题答案">		
+   		</div>
+   		</div>
+   		 <div class="formSubmitButtonErrorsWrap">
+   		 	<input class="button-big button-turqoise"  value="确定" type="submit" target-form='form'/>
+            <input class="button-big button-orange"  value="返回" type="button"  onclick="javascript:history.back();"/>	
+   		 </div>
+         </form>
+</block>
+<block name="script">
+<script type="text/javascript">
+//导航高亮
+highlight_subnav("{:U('Index/updateQuestion')}");
+</script>
+<script type="text/javascript">
+var questions=eval({$_list});
+var selectobj=['question1','question2','question3'];
+var select = new selectQ(questions,selectobj);
+$(function(){
+	select.init();	
+});
+$('#question1').change(function(){
+	select.change(0);
+});
+$('#question2').change(function(){
+	select.change(1);
+});
+$('#question3').change(function(){
+	select.change(2);
+});
+</script>
+</block>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<link rel="stylesheet" href="__HOME__/wap/css/shouye/jiaoyixiangqing.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">交易详情</h1>
+		</header>
+		
+		<div class="mui-content">
+		
+			<if condition="$mai eq 2">
+				<if condition="$result.status eq 3">
+					<div class="photo">
+						<div class="z_photo">		        	
+				            <div class="z_file">
+				               <img src="{$result.pinzheng}" width="120px" height="120px">	
+				            </div>				
+				    	</div>
+					</div>
+					<div class="list">
+				    	
+				    	<span>真实姓名：</span><input type="text"  disabled value = "{$info.realname}" placeholder=""/>	
+                      	<span>会员编号：</span><input type="text"  disabled value = "{$info.usernumber}" placeholder=""/>
+				    	<span>手机号：</span><input type="text"  disabled value = "{$info.mobile}" placeholder=""/>
+				    	
+				    	<span>支付宝号：</span><input type="text"  disabled value = "{$info.alipay}" placeholder=""/>
+				    	<span>银行卡号：</span><input type="text"  disabled value = "{$info.banknumber}" placeholder=""/>
+				    	<span>BTC比特币:</span><input type="text" disabled  value = "{$info.bite}" placeholder=""/>
+                      	<span>以太坊ETH:</span><input type="text" disabled  value = "{$info.ytf}" placeholder=""/>
+                      	<span>skype账号 :</span><input type="text" disabled  value = "{$info.skype}" placeholder=""/>
+                      	<span>Facebook账号:</span><input type="text" disabled  value = "{$info.facebook}" placeholder=""/>   		
+				    </div> 
+                  	<p style="width:80%;margin:0 auto"><input type="submit" value="待对方确认" class="but" style="width:100%"></p>
+				<else/>
+						<form action="{:U('mj_tj')}" method="post" enctype="multipart/form-data">
+					<div class="photo">
+						<div class="z_photo">		        	
+				            <div class="z_file">
+				                <input type="file" name="file" id="file" value="" accept="image/*" multiple onchange="imgChange('z_photo','z_file');" />			
+				            	
+				            </div>	
+				           		
+				    	</div>
+					</div>
+					<p style="width:100%;text-align:center">点击上方上传交易凭证</p>	
+					<div class="list">
+				    	
+				    	<span>真实姓名：</span><input type="text"  disabled value = "{$info.realname}" placeholder=""/>	 
+                      	<span>会员编号：</span><input type="text"  disabled value = "{$info.usernumber}" placeholder=""/>
+				    	<span>手机号：</span><input type="text"  disabled value = "{$info.mobile}" placeholder=""/>
+				    	
+				    	<span>支付宝号：</span><input type="text"  disabled value = "{$info.alipay}" placeholder=""/>
+				    	<span>银行卡号：</span><input type="text"  disabled value = "{$info.banknumber}" placeholder=""/>
+				    	<span>BTC比特币:</span><input type="text" disabled  value = "{$info.bite}" placeholder=""/>
+                      <span>以太坊ETH:</span><input type="text" disabled  value = "{$info.ytf}" placeholder=""/>
+                      	<span>skype账号 :</span><input type="text" disabled  value = "{$info.skype}" placeholder=""/>
+                      	<span>Facebook账号:</span><input type="text" disabled  value = "{$info.facebook}" placeholder=""/>	   		
+				    </div> 
+				   <input type="hidden" name="id" value="{$id}">
+                   <p style="width:80%;margin:0 auto"><input type="submit" value="确认交易" class="but" style="width:100%"></p>
+                   <!--<p style="width:80%;margin:0 auto;margin-bottom:50px"  class="link" data-link="{:U('message/liuyan')}"><input type="submit" value="投诉" class="but" style="width:100%"></p>-->
+				   </form>
+                  <p style="width:80%;margin:0 auto;margin-bottom:50px"  class="link" data-link="{:U('kung/qxjy',array('id'=>$result['id']))}"><input type="submit" value="取消交易" class="but" style="width:100%"></p>
+				</if>
+				
+			<elseif condition="$mai eq 1"/>
+			<form action="{:U('mj1_tj')}" method="post" enctype="multipart/form-data">
+					<div class="photo">
+						<div class="z_photo">		        	
+				            <div class="z_file">
+				                <img src="{$result.pinzheng}" width="120px" height="120px">			
+				            </div>				
+				    	</div>
+					</div>
+					
+					<div class="list">
+				    	
+				    	<span>真实姓名：</span><input type="text"  disabled value = "{$info.realname}" placeholder=""/>	 
+                      	<span>会员编号：</span><input type="text"  disabled value = "{$info.usernumber}" placeholder=""/>
+				    	<span>手机号：</span><input type="text"  disabled value = "{$info.mobile}" placeholder=""/>
+				    	
+				    	<span>支付宝号:</span><input type="text"  disabled value = "{$info.alipay}" placeholder=""/>
+				    	<span>银行卡号:</span><input type="text"  disabled value = "{$info.banknumber}" placeholder=""/>
+				    	<span>BTC比特币:</span><input type="text" disabled  value = "{$info.bite}" placeholder=""/>
+                      <span>以太坊ETH:</span><input type="text" disabled  value = "{$info.ytf}" placeholder=""/>
+                      	<span>skype账号 :</span><input type="text" disabled  value = "{$info.skype}" placeholder=""/>
+                      	<span>Facebook账号:</span><input type="text" disabled  value = "{$info.facebook}" placeholder=""/>
+                      	
+				    </div> 
+				    <input type="hidden" name="id" value="{$id}">
+				   <p style="width:80%;margin:0 auto"><input type="submit" value="确认收款" class="but" style="width:100%"></p>
+               
+                  <!-- <p style="width:80%;margin:0 auto;margin-bottom:50px"  class="link" data-link="{:U('message/liuyan')}"><input type="submit" value="投诉" class="but" style="width:100%"></p>-->
+				</form>	
+                <p style="width:80%;margin:0 auto;margin-bottom:50px"  class="link" data-link="{:U('kung/cancel',array('id'=>$result['id']))}"><input type="submit" value="取消交易" class="but" style="width:100%"></p>
+			</if>
+			
+			 
+		    
+		</div>
+		</form>
+		
+	</body>
+	<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="__HOME__/wap/js/sc_img.js"></script>
+	<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__HOME__/wap/js/mui.min.js"></script>
+</html>

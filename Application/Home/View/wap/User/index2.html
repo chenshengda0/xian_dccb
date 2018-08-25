@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/wode.css" />
+	</head>
+	<body>
+		<div class="mui-content">
+			<div class="top">
+				<div class="mui-pull-right set link" data-link="{:U('set')}">
+					<span class="iconfont icon-shezhi">&nbsp;设置</span>
+				</div>
+				 <!-- <if condition="$end eq 0">
+				    <if condition="$qiandao eq 0">
+				   <div class="mui-pull-right set " style="top:8%">
+				    <span class="iconfont" href="{:U('qiandao')}">&nbsp;已签到</span>
+				     </div>
+				    <else/>
+				    <div class="mui-pull-right set qiandao" style="top:8%">
+				    <span class="iconfont icon-qiandao" href="{:U('qiandao')}">&nbsp;签到</span>
+				    </div>
+				    </if>
+				 </if>		-->
+				
+				<div class="img forbidden" data-url="{:U('geren')}">
+				 <if condition="$logininfo.photo eq null">
+				   <img src="__IMG__/tou.jpg" alt="" />
+				 <else/>
+				   <img src="{$logininfo.photo|get_cover=path}"/>
+				 </if>
+				</div>
+				<div class="name">
+					<span class="name-1 link" data-link="{:U('geren')}">{$logininfo.usernumber}</span>
+					<if condition="$logininfo['is_vip'] eq 1">
+					     <span class="iconfont icon-VIP">
+					<else/>
+					     <span class="iconfont icon-VIP3">
+					</if>
+					
+					</span>
+					<div class="mui-ellipsis qianming link" data-link="{:U('qianming')}">{$logininfo.qianming}</div>					
+				</div>
+				<!--<div class="num">矿机总人数：72432人</div>-->
+			</div>
+			<div class="z_mask">
+				<div class="z_alert">
+					<p>成功签到&nbsp;<span style="color: #ffc500;">1</span>&nbsp;天</p>
+					<p>恭喜签到成功并获得&nbsp;<span style="color: #F06462;" id="rand">2</span>&nbsp;NWTT</p>
+				</div>
+			</div>
+			<div class="list1">
+				<ul>
+					<li style="border-right: 1px solid #cecece;">冻结{$Think.const.MONEY}<p style="color: #fcbe06;">{$dongjie}</p></li>
+					<li>可用{$Think.const.MONEY}<p style="color: #2fd272;">{$logininfo.hasmoney}</p></li>
+				</ul>
+			</div>
+			<div class="list2">
+				<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class=" mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a href="javascript:void(0)" data-url="{:U('kung/wodekj')}" class="forbidden">
+				        <span class="iconfont icon-server"></span>
+				        <div class="mui-media-body">我的矿机</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a data-url="{:U('Kung/jiaoyi')}" href="javascript:void(0)" class="forbidden">
+				        <span class="iconfont icon-jiaoyi1"></span>
+				        <div class="mui-media-body">我的交易</div>
+				    </a>
+				</li>
+				<li class=" mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a data-url="{:U('Kung/gonghui')}" href="javascript:void(0)" class="forbidden">
+				        <span class="iconfont icon-gongren"></span>
+				        <div class="mui-media-body">我的公会</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a data-url="{:U('bonus/financialflow')}" href="javascript:void(0)" class="forbidden">
+				        <span class="iconfont icon-test"></span>
+				        <div class="mui-media-body">收支流水</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a href="{:U('kung/tuiguang')}">
+				        <span class="iconfont icon-saoma"></span>
+				        <div class="mui-media-body">公会招募</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a data-url="{:U('vip')}" href="javascript:void(0)" class="forbidden">
+				        <span class="iconfont icon-VIP2"></span>
+				        <div class="mui-media-body">VIP</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a href="{:U('article/shownews')}">
+				        <span class="iconfont icon-bangzhu"></span>
+				        <div class="mui-media-body">帮助中心 </div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a href="{:U('message/liuyan')}">
+				        <span class="iconfont icon-kefu"></span>
+				        <div class="mui-media-body">客服中心</div>
+				    </a>
+				</li>
+				<!--<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a data-url="{:U('hezuo')}" href="javascript:void(0)" class="forbidden">
+				        <span class="iconfont icon-shangjia"></span>
+				        <div class="mui-media-body">合作伙伴</div>
+				    </a>
+				</li>-->
+				</ul>
+			</div>
+			<!--<div class="hezuo link" data-link="hezuosj.html"><span class="iconfont icon-jiaoyi"></span><span>我们的合作商家</span></div>-->
+		</div>
+		<div class="foot">
+			<a href="{:U('kung/index')}" >
+				<span class="iconfont  icon-shouye2" ></span>
+		       	<span>首页</span>
+			</a>
+			<a href="{:U('shop/index')}" >
+		        <span class="iconfont icon-sc1"></span>
+		       <span>矿机</span>
+		    </a>
+		     <a data-url="{:U('kung/center')}" href="javascript:void(0)" class="forbidden">
+		        <span class="iconfont icon-icon"></span>
+		        <span>交易</span>
+		    </a>
+		    <a href="{:U('user/index')}" class="foot-active">
+		        <span class="iconfont icon-wode"></span>
+		        <span>我的</span>
+		    </a>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+	
+	<script type="text/javascript">
+	var ziliao = {$ziliao};
+		$('.qiandao').click(function(){		
+			    $.ajax({
+				    url:"{:U('qd_shouyi')}",//请求的url地址
+				    async:true,//请求是否异步，默认true异步，这是ajax的特性
+				    type:"POST",//请求的方式
+				   	success:
+				   		function(req){
+				   		$("#rand").html(req);
+				   		$('.z_mask').show()
+				   	},
+				   
+				  
+				});
+			
+		})
+		//ajax get请求
+    $('.forbidden').click(function () {
+        var target=$(this).attr('data-url');
+        
+        if (target) { 
+        	if(ziliao){
+        		window.location.href=target; 
+ 	        }else{
+ 	        	$.layer({
+ 			        shade: [0],
+ 			        area: ['auto','auto'],
+ 			        dialog: {
+ 			            msg: '请先去完善资料',
+ 			            btns: 2,                    
+ 			            type: 4,
+ 			            btn: ['确定','取消'],
+ 			            yes: function(){
+ 			            	window.location.href='/index.php?a=/home/user/set.html'
+ 			            }
+ 			        }
+ 			    });
+ 	        }
+        }
+        return false;
+    });
+		$('.z_alert').click(function(e){
+			e.stopPropagation()
+		})
+		$('.z_mask').click(function(){
+			window.location.reload();
+			$('.z_mask').hide();
+		})
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>币转入</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <style type="text/css">
+    	header a{margin-top: 10px;font-size: .9em;color: #999;}
+    	.box{width: 100%;height: 417px;float: left;background: #292c33;border-top: 1px solid #3d4651;}
+    	.box p{
+    		margin: 0;float: left;
+    	}
+    	.wen{width: 90%;height: 50px;
+    	line-height: 50px;border-bottom: 1px solid #3d4651;}
+    	.box strong{display: inline-block;
+    	width: 200px;height: 200px;margin-top: 50px;background: #fff;}
+        canvas{width: 200px;height: 200px;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class=" mui-icon mui-icon-left-nav mui-pull-left" style="margin: 0;" href="{:U('user/index')}"></a>
+        <h1 class="mui-title">币转入</h1>
+        <a href="{:U('moneyin_set')}" class="mui-pull-right">转入记录</a>
+    </header>
+    <div class="mui-content">
+    	<div class="box">
+    		<p class="wen" style="margin-left: 5%;">
+    			<span>币种：文化影视链（CFC）</span>
+    		</p>
+    		<p style="width: 85%;margin-left: 10%;margin-top: 15px;">
+    			<span>请将您的币转入下面地址中：</span>
+    		</p>
+    		<p style="text-align: center;width: 100%;" >
+    			<strong id="output">
+    				
+    			</strong>
+    		</p>
+    	</div>
+    </div>
+    <script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="__JS__/clipboard.min.js"></script>
+    <script type="text/javascript">
+    mui.init()
+    </script>
+    <script type="text/javascript">
+        var a="http://{$_SERVER['HTTP_HOST']}/index.php?a=Home/kung/zy/id/{$logininfo.qianbao}";
+        jQuery(function(){
+            jQuery('#output').qrcode(a);
+        })
+
+
+    </script>
+</body>
+</html>
+

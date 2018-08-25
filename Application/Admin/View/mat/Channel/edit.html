@@ -1,0 +1,106 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+ <h5>{$meta_title}</h5></div>
+	<form action="{:U()}" method="post" class="form-horizontal">
+	<div class="widget-content nopadding">
+		<div class="control-group">
+			<label class="control-label">导航标题</label>
+			<div class="controls"><input type="text" class="text input-large" name="title" value="{$info.title|default=''}">
+			<span class="check-tips">（用于显示的文字）</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">导航连接</label>
+			<div class="controls"><input type="text" class="text input-large" name="url" value="{$info.url|default=''}">
+			<span class="check-tips">（用于调转的URL，支持带http://的URL或U函数参数格式）</span></div>
+		</div>
+        <div class="control-group">
+            <label class="control-label">父导航</label>
+               <div class="controls"><select name="pid" >
+                   <option <empty name="pid" > selected</empty>value="0">顶级菜单</option>
+                   <volist name="pnav" id="p">
+                       <option <eq name="p.id" value="$pid" >selected</eq> value="{$p.id}">{$p.title}</option>
+                   </volist>
+               </select>
+               <span class="check-tips">（仅支持二级）</span>
+               </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">新窗口打开</label>
+                <div class="controls"><select name="target">
+                     <option value="0" >否</option>
+					 <option value="1"  <eq  name="info.target" value="1">selected</eq>>是</option>
+                </select>
+                <span class="check-tips">（是否新窗口打开链接）</span>
+                </div>
+        </div>
+		<div class="control-group">
+			<label class="control-label">优先级</label>
+			<div class="controls"><input type="text" class="text input-small" name="sort" value="{$info.sort|default='0'}">
+			<span class="check-tips">（导航显示顺序）</span>
+			</div>
+		</div>
+         <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+         <div class="control-group">
+            <label class="control-label">小图标</label>
+			 <div class="controls"><input type="file" id="upload_picture" >
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#icon").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+							$("#pic").attr("src",src);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<div style="margin:10px;padding:10px;width:100px;height:100px;">
+					<eq name='face' value='0'>
+					<img class="profile-pic animated" style='width:100px;height:100px;' id="pic" src="__NEW__/img/woman.jpg"/>
+					<else/>
+					<img class="profile-pic animated" style='width:100px;height:100px;' id="pic" src="{$face|getThumbImageById}"/>
+				</eq>
+		</div>
+   		<span class="check-tips">（左侧导航显示的小图标大小为25像素X25像素）</span></div>
+        </div>
+		<div class="form-actions">
+			<input type="hidden" name="id" value="{$info.id|default=''}">
+			<input type="hidden" name="icon"  id="icon" value="{$info.icon|default=''}"/>
+			<button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
+              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+		</div></div>
+	</form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+	//导航高亮
+	 highlight_subnav("{:U('Channel/index')}");
+</script>
+</block>

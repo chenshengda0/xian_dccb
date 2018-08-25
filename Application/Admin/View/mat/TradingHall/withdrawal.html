@@ -1,0 +1,77 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>{$meta_title}</h5>
+</div>
+	<form method="post" id="wd" name="wd" class="form-horizontal">
+	<div class="widget-content nopadding">
+		<input type="hidden" name="id" value="{$id}" />
+ 		<div class="control-group">
+			<label class="control-label">用户编号</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.usernumber}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"><span>用户姓名</span></label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.userid|query_user='realname',###}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"><span>提现金额</span></label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.money|get_sum=$wdinfo['fee']}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"><span>实得金额</span></label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.money}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">开户人</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.bankholder}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">开户行</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.bankname}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">手机号</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.mobile}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">银行卡号</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.banknumber}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">开户行地址</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.bankaddress}</span></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">申请留言</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.message|default='无留言'}</span></div>
+		</div>
+		<eq name='wdinfo.status' value='0'>
+		<div class="control-group">
+			<label class="control-label">审批留言</label>
+			<div class="controls">
+				<textarea name="replyms" >{$wdinfo.replyms}</textarea><span class="tip">请控制在120个汉字以内</span>
+			</div>
+		</div>
+		<div class="form-actions">
+			<button type="submit" id="refuse" class="btn btn-danger ajax-post confirm" url="{:U('refuse')}" target-form='form-horizontal'>拒批</button>
+			<button type="submit" id="agree" class="btn btn-success ajax-post confirm" url="{:U('agree')}" target-form='form-horizontal'>同意</button>
+			 <button type="button" class="btn btn-info" onclick="javascript:history.back(-1);return false;">返回</button>
+		</div><else/>
+		<div class="control-group">
+			<label class="control-label">申批回复</label>
+			<div class='controls'><span style="margin-left:10px;color:green;">{$wdinfo.replyms|default='无回复'}</span></div>
+		</div>
+		</eq>
+	</div>
+	</form>
+</div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        highlight_subnav("{:U('wdOldRecord')}");
+    </script>
+</block>

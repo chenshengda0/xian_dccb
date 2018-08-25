@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
+		<link rel="stylesheet" href="__CSS__/iconfont.css"/>
+		<link rel="stylesheet" href="__CSS__/commen.css" />
+		<link rel="stylesheet" href="__CSS__/pages/yunxingkj.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		    <h1 class="mui-title"><span>{$goodlist['kuangjicode']}</span>号矿机</h1>		 
+		</header>
+		<div class="mui-content">
+			<div class="top">
+				<span class="num">运行中</span>
+				<div class="quan"></div>
+				<canvas id="q" width="100%" height="1500"></canvas>	
+			</div>
+			<div class="boot">
+				<!--<div class="mui-pull-left">
+					<img src="{$goodlist['goods_ico']|get_cover=path}"/>
+				</div>-->
+				<div class="">
+					<li>
+						矿机编号：<span>{$goodlist['kuangjicode']}</span>
+					</li>
+					<li>
+						购买时间：<span>{$goodlist['ccreatetime']|date='Y-m-d H:i:s',###}</span>
+					</li>
+					<li>
+						当前产量：<span>{$goodlist['danwei']}</span>&nbsp;NWTT/小时
+					</li>
+					<li>
+						累计产币：<span>{$goodlist['allcchanliang']}</span>&nbsp;NWTT
+					</li>
+					<if condition="$goodlist['sstatus'] eq 3">
+					      <li>
+						             <span style="color:red">已经报废</span>
+					      </li>
+					<else/>
+					      <li>
+						            还有<span id="div1" style="color:red"></span>结算收益
+					      </li>
+					</if>
+					
+					<li>
+						当前可领：<span>{$goodlist['cchanliang']}</span>NWTT
+					</li>
+				</div><p style="clear: both;"></p>
+				<p class="x ajax-get confirm" href="{:U('huoqu',array('id'=>$goodlist['iid']))}">领取收益</p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/mui.min.js"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__JS__/pages/yunxingkj.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
+    <script>
+			function toDou(n){
+				if(n<10){
+					return '0'+n;	
+				}else{
+					return n;	
+				}
+			}
+			window.onload=function(){
+				var oDiv=document.getElementById('div1');
+				function CountDown(){
+					var now=new Date();
+					var oSeconds=60-now.getSeconds();
+					var om=60-now.getMinutes()-1;
+					var oDate=new Date();
+					oDate.setFullYear(now.getFullYear(),now.getMonth(),now.getDay());
+					oDate.setHours(now.getHours(),om,oSeconds);
+					oDiv.innerHTML=toDou(oDate.getMinutes())+'分'+toDou(oDate.getSeconds())+'秒'
+					
+				}
+				CountDown();
+				setInterval(CountDown,1000);
+			}
+    </script>
+</html>

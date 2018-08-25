@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__HOME__/wap/css/mui.css" rel="stylesheet" />
+		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+		<style type="text/css">
+			.list1 li{
+				position: relative;
+			}
+			.but{
+				position: absolute;
+				right: 10px;
+				top: 30%;
+			    width:80px;
+			    text-align: center;
+			    line-height: 30px;
+			    color: #fff !importment;
+			    background: #03A3E8;
+			    border-radius: 5px;
+			}
+			.mui-table-view .mui-media-object.mui-pull-left{
+				margin-top: 25px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		    <h1 class="mui-title">我的矿机</h1>
+		</header>
+		<div class="mui-content list1">
+		   <ul class="mui-table-view">
+		   <foreach name='result' item='vo'>
+		   	
+		       <li class="mui-table-view-cell mui-media">
+		       		
+		           
+		               <img class="mui-media-object mui-pull-left" src="{$vo.goods_ico|get_cover=path}">
+		               <div class="mui-media-body">
+		                  <span>{$vo.goods_time}</span>
+		                   <div class="mui-ellipsis">
+		                   		<p>运行周期：<span>720</span>小时</p>
+		                   		<p>矿机产量：<span>{$vo.chanliang}</span>/小时</p>
+		                   		<p>矿机编号：<span>{$vo.iid}</span></p>
+		                   		<p>矿机状态：<span>{$vo.sstatus|set_sstatus}</span></p>			                   		
+		                   </div>
+		               </div>
+		               <if condition="$vo.sstatus eq 1">
+		                     <p class="link" data-link="{:U('shouyi')}">运行中</p>
+		                    <p class="link but" style="color:#fff" data-link="{:U('Shop/showkj',array('id'=>$vo['iid']))}">查看详情</p>
+		                     
+		               
+		               		
+		                
+		              
+		               </if>
+		               
+		           
+		           
+		       </li>
+		     </foreach>
+		       
+		   </ul>
+		</div>
+		
+		<script src="__HOME__/wap/js/mui.js"></script>
+		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			function qiyong(iid){
+				id=iid;
+				if(confirm("确定要启动吗")){
+					 $.ajax({
+						    url:"{:U('qiyong')}",//请求的url地址
+						    dataType:"json",//返回的格式为json
+						    async:true,//请求是否异步，默认true异步，这是ajax的特性
+						    data:{id:id},//参数值
+						    type:"POST",//请求的方式
+						   	success:
+						   		function(req){
+						   		if(req==1){
+						   			alert('启用成功');
+						   		}else if(req==2){
+						   			alert('启用失败');
+						   		}
+						   	},
+						   
+						   /*  error:
+						    	function(){
+						    	alert('启用失败');
+						    } */
+						});
+				 }
+			}
+		</script>
+	</body>
+</html>
+
+

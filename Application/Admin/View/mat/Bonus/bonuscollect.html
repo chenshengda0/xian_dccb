@@ -1,0 +1,45 @@
+<extend name="Public/base" />
+<block name="body">
+<notempty name="_list">
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table" style="max-width:100%">
+    <thead>
+        <tr>
+			<th>{:getChangeType(1)}</th>
+		    <th>应发奖金累计</th> 
+		    <th>实发奖金累计</th>
+		     <th>{$Think.const.TAX}</th> 
+		</tr>
+    </thead>
+     
+    <tbody>
+		<tr>				
+			<td>{$_list.b1|format_num}</td>
+			<td>{$all|format_num}</td>
+			<td>{$_list.t|format_num}</td>
+			<td>{$_list.tax|format_num}</td>
+		</tr>
+	</tbody>
+    </table></div></div>
+   <else/>
+			<include file='Public/emptylist' title="暂时没有奖金汇总"/>
+		</notempty>
+</block>
+<block name="script">
+<script type="text/javascript">
+$('#cha').click(function(){
+	$("#wd").attr("action", "{:U('userIndex')}");
+	$('#wd').submit();
+});
+$('#daochu').click(function(){
+	$("#wd").attr("action", "{:U('import')}");
+	$('#wd').submit();
+});
+   //导航高亮
+   highlight_subnav("{:U()}");
+</script>
+</block>

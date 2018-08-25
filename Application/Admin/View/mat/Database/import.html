@@ -1,0 +1,117 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class='opt_box'>
+<div class="fl">
+     <a class="btn btn-success" href="javascript:;" onclick="uploadFile();">上传文件</a>
+     <span class='require'>(上传的文件必须是在此出下载的文件，并且文件名不可随意修改，如果列表中存在将要上传的同名文件建议不要上传，如果因不遵守上述要求导致数据出错，后果自行承担)</span>
+ </div>
+ <div class='clear'></div>
+</div>
+<div class="row-fluid"><div class="widget-box">
+ <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+ <h5>{$meta_title}</h5></div>
+ <div class="widget-content nopadding"><div class='dataTables_wrapper'>
+        <table  class="table table-bordered data-table">
+            <thead>
+                <tr>
+                    <th>备份名称</th>
+                    <th>卷数</th>
+                    <th>压缩</th>
+                    <th>数据大小</th>
+                    <th>备份时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="list" id="data">
+                    <tr>
+                        <td>{$data.time|date='Ymd-His',###}</td>
+                        <td>{$data.part}</td>
+                        <td>{$data.compress}</td>
+                        <td>{$data.size|format_bytes}</td>
+                        <td>{$key}</td>
+                        <td>-</td>
+                        <td class="action">
+                            <a class="btn btn-mini btn-info db-import" href="{:U('import?time='.$data['time'])}">还原</a>
+                            <a class="btn btn-mini btn-primary" href="__ROOT__/Data/{$data.time|date='Ymd-His',###}-{$data.part}.sql.gz">下载</a>
+                            <a class="btn btn-mini btn-danger ajax-get confirm" href="{:U('del?time='.$data['time'])}">删除</a>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+ </div></div>
+ </div></div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+function uploadFile(){
+ 	 html = '<div class="uploadfile"><input type="file" id="upload_file_data"></div>';
+ 	var layerindex =  $.layer({
+          type: 1,
+          shade: [0],
+          area: ['auto', 'auto'],
+          title: false,
+          border: [10, 0.5, '#81BA25'],
+          page: {html:html}
+      });
+	    /* 初始化上传插件 */
+		$("#upload_file_data").uploadify({
+	        "height"          : 30,
+	        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	        "fileObjName"     : "download",
+	        "buttonText"      : "上传附件",
+	        "uploader"        : "{:U('uploadData',array('session_id'=>session_id()))}",
+	        "width"           : 120,
+	        'removeTimeout'	  : 1,
+	        "onUploadSuccess" : uploadFile,
+	        'onFallback' : function() {
+	            alert('未检测到兼容版本的Flash.');
+	        }
+	    });
+		function uploadFile(file, data){
+			var data = $.parseJSON(data);
+	        if(data.status){
+	        	setTimeout(function () {
+	        		layer.close(layerindex);
+	        		window.location.href = data.url
+	            }, 2000);
+	        } else {
+	        	layer.alert(data.info);
+	        }
+	    }
+ }
+</script>
+    <script type="text/javascript">
+        $(".db-import").click(function(){
+            var self = this, status = ".";
+            $.get(self.href, nsuccess, "json");
+            var index = layer.load('正在还原数据库请不要关闭...');
+            return false;
+            function nsuccess(data){
+                if(data.status){
+                    if(data.gz){
+                        data.info += status;
+                        if(status.length === 5){
+                            status = ".";
+                        } else {
+                            status += ".";
+                        }
+                    }
+                    $(self).parent().prev().text(data.info);
+                    if(data.part){
+                        $.get(self.href,{"part" : data.part, "start" : data.start},nsuccess, "json" );
+                    }  else {
+                        layer.close(index);
+                    }
+                } else {
+                	layer.msg(data.info,3,3);
+                }
+            }
+        });
+        highlight_subnav("{:U('database/index/type/import')}");
+    </script>
+</block>

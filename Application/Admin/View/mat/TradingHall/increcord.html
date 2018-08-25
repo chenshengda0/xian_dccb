@@ -1,0 +1,36 @@
+<extend name="Public/base" />
+
+<block name="body">
+<notempty name="money">
+
+<div class="widget-box">
+  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <h5>{$meta_title}</h5>
+</div>
+ <div class="widget-content nopadding">
+ <table class="table table-bordered data-table">
+    <thead>
+        <tr>
+			<th class="">充值币种</th>
+			<th class="">充值金额</th>
+		</tr>
+    </thead>
+    <tbody>
+		<tr>
+			<td>{$Think.const.HASSHOP}</td>
+			<td>{$money}元</td>
+		</tr>
+		</volist>
+	</tbody>
+    </table></div></div>
+  <else/>
+<include file='Public/emptylist' title="暂时还没有充值记录"/>
+</notempty>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+    //导航高亮
+    highlight_subnav("{:U()}");
+	</script>
+</block>
