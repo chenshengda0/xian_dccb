@@ -1609,7 +1609,52 @@ function msg($user,$yzm,$form,$mobile,$type,$appid){
  * 系统公共库文件
  * 主要定义系统公共函数库
  */
+function sendMsg($mobile)
+{
+    // $mobile = safe_replace($mobile);
 
+    
+    if (empty($mobile)) {
+        $mes['status'] = 0;
+        $mes['message'] = '手机号码不能为空';
+    }
+
+    if (time() > session('set_time') + 60 || session('set_time') == '') {
+        session('set_time', time());
+        $user_mobile = $mobile;
+        $code = getCode();
+        $sms_code = sha1(md5(trim($code) . trim($mobile)));
+        session('sms_code', $sms_code);
+        //发送短信
+//        $content="您本次的验证码为".$code."，请在5分钟内完成验证，验证码打死也不要告诉别人哦！";//要发送的短信内容
+        // require_once COMMON_PATH . 'Util/SmsMeilian.class.php';
+        Vendor('SmsMeilian');
+        $username='tyj';  //用户名dctx
+        $password_md5='5d93ceb70e2bf5daa84ec3d0cd2c731a';  //32位MD5密码加密，不区分大小写0b11ac988314c2399752d3b4d875b217
+        $apikey='a9a28f8f9ad1f4510de0a2c350468fc0';  //apikey秘钥（请登录 http://m.5c.com.cn 短信平台-->账号管理-->我的信息 中复制apikey）e525954fc72f54324d3c4a7bd2fc20c6
+        $contentUrlEncode = urlencode('【CIEX】你的验证码是'.$code.'，如非本人操作，请忽略本短信');//执行URLencode编码  ，$content = urldecode($content);解码
+        $smsMeilian = new SmsMeilian();
+        $result = $smsMeilian->sendSMS($username, $password_md5, $apikey, $mobile, $contentUrlEncode,'UTF-8'); 
+        if (strpos($result,"success")>-1) {
+            $mes['status'] = 1;
+            $mes['message'] = '短信发送成功';
+            return $mes;
+        } else {
+            $mes['status'] = 0;
+            $mes['message'] = '短信发送失败';
+            return $mes;
+        }
+    } else {
+        $msgtime = session('set_time') + 60 - time();
+        $data = $msgtime . '秒之后再试';
+        $mes['status'] = 0;
+        $mes['message'] = $data;
+        return $mes;
+    }
+}
+function getCode() {
+    return  rand(100000,999999);
+}
 function is_sndpsd(){
     $ifpsd=session('ifpsd');
     return $ifpsd;
