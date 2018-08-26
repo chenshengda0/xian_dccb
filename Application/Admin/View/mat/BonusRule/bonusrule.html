@@ -1,29 +1,33 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 <block name='style'>
-<style>
-</style>
+	<style>
+	</style>
 </block>
 <block name="body">
-<div class="widget-box">
-    	<form action="{:U()}" method="post" class="form-horizontal">
-    	 <input type="hidden" name="id" id="id"  value="{$info.id|default=''}">
-    	 <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>奖金结算规则设置</h5></div>
-          <div class="widget-content nopadding">
-          <div class="control-group">
-			<!--<label class="control-label">矿机赠送</label>-->
-				<!--<div class="controls">
+	<div class="widget-box">
+		<form action="{:U()}" method="post" class="form-horizontal">
+			<input type="hidden" name="id" id="id" value="{$info.id|default=''}">
+			<div class="widget-title">
+				<span class="icon">
+					<i class="icon-align-justify"></i>
+				</span>
+				<h5>奖金结算规则设置</h5>
+			</div>
+			<div class="widget-content nopadding">
+				<div class="control-group">
+					<!--<label class="control-label">矿机赠送</label>-->
+					<!--<div class="controls">
 				     <span>新会员15日内实名认证的免费领取一个矿机,矿机id</span>
 					<input  name="song" style='width:50px;' type="text" value="{$info.song|default=''}" /><br><br>
                   小型云矿机<input  name="xiao" style='width:50px;' type="text" value="{$info.xiao|default=''}" /><br><br>
                   中型云矿机<input  name="zhong" style='width:50px;' type="text" value="{$info.zhong|default=''}" /><br><br>
                   大型云矿机<input  name="da" style='width:50px;' type="text" value="{$info.da|default=''}" /><br><br>
                   <!--超级云矿机<input  name="chao" style='width:50px;' type="text" value="{$info.chao|default=''}" /><br><br>-->
-	                 <!--<span style="color:red">矿机id请在商城中查看 </span>-->
-	                 <!-- <input  name="youhui" style='width:200px;' type="text" value="{$info.youhui|default=''}" />
+					<!--<span style="color:red">矿机id请在商城中查看 </span>-->
+					<!-- <input  name="youhui" style='width:200px;' type="text" value="{$info.youhui|default=''}" />
 	                 <span>折优惠</span> -->
-				<!--</div>-->
-			<!--</div>
+					<!--</div>-->
+					<!--</div>
 			<div class="control-group">
 				<label class="control-label">动态奖</label>
 				<div class="controls">
@@ -35,235 +39,241 @@
 	                <span>%</span>&ndash;&gt;
 				</div>
 			</div>-->
-			  <div class="control-group">
-				  <label class="control-label">个人算力</label>
-				  <div class="controls">
-					  一星会员:大于0且在
-					  <input  name="chia" style='width:50px;' type="text" value="{$info.chia|default=''}" />
-					  <span>币以下,每日按现有量的</span>
-					  <input  name="chiaa" style='width:50px;' type="text" value="{$info.chiaa|default=''}" />
-                      <span>%分红
+					<div class="control-group">
+						<label class="control-label">个人算力</label>
+						<div class="controls">
+							一星会员:大于0且在
+							<input name="chia" style='width:50px;' type="text" value="{$info.chia|default=''}" />
+							<span>币以下,每日按现有量的</span>
+							<input name="chiaa" style='width:50px;' type="text" value="{$info.chiaa|default=''}" />
+							<span>%分红
 
-					  <br><br>
+								<br>
+								<br> 二星会员:在
+								<input name="chib" style='width:50px;' type="text" value="{$info.chib|default=''}" />
+								<span>币以下,每日按现有量的</span>
+								<input name="chiab" style='width:50px;' type="text" value="{$info.chiab|default=''}" />
+								<span>%分红
 
-                      二星会员:在
-                      <input  name="chib" style='width:50px;' type="text" value="{$info.chib|default=''}" />
-                      <span>币以下,每日按现有量的</span>
-                      <input  name="chiab" style='width:50px;' type="text" value="{$info.chiab|default=''}" />
-                      <span>%分红
+									<br>
+									<br> 三星会员:在
+									<input name="chic" style='width:50px;' type="text" value="{$info.chic|default=''}" />
+									<span>币以下,每日按现有量的</span>
+									<input name="chiac" style='width:50px;' type="text" value="{$info.chiac|default=''}" />
+									<span>%分红
 
-                      <br><br>
+										<br>
+										<br> 四星会员:在
+										<input name="chid" style='width:50px;' type="text" value="{$info.chid|default=''}" />
+										<span>币以下,每日按现有量的</span>
+										<input name="chiad" style='width:50px;' type="text" value="{$info.chiad|default=''}" />
+										<span>%分红
 
-                      三星会员:在
-                      <input  name="chic" style='width:50px;' type="text" value="{$info.chic|default=''}" />
-                      <span>币以下,每日按现有量的</span>
-                      <input  name="chiac" style='width:50px;' type="text" value="{$info.chiac|default=''}" />
-                      <span>%分红
+											<br>
+											<br> 五星会员:在
+											<input name="chie" style='width:50px;' type="text" value="{$info.chie|default=''}" />
+											<span>币以下,每日按现有量的</span>
+											<input name="chiae" style='width:50px;' type="text" value="{$info.chiae|default=''}" />
+											<span>%分红
 
-                      <br><br>
+												<br>
+												<br>
 
+						</div>
+					</div>
 
-                      四星会员:在
-                      <input  name="chid" style='width:50px;' type="text" value="{$info.chid|default=''}" />
-                      <span>币以下,每日按现有量的</span>
-                      <input  name="chiad" style='width:50px;' type="text" value="{$info.chiad|default=''}" />
-                      <span>%分红
+					<div class="control-group">
+						<label class="control-label">共享算力</label>
+						<div class="controls">
+							可拿上一代日息的
+							<input name="zzz" style='width:50px;' type="text" value="{$info.zzz|default=''}" />
+							<span>%,烧伤值取最小</span>
+							<br>
+							<br>
+						</div>
+					</div>
 
-                      <br><br>
-
-
-                      五星会员:在
-                      <input  name="chie" style='width:50px;' type="text" value="{$info.chie|default=''}" />
-                      <span>币以下,每日按现有量的</span>
-                      <input  name="chiae" style='width:50px;' type="text" value="{$info.chiae|default=''}" />
-                      <span>%分红
-
-                      <br><br>
-
-				  </div>
-			  </div>
-
-              <div class="control-group">
-                  <label class="control-label">共享算力</label>
-                  <div class="controls">
-                        可拿上一代日息的
-                      <input  name="zzz" style='width:50px;' type="text" value="{$info.zzz|default=''}" />
-                      <span>%,烧伤值取最小</span>
-                      <br><br>
-                  </div>
-              </div>
-                        
-              <div class="control-group">
-				  <label class="control-label">孵化值</label>
-				  <div class="controls">
-					 拿每笔动态奖金的
-					  <input  name="flv" style='width:50px;' type="text" value="{$info.flv|default=''}" />
-					  <span>%为孵化器中,且按照每日</span>
-					  <input  name="flx" style='width:50px;' type="text" value="{$info.flx|default=''}" />
-					  <span>%生产利息,当前孵化仓</span>
-					  <input  name="fon" style='width:50px;' type="text" value="{$info.fon|default=''}" />
-					  <span>天后自动释放</span>
-					  <br><br>
-				  </div>
-			  </div>
-        <div class="control-group">
-				  <label class="control-label">交易开关</label>
-				  <div class="controls">
-					转账
-					  <input  name="zq" style='width:50px;' type="text" value="{$info.zq|default=''}" />
-					  <span>笔/天,累计金额</span>
-					  <input  name="jt" style='width:50px;' type="text" value="{$info.jt|default=''}" />
-					  <span>/天</span>
-					  <!--<input  name="dt" style='width:50px;' type="text" value="{$info.dt|default=''}" />
+					<div class="control-group">
+						<label class="control-label">孵化值</label>
+						<div class="controls">
+							拿每笔动态奖金的
+							<input name="flv" style='width:50px;' type="text" value="{$info.flv|default=''}" />
+							<span>%为孵化器中,且按照每日</span>
+							<input name="flx" style='width:50px;' type="text" value="{$info.flx|default=''}" />
+							<span>%生产利息,当前孵化仓</span>
+							<input name="fon" style='width:50px;' type="text" value="{$info.fon|default=''}" />
+							<span>天后自动释放</span>
+							<br>
+							<br>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">交易开关</label>
+						<div class="controls">
+							转账
+							<input name="zq" style='width:50px;' type="text" value="{$info.zq|default=''}" />
+							<span>笔/天,累计金额</span>
+							<input name="jt" style='width:50px;' type="text" value="{$info.jt|default=''}" />
+							<span>/天</span>
+							<!--<input  name="dt" style='width:50px;' type="text" value="{$info.dt|default=''}" />
                       <span>,在线钱包开关</span>
 					  <input  name="zx" style='width:50px;' type="text" value="{$info.zx|default=''}" />
 					  <span>(0关,1开)</span>-->
-					  <br><br>
-				  </div>
-			  </div>
+							<br>
+							<br>
+						</div>
+					</div>
 
-         <div class="control-group">
-          <label class="control-label">身份认证开关</label>
-          <div class="controls">
-            <input  name="icard" style='width:50px;' type="text" value="{$info.icard|default='0'}" />
-            <span>0关闭，1开启</span>
-            <!--<input  name="dt" style='width:50px;' type="text" value="{$info.dt|default=''}" />
+					<div class="control-group">
+						<label class="control-label">身份认证开关</label>
+						<div class="controls">
+							<input name="icard" style='width:50px;' type="text" value="{$info.icard|default='0'}" />
+							<span>0关闭，1开启</span>
+							<!--<input  name="dt" style='width:50px;' type="text" value="{$info.dt|default=''}" />
                       <span>,在线钱包开关</span>
             <input  name="zx" style='width:50px;' type="text" value="{$info.zx|default=''}" />
             <span>(0关,1开)</span>-->
-            <br><br>
-          </div>
-        </div>
-                        
-                        
-              <div class="control-group">
-                  <label class="control-label">分享算力</label>
-                  <div class="controls">
-                  <span>一星会员:</span>
-                        <span>拿</span>
-                        <input  name="chiba" style='width:50px;' type="text" value="{$info.chiba|default=''}" />
-                        <span>代的</span>
-                        <input  name="chica" style='width:50px;' type="text" value="{$info.chica|default=''}" />
-                        <span>%每日分红</span>
-                  <br/><br/>
-
-                    <span>二星会员:</span>
-                        <span>拿</span>
-                        <input  name="chibb" style='width:50px;' type="text" value="{$info.chibb|default=''}" />
-                        <span>代的</span>
-                        <input  name="chicb" style='width:50px;' type="text" value="{$info.chicb|default=''}" />
-                        <span>%每日分红</span>
-                  <br/><br/>
-
-                    <span>三星会员:</span>
-                        <span>拿</span>
-                        <input  name="chibc" style='width:50px;' type="text" value="{$info.chibc|default=''}" />
-                        <span>代的</span>
-                        <input  name="chicc" style='width:50px;' type="text" value="{$info.chicc|default=''}" />
-                        <span>%每日分红</span>
-                  <br/><br/>
-
-                    <span>四星会员:</span>
-                        <span>拿</span>
-                        <input  name="chibd" style='width:50px;' type="text" value="{$info.chibd|default=''}" />
-                        <span>代的</span>
-                        <input  name="chicd" style='width:50px;' type="text" value="{$info.chicd|default=''}" />
-                        <span>%每日分红</span>
-                  <br/><br/>
-
-                    <span>五星会员:</span>
-                        <span>拿</span>
-                        <input  name="chibe" style='width:50px;' type="text" value="{$info.chibe|default=''}" />
-                        <span>代的</span>
-                        <input  name="chice" style='width:50px;' type="text" value="{$info.chice|default=''}" />
-                        <span>%每日分红</span>
-                  <br/><br/>
+							<br>
+							<br>
+						</div>
+					</div>
 
 
+					<div class="control-group">
+						<label class="control-label">分享算力</label>
+						<div class="controls">
+							<span>一星会员:</span>
+							<span>拿</span>
+							<input name="chiba" style='width:50px;' type="text" value="{$info.chiba|default=''}" />
+							<span>代的</span>
+							<input name="chica" style='width:50px;' type="text" value="{$info.chica|default=''}" />
+							<span>%每日分红</span>
+							<br/>
+							<br/>
 
-                  <!--<span>客服2:</span>
+							<span>二星会员:</span>
+							<span>拿</span>
+							<input name="chibb" style='width:50px;' type="text" value="{$info.chibb|default=''}" />
+							<span>代的</span>
+							<input name="chicb" style='width:50px;' type="text" value="{$info.chicb|default=''}" />
+							<span>%每日分红</span>
+							<br/>
+							<br/>
+
+							<span>三星会员:</span>
+							<span>拿</span>
+							<input name="chibc" style='width:50px;' type="text" value="{$info.chibc|default=''}" />
+							<span>代的</span>
+							<input name="chicc" style='width:50px;' type="text" value="{$info.chicc|default=''}" />
+							<span>%每日分红</span>
+							<br/>
+							<br/>
+
+							<span>四星会员:</span>
+							<span>拿</span>
+							<input name="chibd" style='width:50px;' type="text" value="{$info.chibd|default=''}" />
+							<span>代的</span>
+							<input name="chicd" style='width:50px;' type="text" value="{$info.chicd|default=''}" />
+							<span>%每日分红</span>
+							<br/>
+							<br/>
+
+							<span>五星会员:</span>
+							<span>拿</span>
+							<input name="chibe" style='width:50px;' type="text" value="{$info.chibe|default=''}" />
+							<span>代的</span>
+							<input name="chice" style='width:50px;' type="text" value="{$info.chice|default=''}" />
+							<span>%每日分红</span>
+							<br/>
+							<br/>
+
+
+
+							<!--<span>客服2:</span>
                   <input  name="erxing" style='width:200px;' type="text" value="{$info.erxing|default=''}" />
                   <span>客服群:</span>
                   <input  name="sanxing" style='width:200px;' type="text" value="{$info.sanxing|default=''}" /><br/><br/>
                       <!-- <span>四星矿主条件:</span>
                   <input  name="sixing" style='width:200px;' type="text" value="{$info.sixing|default=''}" /><br/><br/>-->
 
-				</div>
-			</div>
-            
-              <div class="control-group">
-                  <label class="control-label">团队算力</label>
-                  <div class="controls">
-                      直推
-                      <input  name="zta" style='width:50px;' type="text" value="{$info.zta|default=''}" />
-                      <span>人<!--,去掉</span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">团队算力</label>
+						<div class="controls">
+							直推
+							<input name="zta" style='width:50px;' type="text" value="{$info.zta|default=''}" />
+							<span>人
+								<!--,去掉</span>
                       <input  name="ztda" style='width:50px;' type="text" value="{$info.ztda|default=''}" />
                       <span>大区-->,>旁区业绩</span>
-                      <input  name="ztaa" style='width:100px;' type="text" value="{$info.ztaa|default=''}" />
-                      <span>,拿团队总持币量的</span>
-                      <input  name="ztba" style='width:50px;' type="text" value="{$info.ztba|default=''}" />
-                      <span>%</span>
-                      <br><br>
-
-                      直推
-                      <input  name="ztb" style='width:50px;' type="text" value="{$info.ztb|default=''}" />
-                      <span>人<!--,去掉</span>
+							<input name="ztaa" style='width:100px;' type="text" value="{$info.ztaa|default=''}" />
+							<span>,拿团队总持币量的</span>
+							<input name="ztba" style='width:50px;' type="text" value="{$info.ztba|default=''}" />
+							<span>%</span>
+							<br>
+							<br> 直推
+							<input name="ztb" style='width:50px;' type="text" value="{$info.ztb|default=''}" />
+							<span>人
+								<!--,去掉</span>
                       <input  name="ztdb" style='width:50px;' type="text" value="{$info.ztdb|default=''}" />
                       <span>大区-->,>旁区业绩</span>
-                      <input  name="ztab" style='width:100px;' type="text" value="{$info.ztab|default=''}" />
-                      <span>,拿团队总持币量的</span>
-                      <input  name="ztbb" style='width:50px;' type="text" value="{$info.ztbb|default=''}" />
-                      <span>%</span>
-                      <br><br>
-
-                      直推
-                      <input  name="ztc" style='width:50px;' type="text" value="{$info.ztc|default=''}" />
-                      <span>人,<!--去掉</span>
+							<input name="ztab" style='width:100px;' type="text" value="{$info.ztab|default=''}" />
+							<span>,拿团队总持币量的</span>
+							<input name="ztbb" style='width:50px;' type="text" value="{$info.ztbb|default=''}" />
+							<span>%</span>
+							<br>
+							<br> 直推
+							<input name="ztc" style='width:50px;' type="text" value="{$info.ztc|default=''}" />
+							<span>人,
+								<!--去掉</span>
                       <input  name="ztdc" style='width:50px;' type="text" value="{$info.ztdc|default=''}" />
                       <span>大区,-->>旁区业绩</span>
-                      <input  name="ztac" style='width:100px;' type="text" value="{$info.ztac|default=''}" />
-                      <span>,拿团队总持币量的</span>
-                      <input  name="ztbc" style='width:50px;' type="text" value="{$info.ztbc|default=''}" />
-                      <span>%</span>
-                      <br><br>
-
-                      直推
-                      <input  name="ztd" style='width:50px;' type="text" value="{$info.ztd|default=''}" />
-                      <span>人,<!--去掉</span>
+							<input name="ztac" style='width:100px;' type="text" value="{$info.ztac|default=''}" />
+							<span>,拿团队总持币量的</span>
+							<input name="ztbc" style='width:50px;' type="text" value="{$info.ztbc|default=''}" />
+							<span>%</span>
+							<br>
+							<br> 直推
+							<input name="ztd" style='width:50px;' type="text" value="{$info.ztd|default=''}" />
+							<span>人,
+								<!--去掉</span>
                       <input  name="ztdd" style='width:50px;' type="text" value="{$info.ztdd|default=''}" />
                       <span>大区,-->>旁区业绩</span>
-                      <input  name="ztad" style='width:100px;' type="text" value="{$info.ztad|default=''}" />
-                      <span>,拿团队总持币量的</span>
-                      <input  name="ztbd" style='width:50px;' type="text" value="{$info.ztbd|default=''}" />
-                      <span>%</span>
-                      <br><br>
-
-                      直推
-                      <input  name="zte" style='width:50px;' type="text" value="{$info.zte|default=''}" />
-                      <span>人,<!--去掉</span>
+							<input name="ztad" style='width:100px;' type="text" value="{$info.ztad|default=''}" />
+							<span>,拿团队总持币量的</span>
+							<input name="ztbd" style='width:50px;' type="text" value="{$info.ztbd|default=''}" />
+							<span>%</span>
+							<br>
+							<br> 直推
+							<input name="zte" style='width:50px;' type="text" value="{$info.zte|default=''}" />
+							<span>人,
+								<!--去掉</span>
                       <input  name="ztde" style='width:50px;' type="text" value="{$info.ztde|default=''}" />
                       <span>大区,-->>旁区业绩</span>
-                      <input  name="ztae" style='width:100px;' type="text" value="{$info.ztae|default=''}" />
-                      <span>,拿团队总持币量的</span>
-                      <input  name="ztbe" style='width:50px;' type="text" value="{$info.ztbe|default=''}" />
-                      <span>%</span>
-                      <br><br>
-                      直推
-                      <input  name="ztf" style='width:50px;' type="text" value="{$info.ztf|default=''}" />
-                      <span>人,<!--去掉</span>
+							<input name="ztae" style='width:100px;' type="text" value="{$info.ztae|default=''}" />
+							<span>,拿团队总持币量的</span>
+							<input name="ztbe" style='width:50px;' type="text" value="{$info.ztbe|default=''}" />
+							<span>%</span>
+							<br>
+							<br> 直推
+							<input name="ztf" style='width:50px;' type="text" value="{$info.ztf|default=''}" />
+							<span>人,
+								<!--去掉</span>
                       <input  name="ztde" style='width:50px;' type="text" value="{$info.ztde|default=''}" />
                       <span>大区,-->旁区业绩</span>
-                      <input  name="ztaf" style='width:100px;' type="text" value="{$info.ztaf|default=''}" />
-                      <span>,拿团队总持币量的</span>
-                      <input  name="ztbf" style='width:50px;' type="text" value="{$info.ztbf|default=''}" />
-                      <span>%</span>
-                      <br><br>
-                    (默认去掉一个大区业绩)
-                  </div>
-              </div>
-			
-			
-			<!--<div class="control-group">
+							<input name="ztaf" style='width:100px;' type="text" value="{$info.ztaf|default=''}" />
+							<span>,拿团队总持币量的</span>
+							<input name="ztbf" style='width:50px;' type="text" value="{$info.ztbf|default=''}" />
+							<span>%</span>
+							<br>
+							<br> (默认去掉一个大区业绩)
+						</div>
+					</div>
+
+
+					<!--<div class="control-group">
 				<label class="control-label">公司客服</label>
 				<div class="controls">
 				<span>客服1:</span>
@@ -275,50 +285,55 @@
 	            <input  name="kfq" style='width:200px;' type="text" value="{$info.kfq|default=''}" /><br/><br/>-->
 					<!-- <span>四星矿主条件:</span>
 	            <input  name="sixing" style='width:200px;' type="text" value="{$info.sixing|default=''}" /><br/><br/>-->
-	            
-				<!--</div>
+
+					<!--</div>
 			</div>-->
-			
-			<div class="control-group">
-				<label class="control-label">今日币价/个</label>
-				<div class="controls">
-					<input  name="eve_price" style='width:100px;' type="text" value="{$info.eve_price|default=''}" />
-	                 <span>元,</span>
-                  	且按
-                  	<input  name="zizeng" style='width:100px;' type="text" value="{$info.zizeng|default=''}" />
-					<span>元/天,自增</span>
-                  
-				</div>
-              <label class="control-label">价格限制</label>
-				<div class="controls">
-					最低价格<input  name="lm" style='width:100px;' type="text" value="{$info.lm|default=''}" />
-	                 <span>元/币,</span>
-                  	最高
-                  	<input  name="tm" style='width:100px;' type="text" value="{$info.tm|default=''}" />
-					<span>元/币</span>
-                  
-				</div>
-				<label class="control-label">买入</label>
-				<div class="controls">
-					<input  name="mairu" style='width:100px;' type="text" value="{$info.mairu|default=''}" />
-					<span></span><br>
-				</div>
-				<label class="control-label">卖出</label>
-				<div class="controls">
-					<input  name="maichu" style='width:100px;' type="text" value="{$info.maichu|default=''}" />
-					<span></span><br>
-				</div>
-				<label class="control-label">成交量</label>
-				<div class="controls">
-					<input  name="cjl" style='width:100px;' type="text" value="{$info.cjl|default=''}" />
-					<span></span><br>
-				</div>
-				<label class="control-label">成交额</label>
-				<div class="controls">
-					<input  name="cje" style='width:100px;' type="text" value="{$info.cje|default=''}" />
-					<span></span><br>
-				</div>
-             <!--  <label class="control-label">幅</label>
+
+					<div class="control-group">
+						<label class="control-label">今日币价/个</label>
+						<div class="controls">
+							<input name="eve_price" style='width:100px;' type="text" value="{$info.eve_price|default=''}" />
+							<span>元,</span>
+							且按
+							<input name="zizeng" style='width:100px;' type="text" value="{$info.zizeng|default=''}" />
+							<span>元/天,自增</span>
+
+						</div>
+						<label class="control-label">价格限制</label>
+						<div class="controls">
+							最低价格
+							<input name="lm" style='width:100px;' type="text" value="{$info.lm|default=''}" />
+							<span>元/币,</span>
+							最高
+							<input name="tm" style='width:100px;' type="text" value="{$info.tm|default=''}" />
+							<span>元/币</span>
+
+						</div>
+						<label class="control-label">买入</label>
+						<div class="controls">
+							<input name="mairu" style='width:100px;' type="text" value="{$info.mairu|default=''}" />
+							<span></span>
+							<br>
+						</div>
+						<label class="control-label">卖出</label>
+						<div class="controls">
+							<input name="maichu" style='width:100px;' type="text" value="{$info.maichu|default=''}" />
+							<span></span>
+							<br>
+						</div>
+						<label class="control-label">成交量</label>
+						<div class="controls">
+							<input name="cjl" style='width:100px;' type="text" value="{$info.cjl|default=''}" />
+							<span></span>
+							<br>
+						</div>
+						<label class="control-label">成交额</label>
+						<div class="controls">
+							<input name="cje" style='width:100px;' type="text" value="{$info.cje|default=''}" />
+							<span></span>
+							<br>
+						</div>
+						<!--  <label class="control-label">幅</label>
 				<div class="controls">
 					<input  name="fu" style='width:100px;' type="text" value="{$info.fu|default=''}" />
 	                 <span></span><br>
@@ -328,18 +343,21 @@
 					<input  name="liang" style='width:100px;' type="text" value="{$info.liang|default=''}" />
 	                 <span></span><br>
 				</div>-->
-              <label class="control-label">最低</label>
-				<div class="controls">
-					<input  name="low" style='width:100px;' type="text" value="{$info.low|default=''}" />
-	                 <span></span><br>
-				</div>
-              <label class="control-label">最高</label>
-				<div class="controls">
-					<input  name="hight" style='width:100px;' type="text" value="{$info.hight|default=''}" />
-					<span>如果为零则按正常算  如果不为零则按后台设置的</span><br><br>
-				</div>
+						<label class="control-label">最低</label>
+						<div class="controls">
+							<input name="low" style='width:100px;' type="text" value="{$info.low|default=''}" />
+							<span></span>
+							<br>
+						</div>
+						<label class="control-label">最高</label>
+						<div class="controls">
+							<input name="hight" style='width:100px;' type="text" value="{$info.hight|default=''}" />
+							<span>如果为零则按正常算 如果不为零则按后台设置的</span>
+							<br>
+							<br>
+						</div>
 
-             <!-- <label class="control-label">全网人数</label>
+						<!-- <label class="control-label">全网人数</label>
 				<div class="controls">
 					<input  name="renshu" style='width:100px;' type="text" value="{$info.renshu|default=''}" />
 	                 <span></span><br>
@@ -350,47 +368,55 @@
 					<input  name="allsl" style='width:300px;' type="text" value="{$info.allsl|default=''}" />
 	                 <span>如果为零则按正常算  如果不为零则按后台设置的</span><br>
 				</div>-->
-              
-              
-              	<label class="control-label">日线数据</label>
-				<div class="controls">
-					<input  name="rixian" style='width:400px;' type="text" value="{$info.rixian|default=''}" />
-	                 <span></span><br>
-				</div>
-              	<label class="control-label">分时线数据</label>
-				<div class="controls">
-					<input  name="fenxian" style='width:400px;' type="text" value="{$info.fenxian|default=''}" />
-	                 <span></span><br>
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label">短信appid</label>
-				<div class="controls">
-					<input  name="appid" style='width:300px;' type="text" value="{$info.appid|default=''}" />
-	                 <span></span><br>
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label">短信开关</label>
-				<div class="controls">
-					<input  name="gs_name" style='width:50px;' type="text" value="{$info.gs_name|default=''}" />
-	                 <span>(0关,1开)</span><br>
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label">交易情况</label>
-				<div class="controls">
-					<span>匹配后要在</span>
-					<input  name="pp_time" style='width:100px;' type="text" value="{$info.pp_time|default=''}" />
-	                <span>小时内完成付款,否则取消订单</span><br/><br/>
-	                
-	                <span>付款后必须要在</span>
-					<input  name="dk_time" style='width:100px;' type="text" value="{$info.dk_time|default=''}" />
-	                <span>小时内确认收款,否则冻结账号</span><br/><br/>
-				</div>
-			</div>
-            
-           <!--<div class="control-group">
+
+
+						<label class="control-label">日线数据</label>
+						<div class="controls">
+							<input name="rixian" style='width:400px;' type="text" value="{$info.rixian|default=''}" />
+							<span></span>
+							<br>
+						</div>
+						<label class="control-label">分时线数据</label>
+						<div class="controls">
+							<input name="fenxian" style='width:400px;' type="text" value="{$info.fenxian|default=''}" />
+							<span></span>
+							<br>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">短信appid</label>
+						<div class="controls">
+							<input name="appid" style='width:300px;' type="text" value="{$info.appid|default=''}" />
+							<span></span>
+							<br>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">短信开关</label>
+						<div class="controls">
+							<input name="gs_name" style='width:50px;' type="text" value="{$info.gs_name|default=''}" />
+							<span>(0关,1开)</span>
+							<br>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">交易情况</label>
+						<div class="controls">
+							<span>匹配后要在</span>
+							<input name="pp_time" style='width:100px;' type="text" value="{$info.pp_time|default=''}" />
+							<span>小时内完成付款,否则取消订单</span>
+							<br/>
+							<br/>
+
+							<span>付款后必须要在</span>
+							<input name="dk_time" style='width:100px;' type="text" value="{$info.dk_time|default=''}" />
+							<span>小时内确认收款,否则冻结账号</span>
+							<br/>
+							<br/>
+						</div>
+					</div>
+
+					<!--<div class="control-group">
 				<label class="control-label">修改资料的开关</label>
 				<div class="controls">
 					
@@ -401,31 +427,31 @@
 					
 				</div>
 			</div>-->
-            
-            
-             <div class="control-group">
-				<label class="control-label">交易起止时间</label>
-				<div class="controls">
-					
-					<input  name="start" style='width:100px;' type="text" value="{$info.start|default=''}" />
-	                 <span>点开始</span>
-	                <input  name="end" style='width:100px;' type="text" value="{$info.end|default=''}" />
-	                <span>点结束</span>
-					
-				</div>
-			</div>
-			
-          <div class="control-group">
-				<label class="control-label">钱包互转手续费</label>
-				<div class="controls">
-					<span></span>动态钱包,在线钱包向总钱包转账收取
-					<input  name="hzje" style='width:100px;' type="text" value="{$info.hzje|default=''}" />
-	                <span>%的手续费</span>
-					
-				</div>
-			</div>
-            
-		<!--	<div class="control-group">
+
+
+					<div class="control-group">
+						<label class="control-label">交易起止时间</label>
+						<div class="controls">
+
+							<input name="start" style='width:100px;' type="text" value="{$info.start|default=''}" />
+							<span>点开始</span>
+							<input name="end" style='width:100px;' type="text" value="{$info.end|default=''}" />
+							<span>点结束</span>
+
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">钱包互转手续费</label>
+						<div class="controls">
+							<span></span>动态钱包,在线钱包向总钱包转账收取
+							<input name="hzje" style='width:100px;' type="text" value="{$info.hzje|default=''}" />
+							<span>%的手续费</span>
+
+						</div>
+					</div>
+
+					<!--	<div class="control-group">
 				<label class="control-label">成为VIP需要</label>
 				<div class="controls">
 					
@@ -435,8 +461,8 @@
 					<span>%</span>
 				</div>
 			</div>-->
-            
-           <!-- <div class="control-group">
+
+					<!-- <div class="control-group">
 				<label class="control-label">代理商收益</label>
 				<div class="controls">
 					<span>本市用户购买矿机的</span>
@@ -444,8 +470,8 @@
 				    <span>%</span>
 				</div>
 			</div>-->
-			
-			<!--<div class="control-group">
+
+					<!--<div class="control-group">
 				<label class="control-label">代理商条件</label>
 				<div class="controls">
 					<span>直推矿工</span>
@@ -454,125 +480,134 @@
 				    <input  name="dl_suanli" style='width:100px;' type="text" value="{$info.dl_suanli|default=''}" />
 				</div>
 			</div>-->
-			
-			<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>其他规则设置</h5></div>
-    	 <div class="widget-content nopadding">
-    	  <div class="control-group">
-			<label class="control-label">用户互转</label>
-			<div class="controls">
-				用户互转收取<input style='width:60px;' name="hz" type="text" class="text" value="{$info.hz|default=''}" />%为手续费
-			</div>
-		</div> 
-		<div class="control-group">
-			<label class="control-label">交易手续费</label>
-			<div class="controls">
-				每笔交易扣<input style='width:60px;' name="jy_rate" type="text" class="text" value="{$info.jy_rate}" />%作为手续费
-				
-			</div>
-		</div>
-           <div class="control-group">
-			<label class="control-label">交易最低金额</label>
-			<div class="controls">
-				买入或卖出金额大于<input style='width:60px;' name="jy_money" type="text" class="text" value="{$info.jy_money}" />
-				
-			</div>
-		</div>
 
-		 <div class="control-group">
-			 <label class="control-label">卖出比例</label>
-			 <div class="controls">
-				 <input style='width:60px;' name="outbl" type="number" class="text" value="{$info.outbl}" />%
+					<div class="widget-title">
+						<span class="icon">
+							<i class="icon-align-justify"></i>
+						</span>
+						<h5>其他规则设置</h5>
+					</div>
+					<div class="widget-content nopadding">
+						<div class="control-group">
+							<label class="control-label">用户互转</label>
+							<div class="controls">
+								用户互转收取
+								<input style='width:60px;' name="hz" type="text" class="text" value="{$info.hz|default=''}" />%为手续费
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">交易手续费</label>
+							<div class="controls">
+								每笔交易扣
+								<input style='width:60px;' name="jy_rate" type="text" class="text" value="{$info.jy_rate}" />%作为手续费
 
-			 </div>
-		 </div>
-		 <div class="control-group">
-			 <label class="control-label">购买奖励比例</label>
-			 <div class="controls">
-				 <input style='width:60px;' name="buybl" type="number" class="text" value="{$info.buybl}" />%
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">交易最低金额</label>
+							<div class="controls">
+								买入或卖出金额大于
+								<input style='width:60px;' name="jy_money" type="text" class="text" value="{$info.jy_money}" />
 
-			 </div>
-		 </div>
-		 <div class="control-group">
-			 <label class="control-label">买币保证金</label>
-			 <div class="controls">
-				 <input style='width:60px;' name="bond" type="number" class="text" value="{$info.byj}" />币
-			 </div>
-		 </div>
-           
-           <div class="control-group">
-				<label class="control-label">总发行量</label>
-				<div class="controls">
-					<span></span>
-					<input  name="zsh" style='width:100px;' type="text" value="{$info.zsh|default=''}" />
-				    <span></span>
-				</div>
-			</div>
-           
-           <div class="control-group">
-				<label class="control-label">私募量</label>
-				<div class="controls">
-					<span></span>
-					<input  name="mj" style='width:100px;' type="text" value="{$info.mj|default=''}" />
-				    <span></span>
-				</div>
-			</div>
-           
-           <div class="control-group">
-				<label class="control-label">天使轮</label>
-				<div class="controls">
-					<span></span>
-					<input  name="tsl" style='width:100px;' type="text" value="{$info.tsl|default=''}" />
-				    <span></span>
-				</div>
-			</div>
-		
-	 <div class="control-group">
-				<label class="control-label">签到赠送</label>
-				<div class="controls">
-					
-					<input  name="is_qd" style='width:100px;' type="text" value="{$info.is_qd|default=''}" />
+							</div>
+						</div>
 
-					<span>币</span>
-				</div>
-			</div>
-           
-            <div class="control-group">
-				<label class="control-label">售卖购买转账规则</label>
-				<div class="controls">
-					
-					<input  name="qy" style='width:100px;' type="text" value="{$info.qy|default=''}" />
+						<div class="control-group">
+							<label class="control-label">卖出比例</label>
+							<div class="controls">
+								<input style='width:60px;' name="outbl" type="number" class="text" value="{$info.outbl}" />%
 
-					<span>的整倍数</span>
-				</div>
-			</div>
-			
-           	 <div class="control-group">
-				  <label class="control-label">网站开关</label>
-				  <div class="controls">
-					开始时间
-					  <input  name="opwebt" style='width:100px;' type="number" value="{$info.opwebt|default='0'}" />
-					  <span>点--</span>
-					  <input  name="clwebt" style='width:100px;' type="number" value="{$info.clwebt|default='24'}" />
-					  <span>点关闭</span>
-					  <!--<input  name="dt" style='width:50px;' type="text" value="{$info.dt|default=''}" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">购买奖励比例</label>
+							<div class="controls">
+								<input style='width:60px;' name="buybl" type="number" class="text" value="{$info.buybl}" />%
+
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">买币保证金</label>
+							<div class="controls">
+								<input style='width:60px;' name="bond" type="number" class="text" value="{$info.byj}" />币
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label">总发行量</label>
+							<div class="controls">
+								<span></span>
+								<input name="zsh" style='width:100px;' type="text" value="{$info.zsh|default=''}" />
+								<span></span>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label">私募量</label>
+							<div class="controls">
+								<span></span>
+								<input name="mj" style='width:100px;' type="text" value="{$info.mj|default=''}" />
+								<span></span>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label">天使轮</label>
+							<div class="controls">
+								<span></span>
+								<input name="tsl" style='width:100px;' type="text" value="{$info.tsl|default=''}" />
+								<span></span>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label">签到赠送</label>
+							<div class="controls">
+
+								<input name="is_qd" style='width:100px;' type="text" value="{$info.is_qd|default=''}" />
+
+								<span>币</span>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label">售卖购买转账规则</label>
+							<div class="controls">
+
+								<input name="qy" style='width:100px;' type="text" value="{$info.qy|default=''}" />
+
+								<span>的整倍数</span>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label">网站开关</label>
+							<div class="controls">
+								开始时间
+								<input name="opwebt" style='width:100px;' type="number" value="{$info.opwebt|default='0'}" />
+								<span>点--</span>
+								<input name="clwebt" style='width:100px;' type="number" value="{$info.clwebt|default='24'}" />
+								<span>点关闭</span>
+								<!--<input  name="dt" style='width:50px;' type="text" value="{$info.dt|default=''}" />
                       <span>,在线钱包开关</span>
 					  <input  name="zx" style='width:50px;' type="text" value="{$info.zx|default=''}" />
 					  <span>(0关,1开)</span>-->
-					  <br><br>
-				  </div>
-			  </div>
+								<br>
+								<br>
+							</div>
+						</div>
 
-			
-	       <div class="form-actions">
-              <button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
-              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
-     	</div></div>
-        </form>
-    </div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
+							<button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+						</div>
+					</div>
+		</form>
+		</div>
 </block>
 <block name="script">
-    <script type="text/javascript">
-    	highlight_subnav("{:U('BonusRule/bonusRule')}");
-    </script>
+	<script type="text/javascript">
+		highlight_subnav("{:U('BonusRule/bonusRule')}");
+	</script>
 </block>

@@ -1,95 +1,100 @@
-
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
 <head>
-<meta charset="utf-8">
-<title>{$meta_title}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- CSS -->
-<link rel="stylesheet" href="__LOGIN__/css/supersized.css">
-<link rel="stylesheet" href="__LOGIN__/css/login.css">
-<link href="__LOGIN__/css/bootstrap.min.css" rel="stylesheet">
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
+	<meta charset="utf-8">
+	<title>{$meta_title}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- CSS -->
+	<link rel="stylesheet" href="__LOGIN__/css/supersized.css">
+	<link rel="stylesheet" href="__LOGIN__/css/login.css">
+	<link href="__LOGIN__/css/bootstrap.min.css" rel="stylesheet">
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
 	<script src="__LOGIN__/js/html5.js"></script>
 <![endif]-->
-<script src="__LOGIN__/js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="__LOGIN__/js/jquery.form.js"></script>
-<script type="text/javascript" src="__LOGIN__/js/tooltips.js"></script>
-<script type="text/javascript">
-//支持Enter键登录
-	document.onkeydown = function(e){
-		if($(".bac").length==0)
-		{
-			if(!e) e = window.event;
-			if((e.keyCode || e.which) == 13){
-				var obtnLogin=document.getElementById("submit_btn")
-				obtnLogin.focus();
+	<script src="__LOGIN__/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="__LOGIN__/js/jquery.form.js"></script>
+	<script type="text/javascript" src="__LOGIN__/js/tooltips.js"></script>
+	<script type="text/javascript">
+		//支持Enter键登录
+		document.onkeydown = function (e) {
+			if ($(".bac").length == 0) {
+				if (!e) e = window.event;
+				if ((e.keyCode || e.which) == 13) {
+					var obtnLogin = document.getElementById("submit_btn")
+					obtnLogin.focus();
+				}
 			}
 		}
-	}
 
-	$(function(){
-		//提交表单
-		$('#submit_btn').click(function(){
-			show_loading();
+		$(function () {
+			//提交表单
+			$('#submit_btn').click(function () {
+				show_loading();
+			});
 		});
-	});
-</script>
+	</script>
 </head>
+
 <body>
-<div class="page-container">
-	<div class="main_box" style='height:600px;'>
-		<div class="login_box">
-			<div class="login_logo">
-				<h5>尊敬的{$userinfo['usernumber']},请务必认真正确填写每一个问题的答案，否则密码将无法找回</h5>
+	<div class="page-container">
+		<div class="main_box" style='height:600px;'>
+			<div class="login_box">
+				<div class="login_logo">
+					<h5>尊敬的{$userinfo['usernumber']},请务必认真正确填写每一个问题的答案，否则密码将无法找回</h5>
+				</div>
+				<div class="login_form">
+					<form method="post" action="">
+						<input type="hidden" name="type" value="answer" />
+						<input type="hidden" name="uid" value="{$userinfo['uid']}" />
+						<div class="form-group">
+							<label for="j_username" class="t">问题一：</label>
+							<input name="username" type="text" class="form-control x319 in" name="question1" value="{$userinfo.question1}" disabled>
+						</div>
+						<div class="form-group">
+							<label for="j_password" class="t">答案一：</label>
+							<input value="" name="answer1" type="text" class="password form-control x319 in">
+						</div>
+						<div class="form-group">
+							<label for="j_username" class="t">问题二：</label>
+							<input name="username" type="text" class="form-control x319 in" autocomplete="off" name="question1" value="{$userinfo.question2}"
+							    disabled>
+						</div>
+						<div class="form-group">
+							<label for="j_password" class="t">答案二：</label>
+							<input name="answer2" type="text" class="password form-control x319 in">
+						</div>
+						<div class="form-group">
+							<label for="j_username" class="t">问题三：</label>
+							<input name="username" type="text" class="form-control x319 in" autocomplete="off" name="question1" value="{$userinfo.question3}"
+							    disabled>
+						</div>
+						<div class="form-group">
+							<label for="j_password" class="t">答案三：</label>
+							<input value="" name="answer3" type="text" class="password form-control x319 in">
+						</div>
+						<div class="form-group space">
+							<label class="t"></label>
+							<button type="submit" id="submit_btn" class="btn btn-primary btn-lg">验证密保</button>
+							<input onclick="javascript:history.back(-1);return false;" type="button" value="返回登陆" class="btn btn-default btn-lg">
+						</div>
+					</form>
+				</div>
 			</div>
-			<div class="login_form">
-				<form   method="post" action="" >
-				 	<input type="hidden" name="type" value="answer" />
-	 				<input type="hidden" name="uid" value="{$userinfo['uid']}" />
-					<div class="form-group">
-						<label for="j_username" class="t">问题一：</label> 
-						<input  name="username" type="text" class="form-control x319 in"  name="question1" value="{$userinfo.question1}" disabled>
-					</div>
-					<div class="form-group">
-						<label for="j_password" class="t">答案一：</label> 
-						<input value="" name="answer1" type="text" class="password form-control x319 in">
-					</div>
-					<div class="form-group">
-						<label for="j_username" class="t">问题二：</label> 
-						<input  name="username" type="text" class="form-control x319 in" autocomplete="off" name="question1" value="{$userinfo.question2}" disabled>
-					</div>
-					<div class="form-group">
-						<label for="j_password" class="t">答案二：</label> 
-						<input  name="answer2" type="text" class="password form-control x319 in">
-					</div>
-					<div class="form-group">
-						<label for="j_username" class="t">问题三：</label> 
-						<input   name="username" type="text" class="form-control x319 in" autocomplete="off" name="question1" value="{$userinfo.question3}" disabled>
-					</div>
-					<div class="form-group">
-						<label for="j_password" class="t">答案三：</label> 
-						<input  value="" name="answer3" type="text" class="password form-control x319 in">
-					</div>
-					<div class="form-group space">
-						<label class="t"></label>　　　
-						<button type="submit"  id="submit_btn" class="btn btn-primary btn-lg">验证密保</button>
-						<input onclick="javascript:history.back(-1);return false;" type="button" value="返回登陆" class="btn btn-default btn-lg">
-					</div>
-				</form>
+			<div class="bottom">{:C('WEB_SITE_ICP')}
+				<a href="#"></a>
 			</div>
 		</div>
-		<div class="bottom">{:C('WEB_SITE_ICP')} <a href="#"></a></div>
 	</div>
-</div>
 
-<!-- Javascript -->
-<script src="__LOGIN__/js/supersized.3.2.7.min.js"></script>
-<script src="__LOGIN__/js/supersized-init.js"></script>
-<script type="text/javascript">
- </script>
+	<!-- Javascript -->
+	<script src="__LOGIN__/js/supersized.3.2.7.min.js"></script>
+	<script src="__LOGIN__/js/supersized-init.js"></script>
+	<script type="text/javascript">
+	</script>
 </body>
+
 </html>

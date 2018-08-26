@@ -1,4 +1,4 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 
 <block name="body">
     <div class="main-title">
@@ -8,14 +8,18 @@
     </div>
     <form action="{:U()}" method="post" class="form-horizontal">
         <div class="form-item">
-            <label class="item-label">补丁名称<span class="check-tips">（英文补丁的名称，留空自动根据时间生成）</span></label>
+            <label class="item-label">补丁名称
+                <span class="check-tips">（英文补丁的名称，留空自动根据时间生成）</span>
+            </label>
             <div class="controls">
                 <input type="hidden" class="text input-large" name="title_old" value="{$pack.title|default=''}">
                 <input type="text" class="text input-large" name="title" value="{$pack.title|default=''}">
             </div>
         </div>
         <div class="form-item">
-            <label class="item-label">补丁内Sql内容<span class="check-tips">（直接填写Sql语句即可）</span></label>
+            <label class="item-label">补丁内Sql内容
+                <span class="check-tips">（直接填写Sql语句即可）</span>
+            </label>
             <div class="controls">
                 <label class="textarea input-large">
                     <textarea name="sql">{$pack.sql|default=''}</textarea>
@@ -23,7 +27,9 @@
             </div>
         </div>
         <div class="form-item">
-            <label class="item-label">补丁说明<span class="check-tips">（用于说明补丁作用的文字）</span></label>
+            <label class="item-label">补丁说明
+                <span class="check-tips">（用于说明补丁作用的文字）</span>
+            </label>
             <div class="controls">
                 <label class="textarea input-large">
                     <textarea name="des">{$pack.des|default=''}</textarea>
@@ -31,7 +37,9 @@
             </div>
         </div>
         <div class="form-item">
-            <label class="item-label">作者<span class="check-tips">（填写补丁作者）</span></label>
+            <label class="item-label">作者
+                <span class="check-tips">（填写补丁作者）</span>
+            </label>
             <div class="controls">
                 <input type="text" class="text input-large" name="auth" value="{$pack.auth|default=$db['auth']}">
             </div>

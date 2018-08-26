@@ -1,74 +1,249 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>我的账户</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
-	<link rel="stylesheet" href="__CSS__/iconfont.css"/>
-    <link rel="stylesheet" href="__H-W__/css/style.css" />
-    <style type="text/css">
-    	.top{width: 100%;height: 175px;float: left;background: #000;}
-    	.touxiang{width: 40%;height: 110px;float: left;text-align: center;}
-      	.touxiang2{width: 30%;height: 110px;float: left;text-align: center;}
-    	.touxiang img{width: 70px;height: 70px;margin-top: 20px;border-radius: 50%;}
-      	.touxiang2 p{width: 70px;margin-top: 20px;border-radius: 50%;}
-    	.xia{width: 100%;height: 80;float: left;}
-    	.xia_l{width: 33%;height: 65px;text-align: center;}
-    	.xia_l p{font-size: 1em;}
-    	.xia_r{width: 33%;height: 65px;text-align: center;}
-    	.xia_r p{font-size: 1em;}
-        .xia_t{width: 33%;height: 65px;text-align: center;}
-        .xia_t p{font-size: 1em;}
-      	.xia_b{width: 33%;height: 65px;text-align: center;}
-        .xia_t p{font-size: 1em;}
-      	.xia_c{width: 33%;height: 65px;text-align: center;}
-        .xia_t p{font-size: 1em;}
-    	.saoma{width: 100%;height: 105px;float: left;background: #1c1c20;}
-    	.saoma div{width: 33.33%;height: 105px;float: left;text-align: center;}
-    	.saoma img{width: 42px;height: 42px;}
-    	.saoma p{margin: 0;color: #fff;}
-    	.tupian{margin-top: 20px !important;}
-    	.lianjie{width: 100%;height: 285px;
-    	float: left;background: #292c33;border-top: 1px solid #3d4651;
-    	border-bottom: 1px solid #3d4651;margin-top: 10px;}
-    	.lianjie a{display: inline-block;width: 25%;
-    	height: 97.5px;float: left;color: #fff;text-align: center;}
-    	.lianjie a p{margin: 0;}
-    	.lianjie a img{width: 32px;height: 32px;margin-top: 15px;}
-      .lianjie2 {width: 100%;height: 80px;
-    	float: left;background: #292c33;border-top: 1px solid #3d4651;
-    	border-bottom: 1px solid #3d4651;margin-top: 10px;}
-      	.lianjie2 a{display: inline-block;width: 25%;
-    	height: 97.5px;float: left;color: #fff;text-align: center;}
-    	.lianjie2 a p{margin: 0;}
-    	.lianjie2 a img{width: 32px;height: 32px;margin-top: 15px;}
-    </style>
-</head>
-<body>
-    <header class="mui-bar mui-bar-nav">
-        <h1 class="mui-title">我的账户</h1>
-    </header>
-    <div class="mui-content">
-    	<div class="top">
-    		<div class="touxiang">
-    			<img src="/Uploads/Picture/2018-05-12/5af6a1d386372.png" alt="" />
-    		</div>
-         <div class="touxiang2">
-            <p><span style="font-size: .95em;">个人账号</span></p>
-    				<p><span style="color: #fff;">{$logininfo.usernumber}
 
-					<if condition="$logininfo['is_vip'] eq 1">
-						<span class="iconfont icon-VIP"></span>
-					<else/>
-						<span class="iconfont icon-VIP3"></span>
-					</if>
+<head>
+	<meta charset="UTF-8" />
+	<title>我的账户</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css" />
+	<link rel="stylesheet" href="__CSS__/iconfont.css" />
+	<link rel="stylesheet" href="__H-W__/css/style.css" />
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<style type="text/css">
+		.top {
+			width: 100%;
+			height: 175px;
+			float: left;
+			background: #000;
+		}
+
+		.touxiang {
+			width: 40%;
+			height: 110px;
+			float: left;
+			text-align: center;
+		}
+
+		.touxiang2 {
+			width: 30%;
+			height: 110px;
+			float: left;
+			text-align: center;
+		}
+
+		.touxiang img {
+			width: 70px;
+			height: 70px;
+			margin-top: 20px;
+			border-radius: 50%;
+		}
+
+		.touxiang2 p {
+			width: 70px;
+			margin-top: 20px;
+			border-radius: 50%;
+		}
+
+		.xia {
+			width: 100%;
+			height: 80;
+			float: left;
+			height: 60px !important;
+			padding-bottom: 0;
+			line-height: 1
+		}
+
+		.xia::after {
+			clear: both;
+			content: "";
+			height: 0;
+			display: block;
+		}
+
+		.xia_l {
+			width: 33%;
+			height: 65px;
+			text-align: center;
+		}
+
+		.xia_l p {
+			font-size: 1em;
+		}
+
+		.xia_r {
+			width: 33%;
+			height: 65px;
+			text-align: center;
+		}
+
+		.xia_r p {
+			font-size: 1em;
+		}
+
+		.xia_t {
+			width: 33%;
+			height: 65px;
+			text-align: center;
+		}
+
+		.xia_t p {
+			font-size: 1em;
+		}
+
+		.xia_b {
+			width: 33%;
+			height: 65px;
+			text-align: center;
+		}
+
+		.xia_t p {
+			font-size: 1em;
+		}
+
+		.xia_c {
+			width: 33%;
+			height: 65px;
+			text-align: center;
+		}
+
+		.xia_t p {
+			font-size: 1em;
+		}
+
+		.saoma {
+			width: 100%;
+			height: 105px;
+			float: left;
+			background: #1c1c20;
+		}
+
+		.saoma div {
+			width: 33.33%;
+			height: 105px;
+			float: left;
+			text-align: center;
+		}
+
+		.saoma img {
+			width: 42px;
+			height: 42px;
+		}
+
+		.saoma p {
+			margin: 0;
+			color: #fff;
+		}
+
+		.tupian {
+			margin-top: 20px !important;
+		}
+
+		.lianjie {
+			width: 100%;
+			height: 285px;
+			float: left;
+			background: #292c33;
+			border-top: 1px solid #3d4651;
+			border-bottom: 1px solid #3d4651;
+			margin-top: 10px;
+		}
+
+		.lianjie a {
+			display: inline-block;
+			width: 25%;
+			height: 97.5px;
+			float: left;
+			color: #fff;
+			text-align: center;
+		}
+
+		.lianjie a p {
+			margin: 0;
+		}
+
+		.lianjie a img {
+			width: 32px;
+			height: 32px;
+			margin-top: 15px;
+		}
+
+		.lianjie2 {
+			width: 100%;
+			height: 80px;
+			float: left;
+			background: #292c33;
+			border-top: 1px solid #3d4651;
+			border-bottom: 1px solid #3d4651;
+			margin-top: 10px;
+		}
+
+		.lianjie2 a {
+			display: inline-block;
+			width: 25%;
+			height: 97.5px;
+			color: #fff;
+			text-align: center;
+		}
+
+		.lianjie2 a p {
+			margin: 0;
+		}
+
+		.lianjie2 a img {
+			width: 32px;
+			height: 32px;
+			margin-top: 15px;
+		}
+	</style>
+
+	<script>
+		$(function () {
+			var a = $(".add")
+			var c = $(".c")
+			console.log(a);
+			console.log(c = "红粉");
+			if (a.val() - 0 >= 6000 || a < 30000) {
+				c = "蓝粉"
+			} else if (a.val() - 0 >= 30000 || a < 150000) {
+				c = "红粉"
+			} else if (a.val() - 0 >= 150000 || a < 300000) {
+				c = "银粉"
+			} else if (a.val() - 0 >= 300000) {
+				c = "金粉"
+			}
+		})
+	</script>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">
+			<span class="c" style="display: inline-block; position: absolute;left: 0">蓝粉</span>
+			我的账户</h1>
+	</header>
+	<div class="mui-content">
+		<div class="top">
+			<div class="touxiang">
+				<img src="/Uploads/Picture/2018-05-12/5af6a1d386372.png" alt="" />
+			</div>
+			<div class="touxiang2">
+				<p>
+					<span style="font-size: .95em;">个人账号</span>
+				</p>
+				<p>
+					<span style="color: #fff;">{$logininfo.usernumber}
+
+						<if condition="$logininfo['is_vip'] eq 1">
+							<span class="iconfont icon-VIP"></span>
+							<else/>
+							<span class="iconfont icon-VIP3"></span>
+						</if>
 
 					</span>
 
-					</p>
-          </div>
-         <!--<div class="touxiang2">
+				</p>
+			</div>
+			<!--<div class="touxiang2">
             <p><span style="font-size: .95em;">今日币价</span></p>
     				<p><span style="color: #fff;">
 						<?php echo get_bonus_rule('eve_price')?>
@@ -78,55 +253,92 @@
 
           </div>
 -->
-    		<div class="xia">
-              	<div class="xia_r mui-pull-left">
-    				<p><span style="font-size: .95em;">今日币价</span></p>
-    				<p><span style="color: #fff;"><?php echo get_bonus_rule('eve_price')?></span></p>
-    			</div>
-    			<div class="xia_l mui-pull-left">
-    				<p><span style="font-size: .95em;">每日产币</span></p>
-    				<p><span style="color: #fff;">{$fh}
+			<div class="xia">
+				<div class="xia_r mui-pull-left">
+					<p>
+						<span style="font-size: .95em;">今日币价</span>
+					</p>
+					<p>
+						<span style="color: #fff;">
+							<?php echo get_bonus_rule('eve_price')?>
+						</span>
+					</p>
+				</div>
+				<div class="xia_l mui-pull-left">
+					<p>
+						<span style="font-size: .95em;">每日产币</span>
+					</p>
+					<p>
+						<span style="color: #fff;">{$fh}
 
-					<if condition="$logininfo['is_vip'] eq 1">
-						<span class="iconfont icon-VIP"></span>
-					<else/>
-						<span class="iconfont icon-VIP3"></span>
-					</if>
+							<if condition="$logininfo['is_vip'] eq 1">
+								<span class="iconfont icon-VIP"></span>
+								<else/>
+								<span class="iconfont icon-VIP3"></span>
+							</if>
 
-					</span>
+						</span>
 
 					</p>
 
-    			</div>
-              
-              	<div class="xia_r mui-pull-left">
-    				<p><span style="font-size: .95em;">团队持币</span></p>
-    				<p><span style="color: #fff;">{$cb}</span></p>
-    			</div>
-    		
-              
-               <!-- <div class="xia_t mui-pull-left">
+				</div>
+
+				<div class="xia_r mui-pull-left">
+					<p>
+						<span style="font-size: .95em;">团队持币</span>
+					</p>
+					<p>
+						<span style="color: #fff;">{$cb}</span>
+					</p>
+				</div>
+
+
+				<!-- <div class="xia_t mui-pull-left">
                     <p><span style="font-size: .95em;">冻结余额</span></p>
                     <p><span style="color: #fff;">{$dongjie}</span></p>
                 </div>-->
-    		</div>
-    	</div>
-      <div class="xia">
-      		<div class="xia_t mui-pull-left" style="margin-top: 13px;">
-    				<p><span style="font-size: .95em;">总钱包</span></p>
-    				<p><span style="color: #fff;">{$logininfo.hasmoney}</span></p>
-    			</div>
-             <div class="xia_t mui-pull-left" style="margin-top: 13px;">
-    				<p><span style="font-size: .95em;">在线钱包</span></p>
-    				<p><span style="color: #fff;">{$logininfo.hasbill}</span></p>
-    			</div>
-              <div class="xia_t mui-pull-left" style="margin-top: 13px;">
-    				<p><span style="font-size: .95em;">孵化仓</span></p>
-    				<p><span style="color: #fff;">{$logininfo.hasfh}</span></p>
-    			</div>
-           
-      </div>
-    	<!--<div class="saoma">
+			</div>
+		</div>
+		<div class="xia">
+			<div class="xia_t mui-pull-left" style="margin-top: 13px;">
+				<p>
+					<span style="font-size: .95em;">总钱包</span>
+				</p>
+				<p>
+					<span style="color: #fff;">{$logininfo.hasmoney}</span>
+				</p>
+			</div>
+			<div class="xia_t mui-pull-left" style="margin-top: 13px;">
+				<p>
+					<span style="font-size: .95em;">在线钱包</span>
+				</p>
+				<p>
+					<span style="color: #fff;" class="add">{$logininfo.hasbill}</span>
+				</p>
+			</div>
+			<div class="xia_t mui-pull-left" style="margin-top: 13px;">
+				<p>
+					<span style="font-size: 1em;">动态钱包</span>
+				</p>
+				<p>
+					<span style="color: #fff;">{$logininfo.hascp}</span>
+				</p>
+			</div>
+
+
+		</div>
+		<div class="xia_t mui-pull-left" style="margin-top: 13px;">
+
+			<p>
+				<span style="font-size: .95em;">静态钱包</span>
+			</p>
+			<p>
+				<span style="color: #fff;">{$logininfo.hasjifen}</span>
+			</p>
+		</div>
+
+	</div>
+	<!--<div class="saoma">
     		<div>
     			<p class="tupian"><img src="__H-W__/images/sys.png" alt="" /></p>
     			<p><span>扫一扫</span></p>
@@ -140,8 +352,8 @@
     			<p><span>收款</span></p>
     		</div>
     	</div>-->
-        <div class="xia">
-      		<!--<div class="xia_t mui-pull-left" style="margin-top: 13px;">
+	
+		<!--<div class="xia_t mui-pull-left" style="margin-top: 13px;">
     				<p><span style="font-size: .95em;">每日产币</span></p>
     				<p><span style="color: #fff;">{$fh}</span></p>
     			</div>
@@ -149,25 +361,13 @@
     				<p><span style="font-size: .95em;">团队持币</span></p>
     				<p><span style="color: #fff;">{$cb}</span></p>
     			</div>-->
-              <div class="xia_t mui-pull-left" style="margin-top: 13px;">
-    				<p><span style="font-size: .95em;">动态钱包</span></p>
-    				<p><span style="color: #fff;">{$logininfo.hascp}</span></p>
-    			</div>
-		  <div class="xia_t mui-pull-left" style="margin-top: 13px;">
-			  <p><span style="font-size: .95em;">静态钱包</span></p>
-			  <p><span style="color: #fff;">{$logininfo.hasjifen}</span></p>
-		  </div>
-		  <div class="xia_t mui-pull-left" style="margin-top: 13px;">
-			  <p><span style="font-size: .95em;">孵化钱包</span></p>
-			  <p><span style="color: #fff;">{$logininfo.hassf}</span></p>
-		  </div>
-      </div>
-    	<div class="lianjie">
-    		<!--<a href="{:U('Kung/center')}">
+		
+		<div class="lianjie">
+			<!--<a href="{:U('Kung/center')}">
     			<p><img src="__H-W__/images/wycz.png"/></p>
     			<p><span>交易大厅</span></p>
     		</a>-->
-    		<!--<a href="{:U('Kung/guadan')}">
+			<!--<a href="{:U('Kung/guadan')}">
     			<p><img src="__H-W__/images/wytx.png"/></p>
     			<p><span>我的挂单</span></p>
     		</a>
@@ -175,58 +375,94 @@
     			<p><img src="__H-W__/images/wdzc.png"/></p>
     			<p><span>我的交易</span></p>
     		</a>-->
-    		<a href="{:U('kung/moneyin')}">
-    			<p><img src="__H-W__/images/bzr.png"/></p>
-    			<p><span style="color:#FFFFFF">币种互转</span></p>
-    		</a>
-    		<a href="{:U('kung/moneyout')}">
-    			<p><img src="__H-W__/images/bzc.png"/></p>
-    			<p><span style="color:#FFFFFF">会员转账</span></p>
-    		</a>
-          <a href="{:U('money_jl')}">
-    			<p><img src="__H-W__/images/zjmx.png"/></p>
-    			<p><span style="color:#FFFFFF">奖金明细</span></p>
-    		</a>
-          <a href="{:U('bonus/financialflow')}">
-    			<p><img src="__H-W__/images/zjmx.png"/></p>
-    			<p><span style="color:#FFFFFF">交易明细</span></p>
-    		</a>
-    		<a href="{:U('kung/tuiguang')}">
-    			<p><img src="__H-W__/images/tgzx.png"/></p>
-    			<p><span style="color:#FFFFFF">推广中心</span></p>
-    		</a>
-			<a href="{:U('user/mail')}">
-				<p><img src="__H-W__/images/tgzx.png"/></p>
-				<p><span style="color:#FFFFFF">信息中心</span></p>
+			<a href="{:U('kung/moneyin')}">
+				<p>
+					<img src="__H-W__/images/bzr.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF">币种互转</span>
+				</p>
 			</a>
-    		<!--<a href="{:U('money_jl')}">
+			<a href="{:U('kung/moneyout')}">
+				<p>
+					<img src="__H-W__/images/bzc.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF">会员转账</span>
+				</p>
+			</a>
+
+			<a href="{:U('bonus/financialflow')}">
+				<p>
+					<img src="__H-W__/images/zjmx.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF">交易明细</span>
+				</p>
+			</a>
+
+			<a href="{:U('user/mail')}">
+				<p>
+					<img src="__H-W__/images/tgzx.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF">信息中心</span>
+				</p>
+			</a>
+			<!--<a href="{:U('money_jl')}">
     			<p><img src="__H-W__/images/wdjl.png"/></p>
     			<p><span>我的奖励</span></p>
     		</a>-->
-    		<!--<a href="{:U('tj_fx')}">
+			<!--<a href="{:U('tj_fx')}">
     			<p><img src="__H-W__/images/tjfx.png"/></p>
     			<p><span>推荐分享</span></p>
     		</a>-->
-          <a href="{:U('pay_action',array('method'=>3))}">
-    			<p><img src="__H-W__/images/yhkbd.png"/></p>
-    			<p><span style="color:#FFFFFF">银行卡绑定</span></p>
-    		</a>
-          <a href="{:U('kung/team')}">
-    			<p><img src="__H-W__/images/wdzc.png"/></p>
-    			<p><span style="color:#FFFFFF">我的团队</span></p>
-    		</a>
-          <a href="{:U('edit_pass')}">
-    			<p><img src="__H-W__/images/mmzx.png"/></p>
-    			<p><span style="color:#FFFFFF">密码中心</span></p>
-    		</a>
-    		<a href="{:U('Index/logout')}">
-    			<p><img src="__H-W__/images/tcdl.png"/></p>
-    			<p><span style="color:#FFFFFF">退出登录</span></p>
-    		</a>
-    	</div>
-    	
-    	<!--<div class="lianjie">-->
-    		<!--<a href="{:U('trading_hall/rechargerecord')}">
+			<a href="{:U('pay_action',array('method'=>3))}">
+				<p>
+					<img src="__H-W__/images/yhkbd.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF">银行卡绑定</span>
+				</p>
+			</a>
+
+			<a href="{:U('edit_pass')}">
+				<p>
+					<img src="__H-W__/images/mmzx.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF">密码中心</span>
+				</p>
+			</a>
+			<a href="{:U('User/bulea')}">
+				<p>
+					<img src="__H-W__/images/wdzc.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF;font-size: 0.9rem">充币</span>
+				</p>
+			</a>
+			<a href="{:U('User/acuer')}">
+				<p>
+					<img src="__H-W__/images/mmzx.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF;font-size: 0.9rem">提币</span>
+				</p>
+			</a>
+			<a href="{:U('Index/logout')}">
+				<p>
+					<img src="__H-W__/images/tcdl.png" />
+				</p>
+				<p>
+					<span style="color:#FFFFFF">退出登录</span>
+				</p>
+			</a>
+
+		</div>
+
+		<!--<div class="lianjie">-->
+		<!--<a href="{:U('trading_hall/rechargerecord')}">
     			<p><img src="__H-W__/images/wycz.png"/></p>
     			<p><span>充值记录</span></p>
     		</a>
@@ -234,46 +470,52 @@
     			<p><img src="__H-W__/images/wytx.png"/></p>
     			<p><span>我要提现</span></p>
     		</a>-->
-    		
-    		
-    		
-    		<!--<a href="{:U('renzheng')}">
+
+
+
+		<!--<a href="{:U('renzheng')}">
     			<p><img src="__H-W__/images/smrz.png"/></p>
     			<p><span>实名认证</span></p>
     		</a>-->
-    		
-   
-	   
 
 
-      
-    <!--	</div>-->
-    	<div style="width: 100%;height: 55px;float: left;"></div>
-			<div class="foot">
-              <a href="{:U('Qd/index')}" class="act">
-	    			<p><img src="__H-W__/images/cz.png" alt="" /></p>
-	    			<p>签到</p>
-	    		</a>
-              <a href="{:U('user/index')}"  style="width:33%">
-	    			<p><img src="__H-W__/images/wd.png" alt="" /></p>
-	    			<p>我的</p>
-	    		</a>
-	    		<a href="{:U('Kung/center')}" style="width:33%">
-	    			<p><img src="__H-W__/images/jy.png" alt="" /></p>
-	    			<p>交易</p>
-	    		</a>
-	    		<a href="{:U('Kung/index')}"  style="width:33%">
-	    			<p><img src="__H-W__/images/zx.png" alt="" /></p>
-	    			<p>公告</p>
-	    		</a>
-	    		
-	    		
-    		</div>
-    </div>
-    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-    mui.init()
-    </script>
+
+
+
+
+		<!--	</div>-->
+		<div class="foot">
+			<a href="{:U('Qd/index')}" class="act">
+				<p>
+					<img src="__H-W__/images/cz.png" alt="" />
+				</p>
+				<p>签到</p>
+			</a>
+			<a href="{:U('user/index')}" style="width:33%">
+				<p>
+					<img src="__H-W__/images/wd.png" alt="" />
+				</p>
+				<p>我的</p>
+			</a>
+			<a href="{:U('Kung/center')}" style="width:33%">
+				<p>
+					<img src="__H-W__/images/jy.png" alt="" />
+				</p>
+				<p>交易</p>
+			</a>
+			<a href="{:U('Kung/index')}" style="width:33%">
+				<p>
+					<img src="__H-W__/images/zx.png" alt="" />
+				</p>
+				<p>公告</p>
+			</a>
+		</div>
+	</div>
+	<script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+
 </body>
-</html>
 
+</html>

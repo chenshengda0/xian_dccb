@@ -1,39 +1,42 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 
 <block name="body">
-<div class="widget-box">
-<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>{$meta_title}</h5>
-</div>
-	<form id="form" action="{:U('')}" method="post" class="form-horizontal" >
-	 <div class="widget-content nopadding">
- 		<div class="control-group">
-			<label class="control-label">商家名称</label>
-			<div class="controls">
-				 <input type="text" class="text input-large" name="name" id="usernumber" value="{$sj.sj_name|default=''}">
-				 <span class="check-tips" id='info'></span>
+	<div class="widget-box">
+		<div class="widget-title">
+			<span class="icon">
+				<i class="icon-align-justify"></i>
+			</span>
+			<h5>{$meta_title}</h5>
+		</div>
+		<form id="form" action="{:U('')}" method="post" class="form-horizontal">
+			<div class="widget-content nopadding">
+				<div class="control-group">
+					<label class="control-label">商家名称</label>
+					<div class="controls">
+						<input type="text" class="text input-large" name="name" id="usernumber" value="{$sj.sj_name|default=''}">
+						<span class="check-tips" id='info'></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">商家地址</label>
+					<div class="controls">
+						<input type="text" class="text input-large" name="address" value="{$sj.sj_address|default=''}">
+						<input type="hidden" name="id" value="{$sj.id|default=0}">
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<button type="submit" class="btn btn-success ajax-post" target-form='form-horizontal'>提交</button>
+					<button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">商家地址</label>
-			<div class="controls">
-				<input type="text" class="text input-large" name="address"  value="{$sj.sj_address|default=''}">
-			    <input type="hidden" name="id" value="{$sj.id|default=0}">
-			</div>
-		</div>
-		
-		  <div class="form-actions">
-              <button type="submit" class="btn btn-success ajax-post" target-form='form-horizontal'>提交</button>
-              <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
-           </div>
-		</div>
-	</form>
-</div>	
+		</form>
+	</div>
 </block>
 
 <block name="script">
 	<script>
 		//导航高亮
-	highlight_subnav("{:U('user/sj_add')}");
+		highlight_subnav("{:U('user/sj_add')}");
 	</script>
 </block>

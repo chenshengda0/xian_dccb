@@ -1,43 +1,89 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <title>新闻资讯</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
-    <link rel="stylesheet" href="__H-W__/css/style.css" />
-    <style type="text/css">
-    	.qiehuan{width: 100%;height: 40px;float: left;
-    	display: flex;justify-content: space-between;padding: 0 5px 0 5px;margin-top: 5px;}
-    	.qiehuan a{display: inline-block;width: 49%;
-    	height: 40px;border: 1px solid #3d4651;
-    	color: #fff;border-radius: 4px;text-align: center;line-height: 40px;}
-    	.wenzi{width: 100%;height: auto;padding: 5px 10px 5px 10px;
-    	float: left;background: #282f37;margin-top: 5px;}
-    	.wenzi p span{color: #a9a7a7;}
-    	.act{background: #292c33;}
-    	.active{background: #313840;}
-    	.boxs{float: left;}
-    	.wenzi p{width: 100%;display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
-    </style>
+	<meta charset="UTF-8" />
+	<title>新闻资讯</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css" />
+	<link rel="stylesheet" href="__H-W__/css/style.css" />
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<style type="text/css">
+		.qiehuan {
+			width: 100%;
+			height: 40px;
+			float: left;
+			display: flex;
+			justify-content: space-between;
+			padding: 0 5px 0 5px;
+			margin-top: 5px;
+		}
+
+		.qiehuan a {
+			display: inline-block;
+			width: 49%;
+			height: 40px;
+			border: 1px solid #3d4651;
+			color: #fff;
+			border-radius: 4px;
+			text-align: center;
+			line-height: 40px;
+		}
+
+		.wenzi {
+			width: 100%;
+			height: auto;
+			padding: 5px 10px 5px 10px;
+			float: left;
+			background: #282f37;
+			margin-top: 5px;
+		}
+
+		.wenzi p span {
+			color: #a9a7a7;
+		}
+
+		.act {
+			background: #292c33;
+		}
+
+		.active {
+			background: #313840;
+		}
+
+		.boxs {
+			float: left;
+		}
+
+		.wenzi p {
+			width: 100%;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+	</style>
 </head>
+
 <body>
-    <header class="mui-bar mui-bar-nav">
-        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-        <h1 class="mui-title">公告</h1>
-    </header>
-    <div class="mui-content">
-    	<div class="qiehuan" id="qiehuan">
-    		<a href="javascript:;" class="active">
-    			平台公告
-    		</a>
-    		<a href="javascript:;">
-    			行业新闻
-    		</a>
-    	</div>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">
+			<span class="c" style="display: inline-block; position: absolute;left: 0">蓝粉</span>
+			我的账户</h1>
+	</header>
+	<div class="mui-content">
+		<div class="qiehuan" id="qiehuan">
+			<a href="javascript:;" class="active">
+				平台公告
+			</a>
+			<a href="javascript:;">
+				行业新闻
+			</a>
+		</div>
 
 
-    	<div class="boxs">
+		<div class="boxs">
 			<volist name="gonggao" id="vo">
 				<a href="{:U('new_xiangqing',array('id'=>$vo['id']))}">
 					<div class="wenzi">
@@ -50,16 +96,16 @@
 					</div>
 				</a>
 			</volist>
-    	</div>
+		</div>
 
 
 
-    	<div class="boxs" style="display: none;">
+		<div class="boxs" style="display: none;">
 			<volist name="instro" id="va">
 				<a href="{:U('new_xiangqing',array('id'=>$va['id']))}">
 					<div class="wenzi">
 						<p>
-						<h4 style="color: #fff;">{$va.title}</h4>
+							<h4 style="color: #fff;">{$va.title}</h4>
 						</p>
 						<p class="ps">
 							<span>{$va.id|get_ar}</span>
@@ -67,52 +113,60 @@
 					</div>
 				</a>
 			</volist>
-    	</div>
+		</div>
 
 
 
-    	<div style="width: 100%;height: 49px;float: left;"></div>
-			<div class="foot">
-              <a href="{:U('Qd/index')}">
-	    			<p><img src="__H-W__/images/cz.png" alt="" /></p>
-	    			<p>签到</p>
-	    		</a>
-              <a href="{:U('user/index')}"  style="width:33%">
-					<p><img src="__H-W__/images/wd.png" alt="" /></p>
-					<p>我的</p>
-				</a>
-				<a href="{:U('Kung/center')}"  style="width:33%">
-					<p><img src="__H-W__/images/jy.png" alt=""  /></p>
-					<p>交易</p>
-				</a>
-				<a href="{:U('Kung/index')}" class="act"  style="width:33%">
-					<p><img src="__H-W__/images/zx.png" alt="" /></p>
-					<p>公告</p>
-				</a>
-				
-				
-    		</div>
-    </div>
-    <script src="__H-W__/js/jquery-3.1.0.min.js"></script>
-    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-    mui.init();
-    			var as = document.getElementById("qiehuan").getElementsByTagName("a");
-				var boxs = document.getElementsByClassName("boxs");
-				    for(var i = 0;i<as.length;i++){
-				    as[i].index = i;
-				    as[i]. onclick= function(){
-				        for(var j = 0;j<as.length;j++){
-				         	as[j].className = "";
-				        }
-				        this.className = "active";
-				        for(var i=0;i<boxs.length;i++){
-            				boxs[i].style.display = "none";
-        			}				
-        				boxs[this.index].style.display = "block";        
-				  }
-				 }
-    </script>
+		<div style="width: 100%;height: 49px;float: left;"></div>
+		<div class="foot">
+			<a href="{:U('Qd/index')}">
+				<p>
+					<img src="__H-W__/images/cz.png" alt="" />
+				</p>
+				<p>签到</p>
+			</a>
+			<a href="{:U('user/index')}" style="width:33%">
+				<p>
+					<img src="__H-W__/images/wd.png" alt="" />
+				</p>
+				<p>我的</p>
+			</a>
+			<a href="{:U('Kung/center')}" style="width:33%">
+				<p>
+					<img src="__H-W__/images/jy.png" alt="" />
+				</p>
+				<p>交易</p>
+			</a>
+			<a href="{:U('Kung/index')}" class="act" style="width:33%">
+				<p>
+					<img src="__H-W__/images/zx.png" alt="" />
+				</p>
+				<p>公告</p>
+			</a>
+
+
+		</div>
+	</div>
+	<script src="__H-W__/js/jquery-3.1.0.min.js"></script>
+	<script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init();
+		var as = document.getElementById("qiehuan").getElementsByTagName("a");
+		var boxs = document.getElementsByClassName("boxs");
+		for (var i = 0; i < as.length; i++) {
+			as[i].index = i;
+			as[i].onclick = function () {
+				for (var j = 0; j < as.length; j++) {
+					as[j].className = "";
+				}
+				this.className = "active";
+				for (var i = 0; i < boxs.length; i++) {
+					boxs[i].style.display = "none";
+				}
+				boxs[this.index].style.display = "block";
+			}
+		}
+	</script>
 </body>
-</html>
 
+</html>

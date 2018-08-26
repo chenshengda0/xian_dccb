@@ -1,83 +1,94 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 <block name="style">
 
 </block>
 <block name="body">
-<notempty name="sj">
-<div class='opt_box'>
-<div class="fl">
- 
- 
- <div class='clear'></div>
-</div>
-<div class="row-fluid">
-<div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+  <notempty name="sj">
+    <div class='opt_box'>
+      <div class="fl">
+
+
+        <div class='clear'></div>
+      </div>
+      <div class="row-fluid">
+        <div class="widget-box">
+          <div class="widget-title">
+            <span class="icon">
+              <i class="icon-th"></i>
+            </span>
             <h5>{$meta_title}</h5>
           </div>
           <div class="widget-content nopadding">
-          <div class='dataTables_wrapper'>
-            <table class="table table-bordered data-table" style="max-width:100%;">
-              <thead>
-                <tr>
-                		<th style='text-align:left;'><input class="check-all" type="checkbox"/></th>
-                  		<th>商家编号</th>
-						<th>商家地址</th>
-						<th>创建时间</th>
-						
-						
-		                <th>{$Think.const.OP}</th>
-						
-                </tr>
-              </thead>
-              <tbody>
-                <volist name="sj" id="vo">
+            <div class='dataTables_wrapper'>
+              <table class="table table-bordered data-table" style="max-width:100%;">
+                <thead>
+                  <tr>
+                    <th style='text-align:left;'>
+                      <input class="check-all" type="checkbox" />
+                    </th>
+                    <th>商家编号</th>
+                    <th>商家地址</th>
+                    <th>创建时间</th>
+
+
+                    <th>{$Think.const.OP}</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <volist name="sj" id="vo">
                     <tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
-                    	<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}"/></td>
-                        <td>{$vo.sj_name}</td>
-                        <td>{$vo.sj_address}</td>
-                        <td>{$vo.createtime|date='Y-m-d H:i:s',###}</td>
-                         
-                        <td> 
- 						
- 						<a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('sj_del',array('id'=>$vo['id']))}" >删除</a>
- 						
- 						<a class="btn btn-mini btn-info"  href="{:U('sj_add',array('id'=>$vo['id']))}" >编辑</a>
- 						
- 						</td>
+                      <td>
+                        <input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" />
+                      </td>
+                      <td>{$vo.sj_name}</td>
+                      <td>{$vo.sj_address}</td>
+                      <td>{$vo.createtime|date='Y-m-d H:i:s',###}</td>
+
+                      <td>
+
+                        <a class="btn btn-mini btn-info ajax-get confirm" href="{:U('sj_del',array('id'=>$vo['id']))}">删除</a>
+
+                        <a class="btn btn-mini btn-info" href="{:U('sj_add',array('id'=>$vo['id']))}">编辑</a>
+
+                      </td>
                     </tr>
-                </volist>
-              </tbody>
-            </table>
-            <div class="page">
-             {$_page}
+                  </volist>
+                </tbody>
+              </table>
+              <div class="page">
+                {$_page}
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
- <else/>
-<include file='Public/emptylist' title="暂时没有会员"/>
-</notempty>
+      <else/>
+      <include file='Public/emptylist' title="暂时没有会员" />
+  </notempty>
 </block>
 <block name="script">
-<script type="text/javascript">
-function fangda(url){
-	layer.alert("<img src="+url+">")
-	/* layer.open({
-		  type: 1,
-		  skin: 'layui-layer-rim', //加上边框
-		  area: ['420px', '240px'], //宽高
-		  content: "<img src="+url+">"
-		}); */
-}
-		function login(uid,psd){
-			var index = layer.load('正在登陆，请耐心等待');
-			var url = "index.php?a=Home/Index/adminLogin";
-			$.post(url,{id:uid,psd:psd},tartet_success, "json");
-			return false;
-		}
-		
-		highlight_subnav("{:U('User/sj_list')}");
-	</script>
+  <script type="text/javascript">
+    function fangda(url) {
+      layer.alert("<img src=" + url + ">")
+      /* layer.open({
+      	  type: 1,
+      	  skin: 'layui-layer-rim', //加上边框
+      	  area: ['420px', '240px'], //宽高
+      	  content: "<img src="+url+">"
+      	}); */
+    }
+
+    function login(uid, psd) {
+      var index = layer.load('正在登陆，请耐心等待');
+      var url = "index.php?a=Home/Index/adminLogin";
+      $.post(url, {
+        id: uid,
+        psd: psd
+      }, tartet_success, "json");
+      return false;
+    }
+
+    highlight_subnav("{:U('User/sj_list')}");
+  </script>
 </block>

@@ -29,9 +29,6 @@ if (get_magic_quotes_gpc()) {
 }
 /*移除magic_quotes_gpc参数影响end*/
 
-
-
-
 /**
  * 系统调试设置
  * 项目正式部署后请设置为false

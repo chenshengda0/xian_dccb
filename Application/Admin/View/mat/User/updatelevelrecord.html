@@ -1,47 +1,62 @@
 <extend name="Public/base" />
 
 <block name="body">
-<notempty name="_list">
-<div class='opt_box'>
-	<include file='Public/search'/>
-	<div class='clear'></div>
-</div>
-<div class="widget-box">
-  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-          <h5>{$meta_title}</h5>
-</div>
- <div class="widget-content nopadding">
- <table class="table table-bordered data-table">
-    <thead>
-        <tr>
-			<th>申请时间</th><th>会员编号</th><th>升级前级别</th><th>升级费用</th><th>升级后级别</th><th>处理结果</th><th>处理时间</th>
-		</tr>
-    </thead>
-    <tbody>
-		<volist name="_list" id="vo">
-		<tr>
-			
-	           <td>{$vo.createtime|date="Y-m-d",###}</td><td>{$vo.usernumber}[{$vo.uid|query_user='realname',###}]</td>
-	           <td>{$vo.oldrank|get_userrank}<td>{$vo.money}</td><td>{$vo.userrank|get_userrank}</td>
-			   <td><if condition="$vo['status']==1">同意升级</if>
-			   <if condition="$vo['status']==-1">拒绝升级</if>
-				<td>{$vo.handtime|date="Y-m-d",###}</td> 
-		</tr>
-		</volist>
-	</tbody>
-    </table>
-    <div class="page">
-        {$_page}
-    </div></div></div>
- <else/>
- <include file='Public/emptylist' title="暂时还没有申请记录"/>
-</notempty>
+	<notempty name="_list">
+		<div class='opt_box'>
+			<include file='Public/search' />
+			<div class='clear'></div>
+		</div>
+		<div class="widget-box">
+			<div class="widget-title">
+				<span class="icon">
+					<i class="icon-th"></i>
+				</span>
+				<h5>{$meta_title}</h5>
+			</div>
+			<div class="widget-content nopadding">
+				<table class="table table-bordered data-table">
+					<thead>
+						<tr>
+							<th>申请时间</th>
+							<th>会员编号</th>
+							<th>升级前级别</th>
+							<th>升级费用</th>
+							<th>升级后级别</th>
+							<th>处理结果</th>
+							<th>处理时间</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="_list" id="vo">
+							<tr>
+
+								<td>{$vo.createtime|date="Y-m-d",###}</td>
+								<td>{$vo.usernumber}[{$vo.uid|query_user='realname',###}]</td>
+								<td>{$vo.oldrank|get_userrank}
+									<td>{$vo.money}</td>
+									<td>{$vo.userrank|get_userrank}</td>
+									<td>
+										<if condition="$vo['status']==1">同意升级</if>
+										<if condition="$vo['status']==-1">拒绝升级</if>
+										<td>{$vo.handtime|date="Y-m-d",###}</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+				<div class="page">
+					{$_page}
+				</div>
+			</div>
+		</div>
+		<else/>
+		<include file='Public/emptylist' title="暂时还没有申请记录" />
+	</notempty>
 </block>
 
 <block name="script">
 	<script type="text/javascript">
-    //导航高亮
-    action = '{$Think.const.ACTION_NAME}';
-    highlight_subnav("{:U()}");
+		//导航高亮
+		action = '{$Think.const.ACTION_NAME}';
+		highlight_subnav("{:U()}");
 	</script>
 </block>

@@ -1,77 +1,135 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <title>消息</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css" />
     <link rel="stylesheet" href="__H-W__/css/style.css" />
     <style type="text/css">
-    	.tuijian{position: relative;z-index: 9;font-size: .9em;margin-top: 10px;}
-    	.box{width: 100%;height: auto;float: left;}
-    	.erweima{width: 80%;height: 378px;margin-left: 10%;margin-top: 10%;
-    	background-image: url(images/bj.png);background-size: 100% 100%;float: left;}
-    	.erweima_t{width: 100%;height: 280px;float: left;text-align: center;}
-    	.erweima_t img{width: 200px;height: 200px;margin-top: 40px;}
-    	.erweima_b{float: left;width: 100%;height: 98px;}
-    	.erweima_b p{margin: 0;color: #333;margin-top: 5px;
-    	padding: 0 10px 0 10px;font-size: .9em;}
-    	.fen{float: left;width: 100%;height: 40px;margin-top: 30px;text-align: center;}
-    	.fen a{color: #fff;display: inline-block;padding: 2px 2px 2px 2px;border-bottom: 1px solid #fff;}
-        .mail_title{
-          display:block;
-          color:#000;
-          margin:10px;
+        .tuijian {
+            position: relative;
+            z-index: 9;
+            font-size: .9em;
+            margin-top: 10px;
+        }
+
+        .box {
+            width: 100%;
+            height: auto;
+            float: left;
+        }
+
+        .erweima {
+            width: 80%;
+            height: 378px;
+            margin-left: 10%;
+            margin-top: 10%;
+            background-image: url(images/bj.png);
+            background-size: 100% 100%;
+            float: left;
+        }
+
+        .erweima_t {
+            width: 100%;
+            height: 280px;
+            float: left;
+            text-align: center;
+        }
+
+        .erweima_t img {
+            width: 200px;
+            height: 200px;
+            margin-top: 40px;
+        }
+
+        .erweima_b {
+            float: left;
+            width: 100%;
+            height: 98px;
+        }
+
+        .erweima_b p {
+            margin: 0;
+            color: #333;
+            margin-top: 5px;
+            padding: 0 10px 0 10px;
+            font-size: .9em;
+        }
+
+        .fen {
+            float: left;
+            width: 100%;
+            height: 40px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .fen a {
+            color: #fff;
+            display: inline-block;
+            padding: 2px 2px 2px 2px;
+            border-bottom: 1px solid #fff;
+        }
+
+        .mail_title {
+            display: block;
+            color: #000;
+            margin: 10px;
         }
     </style>
 </head>
-<body style ='background:none'>
+
+<body style='background:none'>
     <header class="mui-bar mui-bar-nav">
         <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
         <h1 class="mui-title">消息中心</h1>
-   
+
     </header>
     <div class="mui-content">
-    	<div class="box">
-    		
-                <volist name="mail" id="vo">
-                <a  class='mail_title' href="{:U('user/mail_cply',array('id'=>$vo['id']))}">
-                      <div><p style='float:left;width:20%'>{$vo.title}</p>
-                     <if condition="$vo['yidu'] eq 1">
-                        <p style='float:right;width:10%;'>已读</p>
-                    <else/>
-                        <p style='float:right;width:10%;color:red'>未读</p>
-                    </if>
+        <div class="box">
 
-                      <p style='float:right;width:70%'>{$vo.create_time|date="Y-m-d H:i:s",###}</p></div></a>
-                </volist>
-            
+            <volist name="mail" id="vo">
+                <a class='mail_title' href="{:U('user/mail_cply',array('id'=>$vo['id']))}">
+                    <div>
+                        <p style='float:left;width:20%'>{$vo.title}</p>
+                        <if condition="$vo['yidu'] eq 1">
+                            <p style='float:right;width:10%;'>已读</p>
+                            <else/>
+                            <p style='float:right;width:10%;color:red'>未读</p>
+                        </if>
+
+                        <p style='float:right;width:70%'>{$vo.create_time|date="Y-m-d H:i:s",###}</p>
+                    </div>
+                </a>
+            </volist>
+
         </div>
     </div>
-	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
     <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
-	<script type="text/javascript" src="__JS__/jquery.qrcode.min.js"></script>
-	<script type="text/javascript" src="__JS__/clipboard.min.js"></script>
-	<script type="text/javascript">
-        var a=($('#inp').html());
-        jQuery(function(){
+    <script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="__JS__/clipboard.min.js"></script>
+    <script type="text/javascript">
+        var a = ($('#inp').html());
+        jQuery(function () {
             jQuery('#output').qrcode(a);
         })
-        $('.but').on('click',function(){
-            var e=$("#inp");//对象是contents
+        $('.but').on('click', function () {
+            var e = $("#inp"); //对象是contents
             e.select();
-            tag=document.execCommand("Copy"); //执行浏览器复制命令
-            if(tag){
+            tag = document.execCommand("Copy"); //执行浏览器复制命令
+            if (tag) {
                 alert('复制内容成功');
             }
 
         })
-
-	</script>
+    </script>
     <script type="text/javascript">
-    mui.init()
+        mui.init()
     </script>
 </body>
-</html>
 
+</html>

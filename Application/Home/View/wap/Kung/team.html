@@ -1,53 +1,100 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <title>我的推荐</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
-    <link rel="stylesheet" href="__H-W__/css/style.css" />
-    <style type="text/css">
-    	.box{width: 100%;height: auto;float: left;}
-    	.qh{width: 100%;height: 40px;display: flex;float: left;margin-top: 5px;
-    	justify-content: space-between;padding: 0 5px 0 5px;}
-    	.qh a{display: inline-block;width: 30%;height: 40px;
-    	text-align: center;line-height: 40px;color: #fff;
-    	border: 1px solid #3d4651;border-radius: 4px;}
-    	.bgs{width: 100%;height: auto;float: left;margin-top: 10px;}
-    	.bgs table{width: 100%;background: #282f37;}
-    	.bgs table tr{height: 40px;color: #fff;font-size: .95em;}
-    	.bgs table tr th{font-weight: normal;}
-    	.bgs table tr td{text-align: center;border-top: 1px solid #3d4651;}
-    	.active{background: #313840;}
-    </style>
+	<meta charset="UTF-8" />
+	<title>我的推荐</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css" />
+	<link rel="stylesheet" href="__H-W__/css/style.css" />
+	<style type="text/css">
+		.box {
+			width: 100%;
+			height: auto;
+			float: left;
+		}
+
+		.qh {
+			width: 100%;
+			height: 40px;
+			display: flex;
+			float: left;
+			margin-top: 5px;
+			justify-content: space-between;
+			padding: 0 5px 0 5px;
+		}
+
+		.qh a {
+			display: inline-block;
+			width: 30%;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			color: #fff;
+			border: 1px solid #3d4651;
+			border-radius: 4px;
+		}
+
+		.bgs {
+			width: 100%;
+			height: auto;
+			float: left;
+			margin-top: 10px;
+		}
+
+		.bgs table {
+			width: 100%;
+			background: #282f37;
+		}
+
+		.bgs table tr {
+			height: 40px;
+			color: #fff;
+			font-size: .95em;
+		}
+
+		.bgs table tr th {
+			font-weight: normal;
+		}
+
+		.bgs table tr td {
+			text-align: center;
+			border-top: 1px solid #3d4651;
+		}
+
+		.active {
+			background: #313840;
+		}
+	</style>
 </head>
+
 <body>
-    <header class="mui-bar mui-bar-nav">
-        <a class="mui-icon mui-icon-left-nav mui-pull-left" href="{:U('user/index')}"></a>
-        <h1 class="mui-title">我的推荐</h1>
-    </header>
-    <div class="mui-content">
-    	<div class="box">
-    		<div class="qh" id="qh">
-    			<a href="##" class="active">一代</a>
-    			<a href="##">二代</a>
-    			<a href="##">三代</a>
-    		</div>
-    		<div class="bgs">
-    			<table>
-    				<tr>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" href="{:U('user/index')}"></a>
+		<h1 class="mui-title">我的推荐</h1>
+	</header>
+	<div class="mui-content">
+		<div class="box">
+			<div class="qh" id="qh">
+				<a href="##" class="active">一代</a>
+				<a href="##">二代</a>
+				<a href="##">三代</a>
+			</div>
+			<div class="bgs">
+				<table>
+					<tr>
 
 						<th>用户状态</th>
-    					<th>推广用户</th>
-    					<th>注册时间</th>
+						<th>推广用户</th>
+						<th>注册时间</th>
 
-    				</tr>
+					</tr>
 					<volist name="one" id="o" emtpy="暂无用户">
 						<tr>
 
 							<if condition="$o['shenpi'] eq 1">
 								<td>待审核</td>
-								<elseif condition="$o['shenpi'] eq 3"/>
+								<elseif condition="$o['shenpi'] eq 3" />
 								<td>已实名</td>
 								<else/>
 								<td>未实名</td>
@@ -58,47 +105,47 @@
 						</tr>
 					</volist>
 
-    			</table>
-    		</div>
+				</table>
+			</div>
 
 
-    		<div class="bgs" style="display: none;">
-    			<table>
-    				<tr>
+			<div class="bgs" style="display: none;">
+				<table>
+					<tr>
 						<th>用户状态</th>
-    					<th>推广用户</th>
-    					<th>注册时间</th>
-    				</tr>
+						<th>推广用户</th>
+						<th>注册时间</th>
+					</tr>
 					<volist name="two" id="t" emtpy="暂无用户">
 						<tr>
 
 							<if condition="$t['shenpi'] eq 1">
 								<td>待审核</td>
-								<elseif condition="$t['shenpi'] eq 3"/>
-								<td>	已实名</td>
+								<elseif condition="$t['shenpi'] eq 3" />
+								<td> 已实名</td>
 								<else/>
-								<td>	未实名</td>
+								<td> 未实名</td>
 							</if>
 
 							<td>{$t.mobile}</td>
 							<td>{$t.reg_time|date="Y-m-d H:i:s",###}</td>
 						</tr>
 					</volist>
-    			</table>
-    		</div>
-    		<div class="bgs" style="display: none;">
-    			<table>
-    				<tr>
+				</table>
+			</div>
+			<div class="bgs" style="display: none;">
+				<table>
+					<tr>
 						<th>用户状态</th>
-    					<th>推广用户</th>
-    					<th>注册时间</th>
-    				</tr>
+						<th>推广用户</th>
+						<th>注册时间</th>
+					</tr>
 					<volist name="three" id="r" emtpy="暂无用户">
 						<tr>
 
 							<if condition="$r['shenpi'] eq 1">
 								<td>待审核</td>
-								<elseif condition="$r['shenpi'] eq 3"/>
+								<elseif condition="$r['shenpi'] eq 3" />
 								<td>已实名</td>
 								<else/>
 								<td>未实名</td>
@@ -108,29 +155,29 @@
 							<td>{$r.reg_time|date="Y-m-d H:i:s",###}</td>
 						</tr>
 					</volist>
-    			</table>
-    		</div>
-    	</div>
-    </div>
-    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-    mui.init();
-    var as = document.getElementById("qh").getElementsByTagName("a");
-				var bgs = document.getElementsByClassName("bgs");
-				    for(var i = 0;i<as.length;i++){
-				    as[i].index = i;
-				    as[i]. onclick= function(){
-				        for(var j = 0;j<as.length;j++){
-				          as[j].className = "";
-				        }
-				        this.className = "active";
-				        for(var i=0;i<bgs.length;i++){
-            				bgs[i].style.display = "none";
-        			}				
-        				bgs[this.index].style.display = "block";        
-				  }
-				 }
-    </script>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init();
+		var as = document.getElementById("qh").getElementsByTagName("a");
+		var bgs = document.getElementsByClassName("bgs");
+		for (var i = 0; i < as.length; i++) {
+			as[i].index = i;
+			as[i].onclick = function () {
+				for (var j = 0; j < as.length; j++) {
+					as[j].className = "";
+				}
+				this.className = "active";
+				for (var i = 0; i < bgs.length; i++) {
+					bgs[i].style.display = "none";
+				}
+				bgs[this.index].style.display = "block";
+			}
+		}
+	</script>
 </body>
-</html>
 
+</html>

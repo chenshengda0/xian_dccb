@@ -1,18 +1,16 @@
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta name="renderer" content="webkit">
+<meta name="renderer" content="webkit"> {:hook('syncMeta')}
 
-{:hook('syncMeta')}
-
-<include file="Public/seo"/>
+<include file="Public/seo" />
 
 <!-- 为了让html5shiv生效，请将所有的CSS都添加到此处 -->
-<link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-<link type="text/css" rel="stylesheet" href="__STATIC__/qtip/jquery.qtip.css"/>
-<link type="text/css" rel="stylesheet" href="__PUBLIC__/Core/js/ext/toastr/toastr.min.css"/>
-<link href="__PUBLIC__/Core/css/oneplus.css" rel="stylesheet"/>
-<link href="__PUBLIC__/Core/css/layout.css" rel="stylesheet"/>
-<link type="text/css" rel="stylesheet" href="__PUBLIC__/Core/js/ext/magnific/magnific-popup.css"/>
+<link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="__STATIC__/qtip/jquery.qtip.css" />
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/Core/js/ext/toastr/toastr.min.css" />
+<link href="__PUBLIC__/Core/css/oneplus.css" rel="stylesheet" />
+<link href="__PUBLIC__/Core/css/layout.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/Core/js/ext/magnific/magnific-popup.css" />
 <block name="style"></block>
 
 <!-- 增强IE兼容性 -->
@@ -48,7 +46,7 @@
  自定义js-->
 <script type="text/javascript" src="__PUBLIC__/Core/js/core.js"></script>
 <!--合并前的js-->
-<include file="Public/var"/>
+<include file="Public/var" />
 
 <!-- Bootstrap库 -->
 <!--
@@ -71,8 +69,8 @@
     //全局内容的定义
     var _ROOT_ = "__ROOT__";
     var MID = "{:is_login()}";
-    var MODULE_NAME="<php>echo MODULE_NAME;</php>";
-    var ACTION_NAME="<php>echo ACTION_NAME;</php>";
+    var MODULE_NAME = "<php>echo MODULE_NAME;</php>";
+    var ACTION_NAME = "<php>echo ACTION_NAME;</php>";
     var initNum = "{:C('WEIBO_WORDS_COUNT')}";
 </script>
 

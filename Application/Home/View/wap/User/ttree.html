@@ -1,30 +1,32 @@
-<extend name="wap/Base/base"/>
+<extend name="wap/Base/base" />
 <block name="body">
-<div class="widget ">
+	<div class="widget ">
 
-<div class="speach-left">
-<span class='oneFive'><h5>{$logininfo.realname}</h5></span>
-<a style="color:#2b6893;" href="javascript:viod(0);">[当前您共有{$level}代用户]</a>
-<button class="button-big button-magenta re-load" href="{:U('tTree')}">返回根节点</button>
-<button class="button-big button-magenta" id="resetBtn">全部折叠</button>
-<button class="button-big button-magenta" id="expandAllBtn"  >全部展开</button>
-</div>
+		<div class="speach-left">
+			<span class='oneFive'>
+				<h5>{$logininfo.realname}</h5>
+			</span>
+			<a style="color:#2b6893;" href="javascript:viod(0);">[当前您共有{$level}代用户]</a>
+			<button class="button-big button-magenta re-load" href="{:U('tTree')}">返回根节点</button>
+			<button class="button-big button-magenta" id="resetBtn">全部折叠</button>
+			<button class="button-big button-magenta" id="expandAllBtn">全部展开</button>
+		</div>
 
-<div class="clear"></div>
-</div>
-<link rel="stylesheet" href="__STATIC__/ztree/zTreeStyle/zTreeStyle.css" type="text/css">
- <div class="widget" style="padding:10px 10px;min-height:450px;">
-        <ul style="width:100%; overflow:auto;"id="tree" class="ztree"></ul>   
- </div>
+		<div class="clear"></div>
+	</div>
+	<link rel="stylesheet" href="__STATIC__/ztree/zTreeStyle/zTreeStyle.css" type="text/css">
+	<div class="widget" style="padding:10px 10px;min-height:450px;">
+		<ul style="width:100%; overflow:auto;" id="tree" class="ztree"></ul>
+	</div>
 </block>
 <block name='script'>
-<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.core-3.5.js"></script>
-<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.excheck-3.5.js"></script>
-<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.exedit-3.5.js"></script>
-<script type="text/javascript" >
- 	var zTree;
-      var demoMsg = {
-			async:"正在进行异步加载，请等一会儿再点击...",
+	<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.core-3.5.js"></script>
+	<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.excheck-3.5.js"></script>
+	<script type="text/javascript" src="__STATIC__/ztree/zTreeJs/jquery.ztree.exedit-3.5.js"></script>
+	<script type="text/javascript">
+		var zTree;
+		var demoMsg = {
+			async: "正在进行异步加载，请等一会儿再点击...",
 			expandAllOver: "全部展开完毕",
 			asyncAllOver: "后台异步加载完毕",
 			asyncAll: "已经异步加载完毕，不再重新加载",
@@ -33,16 +35,16 @@
 		var setting = {
 			async: {
 				enable: true,
-				url:"__CONTROLLER__/getTree/rootid/{$rootid}/uid/{$uid}",
-				autoParam:["uid"],
+				url: "__CONTROLLER__/getTree/rootid/{$rootid}/uid/{$uid}",
+				autoParam: ["uid"],
 				dataFilter: filter,
 				type: "get"
 			},
-            data: {
-                 key:{
-                         name:"usernumber",
-                         title:"title",
-                     },
+			data: {
+				key: {
+					name: "usernumber",
+					title: "title",
+				},
 			},
 			view: {
 				nameIsHTML: true
@@ -53,42 +55,52 @@
 				onAsyncError: onAsyncError
 			}
 		};
-         
-     
-              //3
+
+
+		//3
 		function filter(treeId, parentNode, childNodes) {
-			if (!childNodes) return null;			
-			for (var i=0, l=childNodes.length; i<l; i++) {       
+			if (!childNodes) return null;
+			for (var i = 0, l = childNodes.length; i < l; i++) {
 				var uid = childNodes[i].uid;
-				childNodes[i].icon= "__STATIC__/ztree/zTreeStyle/img/diy/pop.png";
-				childNodes[i].usernumber =childNodes[i].usernumber;
-				childNodes[i].target= "_self";
-				if(childNodes[i].status==0){
-					childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:red'>[未激活]</span>";
-					childNodes[i].url= "__CONTROLLER__/noActiveUserList/id/"+uid;
-					childNodes[i].title= "请激活";
-				}else{
-					childNodes[i].title= childNodes[i].usernumber;
-					if(uid!={$loginid}){
-						if(uid!={$rootid}){
-							childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:green;'>[第"+(childNodes[i].tdeep-{$tdeep})+"代]</span><span style='color:green;'>[第"+(i+1)+"个用户]</span>";
-							childNodes[i].url= "__ACTION__/id/"+uid+"/position/"+(i+1);
-						}else{
-							childNodes[i].usernumber = childNodes[i].usernumber+"<span style='color:green;'>[第"+(childNodes[i].tdeep-{$tdeep})+"代]</span><span style='color:green;'>[第"+{$pst}+"个用户]</span>";
+				childNodes[i].icon = "__STATIC__/ztree/zTreeStyle/img/diy/pop.png";
+				childNodes[i].usernumber = childNodes[i].usernumber;
+				childNodes[i].target = "_self";
+				if (childNodes[i].status == 0) {
+					childNodes[i].usernumber = childNodes[i].usernumber + "<span style='color:red'>[未激活]</span>";
+					childNodes[i].url = "__CONTROLLER__/noActiveUserList/id/" + uid;
+					childNodes[i].title = "请激活";
+				} else {
+					childNodes[i].title = childNodes[i].usernumber;
+					if (uid != {
+							$loginid
+						}) {
+						if (uid != {
+								$rootid
+							}) {
+							childNodes[i].usernumber = childNodes[i].usernumber + "<span style='color:green;'>[第" + (childNodes[i].tdeep - {
+								$tdeep
+							}) + "代]</span><span style='color:green;'>[第" + (i + 1) + "个用户]</span>";
+							childNodes[i].url = "__ACTION__/id/" + uid + "/position/" + (i + 1);
+						} else {
+							childNodes[i].usernumber = childNodes[i].usernumber + "<span style='color:green;'>[第" + (childNodes[i].tdeep - {
+								$tdeep
+							}) + "代]</span><span style='color:green;'>[第" + {
+								$pst
+							} + "个用户]</span>";
 						}
-						
+
 					}
-					
+
 				}
 			}
 			return childNodes;
 		}
-              //2
+		//2
 		function beforeAsync() {
 			curAsyncCount++;
 		}
-		
-              //4
+
+		//4
 		function onAsyncSuccess(event, treeId, treeNode, msg) {
 			curAsyncCount--;
 			if (curStatus == "expand") {
@@ -101,7 +113,7 @@
 			if (curAsyncCount <= 0) {
 				//alert('2');
 				if (curStatus != "init" && curStatus != "") {
-					
+
 					$("#demoMsg").text((curStatus == "expand") ? demoMsg.expandAllOver : demoMsg.asyncAllOver);
 					asyncForAll = true;
 				}
@@ -110,19 +122,22 @@
 		}
 
 		function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
-                       alert('onAsyncError');
+			alert('onAsyncError');
 			curAsyncCount--;
 
 			if (curAsyncCount <= 0) {
 				curStatus = "";
-				if (treeNode!=null) asyncForAll = true;
+				if (treeNode != null) asyncForAll = true;
 			}
 		}
 
-		var curStatus = "init", curAsyncCount = 0, asyncForAll = false,
-		goAsync = false;
+		var curStatus = "init",
+			curAsyncCount = 0,
+			asyncForAll = false,
+			goAsync = false;
+
 		function expandAll() {
-                  //alert('expandAll');
+			//alert('expandAll');
 			if (!check()) {
 				return;
 			}
@@ -138,11 +153,12 @@
 				}
 			}
 		}
+
 		function expandNodes(nodes) {
 			if (!nodes) return;
 			curStatus = "expand";
 			var zTree = $.fn.zTree.getZTreeObj("tree");
-			for (var i=0, l=nodes.length; i<l; i++) {
+			for (var i = 0, l = nodes.length; i < l; i++) {
 				zTree.expandNode(nodes[i], true, false, false);
 				if (nodes[i].isParent && nodes[i].zAsync) {
 					expandNodes(nodes[i].children);
@@ -153,7 +169,7 @@
 		}
 
 		function asyncAll() {
-                  // alert('asyncAll');
+			// alert('asyncAll');
 			if (!check()) {
 				return;
 			}
@@ -168,12 +184,13 @@
 				}
 			}
 		}
+
 		function asyncNodes(nodes) {
-                  // alert('asyncNodes');
+			// alert('asyncNodes');
 			if (!nodes) return;
 			curStatus = "async";
 			var zTree = $.fn.zTree.getZTreeObj("tree");
-			for (var i=0, l=nodes.length; i<l; i++) {
+			for (var i = 0, l = nodes.length; i < l; i++) {
 				if (nodes[i].isParent && nodes[i].zAsync) {
 					asyncNodes(nodes[i].children);
 				} else {
@@ -184,7 +201,7 @@
 		}
 
 		function reset() {
-                   //alert('reset');
+			//alert('reset');
 			if (!check()) {
 				return;
 			}
@@ -195,7 +212,7 @@
 		}
 
 		function check() {
-                   //alert('check');
+			//alert('check');
 			if (curAsyncCount > 0) {
 				$("#demoMsg").text(demoMsg.async);
 				return false;
@@ -203,14 +220,14 @@
 			return true;
 		}
 
-		$(document).ready(function(){
+		$(document).ready(function () {
 			$.fn.zTree.init($("#tree"), setting);
 			$("#expandAllBtn").bind("click", expandAll);
 			$("#resetBtn").bind("click", reset);
 		});
-</script>
-    <script type="text/javascript">
-        //导航高亮
-        highlight_subnav("{:U('tTree')}");
-    </script>
+	</script>
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav("{:U('tTree')}");
+	</script>
 </block>

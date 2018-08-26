@@ -1,68 +1,72 @@
-<extend name="wap/Base/base"/>
+<extend name="wap/Base/base" />
 <block name='style'>
 </block>
 
 <block name="body">
-<div class="widget">
+  <div class="widget">
 
-<form action="{:U()}" method="post" class="form">
+    <form action="{:U()}" method="post" class="form">
 
 
-<input type="hidden" name="id" value="{$uinfo['uid']}" />
+      <input type="hidden" name="id" value="{$uinfo['uid']}" />
 
-<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>会员升级</h1></div>
-<div class="decoration"></div>
-   <fieldset class="step" >
-   <div class="formRow">
+      <div class="title" style='margin-top:5px;margin-bottom:5px;' align="center">
+        <h1>会员升级</h1>
+      </div>
+      <div class="decoration"></div>
+      <fieldset class="step">
+        <div class="formRow">
           <label style="display:inline-block;margin-top:10px;margin-bottom:10px;" class="field-title contactNameField">用户编号:</label>
-          <span class = "text-highlight highlight-dark">{$userinfo['usernumber']}</span> 
-     </div>
-     
-     <div class="formRow">
+          <span class="text-highlight highlight-dark">{$userinfo['usernumber']}</span>
+        </div>
+
+        <div class="formRow">
           <label style="display:inline-block;margin-top:10px;margin-bottom:10px;" class="field-title contactNameField">{$Think.const.HASMONEY}余额:</label>
-          <span class = "text-highlight highlight-dark">{$userinfo['hasmoney']}</span>
-        
-        
-     </div>
-       <div class="formRow">
+          <span class="text-highlight highlight-dark">{$userinfo['hasmoney']}</span>
+
+
+        </div>
+        <div class="formRow">
           <label style="display:inline-block;margin-top:10px;margin-bottom:10px;" class="field-title contactNameField">{$Think.const.REALNAME}:</label>
-          <span class = "text-highlight highlight-dark">{$userinfo['realname']}</span>
-          
-         
-     </div>
-     <div class="formRow">
+          <span class="text-highlight highlight-dark">{$userinfo['realname']}</span>
+
+
+        </div>
+        <div class="formRow">
           <label style="display:inline-block;margin-top:10px;margin-bottom:10px;" class="field-title contactNameField">用户当前级别:</label>
           <span>{$userinfo['userrank']|get_userrank}</span>
-       
-     </div>
-     
-      <div class="formRow">
-           <label class="field-title contactNameField">可升级别:</label>
-           <div class="formRight">
-           <span class='oneTwo'><select class="contactField requiredField"  name="userrank" >
-                 <foreach name="rank" item="vo">
-					<option value="{$vo}">{$vo}</option>
-				</foreach>
-               </select></span>
-           </div>
-           <div class="clear"></div>
+
         </div>
-    </fieldset>
- 	<div class="wizButtons hideblock"> 
-		<span class="wNavButtons">
-			  <input class='from-ipt' type="hidden" name="uid"  value="{$userinfo['uid']}"/> 
-              <input class="button-big button-blue ajax-post"  value="确定" type="submit" target-form='form'/>
-              <input class="button-big button-green" value="重置" type="reset" />
-              <input class="button-big button-dark"   value="返回" type="button"  onclick="javascript:history.back();"/>
-         </span>
-	</div>
-     <div class="clear"></div>
-</form>
-</div>
+
+        <div class="formRow">
+          <label class="field-title contactNameField">可升级别:</label>
+          <div class="formRight">
+            <span class='oneTwo'>
+              <select class="contactField requiredField" name="userrank">
+                <foreach name="rank" item="vo">
+                  <option value="{$vo}">{$vo}</option>
+                </foreach>
+              </select>
+            </span>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </fieldset>
+      <div class="wizButtons hideblock">
+        <span class="wNavButtons">
+          <input class='from-ipt' type="hidden" name="uid" value="{$userinfo['uid']}" />
+          <input class="button-big button-blue ajax-post" value="确定" type="submit" target-form='form' />
+          <input class="button-big button-green" value="重置" type="reset" />
+          <input class="button-big button-dark" value="返回" type="button" onclick="javascript:history.back();" />
+        </span>
+      </div>
+      <div class="clear"></div>
+    </form>
+  </div>
 </block>
 <block name="script">
-<script type="text/javascript">
-  //导航高亮
-  highlight_subnav("{:U('updatelevel')}");
-</script>
+  <script type="text/javascript">
+    //导航高亮
+    highlight_subnav("{:U('updatelevel')}");
+  </script>
 </block>

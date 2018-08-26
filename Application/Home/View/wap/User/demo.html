@@ -1,73 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="__PUBLIC__/static/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/static/checkbrowser.js"></script>
-<script type="text/javascript" src="__PUBLIC__/static/uploadify/jquery.uploadify.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/static/layer/laydate/laydate.js"></script>
-<script type="text/javascript" src="__PUBLIC_/static/layer/layecore/layer.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/static/layer/layecore/extend/layer.ext.js"></script>
-<script src="__MAT__/js/matrix.js"></script> 
-<script src="__MAT__/js/bootstrap.min.js"></script> 
-</head>
-<body>
-	<div class="control-group">
-                    <label class="control-label"><span class='require'>*</span>门诊照片</label>
-                     <div class="controls">
-                           <div id="upload_picture_pics" class="uploadify" style="height: 30px; width: 120px;">
-            
-                           <div id="upload_picture_pics-button" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
-                          <span class="uploadify-button-text">上传图集</span>
-                    </div>
-                </div>
-                <div id="upload_picture_pics-queue" class="uploadify-queue">
-                </div>
 
-			 <input name="pics" value="" id="pics" class="icon " type="hidden">
-			  <div class="upload-img-box"></div>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="__PUBLIC__/static/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/checkbrowser.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/layer/laydate/laydate.js"></script>
+    <script type="text/javascript" src="__PUBLIC_/static/layer/layecore/layer.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/layer/layecore/extend/layer.ext.js"></script>
+    <script src="__MAT__/js/matrix.js"></script>
+    <script src="__MAT__/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="control-group">
+        <label class="control-label">
+            <span class='require'>*</span>门诊照片</label>
+        <div class="controls">
+            <div id="upload_picture_pics" class="uploadify" style="height: 30px; width: 120px;">
+
+                <div id="upload_picture_pics-button" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                    <span class="uploadify-button-text">上传图集</span>
+                </div>
+            </div>
+            <div id="upload_picture_pics-queue" class="uploadify-queue">
+            </div>
+
+            <input name="pics" value="" id="pics" class="icon " type="hidden">
+            <div class="upload-img-box"></div>
 </body>
 <script type="text/javascript">
-//多图上传图片   
-   $(function(){
-    
-	  $("#upload_picture_pics").uploadify({
-         "height"          : 30,
-         "swf"             : "/Public/static/uploadify/uploadify.swf",
-         "fileObjName"     : "download",
-         "buttonText"      : "上传门诊照片",
-         "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
-         "width"           : 120,
-         'removeTimeout'   : 1,
-         'fileTypeExts'    : '*.jpg; *.png; *.gif;',
-         "onUploadSuccess" : uploadPicturepics,
-         'onFallback' : function() {
-             alert('未检测到兼容版本的Flash.');
-         } 
-     });
- })  
- function uploadPicturepics(file, data){
-     var data = $.parseJSON(data);
-     var src = '';
-     if(data.status){
-         src = data.url || '' + data.path;
-         upload_img = "<div class='upload-pre-item'><img src=" + src +" title='点击显示大图' onclick='priview(\""+src+"\");'  data-id="+data.id+"> <span class='btn-close btn-close-pics' title='删除图片' onclick='del(event);'></span></div>";
-         picsbox = $("#upload_picture_pics").siblings('.upload-img-box');
-         picsbox.append(upload_img)
-         picArr = [];
-         for (var i = 0; i < picsbox.children().length ; i++) {
-             picArr.push(picsbox.children('.upload-pre-item:eq('+i+')').find('img').attr('data-id'));
-         };
-         picStr = picArr.join(',');
-         $('#pics').val(picStr);
-     } else {
-         updateAlert(data.info);
-         setTimeout(function(){
-             $('#top-alert').find('button').click();
-             $(that).removeClass('disabled').prop('disabled',false);
-         },1500);
-     }
- }
- </script>
+    //多图上传图片   
+    $(function () {
+
+        $("#upload_picture_pics").uploadify({
+            "height": 30,
+            "swf": "/Public/static/uploadify/uploadify.swf",
+            "fileObjName": "download",
+            "buttonText": "上传门诊照片",
+            "uploader": "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+            "width": 120,
+            'removeTimeout': 1,
+            'fileTypeExts': '*.jpg; *.png; *.gif;',
+            "onUploadSuccess": uploadPicturepics,
+            'onFallback': function () {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+    })
+
+    function uploadPicturepics(file, data) {
+        var data = $.parseJSON(data);
+        var src = '';
+        if (data.status) {
+            src = data.url || '' + data.path;
+            upload_img = "<div class='upload-pre-item'><img src=" + src + " title='点击显示大图' onclick='priview(\"" + src +
+                "\");'  data-id=" + data.id +
+                "> <span class='btn-close btn-close-pics' title='删除图片' onclick='del(event);'></span></div>";
+            picsbox = $("#upload_picture_pics").siblings('.upload-img-box');
+            picsbox.append(upload_img)
+            picArr = [];
+            for (var i = 0; i < picsbox.children().length; i++) {
+                picArr.push(picsbox.children('.upload-pre-item:eq(' + i + ')').find('img').attr('data-id'));
+            };
+            picStr = picArr.join(',');
+            $('#pics').val(picStr);
+        } else {
+            updateAlert(data.info);
+            setTimeout(function () {
+                $('#top-alert').find('button').click();
+                $(that).removeClass('disabled').prop('disabled', false);
+            }, 1500);
+        }
+    }
+</script>
+
 </html>

@@ -1,115 +1,160 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>银行卡绑定</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
-    <link rel="stylesheet" href="__H-W__/css/style.css" />
-    <style type="text/css">
-    	.box{width: 95%;height: auto;float: left;margin-left: 2.5%;}
-    	.box p{width: 100%;float: left;margin: 0;margin-top: 5px;}
-    	.pt {border-bottom: 1px solid #3d4651;}
-    	#zo{vertical-align: middle;margin-bottom: 2px;width: 15px;height: 15px;}
-    	.box p button{width: 100%;height: 40px;background: #f93333;color: #fff;border: none;}
-    	.pt span{width: 25%;height: 40px;float: left;color: #fff;line-height: 40px;font-size: 1.1em;}
-    	.pt input{width: 75%;height: 40px;float: left;
-    	background: none;border: none;margin: 0;font-size: 1em;}
-    </style>
-</head>
-<body>
-    <header class="mui-bar mui-bar-nav">
-        <a class=" mui-icon mui-icon-left-nav " href="{:U('index')}"></a>
-        <h1 class="mui-title">银行卡绑定</h1>
-    </header>
-    <div class="mui-content">
-    	<div class="box">
-            <form action="{:U('pay_action')}" method="post" class="form-horizontal">
-			<if condition="$bankname eq '' ">
-				<p style="color: #fff;margin-top: 10px;">
-					<span>*请绑定持卡人本人的银行卡，姓名一经填写不可修改</span>
-				</p>
-              <p class="pt">
-					<span>*姓名</span>
-                <if condition="$loginingo['realname'] eq ''">
-                    <input type="text"   name = "realname" placeholder="请补填账户姓名"  />
-                  
-                  <else/>
-                  
-				   <input type="text" value = "{$logininfo.realname}"   name = "realname"   disabled/>
-                </if>
-				</p>
-              <p class="pt">
-					<span>*电话</span>
-					<input type="text"  value = "{$logininfo.mobile}"   name = "mobile"   disabled/>
-				</p>
-				<p class="pt">
-					<span>*银行卡号</span>
-					<input type="text"  name = "zhanghao" placeholder="请输入银行卡号"/>
-				</p>
-				<p class="pt">
-					<span>*开户银行</span>
-					<input type="text"  name = "bankname"   placeholder="请输入开户银行"/>
-				</p>
-              <p class="pt">
-					<span>*身份证</span>
-					<input type="text"  name = "IDcard"   placeholder="请输入真实身份证"/>
-				</p>
-              <p class="pt">
-					<span>*微信</span>
-					<input type="text"  name = "wechat"   placeholder="请输入微信号"/>
-				</p>
-              <p class="pt">
-					<span>*支付宝</span>
-					<input type="text"  name = "alipay"   placeholder="请输入支付宝帐号"/>
-				</p>
-				<p style="text-align: center;margin-top: 30px;">
-					<button>确定</button>
-				</p>
 
-			<else/>
- <p class="pt">
-					<span>*姓名</span>
-					<input type="text" value = "{$logininfo.realname}"   name = "realname"   disabled/>
-				</p>
-              <p class="pt">
-					<span>*电话</span>
-					<input type="text"  value = "{$logininfo.mobile}"   name = "mobile"   disabled/>
-				</p>
-				<p class="pt">
-					<span>*银行卡号</span>
-					<input type="text" value="{$zhanghao}"  name = "zhanghao" disabled/>
-				</p>
-				<p class="pt">
-					<span>*开户银行</span>
-					<input type="text" value="{$bankname}" name = "bankname"  disabled />
-				</p>
-              <p class="pt">
-					<span>*身份证</span>
-					<input type="text"  value = "{$logininfo.IDcard}"   disabled/>
-				</p>
-              <p class="pt">
-					<span>*微信</span>
-					<input type="text" value = "{$logininfo.wechat}"   name = "wechat"   disabled/>
-				</p>
-              <p class="pt">
-					<span>*支付宝</span>
-					<input type="text"  value = "{$logininfo.alipay}"  name = "alipay"   disabled/>
-				</p>
-			</if>
+<head>
+	<meta charset="UTF-8" />
+	<title>银行卡绑定</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css" />
+	<link rel="stylesheet" href="__H-W__/css/style.css" />
+	<style type="text/css">
+		.box {
+			width: 95%;
+			height: auto;
+			float: left;
+			margin-left: 2.5%;
+		}
+
+		.box p {
+			width: 100%;
+			float: left;
+			margin: 0;
+			margin-top: 5px;
+		}
+
+		.pt {
+			border-bottom: 1px solid #3d4651;
+		}
+
+		#zo {
+			vertical-align: middle;
+			margin-bottom: 2px;
+			width: 15px;
+			height: 15px;
+		}
+
+		.box p button {
+			width: 100%;
+			height: 40px;
+			background: #f93333;
+			color: #fff;
+			border: none;
+		}
+
+		.pt span {
+			width: 25%;
+			height: 40px;
+			float: left;
+			color: #fff;
+			line-height: 40px;
+			font-size: 1.1em;
+		}
+
+		.pt input {
+			width: 75%;
+			height: 40px;
+			float: left;
+			background: none;
+			border: none;
+			margin: 0;
+			font-size: 1em;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class=" mui-icon mui-icon-left-nav " href="{:U('index')}"></a>
+		<h1 class="mui-title">银行卡绑定</h1>
+	</header>
+	<div class="mui-content">
+		<div class="box">
+			<form action="{:U('pay_action')}" method="post" class="form-horizontal">
+				<if condition="$bankname eq '' ">
+					<p style="color: #fff;margin-top: 10px;">
+						<span>*请绑定持卡人本人的银行卡，姓名一经填写不可修改</span>
+					</p>
+					<p class="pt">
+						<span>*姓名</span>
+						<if condition="$loginingo['realname'] eq ''">
+							<input type="text" name="realname" placeholder="请补填账户姓名" />
+
+							<else/>
+
+							<input type="text" value="{$logininfo.realname}" name="realname" disabled/>
+						</if>
+					</p>
+					<p class="pt">
+						<span>*电话</span>
+						<input type="text" value="{$logininfo.mobile}" name="mobile" disabled/>
+					</p>
+					<p class="pt">
+						<span>*银行卡号</span>
+						<input type="text" name="zhanghao" placeholder="请输入银行卡号" />
+					</p>
+					<p class="pt">
+						<span>*开户银行</span>
+						<input type="text" name="bankname" placeholder="请输入开户银行" />
+					</p>
+					<p class="pt">
+						<span>*身份证</span>
+						<input type="text" name="IDcard" placeholder="请输入真实身份证" />
+					</p>
+					<p class="pt">
+						<span>*微信</span>
+						<input type="text" name="wechat" placeholder="请输入微信号" />
+					</p>
+					<p class="pt">
+						<span>*支付宝</span>
+						<input type="text" name="alipay" placeholder="请输入支付宝帐号" />
+					</p>
+					<p style="text-align: center;margin-top: 30px;">
+						<button>确定</button>
+					</p>
+
+					<else/>
+					<p class="pt">
+						<span>*姓名</span>
+						<input type="text" value="{$logininfo.realname}" name="realname" disabled/>
+					</p>
+					<p class="pt">
+						<span>*电话</span>
+						<input type="text" value="{$logininfo.mobile}" name="mobile" disabled/>
+					</p>
+					<p class="pt">
+						<span>*银行卡号</span>
+						<input type="text" value="{$zhanghao}" name="zhanghao" disabled/>
+					</p>
+					<p class="pt">
+						<span>*开户银行</span>
+						<input type="text" value="{$bankname}" name="bankname" disabled />
+					</p>
+					<p class="pt">
+						<span>*身份证</span>
+						<input type="text" value="{$logininfo.IDcard}" disabled/>
+					</p>
+					<p class="pt">
+						<span>*微信</span>
+						<input type="text" value="{$logininfo.wechat}" name="wechat" disabled/>
+					</p>
+					<p class="pt">
+						<span>*支付宝</span>
+						<input type="text" value="{$logininfo.alipay}" name="alipay" disabled/>
+					</p>
+				</if>
 
 
 
 			</form>
-    	</div>
-    </div>
-    <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
-   <script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+		</div>
+	</div>
+	<script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
 	<script type="text/javascript" src="__STATIC__/layer/layecore/layer.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/Admin/mat/js/common.js"></script>
-    <script type="text/javascript">
-    mui.init()
-    </script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
 </body>
-</html>
 
+</html>

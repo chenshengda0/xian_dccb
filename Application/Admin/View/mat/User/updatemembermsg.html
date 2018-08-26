@@ -1,76 +1,94 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 
 <block name="body">
-<div class="widget-box">
-   <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-     <h5>基本信息</h5> </div>
-   <form action="{:U('')}" method="post" class="form-horizontal">	
-    	<input type="hidden" name="uid"  value="{$userinfo['uid']}"  >
-        <div class="widget-content nopadding">
-            <div class="control-group">
-              <label class="control-label"><span class='require'>*</span>真实姓名</label>
-              <div class="controls">
-                <input type="text" name="realname" id="realname" value="{$userinfo['realname']}"  class=" input-big span4">
-                <span></span></div>
-            </div>
-            
-            <div class="control-group">
-              <label class="control-label"><span class='require'>*</span>手机号</label>
-              <div class="controls">
-                <input type="text" name="mobile" id="mobile" value="{$userinfo['mobile']}" maxlength="11" class=" input-big span4">
-                <span></span> </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label"><span class='require'>*</span>银行卡号</label>
-              <div class="controls">
-                <input type="text" name="banknumber" id="banknumber" value="{$userinfo['banknumber']}" maxlength="20" class=" input-big span4">
-                <span></span> </div>
-            </div>
-             <div class="control-group">
-              <label class="control-label"><span class='require'>*</span>开户行</label>
-              <div class="controls">
-                <input type="text" name="bankname" id="bankname" value="{$userinfo['bankname']}"  class=" input-big span4">
-                <span></span> </div>
-            </div>
-          
-          	<div class="control-group">
-              <label class="control-label"><span class='require'>*</span>支付宝号</label>
-              <div class="controls">
-                <input type="text" name="alipay" id="IDcard" value="{$userinfo['alipay']}" class=" input-big span4">
-                <span></span> </div>
-            </div>
-          
-          
-             <div class="control-group">
-              <label class="control-label"><span class='require'>*</span>微信号</label>
-              <div class="controls">
-                <input type="text" name="wechat" id="bankholder" value="{$userinfo['wechat']}" class=" input-big span4">
-                <span></span> </div>
-            </div>
-          
-          	
-          	
-          	
-          	<div class="control-group">
-              <label class="control-label"><span class='require'>*</span>身份证号</label>
-              <div class="controls">
-                <input type="text" name="IDcard" id="bankholder" value="{$userinfo['IDcard']}" class=" input-big span4">
-                <span></span> </div>
-            </div>
-          
-          		
-          
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon">
+                <i class="icon-align-justify"></i>
+            </span>
+            <h5>基本信息</h5>
         </div>
- <div class="form-actions">
-      <button type="submit" class="btn btn-success ajax-post" target-form='form-horizontal'>提交</button>
-      <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
- </div>
-  </form>
- </div>
+        <form action="{:U('')}" method="post" class="form-horizontal">
+            <input type="hidden" name="uid" value="{$userinfo['uid']}">
+            <div class="widget-content nopadding">
+                <div class="control-group">
+                    <label class="control-label">
+                        <span class='require'>*</span>真实姓名</label>
+                    <div class="controls">
+                        <input type="text" name="realname" id="realname" value="{$userinfo['realname']}" class=" input-big span4">
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">
+                        <span class='require'>*</span>手机号</label>
+                    <div class="controls">
+                        <input type="text" name="mobile" id="mobile" value="{$userinfo['mobile']}" maxlength="11" class=" input-big span4">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">
+                        <span class='require'>*</span>银行卡号</label>
+                    <div class="controls">
+                        <input type="text" name="banknumber" id="banknumber" value="{$userinfo['banknumber']}" maxlength="20" class=" input-big span4">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">
+                        <span class='require'>*</span>开户行</label>
+                    <div class="controls">
+                        <input type="text" name="bankname" id="bankname" value="{$userinfo['bankname']}" class=" input-big span4">
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">
+                        <span class='require'>*</span>支付宝号</label>
+                    <div class="controls">
+                        <input type="text" name="alipay" id="IDcard" value="{$userinfo['alipay']}" class=" input-big span4">
+                        <span></span>
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <label class="control-label">
+                        <span class='require'>*</span>微信号</label>
+                    <div class="controls">
+                        <input type="text" name="wechat" id="bankholder" value="{$userinfo['wechat']}" class=" input-big span4">
+                        <span></span>
+                    </div>
+                </div>
+
+
+
+
+                <div class="control-group">
+                    <label class="control-label">
+                        <span class='require'>*</span>身份证号</label>
+                    <div class="controls">
+                        <input type="text" name="IDcard" id="bankholder" value="{$userinfo['IDcard']}" class=" input-big span4">
+                        <span></span>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success ajax-post" target-form='form-horizontal'>提交</button>
+                <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+            </div>
+        </form>
+    </div>
 </block>
 
 <block name="script">
     <script type="text/javascript">
-	highlight_subnav("{:U('User/userindex')}");
-    </script>		
+        highlight_subnav("{:U('User/userindex')}");
+    </script>
 </block>

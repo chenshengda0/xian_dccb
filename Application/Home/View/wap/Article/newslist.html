@@ -1,33 +1,39 @@
-<extend name="Base/base"/>
+<extend name="Base/base" />
 <block name='style'>
-<style>
-</style>
+    <style>
+    </style>
 </block>
 
 <block name="body">
- <div class="widget">
-                    <div class="title"><img src="__MAT__/images/icons/dark/refresh4.png" alt="" class="titleIcon" /><h6>{$title}</h6>
-                     <div class="topIcons">
-                            <a href="{:U('news')}" class="tipS" title="点击查看更多"><img src="__MAT__/images/icons/dark/imagesList.png" alt="" /></a>
-                        </div>
+    <div class="widget">
+        <div class="title">
+            <img src="__MAT__/images/icons/dark/refresh4.png" alt="" class="titleIcon" />
+            <h6>{$title}</h6>
+            <div class="topIcons">
+                <a href="{:U('news')}" class="tipS" title="点击查看更多">
+                    <img src="__MAT__/images/icons/dark/imagesList.png" alt="" />
+                </a>
+            </div>
+        </div>
+        <div class="updates">
+            <volist name="document_list" id="vo">
+                <div class="newUpdate">
+                    <div class="uDone">
+                        <a href="{:U('showNews',array('id'=>$vo['id']))}" title="点击查看详情">
+                            <strong>{$vo.title}</strong>
+                            <span>{$vo.description|default=$vo['title']} ...</span>
+                        </a>
                     </div>
-                    <div class="updates">
-                     <volist name="document_list" id="vo">
-                    	<div class="newUpdate">
-                            <div class="uDone">
-                                <a href="{:U('showNews',array('id'=>$vo['id']))}" title="点击查看详情">
-                                <strong>{$vo.title}</strong>
-                                <span>{$vo.description|default=$vo['title']} ...</span></a>
-                            </div>
-                            <div class="uDate"><span class="uDay">{$vo.update_time|date="d",###}日</span>{$vo.update_time|date="Y-m",###}</div>
-                            <div class="clear"></div>
-                        </div>
-                         </volist>
-                    </div>
+                    <div class="uDate">
+                        <span class="uDay">{$vo.update_time|date="d",###}日</span>{$vo.update_time|date="Y-m",###}</div>
+                    <div class="clear"></div>
                 </div>
+            </volist>
+        </div>
+    </div>
 </block>
 <block name="script">
- <script type="text/javascript">
-    	 highlight_subnav('{:U("$name")}');
-  </script>
+    <script type="text/javascript">
+        highlight_subnav('{:U("$name")}');
+    </script>
 </block>

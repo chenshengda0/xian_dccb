@@ -1,49 +1,58 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 <block name="style">
 
 </block>
 <block name="body">
-<div class="row-fluid">
-<div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>{$meta_title}</h5>
-          </div>
-          <div class="widget-content nopadding">
-          <div class='dataTables_wrapper'>
-            <table class="table table-bordered data-table" style="max-width:100%;">
-              <thead>
-                <tr>
-                		<th style='text-align:left;'><input class="check-all" type="checkbox"/></th>
-                  		<th>客服姓名<i class="change-sort icon-sort icon-sort-down" data-field='uid'></i></th>
-						<th>会员人数</th>
-                </tr>
-              </thead>
-              <tbody>
-                <volist name="service" id="vo">
-                    <tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
-                    	<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}"/></td>
-                        <td>{$vo[0]}</td>
-                        <td>{$vo[1]}</td>
- 						  <!--  <eq name="vo.isbill" value="1">
+  <div class="row-fluid">
+    <div class="widget-box">
+      <div class="widget-title">
+        <span class="icon">
+          <i class="icon-th"></i>
+        </span>
+        <h5>{$meta_title}</h5>
+      </div>
+      <div class="widget-content nopadding">
+        <div class='dataTables_wrapper'>
+          <table class="table table-bordered data-table" style="max-width:100%;">
+            <thead>
+              <tr>
+                <th style='text-align:left;'>
+                  <input class="check-all" type="checkbox" />
+                </th>
+                <th>客服姓名
+                  <i class="change-sort icon-sort icon-sort-down" data-field='uid'></i>
+                </th>
+                <th>会员人数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <volist name="service" id="vo">
+                <tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
+                  <td>
+                    <input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" />
+                  </td>
+                  <td>{$vo[0]}</td>
+                  <td>{$vo[1]}</td>
+                  <!--  <eq name="vo.isbill" value="1">
 		                    	<a class="btn btn-mini btn-success  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}">取消报单中心</a>
 		                    <else/>           
 	                            <a class="btn btn-mini btn-info  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}" >设为报单中心</a>
 	                        </eq>
  						<a class="btn btn-mini btn-info " href="{:U('User/updateMemberMsg',array('id'=>$vo['uid']))}" >修改</a>
                         <a class="btn btn-mini btn-info " href="{:U('User/updateMemberPsd',array('id'=>$vo['uid']))}" >改密</a>  -->
-                     
-                    </tr>
-                </volist>
-              </tbody>
-            </table>
-            
-          </div>
-          </div>
+
+                </tr>
+              </volist>
+            </tbody>
+          </table>
+
         </div>
       </div>
+    </div>
+  </div>
 </block>
 <block name="script">
-<script type="text/javascript">
-		highlight_subnav("{:U()}");
-	</script>
+  <script type="text/javascript">
+    highlight_subnav("{:U()}");
+  </script>
 </block>

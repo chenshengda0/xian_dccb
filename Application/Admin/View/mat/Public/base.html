@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{$meta_title}|{:C('WEB_SITE')}</title>
-	<include file='Public/css'/>
-	<include file='Public/js'/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{$meta_title}|{:C('WEB_SITE')}</title>
+	<include file='Public/css' />
+	<include file='Public/js' />
 	<block name='style'></block>
 </head>
-<body>
-<div id="header">
-  <img src="{:C('LOGO')}"  title="{:C('WEB_SITE')}" style='width:200px;height:70px;' />
-</div>
-<include file='Public/header'/>
-<include file='Public/leftmenu'/>
-<div id="content">
-	<if condition = "$Think.const.CONTROLLER_NAME eq 'Index' ">
-	  <div id="content-header">
-	    <div id="breadcrumb"> <a href="#" title="首页" class="tip-bottom"><i class="icon-home"></i>{$meta_title}</a></div>
-	  </div><else/>
-	   <div id="content-header">
-	    <div id="breadcrumb"> 
-	    	<a href="{:U('Index/index')}" title="首页" class="tip-bottom"><i class="icon-home"></i>首页</a> 
-	    	<a href="#" class="current">{$meta_title}</a> </div>
-	    <h1>{$meta_title}</h1>
-	  </div>
-	 </if>
-  <hr>
-  <div class="container-fluid"><block name="body"></block></div>
-</div>
 
-<div class="row-fluid">
-  <div id="footer" class="span12">{:C('WEB_SITE_ICP')}</div>
-</div>
-<script type="text/javascript" src="__MAT__/js/common.js"></script>
-<block name='script'></block>
+<body>
+	<div id="header">
+		<img src="{:C('LOGO')}" title="{:C('WEB_SITE')}" style='width:200px;height:70px;' />
+	</div>
+	<include file='Public/header' />
+	<include file='Public/leftmenu' />
+	<div id="content">
+		<if condition="$Think.const.CONTROLLER_NAME eq 'Index' ">
+			<div id="content-header">
+				<div id="breadcrumb">
+					<a href="#" title="首页" class="tip-bottom">
+						<i class="icon-home"></i>{$meta_title}</a>
+				</div>
+			</div>
+			<else/>
+			<div id="content-header">
+				<div id="breadcrumb">
+					<a href="{:U('Index/index')}" title="首页" class="tip-bottom">
+						<i class="icon-home"></i>首页</a>
+					<a href="#" class="current">{$meta_title}</a>
+				</div>
+				<h1>{$meta_title}</h1>
+			</div>
+		</if>
+		<hr>
+		<div class="container-fluid">
+			<block name="body"></block>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div id="footer" class="span12">{:C('WEB_SITE_ICP')}</div>
+	</div>
+	<script type="text/javascript" src="__MAT__/js/common.js"></script>
+	<block name='script'></block>
 </body>
+
 </html>

@@ -1,65 +1,102 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
-		<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
-		<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
-		<link rel="stylesheet" href="__HOME__/wap/css/shouye/renzheng.css" />
-	</head>
 
-	<body>
-		<header class="mui-bar mui-bar-nav header">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
-		    <h1 class="mui-title">修改资料</h1>
-		</header>
-		<form action="{:U('xg_ziliao')}" method="post" enctype="multipart/form-data">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="__HOME__/wap/css/mui.min.css" rel="stylesheet" />
+	<link href="__HOME__/wap/css/iconfont.css" rel="stylesheet" />
+	<link rel="stylesheet" href="__HOME__/wap/css/commen.css" />
+	<link rel="stylesheet" href="__HOME__/wap/css/shouye/renzheng.css" />
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav header">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link" data-link="{:U('user/index')}"></a>
+		<h1 class="mui-title">修改资料</h1>
+	</header>
+	<form action="{:U('xg_ziliao')}" method="post" enctype="multipart/form-data">
 		<div class="mui-content main">
 			<div class="main">
-			   <div class="list1">
-                 <if condition='$uinfo.mobile neq null'>
-                   		<li><span><i style="color:red">*&nbsp;</i>手机号：&nbsp;&nbsp;&nbsp;</span><input type="text" value= "{$uinfo.mobile}" name= "mobile" readonly /></li>
-                 <else/>
-                   	 <li><span><i style="color:red">*&nbsp;</i>手机号：&nbsp;&nbsp;&nbsp;</span><input type="text" value= "{$uinfo.mobile}" name= "mobile" /></li>
-                 </if>
-                  <if condition='$uinfo.realname neq null'>
-                    <li><span><i style="color:red">*&nbsp;</i>真实姓名：</span><input type="text"  value= "{$uinfo.realname}" name= "realname"  readonly /></li>
-                 <else/>
-                   	 <li><span><i style="color:red">*&nbsp;</i>真实姓名：</span><input type="text"  value= "{$uinfo.realname}" name= "realname" /></li>
-                 </if>
-                
-                <li><span><i style="color:red">*&nbsp;</i>开户银行：</span><input type="text"  value= "{$uinfo.bankname}" name= "bankname" /></li>
-			    <li><span><i style="color:red">*&nbsp;</i>银行卡号：</span><input type="text" value= "{$uinfo.banknumber}" name= "banknumber" /></li>
-			    <li><span><i style="color:red">*&nbsp;</i>支付宝：&nbsp;&nbsp;&nbsp;</span><input type="text" value= "{$uinfo.alipay}" name= "alipay" /></li>
-			    	
-			   
-               
-                 	<li><span>BTC比特币：</span><input type="text" value= "{$uinfo.bite}" name= "bite" /></li>
-                    <li><span>以太坊ETH：</span><input type="text" value= "{$uinfo.ytf}" name= "ytf" /></li>
-                 	
-                   <li> <span>skype账号：</span><input type="text" value= "{$uinfo.skype}" name= "skype" /></li>
-                 <li><span>Facebook：</span><input type="text" value= "{$uinfo.facebook}" name= "facebook" /></li>
-			   			   		
-			   </div>
-			  	<p>认证说明：为了保障您的帐户安全；请上传真实资料</p>
-			  	
-			  	
+				<div class="list1">
+					<if condition='$uinfo.mobile neq null'>
+						<li>
+							<span>
+								<i style="color:red">*&nbsp;</i>手机号：&nbsp;&nbsp;&nbsp;</span>
+							<input type="text" value="{$uinfo.mobile}" name="mobile" readonly />
+						</li>
+						<else/>
+						<li>
+							<span>
+								<i style="color:red">*&nbsp;</i>手机号：&nbsp;&nbsp;&nbsp;</span>
+							<input type="text" value="{$uinfo.mobile}" name="mobile" />
+						</li>
+					</if>
+					<if condition='$uinfo.realname neq null'>
+						<li>
+							<span>
+								<i style="color:red">*&nbsp;</i>真实姓名：</span>
+							<input type="text" value="{$uinfo.realname}" name="realname" readonly />
+						</li>
+						<else/>
+						<li>
+							<span>
+								<i style="color:red">*&nbsp;</i>真实姓名：</span>
+							<input type="text" value="{$uinfo.realname}" name="realname" />
+						</li>
+					</if>
+
+					<li>
+						<span>
+							<i style="color:red">*&nbsp;</i>开户银行：</span>
+						<input type="text" value="{$uinfo.bankname}" name="bankname" />
+					</li>
+					<li>
+						<span>
+							<i style="color:red">*&nbsp;</i>银行卡号：</span>
+						<input type="text" value="{$uinfo.banknumber}" name="banknumber" />
+					</li>
+					<li>
+						<span>
+							<i style="color:red">*&nbsp;</i>支付宝：&nbsp;&nbsp;&nbsp;</span>
+						<input type="text" value="{$uinfo.alipay}" name="alipay" />
+					</li>
+
+
+
+					<li>
+						<span>BTC比特币：</span>
+						<input type="text" value="{$uinfo.bite}" name="bite" />
+					</li>
+					<li>
+						<span>以太坊ETH：</span>
+						<input type="text" value="{$uinfo.ytf}" name="ytf" />
+					</li>
+
+					<li>
+						<span>skype账号：</span>
+						<input type="text" value="{$uinfo.skype}" name="skype" />
+					</li>
+					<li>
+						<span>Facebook：</span>
+						<input type="text" value="{$uinfo.facebook}" name="facebook" />
+					</li>
+
+				</div>
+				<p>认证说明：为了保障您的帐户安全；请上传真实资料</p>
+
+
 				<input class="but but1" type="submit" value="完成修改" style="margin:20px 6%;font-size:16px">
-				</form>
-		<script src="__HOME__/wap/js/mui.min.js"></script>
-		<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
-		<script src="__HOME__/wap/js/tiaozhuan.js"></script>
-		<script type="text/javascript" src="__HOME__/wap/js/sc_img.js"></script>
-		<script type="text/javascript" src="__HOME__/wap/js/index/renzheng.js"></script>
-		<script type="text/javascript">
-			mui.init();
-			
-		</script>
-	</body>
+	</form>
+	<script src="__HOME__/wap/js/mui.min.js"></script>
+	<script src="__HOME__/wap/js/jquery-1.7.2.js"></script>
+	<script src="__HOME__/wap/js/tiaozhuan.js"></script>
+	<script type="text/javascript" src="__HOME__/wap/js/sc_img.js"></script>
+	<script type="text/javascript" src="__HOME__/wap/js/index/renzheng.js"></script>
+	<script type="text/javascript">
+		mui.init();
+	</script>
+</body>
+
 </html>
-
-
-
-

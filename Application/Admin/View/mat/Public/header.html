@@ -1,29 +1,69 @@
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <li  class="dropdown" id="profile-messages" >
-    <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
-    <i class="icon icon-user"></i>  <span class="text">欢迎您，{:session('admin_auth.mname')}！</span><b class="caret"></b></a>
+    <li class="dropdown" id="profile-messages">
+      <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
+        <i class="icon icon-user"></i>
+        <span class="text">欢迎您，{:session('admin_auth.mname')}！</span>
+        <b class="caret"></b>
+      </a>
       <ul class="dropdown-menu">
-        <li><a href="{:U('Manager/updateMname')}"><i class="icon-user"></i>修改管理名</a></li>
+        <li>
+          <a href="{:U('Manager/updateMname')}">
+            <i class="icon-user"></i>修改管理名</a>
+        </li>
         <li class="divider"></li>
-        <li><a href="{:U('Manager/updatePassword')}"><i class="icon-check"></i> 修改密码</a></li>
+        <li>
+          <a href="{:U('Manager/updatePassword')}">
+            <i class="icon-check"></i> 修改密码</a>
+        </li>
         <li class="divider"></li>
-        <li><a href="{:U('Public/logout')}"><i class="icon-key"></i>注销</a></li>
+        <li>
+          <a href="{:U('Public/logout')}">
+            <i class="icon-key"></i>注销</a>
+        </li>
       </ul>
     </li>
-    <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle">
-    	<i class="icon icon-envelope"></i> 
-    	<span class="text">留言</span> <span class="label label-important">{$liu}</span> <b class="caret"></b></a>
+    <li class="dropdown" id="menu-messages">
+      <a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle">
+        <i class="icon icon-envelope"></i>
+        <span class="text">留言</span>
+        <span class="label label-important">{$liu}</span>
+        <b class="caret"></b>
+      </a>
       <ul class="dropdown-menu">
-        <li><a class="sAdd" title="" href="{:U('Message/liuyan')}"><i class="icon-plus"></i>写留言</a></li>
+        <li>
+          <a class="sAdd" title="" href="{:U('Message/liuyan')}">
+            <i class="icon-plus"></i>写留言</a>
+        </li>
         <li class="divider"></li>
-        <li><a class="sInbox" title="" href="{:U('Message/liuyanList',array('type'=>1))}"><i class="icon-envelope"></i>收件箱</a></li>
+        <li>
+          <a class="sInbox" title="" href="{:U('Message/liuyanList',array('type'=>1))}">
+            <i class="icon-envelope"></i>收件箱</a>
+        </li>
         <li class="divider"></li>
-        <li><a class="sOutbox" title="" href="{:U('Message/liuyanList',array('type'=>2))}"><i class="icon-arrow-up"></i>发件箱</a></li>
+        <li>
+          <a class="sOutbox" title="" href="{:U('Message/liuyanList',array('type'=>2))}">
+            <i class="icon-arrow-up"></i>发件箱</a>
+        </li>
       </ul>
     </li>
-    <li class=""><a title="" href="{:U('BonusRule/bonusrule')}"><i class="icon icon-cog"></i> <span class="text">奖金设置</span></a></li>
-    <li class=""><a title="" href= "javascript:;" onclick="$.get('cc.php');layer.msg('缓存清理成功。')"><i class="icon icon-trash"></i> <span class="text">清空缓存</span></a></li>
-    <li class=""><a title="" href="{:U('Public/logout')}" class="ajax-get confirm"><i class="icon icon-share-alt"></i> <span class="text">安全退出</span></a></li>
+    <li class="">
+      <a title="" href="{:U('BonusRule/bonusrule')}">
+        <i class="icon icon-cog"></i>
+        <span class="text">奖金设置</span>
+      </a>
+    </li>
+    <li class="">
+      <a title="" href="javascript:;" onclick="$.get('cc.php');layer.msg('缓存清理成功。')">
+        <i class="icon icon-trash"></i>
+        <span class="text">清空缓存</span>
+      </a>
+    </li>
+    <li class="">
+      <a title="" href="{:U('Public/logout')}" class="ajax-get confirm">
+        <i class="icon icon-share-alt"></i>
+        <span class="text">安全退出</span>
+      </a>
+    </li>
   </ul>
 </div>

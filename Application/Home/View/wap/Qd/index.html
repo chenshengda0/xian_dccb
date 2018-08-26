@@ -1,60 +1,340 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <title>签到</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css" />
     <link rel="stylesheet" href="__H-W__/css/style.css" />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <style type="text/css">
-    	header a{margin-top: 10px;font-size: .9em;color: #999;}
-    	.act{background: #292c33;}
-    	.box{float: left;width: 100%;height: auto;}
-    	.box button{width: 95%;height: 40px;background: #f93333;color: #fff;border: none;margin-left: 2.5%;}
-    	.box p{width: 100%;float: left;color: #fff;padding: 0 10px 0 10px;}
-    	.jine{width: 95% !important;height: 40px;border-bottom: 1px solid #313840;margin-left: 2.5%;}
-    	.box input{background: none !important;float: left;width: 70%;height: 40px;border: none;}
-    	.jine span{display: inline-block;10%;float: left;
-    	height: 40px;text-align: center;line-height: 40px;color: #fff;font-weight: bold;font-size: 1.1em;}
+        header a {
+            margin-top: 10px;
+            font-size: .9em;
+            color: #999;
+        }
 
+        .act {
+            background: #292c33;
+        }
+
+        .box {
+            float: left;
+            width: 100%;
+            height: auto;
+        }
+
+        .box button {
+            width: 95%;
+            height: 40px;
+            background: #f93333;
+            color: #fff;
+            border: none;
+            margin-left: 2.5%;
+        }
+
+        .box p {
+            width: 100%;
+            float: left;
+            color: #fff;
+            padding: 0 10px 0 10px;
+        }
+
+        .jine {
+            width: 95% !important;
+            height: 40px;
+            border-bottom: 1px solid #313840;
+            margin-left: 2.5%;
+        }
+
+        .box input {
+            background: none !important;
+            float: left;
+            width: 70%;
+            height: 40px;
+            border: none;
+        }
+
+        .jine span {
+            display: inline-block;
+            10%;
+            float: left;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .top {
+            width: 100%;
+            height: 175px;
+            float: left;
+            background: #000;
+        }
+
+        .touxiang {
+            width: 40%;
+            height: 110px;
+            float: left;
+            text-align: center;
+        }
+
+        .touxiang2 {
+            width: 30%;
+            height: 110px;
+            float: left;
+            text-align: center;
+        }
+
+        .touxiang img {
+            width: 70px;
+            height: 70px;
+            margin-top: 20px;
+            border-radius: 50%;
+        }
+
+        .touxiang2 p {
+            width: 70px;
+            margin-top: 20px;
+            border-radius: 50%;
+        }
+
+        .xia {
+            width: 100%;
+            height: 80;
+            float: left;
+        }
+
+        .xia_l {
+            width: 33%;
+            height: 65px;
+            text-align: center;
+        }
+
+        .xia_l p {
+            font-size: 1em;
+        }
+
+        .xia_r {
+            width: 33%;
+            height: 65px;
+            text-align: center;
+        }
+
+        .xia_r p {
+            font-size: 1em;
+        }
+
+        .xia_t {
+            width: 33%;
+            height: 65px;
+            text-align: center;
+        }
+
+        .xia_t p {
+            font-size: 1em;
+        }
+
+        .xia_b {
+            width: 33%;
+            height: 65px;
+            text-align: center;
+        }
+
+        .xia_t p {
+            font-size: 1em;
+        }
+
+        .xia_c {
+            width: 33%;
+            height: 65px;
+            text-align: center;
+        }
+
+        .xia_t p {
+            font-size: 1em;
+        }
+
+        .saoma {
+            width: 100%;
+            height: 105px;
+            float: left;
+            background: #1c1c20;
+        }
+
+        .saoma div {
+            width: 33.33%;
+            height: 105px;
+            float: left;
+            text-align: center;
+        }
+
+        .saoma img {
+            width: 42px;
+            height: 42px;
+        }
+
+        .saoma p {
+            margin: 0;
+            color: #fff;
+        }
+
+        .tupian {
+            margin-top: 20px !important;
+        }
+
+        .lianjie {
+            width: 100%;
+            height: 285px;
+            float: left;
+            background: #292c33;
+            border-top: 1px solid #3d4651;
+            border-bottom: 1px solid #3d4651;
+            margin-top: 10px;
+        }
+
+        .lianjie a {
+            display: inline-block;
+            width: 25%;
+            height: 97.5px;
+            float: left;
+            color: #fff;
+            text-align: center;
+        }
+
+        .lianjie a p {
+            margin: 0;
+        }
+
+        .lianjie a img {
+            width: 32px;
+            height: 32px;
+            margin-top: 15px;
+        }
+
+        .lianjie2 {
+            width: 100%;
+            height: 80px;
+            float: left;
+            background: #292c33;
+            border-top: 1px solid #3d4651;
+            border-bottom: 1px solid #3d4651;
+            margin-top: 10px;
+        }
+
+        .lianjie2 a {
+            display: inline-block;
+            width: 25%;
+            height: 97.5px;
+            float: left;
+            color: #fff;
+            text-align: center;
+        }
+
+        .lianjie2 a p {
+            margin: 0;
+        }
+
+        .lianjie2 a img {
+            width: 32px;
+            height: 32px;
+            margin-top: 15px;
+        }
+
+        .aaa a {
+            display: inline-block;
+            width: 25% !important;
+            margin-left: 30px;
+            ;
+        }
     </style>
+    <script>
+        $(function () {
+            var a = $(".add")
+            var c = $(".c")
+            console.log(a);
+            console.log(c = "红粉");
+            if (a.val() - 0 >= 6000 || a < 30000) {
+                c = "蓝粉"
+            } else if (a.val() - 0 >= 30000 || a < 150000) {
+                c = "红粉"
+            } else if (a.val() - 0 >= 150000 || a < 300000) {
+                c = "银粉"
+            } else if (a.val() - 0 >= 300000) {
+                c = "金粉"
+            }
+        })
+    </script>
 </head>
+
 <body>
     <header class="mui-bar mui-bar-nav">
-        <h1 class="mui-title">签到</h1>
-       <!--<a href="{:U('trading_hall/rechargerecord')}" class="mui-pull-right">充值记录</a>-->
+        <h1 class="mui-title">
+            <span class="c" style="display: inline-block; position: absolute;left: 0">蓝粉</span>
+            我的账户</h1>
+        <!--<a href="{:U('trading_hall/rechargerecord')}" class="mui-pull-right">充值记录</a>-->
     </header>
     <div class="mui-content">
 
-            <div class="box">
+        <div class="box">
 
-              <p style="height: 28%;">
+            <p style="height: 28%;">
                 <img src="/Public/Home/H_wap/images/banner_02.jpg" style="width: 100%;">
-              </p>
-                <p style="height:4em;line-height:4em;text-align: center;background-color: #292c33;margin-top: -5%;">
-                    <span>邀请好友再得100个币</span>
+            </p>
+            <p style="height:4em;line-height:4em;text-align: center;background-color: #292c33;margin-top: -5%;">
+                <span>邀请好友再得100个币</span>
 
-                </p>
-                <p style="height: 2em;margin-top: -2%;background-color: #292c33;line-height:2em;">
-                    <span>今日可领取福利</span>
-                </p>
-                <p style="height: 7em;margin-top: -2%;background-color: #292c33;line-height:2em;">
-                    <span>
-                        <img src="/Public/Home/H_wap/images/ioc_05.png" height="70%" style="margin-top: 4%;margin-left: 1%">
-                    </span>
-                   <!--  <p style="width: 50%;margin-top: -25%;margin-left: 26%;font-size: 12px;">
+            </p>
+            <p style="height: 2em;margin-top: -2%;background-color: #292c33;line-height:2em;">
+                <span>今日可领取福利</span>
+            </p>
+            <p style="height: 7em;margin-top: -2%;background-color: #292c33;font-size: 20px; text-align: center;line-height: 20px; padding-top: 50px;">
+                功能暂未开放
+            </p>
+            <div class="aaa">
+                <a href="{:U('kung/team')}">
+                    <p>
+                        <img src="__H-W__/images/wdzc.png" />
+                    </p>
+                    <p>
+                        <span style="color:#FFFFFF">我的团队</span>
+                    </p>
+                </a>
+                <a href="{:U('money_jl')}">
+                    <p>
+                        <img src="__H-W__/images/zjmx.png" />
+                    </p>
+                    <p>
+                        <span style="color:#FFFFFF">奖金明细</span>
+                    </p>
+                </a>
+                <a href="{:U('kung/tuiguang')}">
+                    <p>
+                        <img src="__H-W__/images/tgzx.png" />
+                    </p>
+                    <p>
+                        <span style="color:#FFFFFF">推广中心</span>
+                    </p>
+                </a>
+            </div>
+
+
+            <!--  <p style="width: 50%;margin-top: -25%;margin-left: 26%;font-size: 12px;">
                         <span style="color: #00d8ff;">BTC</span>-比特币<br/>
                         价格:￥100<br/>
                         <span style="color: #fe5600">0.0001</span>个
                         <span style="color: #ffcf00">[限量20000份]</span>
                     </p> -->
-                    <p style="width: 50%;margin-top: -25%;margin-left: 26%;font-size: 12px;">
-                       <span>
-                        <img src="/Public/Home/H_wap/images/dk.png" width="40%" style="margin-top: 10%;margin-left: 100%">
-                    </span>
-                    </p>
-                </p>
-                <!-- <p style="height: 7em;margin-top: -5%;background-color: #292c33;line-height:2em;">
+            <p style="width: 50%;margin-top: -25%;margin-left: 26%;font-size: 12px;">
+                <span>
+
+                </span>
+            </p>
+            </p>
+            <!-- <p style="height: 7em;margin-top: -5%;background-color: #292c33;line-height:2em;">
                     <span>
                         <img src="/Public/Home/H_wap/images/ioc_08.png" height="70%" style="margin-top: 4%;margin-left: 1%">
                     </span>
@@ -65,37 +345,45 @@
                     <span style="color: #ffcf00">[限量20000份]</span>
                 </p> 
                 </p>-->
-                <if condition="$logininfo['is_qd'] eq 1">
-                    <p style="margin-top: 2%;">
-                        <button style="background-color: #666666">已签到</button>
-                    </p>
+            <if condition="$logininfo['is_qd'] eq 1">
+                <p style="margin-top: 2%;">
+                    <button style="background-color: #666666">已签到</button>
+                </p>
 
-                    <else/>
-                    <p style="margin-top: 2%;">
-                        <button onclick="qd({$logininfo['uid']})">签到</button>
-                    </p>
-                </if>
+                <else/>
+                <p style="margin-top: 2%;">
+                    <button onclick="qd({$logininfo['uid']})">签到</button>
+                </p>
+            </if>
 
 
-            </div>
+        </div>
 
-    	<div style="width: 100%;height: 49px;float: left;"></div>
+        <div style="width: 100%;height: 49px;float: left;"></div>
         <div class="foot">
-           
+
             <a href="{:U('Qd/index')}" class="act">
-                <p><img src="__H-W__/images/cz.png" alt="" /></p>
+                <p>
+                    <img src="__H-W__/images/cz.png" alt="" />
+                </p>
                 <p>签到</p>
             </a>
             <a href="{:U('user/index')}">
-                <p><img src="__H-W__/images/wd.png" alt="" /></p>
+                <p>
+                    <img src="__H-W__/images/wd.png" alt="" />
+                </p>
                 <p>我的</p>
             </a>
-           <a href="{:U('Kung/center')}">
-                <p><img src="__H-W__/images/jy.png" alt="" /></p>
+            <a href="{:U('Kung/center')}">
+                <p>
+                    <img src="__H-W__/images/jy.png" alt="" />
+                </p>
                 <p>交易</p>
             </a>
             <a href="{:U('Kung/index')}">
-                <p><img src="__H-W__/images/zx.png" alt="" /></p>
+                <p>
+                    <img src="__H-W__/images/zx.png" alt="" />
+                </p>
                 <p>公告</p>
             </a>
         </div>
@@ -103,29 +391,30 @@
     <script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
     <script src="__H-W__/js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
-    mui.init();
-    function qd(id){
+        mui.init();
 
-        $.ajax({
-            url:"{:U('sent')}",
-            type:"post",
-            dataType:"json",
-            data:{
-                userID:id
-            },
-            success:function(date){
-                alert(date.info);
-                location.reload()
-            },
-            error:function() {
-                alert(date.info);
-                location.reload()
-            }
+        function qd(id) {
 
-        })
-    }
+            $.ajax({
+                url: "{:U('sent')}",
+                type: "post",
+                dataType: "json",
+                data: {
+                    userID: id
+                },
+                success: function (date) {
+                    alert(date.info);
+                    location.reload()
+                },
+                error: function () {
+                    alert(date.info);
+                    location.reload()
+                }
+
+            })
+        }
     </script>
 
 </body>
-</html>
 
+</html>

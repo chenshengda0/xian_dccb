@@ -1,45 +1,53 @@
-<extend name="wap/Base/base"/>
+<extend name="wap/Base/base" />
 <block name="body">
-<div class="title" style='margin-top:5px;margin-bottom:5px;' align = "center"><h1>{$title}</h1></div>
-<div class="decoration"></div>
-<notempty name="_list">
-<div class="widget">
- <include file='wap/Public/search' /></div>
-        <div class="widget">
-       <volist name="_list" id="vo"  mod="2">
-		      <table cellpadding="0" cellspacing="0" width="100%" class="sTable">
-               		<tbody>
-		                    <tr class='<eq name="mod" value="1">bgcolor</eq>'>
-		                   		<td>{$Think.const.DATE_TIME}:{$vo.count_date|date="Y-m-d",###}</td>
-								<td>{:getChangeType(1)}:{$vo.bonus1|format_num}</td>
-							</tr>
-							<tr>
-								<td>{:getChangeType(2)}:{$vo.bonus2|format_num}</td>
-								<td>{:getChangeType(3)}:{$vo.bonus3|format_num}</td>
-							</tr>
-							<tr>	
-								<td>应发奖金累计:{$vo.allmoney|format_num}</td>
-								<td>实发奖金累计:{$vo['allmoney']-$vo['tax_money']|format_num}</td>
-							</tr>
-							<tr>	
-								<td>{$Think.const.TAX}:{$vo.tax_money|format_num}</td>
-								<td>{$Think.const.OP}:<a style="color:#2b6893;display:inline-block;" style="color:red;display:inline-block;" href="{:U('Bonus/showMore',array('createtime'=>$vo['count_date']))}">查看明细</a></td>
-							</tr>
-							
-		                   </tbody>
-           				 </table>
-		                </volist>
-                    
-                
-        </div> <div class="page">{$_page}</div>
-     <else/>
-     <h1 class="center-text">aOh!暂时没有奖金明细!</h1>
-     <div style="font-size:15px;margin-bottom:10px;" class="center-text"><a style="color:#2b6893;" href="{:U('User/index')}" title="">返回首页</a></div>
- </notempty>
+	<div class="title" style='margin-top:5px;margin-bottom:5px;' align="center">
+		<h1>{$title}</h1>
+	</div>
+	<div class="decoration"></div>
+	<notempty name="_list">
+		<div class="widget">
+			<include file='wap/Public/search' />
+		</div>
+		<div class="widget">
+			<volist name="_list" id="vo" mod="2">
+				<table cellpadding="0" cellspacing="0" width="100%" class="sTable">
+					<tbody>
+						<tr class='<eq name="mod" value="1">bgcolor</eq>'>
+							<td>{$Think.const.DATE_TIME}:{$vo.count_date|date="Y-m-d",###}</td>
+							<td>{:getChangeType(1)}:{$vo.bonus1|format_num}</td>
+						</tr>
+						<tr>
+							<td>{:getChangeType(2)}:{$vo.bonus2|format_num}</td>
+							<td>{:getChangeType(3)}:{$vo.bonus3|format_num}</td>
+						</tr>
+						<tr>
+							<td>应发奖金累计:{$vo.allmoney|format_num}</td>
+							<td>实发奖金累计:{$vo['allmoney']-$vo['tax_money']|format_num}</td>
+						</tr>
+						<tr>
+							<td>{$Think.const.TAX}:{$vo.tax_money|format_num}</td>
+							<td>{$Think.const.OP}:
+								<a style="color:#2b6893;display:inline-block;" style="color:red;display:inline-block;" href="{:U('Bonus/showMore',array('createtime'=>$vo['count_date']))}">查看明细</a>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</volist>
+
+
+		</div>
+		<div class="page">{$_page}</div>
+		<else/>
+		<h1 class="center-text">aOh!暂时没有奖金明细!</h1>
+		<div style="font-size:15px;margin-bottom:10px;" class="center-text">
+			<a style="color:#2b6893;" href="{:U('User/index')}" title="">返回首页</a>
+		</div>
+	</notempty>
 </block>
 <block name="script">
-        <script type="text/javascript">
-        //导航高亮
-        highlight_subnav("{:U('bonusCount')}");
-    </script>
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav("{:U('bonusCount')}");
+	</script>
 </block>

@@ -1,236 +1,262 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 <block name="style">
-<style>
-*{
-	margin:0;
-	padding:0
-}
-       .z_mask{
-		    width: 100%;
-		    height: 100%;
-		    background: rgba(0, 0, 0, .5);
-		    position: fixed;
-		    top: 0;
-		    left: 0;
-		    z-index: 999;
-		 	display: none;
+	<style>
+		* {
+			margin: 0;
+			padding: 0
 		}
-		.z_alert{
-		    width:280px;
-		    height:140px;
-		    border-radius: 4px;
-		    background: #fff;
-		    color: #333333;
-		    font-size:16px;
-		    text-align: center;
-		    position: absolute;
-		    left: 50%;
-		    top: 50%;
-		    margin-left:-140px;
-		    margin-top:-120px;
-		}		
-		.z_alert .title{
+
+		.z_mask {
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, .5);
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 999;
+			display: none;
+		}
+
+		.z_alert {
+			width: 280px;
+			height: 140px;
+			border-radius: 4px;
+			background: #fff;
+			color: #333333;
+			font-size: 16px;
+			text-align: center;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -140px;
+			margin-top: -120px;
+		}
+
+		.z_alert .title {
 			width: 100%;
 			height: 45px;
-			font-size:14px;
-		    line-height:45px;
-		    border-bottom: 1px solid #ddd;
+			font-size: 14px;
+			line-height: 45px;
+			border-bottom: 1px solid #ddd;
 		}
-		.buts1{
+
+		.buts1 {
 			width: 100%;
-			height:35px;
+			height: 35px;
 			border-top: 1px solid #ddd;
 		}
-		.buts1>span{
+
+		.buts1>span {
 			margin-top: 0;
-		    display: inline-block;
-		    width: 49%;
-		    height:35px;
-		    line-height:35px;
-		    float: left;
-		    font-size:14px;
+			display: inline-block;
+			width: 49%;
+			height: 35px;
+			line-height: 35px;
+			float: left;
+			font-size: 14px;
 		}
-		.z_cancel{
+
+		.z_cancel {
 			border-right: 1px solid #ddd;
 		}
-		.z_alert input{
+
+		.z_alert input {
 			height: 27px !important;
-		    width: 80% !important;
-		    margin-bottom: 10px;
-		    border:1px solid #DDDDDD;
+			width: 80% !important;
+			margin-bottom: 10px;
+			border: 1px solid #DDDDDD;
 			border-radius: 5px !important;
-		}	
-</style>	
+		}
+	</style>
 </block>
 <block name="body">
-<notempty name="_list">
-<div class='opt_box'>
-<div class="fl">
-    <a class="btn btn-info" href="{:U('User/registuser')}">新 增</a>
-    <button class="btn btn-success ajax-post" url="{:U('User/freezeStatus',array('method'=>'unfreeze'))}"
-            target-form="ids">启 用</button>
-    <button class="btn ajax-post btn-danger confirm" url="{:U('User/freezeStatus',array('method'=>'freeze'))}"
-            target-form="ids">冻结</button>
- </div>
- <include file='Public/search1'/>
- <div class='clear'></div>
-</div>
-<div class="row-fluid">
-<div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>{$meta_title}</h5>
-          </div>
-          <div class="widget-content nopadding">
-          <div class='dataTables_wrapper'>
-            <table class="table table-bordered data-table" style="max-width:100%;">
-              <thead>
-                <tr>
-                		<th style='text-align:left;'><input class="check-all" type="checkbox"/></th>
-                  		<th>{$Think.const.USERNUMBER}<i class="change-sort icon-sort icon-sort-down" data-field='uid'></i></th>
-						<th>{$Think.const.REALNAME}</th>
-                  		<th>会员手机号</th>
-						<!-- <th>{$Think.const.ISBILL}<i class="change-sort icon-sort" data-field='isbill'></i></th> -->
-						<if condition='C("IS_MORE_LEVEL") eq 1'>
-						<!-- <th>{$Think.const.USERRANK}<i class="change-sort icon-sort" data-field='userrank'></i></th> -->
-						<th>注册级别<i class="change-sort icon-sort" data-field='userrank'></i></th>
-						</if>
-		                <!--<th>是否vip</th>
+	<notempty name="_list">
+		<div class='opt_box'>
+			<div class="fl">
+				<a class="btn btn-info" href="{:U('User/registuser')}">新 增</a>
+				<button class="btn btn-success ajax-post" url="{:U('User/freezeStatus',array('method'=>'unfreeze'))}" target-form="ids">启 用</button>
+				<button class="btn ajax-post btn-danger confirm" url="{:U('User/freezeStatus',array('method'=>'freeze'))}" target-form="ids">冻结</button>
+			</div>
+			<include file='Public/search1' />
+			<div class='clear'></div>
+		</div>
+		<div class="row-fluid">
+			<div class="widget-box">
+				<div class="widget-title">
+					<span class="icon">
+						<i class="icon-th"></i>
+					</span>
+					<h5>{$meta_title}</h5>
+				</div>
+				<div class="widget-content nopadding">
+					<div class='dataTables_wrapper'>
+						<table class="table table-bordered data-table" style="max-width:100%;">
+							<thead>
+								<tr>
+									<th style='text-align:left;'>
+										<input class="check-all" type="checkbox" />
+									</th>
+									<th>{$Think.const.USERNUMBER}
+										<i class="change-sort icon-sort icon-sort-down" data-field='uid'></i>
+									</th>
+									<th>{$Think.const.REALNAME}</th>
+									<th>会员手机号</th>
+									<!-- <th>{$Think.const.ISBILL}<i class="change-sort icon-sort" data-field='isbill'></i></th> -->
+									<if condition='C("IS_MORE_LEVEL") eq 1'>
+										<!-- <th>{$Think.const.USERRANK}<i class="change-sort icon-sort" data-field='userrank'></i></th> -->
+										<th>注册级别
+											<i class="change-sort icon-sort" data-field='userrank'></i>
+										</th>
+									</if>
+									<!--<th>是否vip</th>
                         <th>vip剩余</th>-->
-		                <th>总钱包</th>
-                  		<th>在线钱包</th>
-                  <th>动态钱包</th>
-                    <th>静态钱包</th>
-                    <th>孵化仓</th>
-                  <th>孵化钱包</th>
+									<th>总钱包</th>
+									<th>在线钱包</th>
+									<th>动态钱包</th>
+									<th>静态钱包</th>
+									<th>孵化仓</th>
+									<th>孵化钱包</th>
 
-		                <th>{$Think.const.TUIJIANMUMBER}</th>
-		                <!-- <th>{$Think.const.PARENTNUMBER}</th> --> 
-		               <!--  <th>{$Think.const.BILLCENTER}</th> -->
-                  		<th>用户密码</th>
-		                <th>{$Think.const.REG_TIME}</th>
-		              <!--   <th>激活时间</th> -->
-		                 <th>{$Think.const.TATUS}<i class="change-sort icon-sort" data-field='status'></i></th>
-						<!--<th>冻结原因<i class="change-sort icon-sort" data-field='status'></i></th>-->
-		                <th>{$Think.const.OP}</th>
-						
-                </tr>
-              </thead>
-              <tbody>
-                <volist name="_list" id="vo">
-                    <tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
-                    	<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}"/></td>
-                        <td>{$vo.usernumber}</td>
-                        <td>{$vo.realname}</td>
-                        <td>{$vo.mobile}</td>
-                        <!--  <td>{$vo.isbill|get_billcenter}</td>  -->
-                         <if condition='C("IS_MORE_LEVEL") eq 1'>
-						<td>{$vo.uid|get_userrank2}</td>
-						</if> 
-                       <!--<td><if condition='$vo["is_vip"] eq 1'><span style="color:red">是</span><else/>否</if></td>
+									<th>{$Think.const.TUIJIANMUMBER}</th>
+									<!-- <th>{$Think.const.PARENTNUMBER}</th> -->
+									<!--  <th>{$Think.const.BILLCENTER}</th> -->
+									<th>用户密码</th>
+									<th>{$Think.const.REG_TIME}</th>
+									<!--   <th>激活时间</th> -->
+									<th>{$Think.const.TATUS}
+										<i class="change-sort icon-sort" data-field='status'></i>
+									</th>
+									<!--<th>冻结原因<i class="change-sort icon-sort" data-field='status'></i></th>-->
+									<th>{$Think.const.OP}</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="_list" id="vo">
+									<tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
+										<td>
+											<input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" />
+										</td>
+										<td>{$vo.usernumber}</td>
+										<td>{$vo.realname}</td>
+										<td>{$vo.mobile}</td>
+										<!--  <td>{$vo.isbill|get_billcenter}</td>  -->
+										<if condition='C("IS_MORE_LEVEL") eq 1'>
+											<td>{$vo.uid|get_userrank2}</td>
+										</if>
+										<!--<td><if condition='$vo["is_vip"] eq 1'><span style="color:red">是</span><else/>否</if></td>
                        <td>{$vo.vip_end|get_vip}</td>-->
-                       <td>{$vo.hasmoney|format_num}</td>
-                           <td>{$vo.hasbill|format_num}</td>
-                           <td>{$vo.hascp|format_num}</td>
-                             <td>{$vo.hasjifen|format_num}</td>
-                             <td>{$vo.hasfh|format_num}</td>
-                      	<td>{$vo.hassf|format_num}</td>
+										<td>{$vo.hasmoney|format_num}</td>
+										<td>{$vo.hasbill|format_num}</td>
+										<td>{$vo.hascp|format_num}</td>
+										<td>{$vo.hasjifen|format_num}</td>
+										<td>{$vo.hasfh|format_num}</td>
+										<td>{$vo.hassf|format_num}</td>
 
-                       	<td>{$vo.tuijianid|get_usernumber}</td>
-                      <td>{$vo.psd1}/{$vo.psd2}</td>
-                       <!-- 	<td>{$vo.parentid|get_usernumber}</td> -->
-                       <!-- 	<td>{$vo.billcenterid|get_usernumber}</td> -->
-                       	<td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
-						<!-- <td>{$vo.active_time|date="Y-m-d H:i:s",###}</td> -->
-						<td>{$vo.status|get_user_status}</td>
-                       <!-- <td>{$vo.info|default="暂无"}</td>-->
-                        <td> 
-                        <!--<if condition = "$vo.userrank gt 1">
+										<td>{$vo.tuijianid|get_usernumber}</td>
+										<td>{$vo.psd1}/{$vo.psd2}</td>
+										<!-- 	<td>{$vo.parentid|get_usernumber}</td> -->
+										<!-- 	<td>{$vo.billcenterid|get_usernumber}</td> -->
+										<td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
+										<!-- <td>{$vo.active_time|date="Y-m-d H:i:s",###}</td> -->
+										<td>{$vo.status|get_user_status}</td>
+										<!-- <td>{$vo.info|default="暂无"}</td>-->
+										<td>
+											<!--<if condition = "$vo.userrank gt 1">
                         <a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('User/fenhong',array('id'=>$vo['uid']))}" >发分红</a>
                         <else/>
                        
                         </if>-->
-                        
- 						<a class="btn btn-mini btn-info"  href="javascript:void(0);" target="_blank" onclick="login('{$vo.uid}','{$vo.password}');">访问前台</a>
- 						<eq name="vo.status" value="1">
-		                    <a class="btn btn-mini btn-info" onclick="dongjie({$vo['uid']},'freeze')">冻结</a>
-		                    <else/>           
-	                       <a class="btn btn-mini btn-danger  ajax-get" href="{:U('User/freezeStatus',array('id'=>$vo['uid'],'method'=>'unfreeze'))}">解冻</a>
-	                    </eq>
- 						<a class="btn btn-mini btn-info"  href="{:U('TradingHall/moneyInc',array('id'=>$vo['uid']))}" >充币</a>
-                          <a class="btn btn-mini btn-info " href="{:U('User/del',array('id'=>$vo['uid']))}" >删除</a>
- 						<!--<a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('is_vip',array('id'=>$vo['uid']))}" >冲VIP</a>-->
- 						<a class='btn btn-mini btn-success' href="{:U('User/uinfo',array('id'=>$vo['uid']))}">更多操作>></a>
-                          
- 						  <!--  <eq name="vo.isbill" value="1">
+
+											<a class="btn btn-mini btn-info" href="javascript:void(0);" target="_blank" onclick="login('{$vo.uid}','{$vo.password}');">访问前台</a>
+											<eq name="vo.status" value="1">
+												<a class="btn btn-mini btn-info" onclick="dongjie({$vo['uid']},'freeze')">冻结</a>
+												<else/>
+												<a class="btn btn-mini btn-danger  ajax-get" href="{:U('User/freezeStatus',array('id'=>$vo['uid'],'method'=>'unfreeze'))}">解冻</a>
+											</eq>
+											<a class="btn btn-mini btn-info" href="{:U('TradingHall/moneyInc',array('id'=>$vo['uid']))}">充币</a>
+											<a class="btn btn-mini btn-info " href="{:U('User/del',array('id'=>$vo['uid']))}">删除</a>
+											<!--<a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('is_vip',array('id'=>$vo['uid']))}" >冲VIP</a>-->
+											<a class='btn btn-mini btn-success' href="{:U('User/uinfo',array('id'=>$vo['uid']))}">更多操作>></a>
+
+											<!--  <eq name="vo.isbill" value="1">
 		                    	<a class="btn btn-mini btn-success  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}">取消报单中心</a>
 		                    <else/>           
 	                            <a class="btn btn-mini btn-info  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}" >设为报单中心</a>
 	                        </eq>
  						<a class="btn btn-mini btn-info " href="{:U('User/del',array('id'=>$vo['uid']))}" >修改</a>
                         <a class="btn btn-mini btn-info " href="{:U('User/updateMemberPsd',array('id'=>$vo['uid']))}" >改密</a>  -->
-                        </td>
-                    </tr>
-                </volist>
-              </tbody>
-            </table>
-            <div class="page">
-             {$_page}
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
- <else/>
-<include file='Public/emptylist' title="暂时没有会员"/>
-</notempty>
-     <div class="z_mask">
-			<div class="z_alert">
-	            <p class="title">提示</p>
-	      		<input type="text" id="dongjie"/>
-	            <p class="buts1">
-	                <span class="z_cancel">取消</span>
-	                <span class="z_sure" style="color:#002f72;">确定</span>
-	            </p>
-	        </div>
-       </div>
+										</td>
+									</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="page">
+							{$_page}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<else/>
+		<include file='Public/emptylist' title="暂时没有会员" />
+	</notempty>
+	<div class="z_mask">
+		<div class="z_alert">
+			<p class="title">提示</p>
+			<input type="text" id="dongjie" />
+			<p class="buts1">
+				<span class="z_cancel">取消</span>
+				<span class="z_sure" style="color:#002f72;">确定</span>
+			</p>
+		</div>
+	</div>
 </block>
 <block name="script">
-<script type="text/javascript">
-	    function dongjie(id,method){
-	    	$('.z_mask').show();
-	    	$('.z_sure').click(function(){
-	    		content = $("#dongjie").val();
-	    		var index = layer.load('正在跳转，请耐心等待');
-            	$.post("{:U('freezeStatus')}",{id:id,method:method,content:content}, success, "json");
-            	return false;
+	<script type="text/javascript">
+		function dongjie(id, method) {
+			$('.z_mask').show();
+			$('.z_sure').click(function () {
+				content = $("#dongjie").val();
+				var index = layer.load('正在跳转，请耐心等待');
+				$.post("{:U('freezeStatus')}", {
+					id: id,
+					method: method,
+					content: content
+				}, success, "json");
+				return false;
 			})
-	    	
-	    }
-	    
-	    function success(data) {
-	        if (data.status) {
-	        	layer.msg(data.info,3,1);
-	        	setTimeout(function () {
-	        		var index = layer.load('正在跳转，请耐心等待');
-	                window.location.href = data.url
-	            }, 1000);
-	        	$('.z_mask').hide();
-	        	 return false;
-	        } else {
-	           layer.msg(data.info,2,3);
-	           $('.z_mask').hide();
-	        }
-	    }
-		function login(uid,psd){
+
+		}
+
+		function success(data) {
+			if (data.status) {
+				layer.msg(data.info, 3, 1);
+				setTimeout(function () {
+					var index = layer.load('正在跳转，请耐心等待');
+					window.location.href = data.url
+				}, 1000);
+				$('.z_mask').hide();
+				return false;
+			} else {
+				layer.msg(data.info, 2, 3);
+				$('.z_mask').hide();
+			}
+		}
+
+		function login(uid, psd) {
 			var index = layer.load('正在登陆，请耐心等待');
 			var url = "index.php?a=Home/Index/adminLogin";
-			$.post(url,{id:uid,psd:psd},tartet_success, "json");
+			$.post(url, {
+				id: uid,
+				psd: psd
+			}, tartet_success, "json");
 			return false;
 		}
-		$('.z_cancel').click(function(){
+		$('.z_cancel').click(function () {
 			$('.z_mask').hide();
 		})
-		$('.z_sure').click(function(){
+		$('.z_sure').click(function () {
 			$('.z_mask').hide();
 			//ajax
 		})

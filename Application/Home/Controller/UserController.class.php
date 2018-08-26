@@ -325,6 +325,12 @@ class UserController extends HomeController{
         $this->assign('uinfo',$info);
         $this->display();
     }
+    public function acuer(){
+        $this->display();
+    }
+    public function bulea(){
+        $this->display();
+    }
     //合作商
     public function hezuo(){
         $shangjia = M('shangjia')->select();

@@ -1,137 +1,170 @@
-
-<extend name="Public/base"/>
+<extend name="Public/base" />
 <block name="body">
 
 
-<div class="row-fluid">
-<div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>{$meta_title}</h5>
-          </div>
-          <div class="widget-content nopadding">
-          <form action="{:U('send')}" method="post" class="form-horizontal">
-          <div class='dataTables_wrapper'>
-            <table class="table table-bordered data-table" style="max-width:100%">
-				<thead>
-		            <tr><th colspan='5' style='text-align:center;'><h3>{:C('SHOP_TITLE')}订单信息</h3></th></tr>
-		        </thead>
-				 <tbody>
-					<tr>
-				 		<td>订单号</td><td>{$info.orderid}</td><td>会员名</td><td colspan='2'>{$info.uid|get_usernumber}</td>
-		          </tr>
-		          <tr>
-		          	<td>收货人</td><td>{$address.realname}</td><td>联系电话</td><td colspan='2'>{$address.cellphone}</td>
-		          </tr>
-		          <tr>
-		          	<td>地址</td><td>{$address.id|address}</td><td>下单时间</td><td colspan='2'>{$info.create_time||date='Y-m-d H:i:s',###}</td>
-		          </tr>
-		          </tbody>
-		        <thead>
-		            <tr><th>序号</th><th >商品名</th><th >数量</th><th>单价</th><th>合计</th></tr>
-		        </thead>
-		        <tbody>
-		        	<volist name="list" id="vo">
-		           <tr>
-				 		<td>{$vo.id}</td>
-		                <td>{$vo.goodid|get_goods='goods_name'}</td>
-		                <td>{$vo.num}</td>
-		                <td>{$vo.price}</td>
-		                <td>{$vo.total}</td>
-		            </tr>
-		          </volist>
-		          <tr>
-		          	<td colspan='5'>
-		          		<span style="color:red;">小计：{$info.total}元 </span>
-				   		<!-- <span style="color:red;">运费：{$info.shipprice}元</span>
-				  		<span style="color:red;">总金额： {$info.pricetotal}元 </span> -->
-				   	</td>
-		          </tr>
-		          <eq name='info.status' value='1'>
-		          	<tr>
-				 		<td>卖家姓名</td>
-		                <td><input type="text" class="text input-large" name="send_name" value="{:C('SEND_USER')}"></td>
-		                <td>卖家联系方式</td>
-		                <td colspan='2'><input type="text" class="text input-large" name="send_contact" value="{:C('SEND_PHONE')}"></td>
-		            </tr>
-		            <tr>
-				 		<td>发货地址</td>
-		                <td colspan='4'><input type="text" class="text input-large" name="send_address" value="{:C('SEND_ADDRESS')}"></td>
-		            </tr>
-		          	<tr>
-				 		<td>快递公司</td>
-		                <td><input type="text" class="text input-large" name="tool" value="{$info.tool}"></td>
-		                <td>快递单号</td>
-		                <td colspan='2'><input type="text" class="text input-large" name="toolid" value="{$info.toolid}"></td>
-		            </tr>
-		            <else/>
-		             <thead>
-		            	<tr><th colspan='5'>发货信息</th></tr>
-		        	</thead>
-		            	<tr>
-				 		<td>卖家姓名</td>
-		                <td>{$info.send_name}</td>
-		                <td>卖家联系方式</td>
-		                <td colspan='2'>{$info.send_contact}</td>
-		            </tr>
-		            <tr>
-				 		<td>发货地址</td>
-		                <td colspan='4'>{$info.send_address}</td>
-		            </tr>
-		          	<tr>
-				 		<td>快递公司</td>
-		                <td>{$info.tool}</td>
-		                <td>快递单号</td>
-		                <td colspan='2'>{$info.toolid}</td>
-		            </tr>
-		            <tr>
-				 		<td>操作员</td>
-		                <td>{$info.assistant}</td>
-		                <eq name='info.status' value='2'>
-		                <td>发货时间</td>
-		                <td colspan='2'>{$info.update_time||date='Y-m-d H:i:s',###}</td>
-		                </eq>
-		                <eq name='info.status' value='3'>
-		                <td>签收时间</td>
-		                <td colspan='2'>{$info.update_time||date='Y-m-d H:i:s',###}</td>
-		                </eq>
-		            </tr>
-		          </eq>
-		          </tbody>		        		          
-            </table>
-			 <div class="form-item" style='margin-top:20px;float:right;'>
-			 <eq name='info.status' value='1'>
-				<!--  <label class="item-label">操作员签名</label>
-				<input type="text" class="text input-large" name="assistant" value=""><span class="check-tips">(公司员工工号或姓名)</span> -->
-				<div class="form-item"  style="margin-top:20px;">
-					<input type="hidden" name="id" value="{$info.id|default=''}">
-		   			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">发货</button>
-		   			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-				</div>
-				<else/>
-				<div class="form-item"  style="margin-top:20px;">
-		   			<button class="btn submit-btn" id="btn" type="button" target-form="form-horizontal">打印订单</button>
-		   			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-				</div>
-				</eq>
+	<div class="row-fluid">
+		<div class="widget-box">
+			<div class="widget-title">
+				<span class="icon">
+					<i class="icon-th"></i>
+				</span>
+				<h5>{$meta_title}</h5>
 			</div>
-          </div>
-          </form>
-          </div>
-        </div>
-      </div>
+			<div class="widget-content nopadding">
+				<form action="{:U('send')}" method="post" class="form-horizontal">
+					<div class='dataTables_wrapper'>
+						<table class="table table-bordered data-table" style="max-width:100%">
+							<thead>
+								<tr>
+									<th colspan='5' style='text-align:center;'>
+										<h3>{:C('SHOP_TITLE')}订单信息</h3>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>订单号</td>
+									<td>{$info.orderid}</td>
+									<td>会员名</td>
+									<td colspan='2'>{$info.uid|get_usernumber}</td>
+								</tr>
+								<tr>
+									<td>收货人</td>
+									<td>{$address.realname}</td>
+									<td>联系电话</td>
+									<td colspan='2'>{$address.cellphone}</td>
+								</tr>
+								<tr>
+									<td>地址</td>
+									<td>{$address.id|address}</td>
+									<td>下单时间</td>
+									<td colspan='2'>{$info.create_time||date='Y-m-d H:i:s',###}</td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>商品名</th>
+									<th>数量</th>
+									<th>单价</th>
+									<th>合计</th>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="list" id="vo">
+									<tr>
+										<td>{$vo.id}</td>
+										<td>{$vo.goodid|get_goods='goods_name'}</td>
+										<td>{$vo.num}</td>
+										<td>{$vo.price}</td>
+										<td>{$vo.total}</td>
+									</tr>
+								</volist>
+								<tr>
+									<td colspan='5'>
+										<span style="color:red;">小计：{$info.total}元 </span>
+										<!-- <span style="color:red;">运费：{$info.shipprice}元</span>
+				  		<span style="color:red;">总金额： {$info.pricetotal}元 </span> -->
+									</td>
+								</tr>
+								<eq name='info.status' value='1'>
+									<tr>
+										<td>卖家姓名</td>
+										<td>
+											<input type="text" class="text input-large" name="send_name" value="{:C('SEND_USER')}">
+										</td>
+										<td>卖家联系方式</td>
+										<td colspan='2'>
+											<input type="text" class="text input-large" name="send_contact" value="{:C('SEND_PHONE')}">
+										</td>
+									</tr>
+									<tr>
+										<td>发货地址</td>
+										<td colspan='4'>
+											<input type="text" class="text input-large" name="send_address" value="{:C('SEND_ADDRESS')}">
+										</td>
+									</tr>
+									<tr>
+										<td>快递公司</td>
+										<td>
+											<input type="text" class="text input-large" name="tool" value="{$info.tool}">
+										</td>
+										<td>快递单号</td>
+										<td colspan='2'>
+											<input type="text" class="text input-large" name="toolid" value="{$info.toolid}">
+										</td>
+									</tr>
+									<else/>
+									<thead>
+										<tr>
+											<th colspan='5'>发货信息</th>
+										</tr>
+									</thead>
+									<tr>
+										<td>卖家姓名</td>
+										<td>{$info.send_name}</td>
+										<td>卖家联系方式</td>
+										<td colspan='2'>{$info.send_contact}</td>
+									</tr>
+									<tr>
+										<td>发货地址</td>
+										<td colspan='4'>{$info.send_address}</td>
+									</tr>
+									<tr>
+										<td>快递公司</td>
+										<td>{$info.tool}</td>
+										<td>快递单号</td>
+										<td colspan='2'>{$info.toolid}</td>
+									</tr>
+									<tr>
+										<td>操作员</td>
+										<td>{$info.assistant}</td>
+										<eq name='info.status' value='2'>
+											<td>发货时间</td>
+											<td colspan='2'>{$info.update_time||date='Y-m-d H:i:s',###}</td>
+										</eq>
+										<eq name='info.status' value='3'>
+											<td>签收时间</td>
+											<td colspan='2'>{$info.update_time||date='Y-m-d H:i:s',###}</td>
+										</eq>
+									</tr>
+								</eq>
+							</tbody>
+						</table>
+						<div class="form-item" style='margin-top:20px;float:right;'>
+							<eq name='info.status' value='1'>
+								<!--  <label class="item-label">操作员签名</label>
+				<input type="text" class="text input-large" name="assistant" value=""><span class="check-tips">(公司员工工号或姓名)</span> -->
+								<div class="form-item" style="margin-top:20px;">
+									<input type="hidden" name="id" value="{$info.id|default=''}">
+									<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">发货</button>
+									<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+								</div>
+								<else/>
+								<div class="form-item" style="margin-top:20px;">
+									<button class="btn submit-btn" id="btn" type="button" target-form="form-horizontal">打印订单</button>
+									<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+								</div>
+							</eq>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 </block>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript" src="__STATIC__/jquery.jqprint-0.3.js"></script>
-   <script type="text/javascript">
-   $('#btn').click(function(){
-	   $("#ordert").jqprint();
-   });
-   </script>
+<script type="text/javascript">
+	$('#btn').click(function () {
+		$("#ordert").jqprint();
+	});
+</script>
 <block name="script">
-    <script type="text/javascript">
-	//导航高亮
-	action = '{$action}';
-	highlight_subnav("{:U('"+action+"')}");
-    </script>
+	<script type="text/javascript">
+		//导航高亮
+		action = '{$action}';
+		highlight_subnav("{:U('" + action + "')}");
+	</script>
 </block>

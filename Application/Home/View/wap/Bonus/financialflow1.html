@@ -1,84 +1,91 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" href="__CSS__/mui.min.css"/>
-		<link rel="stylesheet" href="__CSS__/iconfont1.css"/>
-		<link rel="stylesheet" href="__CSS__/commen.css" />
-		<link rel="stylesheet" href="__CSS__/pages/liushui.css"/>
-	</head>
-	<body>
-		<header class="mui-bar mui-bar-nav header" >
-		    <a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
-		    <h1 class="mui-title">收支流水</h1>		 
-		</header>
-		<div class="mui-content">
-			<div class="top">
-				<p>总计</p>
-				<span class="num">{$tt_shouru}</span>
-			</div>
-			<div class="list1">
-		 		<ul>
-		 			<li class="dd active" style="border-right: 1px solid #e8e8e8;">NWTT收入</li>
-		 			<li class="dd">NWTT支出</li>
-		 		</ul>
-		 		<p style="clear: both;"></p>
-		 	</div>
-		 	<div class="dd1 cur">
-		 	    <notempty name="shouru">
-				 	     <ul>
-				 	     <volist name="shouru" id="vo">
-				 	           <li>
-				 				<p class="mui-pull-left">
-				 					<span>{$vo['createtime']|date="Y-m-d H:i:s",###}</span>
-				 					<span class="pre">{$vo.money|getmoney}</span>
-				 				</p>
-				 				<p class="mui-pull-right">{$vo['changetype']|getChangeType}</p>
-				 			</li>
-				 	     </volist>	
-				 		</ul>
-		 	    </notempty>
-		 		
-		 	</div>
-		 	<div class="dd1">
-		 	   <notempty name="zhichu">
-				 		<ul>
-				 		<volist name="zhichu" id="vo">
-				 			<li>
-				 				<p class="mui-pull-left">
-				 					<span>{$vo['createtime']|date="Y-m-d H:i:s",###}</span>
-				 					<span class="pre">{$vo.money|getmoney}</span>
-				 				</p>
-				 				<p class="mui-pull-right">{$vo['changetype']|getChangeType}</p>
-				 			</li>
-				 		</volist>	
-				 		</ul>
-		 		 </notempty>
-		 	</div>
-		</div>
-	</body>
-	<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript" src="__JS__/mui.min.js"></script>
-	<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
-	<script>
-		var dd = $('.list1 .dd');
-		var dd1 = $('.dd1');
-		var sr = {$tt_shouru};
-		var zc = {$tt_zhichu};
-		dd.click(function() {
-			dd.removeClass('active');
-			dd1.removeClass('cur');
-			$(this).addClass('active');
-			dd1.eq(dd.index(this)).addClass('cur');
-			
-			var _num=$(this).index()
-			if(_num==0){
-				$('.num').html(sr);
-			}else{
-				$('.num').html(zc);
-			}
 
-		});
-	</script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="__CSS__/mui.min.css" />
+	<link rel="stylesheet" href="__CSS__/iconfont1.css" />
+	<link rel="stylesheet" href="__CSS__/commen.css" />
+	<link rel="stylesheet" href="__CSS__/pages/liushui.css" />
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav header">
+		<a class="mui-action-back mui-icon iconfont icon-fanhui mui-pull-left"></a>
+		<h1 class="mui-title">收支流水</h1>
+	</header>
+	<div class="mui-content">
+		<div class="top">
+			<p>总计</p>
+			<span class="num">{$tt_shouru}</span>
+		</div>
+		<div class="list1">
+			<ul>
+				<li class="dd active" style="border-right: 1px solid #e8e8e8;">NWTT收入</li>
+				<li class="dd">NWTT支出</li>
+			</ul>
+			<p style="clear: both;"></p>
+		</div>
+		<div class="dd1 cur">
+			<notempty name="shouru">
+				<ul>
+					<volist name="shouru" id="vo">
+						<li>
+							<p class="mui-pull-left">
+								<span>{$vo['createtime']|date="Y-m-d H:i:s",###}</span>
+								<span class="pre">{$vo.money|getmoney}</span>
+							</p>
+							<p class="mui-pull-right">{$vo['changetype']|getChangeType}</p>
+						</li>
+					</volist>
+				</ul>
+			</notempty>
+
+		</div>
+		<div class="dd1">
+			<notempty name="zhichu">
+				<ul>
+					<volist name="zhichu" id="vo">
+						<li>
+							<p class="mui-pull-left">
+								<span>{$vo['createtime']|date="Y-m-d H:i:s",###}</span>
+								<span class="pre">{$vo.money|getmoney}</span>
+							</p>
+							<p class="mui-pull-right">{$vo['changetype']|getChangeType}</p>
+						</li>
+					</volist>
+				</ul>
+			</notempty>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="__JS__/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="__JS__/mui.min.js"></script>
+<script type="text/javascript" src="__JS__/tiaozhuan.js"></script>
+<script>
+	var dd = $('.list1 .dd');
+	var dd1 = $('.dd1');
+	var sr = {
+		$tt_shouru
+	};
+	var zc = {
+		$tt_zhichu
+	};
+	dd.click(function () {
+		dd.removeClass('active');
+		dd1.removeClass('cur');
+		$(this).addClass('active');
+		dd1.eq(dd.index(this)).addClass('cur');
+
+		var _num = $(this).index()
+		if (_num == 0) {
+			$('.num').html(sr);
+		} else {
+			$('.num').html(zc);
+		}
+
+	});
+</script>
+
 </html>

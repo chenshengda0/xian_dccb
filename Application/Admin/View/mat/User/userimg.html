@@ -3,71 +3,79 @@
 
 </block>
 <block name="body">
-		<style>
-			#usrimg .img{
-				position: relative;
-				height: 30px;
-				width: 50%;
-				margin: 0 auto;
-			}
-			#usrimg img {
-				margin: 0;
-				padding: 0;
-				position: absolute;
-				top:0;
-			}
-			#usrimg td{
-				text-align: center;
-			}
-			#usrimg tr{vertical-align: top;}
-			#usrimg table{
-				border-collapse: collapse;
-            	border: none;
-            	margin: 0 auto;
-			}
-			#usrimg .info{
-				margin: 0 auto;
-			}
-			#usrimg .info td{
-				border: 1px solid gainsboro;
-				min-width:30px;
-				padding: 2px 8px;
-			}
-		</style>
-	<div style='margin:0 atuo;'>  			
-        <form action="__CONTROLLER__/userImg" method="post" class="form-horizontal">  
-				<input type="text" id="usernumber" name="usernumber" class="text" value="{$usernumber}" placeholder="请输入用户编号">
-				<button class="btn submit-btn" id="submit" type="submit"  >查询</button>
-				<if condition="$uid neq 1">
+	<style>
+		#usrimg .img {
+			position: relative;
+			height: 30px;
+			width: 50%;
+			margin: 0 auto;
+		}
+
+		#usrimg img {
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+		}
+
+		#usrimg td {
+			text-align: center;
+		}
+
+		#usrimg tr {
+			vertical-align: top;
+		}
+
+		#usrimg table {
+			border-collapse: collapse;
+			border: none;
+			margin: 0 auto;
+		}
+
+		#usrimg .info {
+			margin: 0 auto;
+		}
+
+		#usrimg .info td {
+			border: 1px solid gainsboro;
+			min-width: 30px;
+			padding: 2px 8px;
+		}
+	</style>
+	<div style='margin:0 atuo;'>
+		<form action="__CONTROLLER__/userImg" method="post" class="form-horizontal">
+			<input type="text" id="usernumber" name="usernumber" class="text" value="{$usernumber}" placeholder="请输入用户编号">
+			<button class="btn submit-btn" id="submit" type="submit">查询</button>
+			<if condition="$uid neq 1">
 				<button class="btn btn-return" onclick="javascript:i={$uid}; window.location='__CONTROLLER__/userImg/p/1/uid/'+i;return false;">返 回上一层</button>
 				<button class="btn btn-return" onclick="javascript:window.location='__CONTROLLER__/userImg';return false;">返回第一层</button>
-				</if>
+			</if>
 		</form>
-    </div>
-    <div class="widget-box" style='margin-top:20px;padding:10px;overflow:auto;'>
+	</div>
+	<div class="widget-box" style='margin-top:20px;padding:10px;overflow:auto;'>
 		<div id="usrimg">
 			{$html}
 		</div>
-    </div>
-<!-- /表格列表 -->
+	</div>
+	<!-- /表格列表 -->
 </block>
 <block name="script">
 
-<script type="text/javascript">
-$(function(){
-		left = $('#usrimg').find('.left');
-		len = left.length; 
-		for(i=len-1;i>=0;i--){
-			leftw = $(left[i]).width();
-			rightw =  $(left[i]).next('td').width();		
-			if(leftw>rightw){
-				$(left[i]).next('td').width(leftw);
-			}else{
-				$(left[i]).width(rightw);
-		}
-		}
-	}); 
-    //导航高亮
-    highlight_subnav("{:U('User/userImg')}");
-</script>
+	<script type="text/javascript">
+		$(function () {
+			left = $('#usrimg').find('.left');
+			len = left.length;
+			for (i = len - 1; i >= 0; i--) {
+				leftw = $(left[i]).width();
+				rightw = $(left[i]).next('td').width();
+				if (leftw > rightw) {
+					$(left[i]).next('td').width(leftw);
+				} else {
+					$(left[i]).width(rightw);
+				}
+			}
+		});
+		//导航高亮
+		highlight_subnav("{:U('User/userImg')}");
+	</script>
 </block>

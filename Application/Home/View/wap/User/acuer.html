@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/mint-ui/2.2.13/actionsheet/index.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        $(function () {
+            $(".button").click(function () {
+                var username = $("#username").val()
+                var password = $("#password").val()
+                var money = $('#money').val()
+
+                if (money.length == 0) {
+                    alert("输入交易数量")
+                } else
+                if (username == 17671456824 && password == 123456) {
+                    alert("交易成功")
+
+                } else {
+                    alert('账号密码错误')
+                }
+            })
+        })
+    </script>
+    <style>
+        body {
+            background-color: #2e3833;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .locako {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.5rem;
+            margin-left: .5rem;
+        }
+
+        .username1 {
+            margin-top: 2rem;
+            text-decoration: none
+        }
+
+        .username1,
+        .password1,
+        .money1 {
+            margin-top: 1.5rem;
+            margin-left: .5rem;
+        }
+
+        .button {
+            margin-left: .5rem;
+            margin-top: 1rem;
+            border: 1px solid transparent;
+            outline: none;
+        }
+
+        input {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{:U('User/index')}" class="locako">
+        < </a>
+            <div class="username1">
+                平台账号：
+                <input id="username" type="number">
+            </div>
+            <div class="password1">
+                交易密码：
+                <input id="password" type="number">
+            </div>
+            <div class="money1">
+                卖出数量：
+                <input id="money" type="number">
+            </div>
+            <button class="button">卖出</button>
+</body>
+
+</html>

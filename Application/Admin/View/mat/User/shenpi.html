@@ -1,109 +1,123 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 <block name="style">
 
 </block>
 <block name="body">
-<notempty name="_list">
-<div class='opt_box'>
-<div class="fl">
-  <!--  <a class="btn btn-info" href="{:U('User/registuser')}"></a> -->
-    <button class="btn btn-success ajax-post" url="{:U('User/yunxu')}"
-            target-form="ids">审批</button>
-   <!--  <button class="btn ajax-post btn-danger confirm" url="{:U('User/freezeStatus',array('method'=>'freeze'))}"
+  <notempty name="_list">
+    <div class='opt_box'>
+      <div class="fl">
+        <!--  <a class="btn btn-info" href="{:U('User/registuser')}"></a> -->
+        <button class="btn btn-success ajax-post" url="{:U('User/yunxu')}" target-form="ids">审批</button>
+        <!--  <button class="btn ajax-post btn-danger confirm" url="{:U('User/freezeStatus',array('method'=>'freeze'))}"
             target-form="ids">冻结</button> -->
- </div>
- <include file='Public/search1'/>
- <div class='clear'></div>
-</div>
-<div class="row-fluid">
-<div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>{$meta_title}</h5>
-          </div>
-          <div class="widget-content nopadding">
+      </div>
+      <include file='Public/search1' />
+      <div class='clear'></div>
+    </div>
+    <div class="row-fluid">
+      <div class="widget-box">
+        <div class="widget-title">
+          <span class="icon">
+            <i class="icon-th"></i>
+          </span>
+          <h5>{$meta_title}</h5>
+        </div>
+        <div class="widget-content nopadding">
           <div class='dataTables_wrapper'>
             <table class="table table-bordered data-table" style="max-width:100%;">
               <thead>
                 <tr>
-                		<th style='text-align:left;'><input class="check-all" type="checkbox"/></th>
-                  		<th>{$Think.const.USERNUMBER}<i class="change-sort icon-sort icon-sort-down" data-field='uid'></i></th>
-						<th>{$Think.const.REALNAME}</th>
-						<th>开户行</th>
-						<th>银行卡号</th>
-						<th>支付宝号</th>
-						<th>身份证号</th>
-						<!--<th>身份证照</th>-->
-                       
-		                <th>{$Think.const.REG_TIME}</th>
-		               
-		                 <th>{$Think.const.TATUS}<i class="change-sort icon-sort" data-field='status'></i></th>
+                  <th style='text-align:left;'>
+                    <input class="check-all" type="checkbox" />
+                  </th>
+                  <th>{$Think.const.USERNUMBER}
+                    <i class="change-sort icon-sort icon-sort-down" data-field='uid'></i>
+                  </th>
+                  <th>{$Think.const.REALNAME}</th>
+                  <th>开户行</th>
+                  <th>银行卡号</th>
+                  <th>支付宝号</th>
+                  <th>身份证号</th>
+                  <!--<th>身份证照</th>-->
 
-		                <th>{$Think.const.OP}</th>
-						
+                  <th>{$Think.const.REG_TIME}</th>
+
+                  <th>{$Think.const.TATUS}
+                    <i class="change-sort icon-sort" data-field='status'></i>
+                  </th>
+
+                  <th>{$Think.const.OP}</th>
+
                 </tr>
               </thead>
               <tbody>
                 <volist name="_list" id="vo">
-                    <tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
-                    	<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}"/></td>
-                        <td>{$vo.usernumber}</td>
-                        <td>{$vo.realname}</td>
-                        <td>{$vo.bankname}</td>
-                        <td>{$vo.banknumber}</td>
-                         <td>{$vo.alipay}</td>
-                         <td>{$vo.IDcard}</td>
-                        <!-- <td>
+                  <tr style="<eq name='vo.isbill' value='1'>background-color:pink;</eq><eq name='vo.isbill' value='2'>background-color:pink;</eq>">
+                    <td>
+                      <input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" />
+                    </td>
+                    <td>{$vo.usernumber}</td>
+                    <td>{$vo.realname}</td>
+                    <td>{$vo.bankname}</td>
+                    <td>{$vo.banknumber}</td>
+                    <td>{$vo.alipay}</td>
+                    <td>{$vo.IDcard}</td>
+                    <!-- <td>
                          	<img src="{$vo.IDcard_z}" width='10px' height="10px" onclick="fangda($(this).attr('src'))">
                          	<img src="{$vo.IDcard_f}" width='10px' height="10px" onclick="fangda($(this).attr('src'))">
                          </td>-->
-                        
-                         
-                       	<td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
-						
-						<td>{$vo.status|get_user_status}</td>
 
-                        <td> 
- 						<if condition="$vo.shenpi gt 1">
- 						<p class="btn btn-mini btn-info">{$vo.shenpi|get_shenpi}</p>
- 						<else/>
- 						<a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('User/yunxu',array('id'=>$vo['uid']))}" >允许</a>
- 						<a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('User/jujue',array('id'=>$vo['uid']))}" >拒绝</a>
- 						</if>
- 						
- 						</td>
-                    </tr>
+
+                    <td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
+
+                    <td>{$vo.status|get_user_status}</td>
+
+                    <td>
+                      <if condition="$vo.shenpi gt 1">
+                        <p class="btn btn-mini btn-info">{$vo.shenpi|get_shenpi}</p>
+                        <else/>
+                        <a class="btn btn-mini btn-info ajax-get confirm" href="{:U('User/yunxu',array('id'=>$vo['uid']))}">允许</a>
+                        <a class="btn btn-mini btn-info ajax-get confirm" href="{:U('User/jujue',array('id'=>$vo['uid']))}">拒绝</a>
+                      </if>
+
+                    </td>
+                  </tr>
                 </volist>
               </tbody>
             </table>
             <div class="page">
-             {$_page}
+              {$_page}
             </div>
-          </div>
           </div>
         </div>
       </div>
- <else/>
-<include file='Public/emptylist' title="暂时没有会员"/>
-</notempty>
+    </div>
+    <else/>
+    <include file='Public/emptylist' title="暂时没有会员" />
+  </notempty>
 </block>
 <block name="script">
-<script type="text/javascript">
-function fangda(url){
-	layer.alert("<img src="+url+">")
-	/* layer.open({
-		  type: 1,
-		  skin: 'layui-layer-rim', //加上边框
-		  area: ['420px', '240px'], //宽高
-		  content: "<img src="+url+">"
-		}); */
-}
-		function login(uid,psd){
-			var index = layer.load('正在登陆，请耐心等待');
-			var url = "index.php?a=Home/Index/adminLogin";
-			$.post(url,{id:uid,psd:psd},tartet_success, "json");
-			return false;
-		}
-		
-		highlight_subnav("{:U('User/shenpi')}");
-	</script>
+  <script type="text/javascript">
+    function fangda(url) {
+      layer.alert("<img src=" + url + ">")
+      /* layer.open({
+      	  type: 1,
+      	  skin: 'layui-layer-rim', //加上边框
+      	  area: ['420px', '240px'], //宽高
+      	  content: "<img src="+url+">"
+      	}); */
+    }
+
+    function login(uid, psd) {
+      var index = layer.load('正在登陆，请耐心等待');
+      var url = "index.php?a=Home/Index/adminLogin";
+      $.post(url, {
+        id: uid,
+        psd: psd
+      }, tartet_success, "json");
+      return false;
+    }
+
+    highlight_subnav("{:U('User/shenpi')}");
+  </script>
 </block>
