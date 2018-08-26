@@ -1628,7 +1628,8 @@ function sendMsg($mobile)
         //发送短信
 //        $content="您本次的验证码为".$code."，请在5分钟内完成验证，验证码打死也不要告诉别人哦！";//要发送的短信内容
         // require_once COMMON_PATH . 'Util/SmsMeilian.class.php';
-        Vendor('SmsMeilian');
+        // Vendor('SmsMeilian');
+        require_once(APP_PATH . 'Common/Common/SmsMeilian.php');
         $username='tyj';  //用户名dctx
         $password_md5='5d93ceb70e2bf5daa84ec3d0cd2c731a';  //32位MD5密码加密，不区分大小写0b11ac988314c2399752d3b4d875b217
         $apikey='a9a28f8f9ad1f4510de0a2c350468fc0';  //apikey秘钥（请登录 http://m.5c.com.cn 短信平台-->账号管理-->我的信息 中复制apikey）e525954fc72f54324d3c4a7bd2fc20c6
