@@ -358,7 +358,7 @@ class IndexController extends HomeController{
           $ms["mobile"]=$mobile;
           $jl=D("msg")->where($ms)->find();
         if ($jl){
-            $this->error("短信已发送，请耐心等待");
+          //  $this->error("短信已发送，请耐心等待");
         }
 
 

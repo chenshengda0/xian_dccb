@@ -117,7 +117,7 @@ class PublicController extends \Think\Controller {
 	    $bonus->qd();		//清空签到
     	$bonus->fhsf();		//查看孵化仓
     	$bonus->fhc();		//孵化仓升息
-     $bonus->moneyup();
+     $bonus->moneyup();     //币价升值
      $this->success("孵化仓生息成功");
   }
   

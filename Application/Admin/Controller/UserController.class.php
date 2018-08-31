@@ -452,7 +452,7 @@ class UserController extends AdminController {
 			)
 		);
 		$this->searchCondition($maps,$arr);
-		dump($this->searchCondition($maps,$arr));
+	//	dump($this->searchCondition($maps,$arr));
 		$this->assign('sort',$sort);
 
 		//出局

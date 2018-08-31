@@ -198,19 +198,22 @@
 
 	<script>
 		$(function () {
-			var a = $(".add")
-			var c = $(".c")
-			console.log(a);
-			console.log(c = "红粉");
-			if (a.val() - 0 >= 6000 || a < 30000) {
+			var a = {$logininfo.hasbill};
+			var c ='';
+
+			//console.log(a);
+			//console.log(c = "红粉");
+			if (a - 0 >= 6000 || a < 30000) {
 				c = "蓝粉"
-			} else if (a.val() - 0 >= 30000 || a < 150000) {
+			} else if (a - 0 >= 30000 || a < 150000) {
 				c = "红粉"
-			} else if (a.val() - 0 >= 150000 || a < 300000) {
+			} else if (a - 0 >= 150000 || a < 300000) {
 				c = "银粉"
-			} else if (a.val() - 0 >= 300000) {
+			} else if (a - 0 >= 300000) {
 				c = "金粉"
 			}
+
+            $('.c').text(c);
 		})
 	</script>
 </head>
@@ -310,7 +313,7 @@
 			</div>
 			<div class="xia_t mui-pull-left" style="margin-top: 13px;">
 				<p>
-					<span style="font-size: .95em;">在线钱包</span>
+					<span style="font-size: .95em;">CITO钱包</span>
 				</p>
 				<p>
 					<span style="color: #fff;" class="add">{$logininfo.hasbill}</span>

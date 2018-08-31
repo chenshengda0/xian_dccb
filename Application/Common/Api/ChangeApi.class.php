@@ -119,7 +119,7 @@ final class ChangeApi
         $bonusRule=get_bonus_rule();
 
         foreach($member as $a){
-         
+
             $jj=$a["hasfh"]*$bonusRule["flx"]*0.01;
           	$jj=round($jj,3);
             D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hassf",$jj);

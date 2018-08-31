@@ -219,8 +219,8 @@ public function register(){
                 }else{
                     session('yzm',$yzm);
                     M('bonus_rule')->where(array('id'=>1))->setInc('duanxin',1);
-                    // $msg=msg(0,$yzm,$form,$mobil,0,$appid);
-                    sendMsg($mobil);
+                    $msg=msg(0,$yzm,$form,$mobil,0,$appid);
+
                     $this->success('发送成功,注意查收');
                 }     
             }else{

@@ -29,10 +29,11 @@ class HomeController extends CommonController {
 		if(!$fhtime){
             //如果没有，则进行一次分红
             $fh= new ChangeApi;
-             $fh->fh();
-             $fh->fhc();
-             $fh->daishu2();
+             $fh->fh();     //今天分红
+             $fh->fhc();    //孵化仓生息
+             $fh->daishu2();  //代数奖  ---------暂时没用
              $fh->zzz();
+             $fh->moneyup();  //币价升值
             //并在数据库插入当天的时间
             $data['time'] = time();
              $result = M('fh')->add($data);
