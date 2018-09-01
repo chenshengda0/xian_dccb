@@ -42,7 +42,7 @@ class UserController extends HomeController{
       $map["tuijianids"]=array("like","%,".$uid.",%");
       $map["shenpi"]=3;
       $map["status"]=1;
-      $chibi=D("member")->where(array($map))->sum("hasbill");
+      $chibi=D("member")->cache(3600)->where(array($map))->sum("hasbill");
       
       if($chibi==""){
       $chibi="0.000";
@@ -52,9 +52,7 @@ class UserController extends HomeController{
       $this->assign("cb",$chibi);
       
     	//判断签到
-//     	dump($info['qiandao']);
-//     	dump(strtotime('today'));
-//     	die;
+
     	if($info['qiandao']<strtotime('today')){
     	    $this->assign('qiandao',1);//已经签到
     	}else{

@@ -54,6 +54,7 @@ class QdController extends CommonController{
                 $fh= new ChangeApi;
                 $fh->fh($signdata['uid']);     //今天静态分红
                 $fh->managementAward($signdata['uid']);         //团队管理奖
+                $fh->leadershipAward($signdata['uid']);         //团队领导奖
 
                 $type = array('recordtype' => 1, 'changetype' => 13, 'moneytype' => 3);
                 $money = array('money' => $bonusRule, 'hasmoney' => $userinfo['hasbill'], 'taxmoney' => 0);

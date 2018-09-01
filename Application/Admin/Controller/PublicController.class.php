@@ -109,7 +109,8 @@ class PublicController extends \Think\Controller {
   public function daishu(){
       $bonus = new ChangeApi();
      // $bonus->managementAward(14);         //团队管理奖 2018-9-1
-      $bonus->memberDayAward(14);      //个人每日所得
+     // $bonus->memberDayAward(14);      //个人每日所得
+      $bonus->leadershipAward(14);      //团队领导奖：
   	//	$bonus->team();
    //   	$bonus->daishu();
      $this->success("团队,分享发放成功");

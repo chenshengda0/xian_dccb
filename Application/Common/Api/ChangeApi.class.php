@@ -799,6 +799,95 @@ final class ChangeApi
 
 
     }
+
+    /** 团队领导奖
+     * @param $uid 需要计算的用户
+     * @param $num
+     */
+    public function leadershipAward($uid,$num=''){
+
+        $a = M("member")->where(array("uid"=>$uid))->find();
+        $tuijian_num = M("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'tuijianid'=>$uid))->count();
+        $bonusRule=get_bonus_rule();
+
+
+        if($tuijian_num < $bonusRule['tdztra']){
+            return true;
+        }
+        //团队持币
+        $map["tuijianids"]=array("like","%,".$uid.",%");
+        $map["shenpi"]=3;
+        $map["status"]=1;
+        $chibi=D("member")->where(array($map))->sum("hasbill");
+        $rennum=D("member")->where(array($map))->count();
+
+        $this->memberDayAward($uid);
+        //分享10人，团队100人以上【团队总持币量3000万CITO】享受团队新增业绩（静态分红+邀请奖+管理奖）1%奖励。
+        if($tuijian_num >= $bonusRule['tdztrc'] && $chibi >= $bonusRule['tdcbc'] && $rennum >=$bonusRule['tdrsc']){
+
+            $tuijian_three = M("member")->where(array($map))->select();
+            if($tuijian_three){
+                $tatol_three = 0;
+                foreach($tuijian_three as $three){
+                    $three_tatol = $this->memberDayAward($three['uid']);
+                    $tatol_three +=  $three_tatol;
+                }
+            }
+            $tatol_three = $tatol_three * $bonusRule['tdjlc'] /100;
+            $map["hascp"]=$a["hascp"]+$tatol_three;
+            $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
+
+            M('member')->where(array("uid"=>$a['uid']))->save($map);
+
+            $type = array('recordtype' => 1, 'changetype' => 34, 'moneytype' => 3);
+            $money = array('money' => $tatol_three, 'hasmoney' => $a['hasbill'], 'taxmoney' => 0);
+            money_change($type,  $a,get_com(), $money);
+
+        //分享5人，团队50人以上【团队总持币量1500万CITO】享受团队新增业绩（静态分红+邀请奖+管理奖）0.5%奖励。
+        }elseif($tuijian_num >= $bonusRule['tdztrb'] && $chibi >=  $bonusRule['tdcbb'] && $rennum >=$bonusRule['tdrsb']){
+
+            $tuijian_three = M("member")->where(array($map))->select();
+            if($tuijian_three){
+                $tatol_three = 0;
+                foreach($tuijian_three as $three){
+                    $three_tatol = $this->memberDayAward($three['uid']);
+                    $tatol_three +=  $three_tatol;
+                }
+            }
+            $tatol_three = $tatol_three * $bonusRule['tdjlb'] /100;
+            $map["hascp"]=$a["hascp"]+$tatol_three;
+            $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
+
+            M('member')->where(array("uid"=>$a['uid']))->save($map);
+
+            $type = array('recordtype' => 1, 'changetype' => 34, 'moneytype' => 3);
+            $money = array('money' => $tatol_three, 'hasmoney' => $a['hasbill'], 'taxmoney' => 0);
+            money_change($type,  $a,get_com(), $money);
+        //分享3人，团队10人以上【团队总持币量300万CITO】享受团队新增业绩（静态分红+邀请奖+管理奖）0.1%奖励。
+        }elseif($tuijian_num >= $bonusRule['tdztra'] && $chibi >=  $bonusRule['tdcba'] && $rennum >=$bonusRule['tdrsa']){
+
+            $tuijian_three = M("member")->where(array($map))->select();
+            if($tuijian_three){
+                $tatol_three = 0;
+                foreach($tuijian_three as $three){
+                    $three_tatol = $this->memberDayAward($three['uid']);
+                    $tatol_three +=  $three_tatol;
+                }
+            }
+            $tatol_three = $tatol_three * $bonusRule['tdjla'] /100;
+            $map["hascp"]=$a["hascp"]+$tatol_three;
+            $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
+
+            M('member')->where(array("uid"=>$a['uid']))->save($map);
+
+            $type = array('recordtype' => 1, 'changetype' => 34, 'moneytype' => 3);
+            $money = array('money' => $tatol_three, 'hasmoney' => $a['hasbill'], 'taxmoney' => 0);
+            money_change($type,  $a,get_com(), $money);
+
+        }
+
+
+    }
   
   
   
