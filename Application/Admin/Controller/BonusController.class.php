@@ -12,7 +12,6 @@ class BonusController extends AdminController {
 		$maps['endtime'] = $endtime =  I('endtime',date("Y-m-d", time()));
 		$maps['usernumber'] = $usernumber =preg_replace('# #','',I('usernumber'));
 
-
 		$maps['changetype'] = $changetype = I('changetype',-2);
 		$recordtype=trim(I("ob"));
 
@@ -35,7 +34,7 @@ class BonusController extends AdminController {
 
 		}
 
-		dump($changetype);
+		//dump($changetype);
 		$maps["ob"]=$recordtype;
 
 		$map["money"]=array("neq",0);

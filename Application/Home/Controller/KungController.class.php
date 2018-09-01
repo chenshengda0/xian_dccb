@@ -4,6 +4,7 @@ namespace Home\Controller;
 use User\Api\UserApi;
 use Common\Api\BonusApi;
 use Common\Api\RelationApi;
+use Common\Api\ChangeApi;
 /**
  * 用户控制器
  */
@@ -1882,8 +1883,9 @@ class KungController extends HomeController{
          
             D('member')->where(array("uid"=>is_login(),"status"=>1,"shenpi"=>3))->setInc($fielin,$num);
             D('member')->where(array("uid"=>is_login(),"status"=>1,"shenpi"=>3))->setDec($fielout,$num);
-            
-      
+                // 2018-8-31 add
+              $bonus = new ChangeApi();
+              $bonus->tuijianBonus($userinfo['uid'],$num);
                 //自己流水
                 moneyChange(0,24,$userinfo,$userinfo,$num,$data[$fielout],0,2);
                 //对方流水

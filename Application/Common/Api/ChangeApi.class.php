@@ -28,8 +28,11 @@ final class ChangeApi
     /**
      * 每日分红(定时)
      */
-    public function fh(){
-        $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0)))->select();
+    public function fh($uid=''){
+        if($uid)
+            $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'uid'=>$uid))->select();
+        else
+            $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0)))->select();
         $bonusRule=get_bonus_rule();
 
         foreach($member as $a){
@@ -40,6 +43,7 @@ final class ChangeApi
                 $jj=$a["hasbill"]*$bonusRule["chiaa"]*0.01;
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
+                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -53,6 +57,7 @@ final class ChangeApi
 
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
+                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -64,6 +69,7 @@ final class ChangeApi
 
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
+                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -77,6 +83,7 @@ final class ChangeApi
                 $jj=$a["hasbill"]*$bonusRule["chiad"]*0.01;
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
+                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -91,13 +98,13 @@ final class ChangeApi
               		$a["hasbill"]=$a["hasbill"];
               }
               
-                $jj=$a["hasbill"]*$bonusRule["chiae"]*0.01;
+               // $jj=$a["hasbill"]*$bonusRule["chiae"]*0.01; //最高4级 2018-9-1 改
+                $jj=$a["hasbill"]*$bonusRule["chiad"]*0.01;
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
+                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
+
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
-
-                //计算生成的孵化仓数量
-
 
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -312,32 +319,34 @@ final class ChangeApi
      * 懒人奖(日)
      */
     public function zzz(){
-        $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0)))->select();
+        $member=D("member")->field('uid,tuijianid,hascp,hasjifen,hasfh,usernumber')->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0)))->select();
         $bonusRule=get_bonus_rule();
         foreach ($member as $a){
+            // 推荐人
             $userinfo=D("member")->where(array("uid"=>$a["tuijianid"],"status"=>1,"shenpi"=>3))->find();
+            //推荐人的直推人数
             $some=D("member")->where(array("tuijianid"=>$userinfo["uid"],"hasbill"=>array("gt",0)))->count();
-          //上代
+            //推荐人当日静态奖金
             $strtime=strtotime(date('Y-m-d',time()));
             $endtime=strtotime(date('Y-m-d',strtotime('+1 day')));
             $map["createtime"]=array(array("egt",$strtime),array("elt",$endtime));
             $map["changetype"]=7;
             $map["targetuserid"]=$userinfo["uid"];
             $money=D("moneyChange")->where($map)->find();
-
+            //本人当日奖金
             $mad["createtime"]=array(array("egt",$strtime),array("elt",$endtime));
             $mad["changetype"]=7;
             $mad["targetuserid"]=$a["uid"];
             $mon=D("moneyChange")->where($mad)->find();
-
+            // 奖金烧伤制 ，拿最低的奖金
             if($money!=""){
               if($mon["money"]>$money["money"]){
               	$jq=$money["money"];
               }else{
                 $jq=$mon["money"];
               }
-              
-              
+
+
                 $fhc=$jq/$some*$bonusRule["zzz"]*0.01*$bonusRule["flv"]*0.01;//孵化仓
                 $jj=$jq/$some*$bonusRule["zzz"]*0.01*(1-$bonusRule["flv"]*0.01);//所得奖金
 
@@ -409,7 +418,8 @@ final class ChangeApi
                 $uplevel=array(4,$bonusRule["chiad"]*0.01,$bonusRule["chibd"],$bonusRule["chicd"]*0.01);
 
             }elseif($a["hasbill"]>$bonusRule["chid"]&&$a["hasbill"]<=$bonusRule["chie"]){
-                $uplevel=array(5,$bonusRule["chiae"]*0.01,$bonusRule["chibe"],$bonusRule["chice"]*0.01);
+               // $uplevel=array(5,$bonusRule["chiae"]*0.01,$bonusRule["chibe"],$bonusRule["chice"]*0.01); //最高4级 2018-9-1改
+                $uplevel=array(4,$bonusRule["chiad"]*0.01,$bonusRule["chibd"],$bonusRule["chicd"]*0.01);
             }
      
         return $uplevel;
@@ -649,6 +659,144 @@ final class ChangeApi
 
 
         }
+
+    }
+
+    /** 直接邀请奖 动态每次复投（直接放到动态钱包）
+     * @param $uid 用户ID
+     * @param $num 复投的金额
+     */
+    public function tuijianBonus($uid,$num){
+
+        //获取推荐人的信息 用户提成比例
+        $user = M('member')->where(array('uid'=>$uid))->find();
+
+        if($user['tuijianid']){
+            $user_bl = $this->level($user);
+
+            $parent = M('member')->where(array('uid'=>$user['tuijianid']))->find();
+
+            $parent_bl = $this->level($parent);
+
+            //烧伤制，拿最低
+            if($parent_bl[3] > $user_bl[3]){
+                $jj = $user_bl[3] * $num;
+            }else{
+                $jj = $parent_bl[3] * $num;
+            }
+
+            //动态钱包  总钱包
+            D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$parent["uid"]))->setInc("hascp",$jj);
+            D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$parent["uid"]))->setInc("hasmoney",$jj);
+          //  unset($money);
+            $type = array('recordtype' => 1, 'changetype' => 20, 'moneytype' => 3);
+            $money = array('money' => $jj, 'hasmoney' => $parent['hascp'], 'taxmoney' => 0);
+            money_change($type, $parent, $user, $money);
+
+        }
+
+
+    }
+
+    /** 团队管理奖
+     * @param $uid  用户ID
+     */
+    public function managementAward($uid=''){
+
+        if($uid)
+            $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'uid'=>$uid))->select();
+        else
+            $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0)))->select();
+        $bonusRule=get_bonus_rule();
+
+        foreach($member as $a){
+            //一代直推
+            $tuijian_noe = M("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'tuijianid'=>$uid))->select();
+            if($tuijian_noe){
+                $tatol_noe = 0; $tatol_two =0; $tatol_three =0;
+                foreach($tuijian_noe as $noe){
+                    $noe_tatol = $this->memberDayAward($noe['uid']);
+                    //二代
+                    $tuijian_two = M("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'tuijianid'=>$noe['uid']))->select();
+                    if($tuijian_two){
+                        $total = 0;
+                        foreach($tuijian_two as $two){
+                            $two_tatol = $this->memberDayAward($two['uid']);
+                            //三代
+                            $tuijian_three = M("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'tuijianid'=>$two['uid']))->select();
+                            if($tuijian_three){
+                                $total = 0;
+                                foreach($tuijian_three as $three){
+                                    $three_tatol = $this->memberDayAward($three['uid']);
+                                    $tatol_three +=  $three_tatol;
+                                }
+                            }
+                            $tatol_two +=  $two_tatol;
+                        }
+                    }
+                    $tatol_noe +=  $noe_tatol;
+                }
+
+                $tatok = ($tatol_noe *$bonusRule["ztba"] / 100) + ($tatol_two *$bonusRule["ztbb"] / 100) + ($tatol_three *$bonusRule["ztbc"] / 100);
+
+                $map["hascp"]=$a["hascp"]+$tatok;
+                $map["hasmoney"]=$a["hasmoney"]+$tatok;
+
+                M('member')->where(array("uid"=>$a['uid']))->save($map);
+
+                $type = array('recordtype' => 1, 'changetype' => 33, 'moneytype' => 3);
+                $money = array('money' => $tatok, 'hasmoney' => $a['hasbill'], 'taxmoney' => 0);
+                money_change($type,  $a,get_com(), $money);
+
+            }
+        }
+
+
+
+    }
+
+    /** 今日用户的动静态奖励
+     * @param $uid 用户id
+     */
+    public function memberDayAward($uid){
+
+        $a = M("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'uid'=>$uid))->find();
+        $bonusRule=get_bonus_rule();
+        $jj = 0;
+        if ($a["hasbill"]>0&&$a["hasbill"]<$bonusRule["chia"]){
+
+            //分红
+            $jj=$a["hasbill"]*$bonusRule["chiaa"]*0.01;
+
+
+        }elseif($a["hasbill"]>=$bonusRule["chia"]&&$a["hasbill"]<$bonusRule["chib"]){
+
+            $jj=$a["hasbill"]*$bonusRule["chiab"]*0.01;
+
+
+        }elseif($a["hasbill"]>=$bonusRule["chib"]&&$a["hasbill"]<$bonusRule["chic"]){
+
+            $jj=$a["hasbill"]*$bonusRule["chiac"]*0.01;
+
+
+
+        }elseif($a["hasbill"]>=$bonusRule["chic"]&&$a["hasbill"]<$bonusRule["chid"]){
+
+            $jj=$a["hasbill"]*$bonusRule["chiad"]*0.01;
+
+        }elseif($a["hasbill"]>=$bonusRule["chid"]){
+            //最高拿4级 2018-9-1 改
+          /*  if($a["hasbill"]>$bonusRule["chie"]){
+                $a["hasbill"]=$bonusRule["chie"];
+            }else{
+                $a["hasbill"]=$a["hasbill"];
+            }*/
+            $jj=$a["hasbill"]*$bonusRule["chiad"]*0.01;
+
+        }
+
+        return $jj;
+
 
     }
   

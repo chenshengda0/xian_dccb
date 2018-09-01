@@ -42,34 +42,34 @@
 					<div class="control-group">
 						<label class="control-label">个人算力</label>
 						<div class="controls">
-							一星会员:大于0且在
+							蓝粉会员:大于0且在
 							<input name="chia" style='width:50px;' type="text" value="{$info.chia|default=''}" />
 							<span>币以下,每日按现有量的</span>
 							<input name="chiaa" style='width:50px;' type="text" value="{$info.chiaa|default=''}" />
 							<span>%分红
 
 								<br>
-								<br> 二星会员:在
+								<br> 红粉会员:在
 								<input name="chib" style='width:50px;' type="text" value="{$info.chib|default=''}" />
 								<span>币以下,每日按现有量的</span>
 								<input name="chiab" style='width:50px;' type="text" value="{$info.chiab|default=''}" />
 								<span>%分红
 
 									<br>
-									<br> 三星会员:在
+									<br> 银粉会员:在
 									<input name="chic" style='width:50px;' type="text" value="{$info.chic|default=''}" />
 									<span>币以下,每日按现有量的</span>
 									<input name="chiac" style='width:50px;' type="text" value="{$info.chiac|default=''}" />
 									<span>%分红
 
 										<br>
-										<br> 四星会员:在
+										<br> 金粉会员:在
 										<input name="chid" style='width:50px;' type="text" value="{$info.chid|default=''}" />
 										<span>币以下,每日按现有量的</span>
 										<input name="chiad" style='width:50px;' type="text" value="{$info.chiad|default=''}" />
 										<span>%分红
 
-											<br>
+											<!--<br>
 											<br> 五星会员:在
 											<input name="chie" style='width:50px;' type="text" value="{$info.chie|default=''}" />
 											<span>币以下,每日按现有量的</span>
@@ -77,7 +77,7 @@
 											<span>%分红
 
 												<br>
-												<br>
+												<br>-->
 
 						</div>
 					</div>
@@ -140,52 +140,37 @@
 
 
 					<div class="control-group">
-						<label class="control-label">分享算力</label>
+						<label class="control-label">直接邀请奖</label>
 						<div class="controls">
-							<span>一星会员:</span>
-							<span>拿</span>
-							<input name="chiba" style='width:50px;' type="text" value="{$info.chiba|default=''}" />
-							<span>代的</span>
+							<span>蓝粉会员:</span>
+							<span>直接邀请奖</span>
 							<input name="chica" style='width:50px;' type="text" value="{$info.chica|default=''}" />
-							<span>%每日分红</span>
+							<span>%动态奖励，烧伤值取最小</span>
 							<br/>
 							<br/>
 
-							<span>二星会员:</span>
-							<span>拿</span>
-							<input name="chibb" style='width:50px;' type="text" value="{$info.chibb|default=''}" />
-							<span>代的</span>
+							<span>红粉会员:</span>
+							<span>直接邀请奖</span>
 							<input name="chicb" style='width:50px;' type="text" value="{$info.chicb|default=''}" />
-							<span>%每日分红</span>
+							<span>%动态奖励，烧伤值取最小</span>
 							<br/>
 							<br/>
 
-							<span>三星会员:</span>
-							<span>拿</span>
-							<input name="chibc" style='width:50px;' type="text" value="{$info.chibc|default=''}" />
-							<span>代的</span>
+							<span>银粉会员:</span>
+							<span>直接邀请奖</span>
 							<input name="chicc" style='width:50px;' type="text" value="{$info.chicc|default=''}" />
-							<span>%每日分红</span>
+							<span>%动态奖励，烧伤值取最小</span>
 							<br/>
 							<br/>
 
-							<span>四星会员:</span>
-							<span>拿</span>
-							<input name="chibd" style='width:50px;' type="text" value="{$info.chibd|default=''}" />
-							<span>代的</span>
+							<span>金粉会员:</span>
+							<span>直接邀请奖</span>
 							<input name="chicd" style='width:50px;' type="text" value="{$info.chicd|default=''}" />
-							<span>%每日分红</span>
+							<span>%动态奖励，烧伤值取最小</span>
 							<br/>
 							<br/>
 
-							<span>五星会员:</span>
-							<span>拿</span>
-							<input name="chibe" style='width:50px;' type="text" value="{$info.chibe|default=''}" />
-							<span>代的</span>
-							<input name="chice" style='width:50px;' type="text" value="{$info.chice|default=''}" />
-							<span>%每日分红</span>
-							<br/>
-							<br/>
+
 
 
 
@@ -200,16 +185,16 @@
 					</div>
 
 					<div class="control-group">
-						<label class="control-label">团队算力</label>
+						<label class="control-label">管理奖</label>
 						<div class="controls">
 							直推
 							<input name="zta" style='width:50px;' type="text" value="{$info.zta|default=''}" />
 							<span>人
 								<!--,去掉</span>
                       <input  name="ztda" style='width:50px;' type="text" value="{$info.ztda|default=''}" />
-                      <span>大区-->,>旁区业绩</span>
-							<input name="ztaa" style='width:100px;' type="text" value="{$info.ztaa|default=''}" />
-							<span>,拿团队总持币量的</span>
+                      <span>大区-->,>拿</span>
+							<input name="ztaa" style='width:100px;' type="text" value="{$info.ztaa|default=''}" readonly="readonly" />
+							<span>,代会员总收益（动态+静态）的</span>
 							<input name="ztba" style='width:50px;' type="text" value="{$info.ztba|default=''}" />
 							<span>%</span>
 							<br>
@@ -218,9 +203,9 @@
 							<span>人
 								<!--,去掉</span>
                       <input  name="ztdb" style='width:50px;' type="text" value="{$info.ztdb|default=''}" />
-                      <span>大区-->,>旁区业绩</span>
-							<input name="ztab" style='width:100px;' type="text" value="{$info.ztab|default=''}" />
-							<span>,拿团队总持币量的</span>
+                      <span>大区-->,>拿</span>
+							<input name="ztab" style='width:100px;' type="text" value="{$info.ztab|default=''}" readonly="readonly" />
+							<span>,代会员总收益（动态+静态）的</span>
 							<input name="ztbb" style='width:50px;' type="text" value="{$info.ztbb|default=''}" />
 							<span>%</span>
 							<br>
@@ -229,46 +214,14 @@
 							<span>人,
 								<!--去掉</span>
                       <input  name="ztdc" style='width:50px;' type="text" value="{$info.ztdc|default=''}" />
-                      <span>大区,-->>旁区业绩</span>
-							<input name="ztac" style='width:100px;' type="text" value="{$info.ztac|default=''}" />
-							<span>,拿团队总持币量的</span>
+                      <span>大区,-->>拿</span>
+							<input name="ztac" style='width:100px;' type="text" value="{$info.ztac|default=''}" readonly="readonly" />
+							<span>,代会员总收益（动态+静态）的</span>
 							<input name="ztbc" style='width:50px;' type="text" value="{$info.ztbc|default=''}" />
 							<span>%</span>
 							<br>
-							<br> 直推
-							<input name="ztd" style='width:50px;' type="text" value="{$info.ztd|default=''}" />
-							<span>人,
-								<!--去掉</span>
-                      <input  name="ztdd" style='width:50px;' type="text" value="{$info.ztdd|default=''}" />
-                      <span>大区,-->>旁区业绩</span>
-							<input name="ztad" style='width:100px;' type="text" value="{$info.ztad|default=''}" />
-							<span>,拿团队总持币量的</span>
-							<input name="ztbd" style='width:50px;' type="text" value="{$info.ztbd|default=''}" />
-							<span>%</span>
-							<br>
-							<br> 直推
-							<input name="zte" style='width:50px;' type="text" value="{$info.zte|default=''}" />
-							<span>人,
-								<!--去掉</span>
-                      <input  name="ztde" style='width:50px;' type="text" value="{$info.ztde|default=''}" />
-                      <span>大区,-->>旁区业绩</span>
-							<input name="ztae" style='width:100px;' type="text" value="{$info.ztae|default=''}" />
-							<span>,拿团队总持币量的</span>
-							<input name="ztbe" style='width:50px;' type="text" value="{$info.ztbe|default=''}" />
-							<span>%</span>
-							<br>
-							<br> 直推
-							<input name="ztf" style='width:50px;' type="text" value="{$info.ztf|default=''}" />
-							<span>人,
-								<!--去掉</span>
-                      <input  name="ztde" style='width:50px;' type="text" value="{$info.ztde|default=''}" />
-                      <span>大区,-->旁区业绩</span>
-							<input name="ztaf" style='width:100px;' type="text" value="{$info.ztaf|default=''}" />
-							<span>,拿团队总持币量的</span>
-							<input name="ztbf" style='width:50px;' type="text" value="{$info.ztbf|default=''}" />
-							<span>%</span>
-							<br>
-							<br> (默认去掉一个大区业绩)
+
+
 						</div>
 					</div>
 

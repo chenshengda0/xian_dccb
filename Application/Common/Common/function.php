@@ -1739,7 +1739,7 @@ function arr_level($string,$key=0){
  * @param number $id
  */
 function get_bonus_rule($field='',$id=1){
-	$rule =   M('BonusRule')->where(array('id'=>$id))->find();
+	$rule =   M('BonusRule')->cache(60)->where(array('id'=>$id))->find();
 	
 	if(empty($field)){
 		return $rule;

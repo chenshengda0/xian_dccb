@@ -102,13 +102,16 @@ class PublicController extends \Think\Controller {
        
 	    $bonus = new ChangeApi();
 	    $bonus->fh();
-     	$bonus->zzz();
+       // $bonus->tuijianBonus(15,100);
+     	// $bonus->zzz();
 		 $this->success("分红成功");
     }
   public function daishu(){
       $bonus = new ChangeApi();
-  		$bonus->team();
-      	$bonus->daishu();
+     // $bonus->managementAward(14);         //团队管理奖 2018-9-1
+      $bonus->memberDayAward(14);      //个人每日所得
+  	//	$bonus->team();
+   //   	$bonus->daishu();
      $this->success("团队,分享发放成功");
   }
   
