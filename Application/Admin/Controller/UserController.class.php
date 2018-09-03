@@ -142,7 +142,7 @@ class UserController extends AdminController {
     			array('hasbill','在线钱包'),
           		array('hascp','动态钱包'),
     			
-    			array('pwd','密码'),
+    		//	array('pwd','密码'),
     			array('tuijiannumber','推荐人'),
     			
     			array('active_time','注册时间'),
@@ -166,7 +166,7 @@ class UserController extends AdminController {
     		}else{
     			$v['reg_type'] = '非院线';
     		}
-    		$v['pwd'] ="{$v['psd1']}/{$v['psd2']}";
+    	//	$v['pwd'] ="{$v['psd1']}/{$v['psd2']}";
     		$v['tuijiannumber'] = $v['tuijiannumber'];
     		$v['parentnumber'] = $v['parentnumber'];
     		$v['billcenterid'] = get_usernumber($v['billcenterid']);
@@ -175,6 +175,7 @@ class UserController extends AdminController {
     		$v['status'] = get_user_status($v['status']);
     	
     	}
+
     	$res=exportExcel($title,$a,$list);
     }
 
@@ -235,8 +236,8 @@ class UserController extends AdminController {
 			array('hascp','动态钱包'),
 			array('hasjifen','静态钱包'),
 
-			array('hasfh','孵化仓'),
-			array('hassf','孵化钱包'),
+		//	array('hasfh','孵化仓'),
+		//	array('hassf','孵化钱包'),
 
 
 			array('tuijiannumber','推荐人'),
@@ -263,7 +264,7 @@ class UserController extends AdminController {
 			}else{
 				$v['reg_type'] = '非院线';
 			}
-			$v['pwd'] ="{$v['psd1']}/{$v['psd2']}";
+		//	$v['pwd'] ="{$v['psd1']}/{$v['psd2']}";
 
 			$v['hascp'] = $v['hascp'];
 			$v['hasjifen'] = $v['hasjifen'];
@@ -271,8 +272,8 @@ class UserController extends AdminController {
 			$v['hassf'] = $v['hassf'];
 
 
-			$v['tuijiannumber'] = $v['tuijiannumber'];
-			$v['parentnumber'] = $v['parentnumber'];
+		//	$v['tuijiannumber'] = $v['tuijiannumber'];
+		//	$v['parentnumber'] = $v['parentnumber'];
 			$v['billcenterid'] = get_usernumber($v['billcenterid']);
 
 			$v['active_time'] = date('Y-m-d H:i:s',$v['active_time']);

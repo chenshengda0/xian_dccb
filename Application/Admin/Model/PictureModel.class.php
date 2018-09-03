@@ -33,7 +33,7 @@ class PictureModel extends Model{
         /*加水印处理*/
         foreach ($files as $key => $file) {
             $ext = strtolower($file['ext']);
-            if(in_array($ext, array('jpg','jpeg','bmp','png'))){
+            if(in_array($ext, array('jpg','jpeg','bmp','png','gif'))){
                 hook('dealPicture',$file['tmp_name']);
             }
         }

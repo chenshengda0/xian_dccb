@@ -195,7 +195,7 @@ public function register(){
                 $ms["mobile"]=$mobil;
                 $jl=D("msg")->where($ms)->find();
               //dump($jl);die;
-              if ($jl){
+                 if ($jl){
                     $this->error("您的短信已发送,请耐心等待");
                 }
 
@@ -219,7 +219,9 @@ public function register(){
                 }else{
                     session('yzm',$yzm);
                     M('bonus_rule')->where(array('id'=>1))->setInc('duanxin',1);
-                    $msg=msg(0,$yzm,$form,$mobil,0,$appid);
+                    $content = "【CIEX】你的验证码为：".$yzm."如非本人操作,请忽略本短信。切勿将短信验证码泄露个他人。";
+                    $msg=sendSMS($mobil,$content);
+                   // $msg=msg(0,$yzm,$form,$mobil,0,$appid);
 
                     $this->success('发送成功,注意查收');
                 }     
