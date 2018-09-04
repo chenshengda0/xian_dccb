@@ -26,7 +26,7 @@ class IndexController extends HomeController{
                 $ccode = I('ccode');
 
                 $strtime=time();
-                $endtime=$strtime-120;//5分钟有效期
+                $endtime=$strtime-300;//5分钟有效期
                 $ms["create_time"]=array(array("egt",$endtime),array("elt",$strtime));
                 $ms["mobile"]=$mobile;
                 $ms["msg"]=$ccode;
@@ -374,7 +374,17 @@ class IndexController extends HomeController{
         }else{
             session('denglu',$denglu);
             M('bonus_rule')->where(array('id'=>1))->setInc('duanxin',1);
-            msg(0,$denglu,$form,$mobile,0,$appid);
+            $content = "【CIEX】你的验证码为：".$denglu."如非本人操作,请忽略本短信。切勿将短信验证码泄露个他人。";
+            sendSMS($mobile,$content);
+
+            $map["mobile"]=$mobile;
+            $map["msg"]=$denglu;
+            $map["contents"]=$content;
+            $map["status"]=200;
+            $map["create_time"]=time();
+            $res=D("msg")->add($map);
+
+          // msg(0,$denglu,$form,$mobile,0,$appid);
             $this->success('发送成功,注意查收');
         }     
     }

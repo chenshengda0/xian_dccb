@@ -66,7 +66,7 @@ public function register(){
             if (empty($jl)){
                 $this->error("验证码错误");
             }
-          
+
           }
     		//地址
     		/*$province = I('province');
@@ -91,6 +91,10 @@ public function register(){
     		$reg_type = trim(I('reg_type'));		//会员类型
     		/*用户密码*/
     		$password1= I('password1');
+            $passwordconfirm= I('password2');
+            if($password1 != $passwordconfirm){
+                $this->error('两次输入密码不一致！');
+            }
     		$password2 ="123456";
     		$table = self::$Member->find();
     		if(!empty($table)){
@@ -165,6 +169,9 @@ public function register(){
               	$where['uid'] = array('in',$info['tuijianids']);
               	$where['status'] = 1;
               	self::$Member->where($where)->setInc('team',1);
+
+              	//分享奖励
+                $this->RecommendationAward($uid,$info['tuijianid']);
               	//算力
     	        $bonus = new BonusApi();
     	        $bonus->add_suanli($uid,0);
@@ -232,4 +239,23 @@ public function register(){
     
 
 }
+
+    /** 推荐人奖励
+     * @param $uid 用户 被推荐人
+     * @param $pid 推荐人ID
+     */
+    private function RecommendationAward($uid,$pid){
+        $bonusRule=get_bonus_rule();
+
+        $member=M("member")->where(array("status"=>1,'uid'=>$pid))->find();
+        $user=M("member")->where(array("status"=>1,'uid'=>$uid))->find();
+        $map["hascp"]=$member["hascp"]+$bonusRule['register_grant'];
+
+        M('member')->where(array("uid"=>$member['uid']))->save($map);
+
+        $type = array('recordtype' => 1, 'changetype' =>  35, 'moneytype' => 3);
+        $money = array('money' => $bonusRule['register_grant'], 'hasmoney' => $member['hasbill'], 'taxmoney' => 0);
+        money_change($type,  $member,$user, $money);
+
+    }
 }

@@ -82,7 +82,7 @@
 						</div>
 					</div>
 
-					<div class="control-group">
+			<!--		<div class="control-group">
 						<label class="control-label">共享算力</label>
 						<div class="controls">
 							可拿上一代日息的
@@ -91,9 +91,9 @@
 							<br>
 							<br>
 						</div>
-					</div>
+					</div>-->
 
-					<div class="control-group">
+			<!--		<div class="control-group">
 						<label class="control-label">孵化值</label>
 						<div class="controls">
 							拿每笔动态奖金的
@@ -106,7 +106,7 @@
 							<br>
 							<br>
 						</div>
-					</div>
+					</div>-->
 					<div class="control-group">
 						<label class="control-label">交易开关</label>
 						<div class="controls">
@@ -282,14 +282,19 @@
 			</div>-->
 
 					<div class="control-group">
-						<label class="control-label">今日币价/个</label>
+						<label class="control-label">今日CIEX币价/个</label>
 						<div class="controls">
 							<input name="eve_price" style='width:100px;' type="text" value="{$info.eve_price|default=''}" />
-							<span>元,</span>
+							<span>,</span>
 							且按
 							<input name="zizeng" style='width:100px;' type="text" value="{$info.zizeng|default=''}" />
-							<span>元/天,自增</span>
+							<span>/天,自增</span>
 
+						</div>
+						<label class="control-label">今日USDT币价/个</label>
+						<div class="controls">
+							<input name="usdt_price" style='width:100px;' type="text" value="{$info.usdt_price|default=''}" />
+							<span>
 						</div>
 						<label class="control-label">价格限制</label>
 						<div class="controls">
@@ -543,20 +548,38 @@
 							</div>
 						</div>
 
-						<div class="control-group">
+				<!--		<div class="control-group">
 							<label class="control-label">天使轮</label>
 							<div class="controls">
 								<span></span>
 								<input name="tsl" style='width:100px;' type="text" value="{$info.tsl|default=''}" />
 								<span></span>
 							</div>
-						</div>
+						</div>-->
 
 						<div class="control-group">
-							<label class="control-label">签到赠送</label>
+							<label class="control-label">首次连续签到赠送</label>
 							<div class="controls">
 
 								<input name="is_qd" style='width:100px;' type="text" value="{$info.is_qd|default=''}" />
+
+								<span>币</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">分享注册赠送</label>
+							<div class="controls">
+
+								<input name="share_grant" style='width:100px;' type="text" value="{$info.share_grant|default=''}" />
+
+								<span>币</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">注册送币</label>
+							<div class="controls">
+
+								<input name="register_grant" style='width:100px;' type="text" value="{$info.register_grant|default=''}" />
 
 								<span>币</span>
 							</div>

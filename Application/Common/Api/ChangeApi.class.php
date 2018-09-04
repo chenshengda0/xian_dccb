@@ -43,7 +43,7 @@ final class ChangeApi
                 $jj=$a["hasbill"]*$bonusRule["chiaa"]*0.01;
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
-                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
+              //  D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -57,7 +57,7 @@ final class ChangeApi
 
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
-                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
+             //   D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -69,7 +69,7 @@ final class ChangeApi
 
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
-                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
+          //      D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -83,7 +83,7 @@ final class ChangeApi
                 $jj=$a["hasbill"]*$bonusRule["chiad"]*0.01;
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
-                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
+           //     D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
                 $type = array('recordtype' => 1, 'changetype' => 7, 'moneytype' => 4);
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
@@ -102,7 +102,7 @@ final class ChangeApi
                 $jj=$a["hasbill"]*$bonusRule["chiad"]*0.01;
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);
                 D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("alljifen",$jj);
-                D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
+          //      D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$a["uid"]))->setInc("hasmoney",$jj);
 
                 self::bonusCount(7, $a, $jj, $a['hascp'], 0, 0);
 
@@ -740,7 +740,7 @@ final class ChangeApi
                 $tatok = ($tatol_noe *$bonusRule["ztba"] / 100) + ($tatol_two *$bonusRule["ztbb"] / 100) + ($tatol_three *$bonusRule["ztbc"] / 100);
 
                 $map["hascp"]=$a["hascp"]+$tatok;
-                $map["hasmoney"]=$a["hasmoney"]+$tatok;
+             //   $map["hasmoney"]=$a["hasmoney"]+$tatok;
 
                 M('member')->where(array("uid"=>$a['uid']))->save($map);
 
@@ -822,7 +822,7 @@ final class ChangeApi
         $rennum=D("member")->where(array($map))->count();
 
         $this->memberDayAward($uid);
-        //分享10人，团队100人以上【团队总持币量3000万CITO】享受团队新增业绩（静态分红+邀请奖+管理奖）1%奖励。
+        //分享10人，团队100人以上【团队总持币量3000万CIEX】享受团队新增业绩（静态分红+邀请奖+管理奖）1%奖励。
         if($tuijian_num >= $bonusRule['tdztrc'] && $chibi >= $bonusRule['tdcbc'] && $rennum >=$bonusRule['tdrsc']){
 
             $tuijian_three = M("member")->where(array($map))->select();
@@ -835,7 +835,7 @@ final class ChangeApi
             }
             $tatol_three = $tatol_three * $bonusRule['tdjlc'] /100;
             $map["hascp"]=$a["hascp"]+$tatol_three;
-            $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
+         //   $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
 
             M('member')->where(array("uid"=>$a['uid']))->save($map);
 
@@ -843,7 +843,7 @@ final class ChangeApi
             $money = array('money' => $tatol_three, 'hasmoney' => $a['hasbill'], 'taxmoney' => 0);
             money_change($type,  $a,get_com(), $money);
 
-        //分享5人，团队50人以上【团队总持币量1500万CITO】享受团队新增业绩（静态分红+邀请奖+管理奖）0.5%奖励。
+        //分享5人，团队50人以上【团队总持币量1500万CIEX】享受团队新增业绩（静态分红+邀请奖+管理奖）0.5%奖励。
         }elseif($tuijian_num >= $bonusRule['tdztrb'] && $chibi >=  $bonusRule['tdcbb'] && $rennum >=$bonusRule['tdrsb']){
 
             $tuijian_three = M("member")->where(array($map))->select();
@@ -856,14 +856,14 @@ final class ChangeApi
             }
             $tatol_three = $tatol_three * $bonusRule['tdjlb'] /100;
             $map["hascp"]=$a["hascp"]+$tatol_three;
-            $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
+         //   $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
 
             M('member')->where(array("uid"=>$a['uid']))->save($map);
 
             $type = array('recordtype' => 1, 'changetype' => 34, 'moneytype' => 3);
             $money = array('money' => $tatol_three, 'hasmoney' => $a['hasbill'], 'taxmoney' => 0);
             money_change($type,  $a,get_com(), $money);
-        //分享3人，团队10人以上【团队总持币量300万CITO】享受团队新增业绩（静态分红+邀请奖+管理奖）0.1%奖励。
+        //分享3人，团队10人以上【团队总持币量300万CIEX】享受团队新增业绩（静态分红+邀请奖+管理奖）0.1%奖励。
         }elseif($tuijian_num >= $bonusRule['tdztra'] && $chibi >=  $bonusRule['tdcba'] && $rennum >=$bonusRule['tdrsa']){
 
             $tuijian_three = M("member")->where(array($map))->select();
@@ -876,7 +876,7 @@ final class ChangeApi
             }
             $tatol_three = $tatol_three * $bonusRule['tdjla'] /100;
             $map["hascp"]=$a["hascp"]+$tatol_three;
-            $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
+       //     $map["hasmoney"]=$a["hasmoney"]+$tatol_three;
 
             M('member')->where(array("uid"=>$a['uid']))->save($map);
 

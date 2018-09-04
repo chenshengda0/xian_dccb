@@ -494,8 +494,8 @@ class KungController extends HomeController{
            if($danjia<get_bonus_rule('lm')){
           	$this->error("单价低于限制金额");
           }
-          
-          
+
+            $bonusRule=get_bonus_rule("jy_money");
           	$num=$shuliang*$danjia;
             $hight = get_bonus_rule('hight');
             $low = get_bonus_rule('low');
@@ -508,7 +508,7 @@ class KungController extends HomeController{
                     $this->error('提交数量必须是大于100的整倍数');
                 }
 				if($num<$bonusRule){
-                 $this->error('提交总金额不能低于'.$bonus);
+                 $this->error('提交总金额不能低于'.$bonusRule);
                 }
                 if(empty($shuliang) || $shuliang<0){
                     $this->error('提交数量不能为空');
@@ -1894,16 +1894,7 @@ class KungController extends HomeController{
             
           }
           
-           
-           
           
-          
-
-
-
-
-
-
         }else{
           $bonus=get_bonus_rule();
           $this->assign("bonus",$bonus);

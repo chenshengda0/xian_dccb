@@ -477,19 +477,31 @@ class UserController extends HomeController{
                             $this->error('身份验证失败');
                         }
                 }
-             /* if(empty($wechat)){
+                 if(empty($wechat)){
                     $this->error('请输入微信号');
                 }
 
                if(empty($alipaye)){
                     $this->error('请输入支付宝帐号');
-                }*/
+                }
+                //初次验证送币  2018-9-4
+                $user = self::$Member->where(array('uid'=>$uid))->find();
+                if(!$user['wechat'] && !$user['banknumber'] && !$user['IDcard'] && !$user['alipay']){
+                    $bonusRule=get_bonus_rule();
 
+                    $map["hascp"]=$user["hascp"]+$bonusRule['register_grant'];
 
+                    M('member')->where(array("uid"=>$uid))->save($map);
+
+                    $type = array('recordtype' => 1, 'changetype' =>  36, 'moneytype' => 3);
+                    $money = array('money' => $bonusRule['register_grant'], 'hasmoney' => $user['hasbill'], 'taxmoney' => 0);
+                    money_change($type,  $user,get_com(), $money);
+
+                }
 
                 $result = self::$Member->where(array('uid'=>$uid))->save($data);
                 if($result){
-                    $this->success('银行卡设置成功',U("kung/center"));
+                    $this->success('银行卡设置成功',U("user/index"));
                 }else{
                     $this->error('设置失败');
                 }
