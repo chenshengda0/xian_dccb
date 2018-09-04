@@ -247,8 +247,8 @@ public function register(){
     private function RecommendationAward($uid,$pid){
         $bonusRule=get_bonus_rule();
 
-        $member=M("member")->where(array("status"=>1,'uid'=>$pid))->find();
-        $user=M("member")->where(array("status"=>1,'uid'=>$uid))->find();
+        $member=M("member")->where(array('uid'=>$pid))->find();
+        $user=M("member")->where(array('uid'=>$uid))->find();
         $map["hascp"]=$member["hascp"]+$bonusRule['register_grant'];
 
         M('member')->where(array("uid"=>$member['uid']))->save($map);

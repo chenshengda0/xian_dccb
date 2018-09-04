@@ -30,7 +30,7 @@ final class ChangeApi
      */
     public function fh($uid=''){
         if($uid)
-            $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'uid'=>$uid))->select();
+            $member=D("member")->where(array("hasbill"=>array("gt",0),'uid'=>$uid))->select();
         else
             $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0)))->select();
         $bonusRule=get_bonus_rule();
@@ -704,7 +704,7 @@ final class ChangeApi
     public function managementAward($uid=''){
 
         if($uid)
-            $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0),'uid'=>$uid))->select();
+            $member=D("member")->where(array("hasbill"=>array("gt",0),'uid'=>$uid))->select();
         else
             $member=D("member")->where(array("status"=>1,"shenpi"=>3,"hasbill"=>array("gt",0)))->select();
         $bonusRule=get_bonus_rule();
