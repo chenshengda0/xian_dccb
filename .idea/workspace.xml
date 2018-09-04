@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb1f0e34-6f1b-4104-b147-0b4cdfd0c6fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,26 +27,26 @@
         <counts>
           <entry key="html" value="21" />
           <entry key="js" value="1" />
-          <entry key="php" value="32" />
+          <entry key="php" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="21" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="32" />
+          <entry key="PHP" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="147" />
-          <entry key="php" value="1264" />
+          <entry key="php" value="1266" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="147" />
-          <entry key="PHP" value="1264" />
+          <entry key="PHP" value="1266" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.rename.constructor" />
@@ -62,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/Application/Home/Controller/QdController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="589">
-              <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
+              <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
               <folding>
                 <element signature="e#33#54#0#PHP" expanded="true" />
               </folding>
@@ -79,15 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="317">
+              <caret line="196" lean-forward="true" selection-start-line="196" selection-end-line="196" />
             </state>
           </provider>
         </entry>
@@ -106,15 +103,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="858">
               <caret line="607" column="42" lean-forward="true" selection-start-line="607" selection-start-column="2" selection-end-line="607" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="1493" column="34" selection-start-line="1493" selection-start-column="23" selection-end-line="1493" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -149,6 +137,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="651">
+              <caret line="840" lean-forward="true" selection-start-line="840" selection-end-line="840" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Admin/View/mat/Config/group.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -160,7 +157,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>import1</find>
       <find>daochu</find>
       <find>M('Model')</find>
       <find>yanzhengma</find>
@@ -190,6 +186,7 @@
       <find>hascp</find>
       <find>group</find>
       <find>$IS_TRADING_HALL</find>
+      <find>'hasmoney'</find>
     </findStrings>
     <replaceStrings>
       <replace>CIEX</replace>
@@ -223,8 +220,8 @@
         <option value="$PROJECT_DIR$/Application/Home/View/wap/Index/index.html" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/QdController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/UserController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" />
       </list>
     </option>
   </component>
@@ -332,12 +329,12 @@
       <workItem from="1535791482940" duration="5061000" />
       <workItem from="1535941605242" duration="8496000" />
       <workItem from="1536028482441" duration="5749000" />
-      <workItem from="1536045126819" duration="8636000" />
+      <workItem from="1536045126819" duration="9369000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27942000" />
+    <option name="totallyTimeSpent" value="28675000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -627,23 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/QdController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
-          <folding>
-            <element signature="e#33#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="878" column="9" selection-start-line="878" selection-start-column="9" selection-end-line="878" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/User/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -684,12 +664,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
+        <state relative-caret-position="317">
+          <caret line="196" lean-forward="true" selection-start-line="196" selection-end-line="196" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/QdController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
           <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="e#33#54#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="840" lean-forward="true" selection-start-line="840" selection-end-line="840" />
         </state>
       </provider>
     </entry>

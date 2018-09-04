@@ -687,7 +687,7 @@ final class ChangeApi
 
             //动态钱包  总钱包
             D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$parent["uid"]))->setInc("hascp",$jj);
-            D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$parent["uid"]))->setInc("hasmoney",$jj);
+         //   D("member")->where(array("status"=>1,"shenpi"=>3,"uid"=>$parent["uid"]))->setInc("hasmoney",$jj);
           //  unset($money);
             $type = array('recordtype' => 1, 'changetype' => 20, 'moneytype' => 3);
             $money = array('money' => $jj, 'hasmoney' => $parent['hascp'], 'taxmoney' => 0);
