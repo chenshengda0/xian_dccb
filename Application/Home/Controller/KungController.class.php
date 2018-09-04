@@ -190,6 +190,11 @@ class KungController extends HomeController{
         	$this->error('请先完成您的资料才可进入交易大厅');
         }
 
+        $IS_TRADING_HALL = M('config')->where(array('name'=>'IS_TRADING_HALL'))->find();
+      	if($IS_TRADING_HALL['value'] == 0){
+            $this->error($IS_TRADING_HALL['remark']);
+        }
+
 
         /* 每日折线图数据*/
         $strtime=strtotime("today");        //今日凌晨
@@ -1574,7 +1579,15 @@ class KungController extends HomeController{
 
     //转出
     public  function moneyout(){
-	    if (IS_POST){
+
+        $IS_TRADING_HALL = M('config')->where(array('name'=>'IS_USER_TRANSFER'))->find();
+
+        if($IS_TRADING_HALL['value'] == 0){
+            $this->error($IS_TRADING_HALL['remark']);
+        }
+
+
+        if (IS_POST){
             $otherid = is_login();
             $uid = trim(I('usernumber'));
              // 判断当天有没有转账

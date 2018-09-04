@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb1f0e34-6f1b-4104-b147-0b4cdfd0c6fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/View/mat/BonusRule/bonusrule.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/mat/BonusRule/bonusrule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/View/mat/Index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/mat/Index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Conf/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Conf/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/Controller/QdController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/QdController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/Controller/RegisterController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/RegisterController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/Controller/UserController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/UserController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/Index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/Index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/Kung/center.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/Kung/center.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/Kung/maichu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/Kung/maichu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/Kung/mairu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/Kung/mairu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/Kung/moneyin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/Kung/moneyin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/Register/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/Register/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/User/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/User/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,28 +24,28 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="20" />
+          <entry key="html" value="21" />
           <entry key="js" value="1" />
-          <entry key="php" value="29" />
+          <entry key="php" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="20" />
+          <entry key="HTML" value="21" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="29" />
+          <entry key="PHP" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="147" />
-          <entry key="php" value="1216" />
+          <entry key="php" value="1264" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="147" />
-          <entry key="PHP" value="1216" />
+          <entry key="PHP" value="1264" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.rename.constructor" />
@@ -96,6 +79,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/User/pay_action.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -106,19 +102,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
+        <entry file="file://$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="1493" column="34" selection-start-line="1493" selection-start-column="23" selection-end-line="1493" selection-end-column="34" />
+            <state relative-caret-position="858">
+              <caret line="607" column="42" lean-forward="true" selection-start-line="607" selection-start-column="2" selection-end-line="607" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Admin/View/mat/BonusRule/bonusrule.html">
+        <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="581" column="122" selection-start-line="581" selection-start-column="108" selection-end-line="581" selection-end-column="122" />
+            <state relative-caret-position="100">
+              <caret line="1493" column="34" selection-start-line="1493" selection-start-column="23" selection-end-line="1493" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -136,15 +132,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/Index/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="138" column="79" selection-start-line="138" selection-start-column="79" selection-end-line="138" selection-end-column="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Common/Conf/lang.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="763">
@@ -154,25 +141,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/User/index.html">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/ConfigController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="326" column="64" selection-start-line="326" selection-start-column="59" selection-end-line="326" selection-end-column="64" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#p#1;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#p#0;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#p#1;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="412">
+              <caret line="141" column="29" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/mat/Config/group.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="878" column="9" selection-start-line="878" selection-start-column="9" selection-end-line="878" selection-end-column="9" />
-            </state>
+            <state relative-caret-position="-135" />
           </provider>
         </entry>
       </file>
@@ -180,8 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add</find>
-      <find>uploadpicture</find>
       <find>import1</find>
       <find>daochu</find>
       <find>M('Model')</find>
@@ -204,12 +182,14 @@
       <find>zzz</find>
       <find>yanzheng</find>
       <find>推荐</find>
-      <find>hascp</find>
       <find>购物购物币转保单币</find>
       <find>忘记密码</find>
       <find>pay_action</find>
       <find>parentids</find>
       <find>money_change</find>
+      <find>hascp</find>
+      <find>group</find>
+      <find>$IS_TRADING_HALL</find>
     </findStrings>
     <replaceStrings>
       <replace>CIEX</replace>
@@ -236,7 +216,6 @@
         <option value="$PROJECT_DIR$/Application/Home/View/wap/Register/index.html" />
         <option value="$PROJECT_DIR$/Application/Home/View/wap/User/index.html" />
         <option value="$PROJECT_DIR$/Application/Home/View/wap/Kung/moneyin.html" />
-        <option value="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/View/mat/BonusRule/bonusrule.html" />
         <option value="$PROJECT_DIR$/Application/Common/Conf/lang.php" />
@@ -245,6 +224,7 @@
         <option value="$PROJECT_DIR$/Application/Home/Controller/QdController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/UserController.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" />
+        <option value="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" />
       </list>
     </option>
   </component>
@@ -290,31 +270,14 @@
               <item name="xian_dccb" type="b2602c69:ProjectViewProjectNode" />
               <item name="xian_dccb" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xian_dccb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xian_dccb" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="mat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xian_dccb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xian_dccb" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="mat" type="462c0819:PsiDirectoryNode" />
-              <item name="BonusRule" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xian_dccb" type="b2602c69:ProjectViewProjectNode" />
               <item name="xian_dccb" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="Home" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xian_dccb" type="b2602c69:ProjectViewProjectNode" />
@@ -330,15 +293,6 @@
               <item name="Home" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
               <item name="wap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xian_dccb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xian_dccb" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Home" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="wap" type="462c0819:PsiDirectoryNode" />
-              <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -378,12 +332,12 @@
       <workItem from="1535791482940" duration="5061000" />
       <workItem from="1535941605242" duration="8496000" />
       <workItem from="1536028482441" duration="5749000" />
-      <workItem from="1536045126819" duration="7713000" />
+      <workItem from="1536045126819" duration="8636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27019000" />
+    <option name="totallyTimeSpent" value="27942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -562,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="1896" column="10" selection-start-line="1896" selection-start-column="10" selection-end-line="1896" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_8.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
@@ -617,13 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3689">
-          <caret line="607" column="42" lean-forward="true" selection-start-line="607" selection-start-column="2" selection-end-line="607" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/mat/BonusRule/bonusrule.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="649">
@@ -649,18 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/User/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="326" column="64" selection-start-line="326" selection-start-column="59" selection-end-line="326" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#p#1;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#1;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/Index/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
@@ -679,13 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="71" column="41" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="97" column="32" lean-forward="true" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -720,6 +641,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
           <caret line="878" column="9" selection-start-line="878" selection-start-column="9" selection-end-line="878" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/User/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="326" column="64" selection-start-line="326" selection-start-column="59" selection-end-line="326" selection-end-column="64" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#p#1;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#1;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="763">
+          <caret line="97" column="32" lean-forward="true" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/ConfigController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="141" column="29" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/mat/Config/group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="607" column="42" lean-forward="true" selection-start-line="607" selection-start-column="2" selection-end-line="607" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
