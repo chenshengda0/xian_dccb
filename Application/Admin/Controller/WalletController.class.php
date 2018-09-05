@@ -44,7 +44,7 @@ class WalletController extends AdminController {
                     // S('DB_CONFIG_DATA',null);
                     //记录行为
                     action_log('update_wallet', 'wallet', $id, UID);
-                    $this->success('新增成功');
+                    $this->success('新增成功',Cookie('__forward__'));
                 } else {
                     $this->error('新增失败');
                 }
@@ -52,10 +52,9 @@ class WalletController extends AdminController {
         } else {
             $this->assign('info',array('pid'=>I('pid')));
             $menus = M('Menu')->field(true)->select();
-            $menus = D('Common/Tree')->toFormatTree($menus);
-            $menus = array_merge(array(0=>array('id'=>0,'title_show'=>'顶级菜单')), $menus);
+           
             $this->assign('Menus', $menus);
-            $this->meta_title = '新增菜单';
+
             $this->display('edit');
         }
     }
@@ -76,7 +75,7 @@ class WalletController extends AdminController {
                     // S('DB_CONFIG_DATA',null);
                     //记录行为
                     action_log('update_wallet', 'wallet', $data['id'], UID);
-                    $this->success('更新成功');
+                    $this->success('更新成功',Cookie('__forward__'));
                 } else {
                     $this->error('更新失败');
                 }
@@ -104,10 +103,10 @@ class WalletController extends AdminController {
         }
 
         $map = array('id' => array('in', $id) );
-        if(M('Menu')->where($map)->delete()){
+        if(M('wallet')->where($map)->delete()){
             // S('DB_CONFIG_DATA',null);
             //记录行为
-            action_log('update_menu', 'Menu', $id, UID);
+            action_log('update_wallet', 'wallet', $id, UID);
             $this->success('删除成功');
         } else {
             $this->error('删除失败！');

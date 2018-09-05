@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb1f0e34-6f1b-4104-b147-0b4cdfd0c6fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/MenuController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/MenuController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/View/mat/Public/leftmenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/mat/Public/leftmenu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/Controller/RegisterController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/RegisterController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/dcchain.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/new.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/zx_action.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Data/zx_action.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xian_dccb.lnk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/WalletController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/WalletController.class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -302,15 +293,15 @@
       <workItem from="1536045126819" duration="9746000" />
       <workItem from="1536069853259" duration="2298000" />
       <workItem from="1536127437831" duration="4047000" />
-      <workItem from="1536132182985" duration="10996000" />
+      <workItem from="1536132182985" duration="11589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46393000" />
+    <option name="totallyTimeSpent" value="46986000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12260128" />
