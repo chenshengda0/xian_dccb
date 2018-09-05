@@ -264,6 +264,7 @@ class PublicController extends \Think\Controller {
           $result = M('fh')->add($data);
 
       }
+      $this->success("无访问权限",'/home/index/index');
 
   }
   
