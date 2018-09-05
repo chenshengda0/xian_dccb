@@ -717,13 +717,13 @@ class UserController extends HomeController{
                 $type=0;
                 $form=$bonusRule["gs_name"];     //公司名称
                 $appid=$bonusRule["appid"];       //短信ID
-                $msg=msg(0,$yzm,$form,$mobile,$type,$appid);
-                if ($msg==1){ 
+               // $msg=msg(0,$yzm,$form,$mobile,$type,$appid);
+                 $content = "【CIEX】你的验证码为：".$yzm."如非本人操作,请忽略本短信。切勿将短信验证码泄露个他人。";
+                 $msg=sendSMS($mobile,$content);
+
+                if ($msg){
                     M('bonus_rule')->where(array('id'=>1))->setInc('duanxin',1);
-                    $count =   M('bonus_rule')->where(array('id'=>1))->getField('duanxin');
-                    if($count>=10000){
-                        $this->error('短信条数不足请联系管理员');
-                    }
+
                     $this->success('发送成功');
                 }else{
                     $this->error('发送失败');

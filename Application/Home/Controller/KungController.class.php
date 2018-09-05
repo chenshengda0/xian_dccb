@@ -687,13 +687,17 @@ class KungController extends HomeController{
         $appid=$bonusRule["appid"];       //短信ID
       	
         if($myinfo['is_vip']==1){
-            $msg=msg(0,'您的订单已经匹配成功',$form,$myinfo['mobile'],1,$appid);
+           // $msg=msg(0,'您的订单已经匹配成功',$form,$myinfo['mobile'],1,$appid);
+            $content = "【CIEX】您的订单已经匹配成功";
+            $msg=sendSMS($myinfo['mobile'],$content);
             if ($msg==1){
                 M('bonus_rule')->where(array('id'=>1))->setInc('duanxin',1);
             }
         }
         if($youinfo['is_vip']==1){
-             $msg1=msg(0,'您的订单已经匹配成功',$form,$youinfo['mobile'],1,$appid);
+           //  $msg1=msg(0,'您的订单已经匹配成功',$form,$youinfo['mobile'],1,$appid);
+            $content = "【CIEX】您的订单已经匹配成功";
+            $msg=sendSMS($youinfo['mobile'],$content);
              if ($msg1==1){
                  M('bonus_rule')->where(array('id'=>1))->setInc('duanxin',1);
              }
@@ -1972,7 +1976,9 @@ class KungController extends HomeController{
                 }else{
                     session('denglu',$denglu);
                     M('bonus_rule')->where(array('id'=>1))->setInc('duanxin',1);
-                    msg(0,$denglu,$form,$mobile,0,$appid);
+                   // msg(0,$denglu,$form,$mobile,0,$appid);
+                    $content = "【CIEX】你的验证码为：".$denglu."如非本人操作,请忽略本短信。切勿将短信验证码泄露个他人。";
+                    $msg=sendSMS($mobile,$content);
                     $this->success('发送成功,注意查收');
                 }     
             }else{

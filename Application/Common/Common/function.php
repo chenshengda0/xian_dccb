@@ -1645,7 +1645,7 @@ function curlSMS($url,$post_fields=array())
     $data = curl_exec($ch);//抓取URL并把他传递给浏览器
     curl_close($ch);//释放资源
     $res = explode("\r\n\r\n",$data);//explode把他打散成为数组
-    return $res[2]; //然后在这里返回数组。
+    return $res; //然后在这里返回数组。
 }
 /*****************************/
 /**

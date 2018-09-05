@@ -81,11 +81,11 @@ class QdController extends CommonController{
                 }
 
 
-                //签到分红
-                $fh= new ChangeApi;
+                //签到分红 2018-9-5 改为自动分红
+            /*    $fh= new ChangeApi;
                 $fh->fh($signdata['uid']);     //今天静态分红
                 $fh->managementAward($signdata['uid']);         //团队管理奖
-                $fh->leadershipAward($signdata['uid']);         //团队领导奖
+                $fh->leadershipAward($signdata['uid']);         //团队领导奖*/
 
 
                 $this->success("签到成功");
