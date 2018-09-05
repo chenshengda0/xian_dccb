@@ -20,26 +20,7 @@ class HomeController extends CommonController {
         }
 
 
-        //判断是否进行分红   暂时放着
-        $sttime= strtotime(date('Y-m-d'),time());
-        $endtime = $sttime + 86400;
 
-		$maptiem['time'] =array('BETWEEN',array($sttime,$endtime));
-        $fhtime = M('fh')->where($maptiem)->find();
-		if(!$fhtime){
-		    /**- 2018-9-1 关闭，改为签到释放       */
-            //如果没有，则进行一次分红
-            $fh= new ChangeApi;
-          //   $fh->fh();     //今天静态分红
-         //    $fh->fhc();    //孵化仓生息--->自己的动态奖金生息
-          //   $fh->daishu2();  //代数奖  ---------暂时没用
-           //  $fh->zzz();      // 动态奖金---孵化制度->不需要
-             $fh->moneyup();  //币价升值
-            //并在数据库插入当天的时间
-            $data['time'] = time();
-             $result = M('fh')->add($data);
-
-        }
         /*加载页面判断是否开启网站*/
         $opwebt = get_bonus_rule('opwebt');
         $clwebt = get_bonus_rule('clwebt');

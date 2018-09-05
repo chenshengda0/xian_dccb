@@ -92,8 +92,8 @@ final class ChangeApi
 
             }elseif($a["hasbill"]>=$bonusRule["chid"]){
 
-              if($a["hasbill"]>$bonusRule["chie"]){
-              		$a["hasbill"]=$bonusRule["chie"];
+              if($a["hasbill"]>$bonusRule["chid"]){
+              		$a["hasbill"]=$bonusRule["chid"];
               }else{
               		$a["hasbill"]=$a["hasbill"];
               }
@@ -114,7 +114,8 @@ final class ChangeApi
 
             }
 
-
+            $this->managementAward($a['uid']);         //团队管理奖
+            $this->leadershipAward($a['uid']);         //团队领导奖*/
 
         }
 

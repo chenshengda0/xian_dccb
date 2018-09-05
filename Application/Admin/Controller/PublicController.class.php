@@ -100,28 +100,28 @@ class PublicController extends \Think\Controller {
     public function ceshi(){
      
        
-	    $bonus = new ChangeApi();
+	  //  $bonus = new ChangeApi();
 	  //  $bonus->fh();
        // $bonus->tuijianBonus(15,100);
      	// $bonus->zzz();
-		 $this->success("测试功能已关闭");
+		 $this->success("无访问权限");
     }
   public function daishu(){
-      $bonus = new ChangeApi();
+    //  $bonus = new ChangeApi();
      // $bonus->managementAward(14);         //团队管理奖 2018-9-1
      // $bonus->memberDayAward(14);      //个人每日所得
      // $bonus->leadershipAward(14);      //团队领导奖：
   	//	$bonus->team();
    //   	$bonus->daishu();
-     $this->success("测试功能已关闭");
+     $this->success("无访问权限");
   }
   
   public function qk(){
-   		$bonus = new ChangeApi();
+   	//	$bonus = new ChangeApi();
 	    $bonus->qd();		//清空签到
     	$bonus->fhsf();		//查看孵化仓
     	$bonus->fhc();		//孵化仓升息
-     $bonus->moneyup();     //币价升值
+        $bonus->moneyup();     //币价升值
      $this->success("孵化仓生息成功");
   }
   
@@ -235,10 +235,36 @@ class PublicController extends \Think\Controller {
     	$uinfo=D("member")->where(array("uid"=>$a["id"]))->find();
     	
       if(empty($uinfo)){
-      	D("ucenter_member")->where(array("id"=>$a["id"]))->delete();
+    //  	D("ucenter_member")->where(array("id"=>$a["id"]))->delete();
       }
      
     }
+  }
+
+    /**
+     *  每日定时释放任务 2018-9-5
+     */
+  public function timedTask(){
+
+      //判断是否进行分红   暂时放着
+      $sttime= strtotime(date('Y-m-d'),time());
+      $endtime = $sttime + 86400;
+
+      $maptiem['time'] =array('BETWEEN',array($sttime,$endtime));
+      $fhtime = M('fh')->where($maptiem)->find();
+      if(!$fhtime){
+
+          //如果没有，则进行一次分红
+          $fh= new ChangeApi;
+          $fh->fh();     //今天静态分红
+
+          $fh->moneyup();  //币价升值
+          //并在数据库插入当天的时间
+          $data['time'] = time();
+          $result = M('fh')->add($data);
+
+      }
+
   }
   
  
