@@ -34,6 +34,7 @@ class RegisterController extends CommonController{
      * 会员注册
      */
 public function register(){
+
     //$this->success('注册成功', U('index/index'));
     	if(IS_POST){
     		if(MODULE_NAME=='Admin'){
@@ -180,7 +181,7 @@ public function register(){
     			$this->error($this->regError($uid));
     		}
     	}
-    	 
+    $this->success('请登录', U('index/index'));
     }
     public function  yanzhengma(){
 //        $this->error(11);

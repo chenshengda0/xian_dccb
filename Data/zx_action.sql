@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-08-31 18:56:26
+Date: 2018-09-05 17:41:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -272,7 +272,6 @@ INSERT INTO `zx_attribute` VALUES ('29', 'template', '详情页显示模板', 'v
 INSERT INTO `zx_attribute` VALUES ('30', 'file_id', '文件ID', 'int(10) unsigned NOT NULL ', 'file', '0', '需要函数处理', '1', '', '3', '0', '1', '1383896415', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `zx_attribute` VALUES ('31', 'download', '下载次数', 'int(10) unsigned NOT NULL ', 'num', '0', '', '1', '', '3', '0', '1', '1383896380', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `zx_attribute` VALUES ('32', 'size', '文件大小', 'bigint(20) unsigned NOT NULL ', 'num', '0', '单位bit', '1', '', '3', '0', '1', '1383896371', '1383891252', '', '0', '', '', '', '0', '');
-INSERT INTO `zx_attribute` VALUES ('33', 'zx', '附件', 'int(10) UNSIGNED NOT NULL', 'file', '', '', '1', '', '2', '0', '1', '1395988634', '1395988634', '', '3', '', 'regex', '', '3', 'function');
 
 -- ----------------------------
 -- Table structure for zx_auth_extend
@@ -346,6 +345,9 @@ INSERT INTO `zx_auth_group_access` VALUES ('8', '6');
 INSERT INTO `zx_auth_group_access` VALUES ('9', '1');
 INSERT INTO `zx_auth_group_access` VALUES ('9', '5');
 INSERT INTO `zx_auth_group_access` VALUES ('9', '6');
+INSERT INTO `zx_auth_group_access` VALUES ('11', '1');
+INSERT INTO `zx_auth_group_access` VALUES ('11', '5');
+INSERT INTO `zx_auth_group_access` VALUES ('11', '6');
 
 -- ----------------------------
 -- Table structure for zx_auth_rule
@@ -814,13 +816,13 @@ CREATE TABLE `zx_bonus_count` (
 -- ----------------------------
 -- Records of zx_bonus_count
 -- ----------------------------
-INSERT INTO `zx_bonus_count` VALUES ('1', '1', '13289223170', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3531.60', '0.00', '20402.00', '1535558400', '0.00', '0.00');
-INSERT INTO `zx_bonus_count` VALUES ('2', '11', '18391032562', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '45.60', '0.00', '0.00', '1535558400', '0.00', '0.00');
-INSERT INTO `zx_bonus_count` VALUES ('3', '9', '17602906158', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '69.60', '0.00', '0.00', '1535558400', '0.00', '0.00');
-INSERT INTO `zx_bonus_count` VALUES ('4', '10', '15929285804', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '55.20', '0.00', '3602.00', '1535558400', '0.00', '0.00');
-INSERT INTO `zx_bonus_count` VALUES ('5', '12', '17629155243', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '24.00', '0.00', '2002.00', '1535558400', '0.00', '0.00');
-INSERT INTO `zx_bonus_count` VALUES ('6', '14', '18589020061', '0.00', '0.00', '0.00', '0.00', '1030.00', '58.71', '15260.43', '0.00', '79941.14', '1535558400', '0.00', '0.00');
-INSERT INTO `zx_bonus_count` VALUES ('7', '15', '18589020062', '0.00', '0.00', '0.00', '0.00', '0.42', '0.00', '1.60', '0.00', '20.36', '1535558400', '0.00', '0.00');
+INSERT INTO `zx_bonus_count` VALUES ('1', '14', '18589020061', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '21332.40', '0.00', '4820.64', '1535644800', '0.00', '0.00');
+INSERT INTO `zx_bonus_count` VALUES ('2', '15', '18589020062', '0.00', '0.00', '0.00', '0.00', '0.14', '0.00', '6620.80', '0.00', '70.10', '1535644800', '0.00', '0.00');
+INSERT INTO `zx_bonus_count` VALUES ('3', '14', '18589020061', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '325.00', '0.00', '426.00', '1535731200', '0.00', '0.00');
+INSERT INTO `zx_bonus_count` VALUES ('4', '15', '18589020062', '0.00', '0.00', '0.00', '0.00', '17.50', '0.00', '159.00', '0.00', '51663.77', '1535731200', '0.00', '0.00');
+INSERT INTO `zx_bonus_count` VALUES ('5', '16', '18826564012', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.99', '0.00', '199.00', '1535817600', '0.00', '0.00');
+INSERT INTO `zx_bonus_count` VALUES ('6', '16', '18826564012', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '1.39', '0.00', '299.00', '1535990400', '0.00', '0.00');
+INSERT INTO `zx_bonus_count` VALUES ('7', '19', '18062926291', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '1200.00', '0.00', '0.00', '1536076800', '0.00', '0.00');
 
 -- ----------------------------
 -- Table structure for zx_bonus_pools
@@ -968,13 +970,28 @@ CREATE TABLE `zx_bonus_rule` (
   `outbl` int(11) DEFAULT '100' COMMENT '卖出比例',
   `buybl` int(11) DEFAULT '0' COMMENT '购买奖励比例',
   `byj` int(11) DEFAULT '0' COMMENT '买币的保证金',
+  `tdztra` int(6) DEFAULT NULL COMMENT '领导奖直推人数',
+  `tdztrb` int(6) DEFAULT NULL COMMENT '领导奖直推人数',
+  `tdztrc` int(6) DEFAULT NULL COMMENT '领导奖直推人数',
+  `tdrsa` int(6) DEFAULT NULL COMMENT '领导奖团队人数',
+  `tdrsb` int(6) DEFAULT NULL COMMENT '领导奖团队人数',
+  `tdrsc` int(6) DEFAULT NULL COMMENT '领导奖团队人数',
+  `tdcba` int(10) DEFAULT NULL COMMENT '领导奖 团队持币',
+  `tdcbb` int(10) DEFAULT NULL COMMENT '领导奖 团队持币',
+  `tdcbc` int(10) DEFAULT NULL COMMENT '领导奖 团队持币',
+  `tdjla` decimal(5,2) DEFAULT NULL COMMENT '领导奖奖励比例',
+  `tdjlb` decimal(5,2) DEFAULT NULL COMMENT '领导奖奖励比例',
+  `tdjlc` decimal(5,2) DEFAULT NULL COMMENT '领导奖奖励比例',
+  `usdt_price` decimal(10,4) NOT NULL COMMENT 'USDT 币价',
+  `share_grant` smallint(6) NOT NULL COMMENT '分享送币',
+  `register_grant` smallint(6) NOT NULL COMMENT '注册送币',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='奖金规则表';
 
 -- ----------------------------
 -- Records of zx_bonus_rule
 -- ----------------------------
-INSERT INTO `zx_bonus_rule` VALUES ('1', '奖金规则', '1:300,2:3000', '10', '1:1:1,2:0.9:1,3:0.8:1,4:0.7:1,5:0.6:1,6:0.5:1,7:0.4:1,8:0.3:1,9:0.2:1,10:0.1:1', '1:0.01,2:0.015,3:0.02,4:0.025,5:0.03,6:0.035,7:0.04,8:0.045,9:0.05,10:0.055', '0.1', '1:1000,2:3000,3:5000', '0.00', '0.00', '1', '100', '100', '10000', '200.00', '200', '10', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30', '1:100000:208.33333:100,2:10000:19.44444445:10,3:1000:1.80555556:1,4:100:0.16666667:0.1,5:10:0.01527778:0.01', '1:0.05:3:0.03,2:0.01:30:10,3:0.005:50:15', '50', '1:5:30:0.2,2:15:300:0.15,3:25:3000:0.1,4:50:30000:0.05', '12', '12', '5', '5,50,10,0,0,0,0.2,99', '15,150,30,3,0,0,0.15,99', '45,450,200,0,3,0,0.1,99', '50,30000,0,0,3,0.05,99', '6', '1.43', 'e1269e4cd0224ef0a21ccbc27fde2da4', '1', '3', '2', '39.8', '0', '1.30', '1.35', '1320', '0,0.8,0.2,1,5,10,20', '0,0.8,0.2,1,1,4,1', '124', '1', '5', '4', '3', '2', '1312', '0', '24', '6.6172', '15.00', '10', '1.00', '10', '0.10', '0', '50', '1.35', '1.35', '2100.00', '1092.00', '6000', '30000', '150000', '300000', '500000', '0.2', '0.25', '0.3', '0.4', '0.5', '1', '2', '3', '4', '6', '0.1', '0.15', '0.2', '0.25', '0.3', '3', '6', '9', '15', '20', '600000', '1200000', '3000000', '5000000', '8000000', '0.05', '0.1', '0.15', '0.2', '0.25', '0.00', '0.00', '0.00', '0.00', '0.00', '35', '10.00', '10', '100', '210000000', '8930000', '5000000', '0.02', '10', '10', '10', '1', '1.35', '1.35', '100', '10', '1000', '1', '7', '24', '100', '10', '10');
+INSERT INTO `zx_bonus_rule` VALUES ('1', '奖金规则', '1:300,2:3000', '10', '1:1:1,2:0.9:1,3:0.8:1,4:0.7:1,5:0.6:1,6:0.5:1,7:0.4:1,8:0.3:1,9:0.2:1,10:0.1:1', '1:0.01,2:0.015,3:0.02,4:0.025,5:0.03,6:0.035,7:0.04,8:0.045,9:0.05,10:0.055', '0.1', '1:1000,2:3000,3:5000', '0.00', '0.00', '1', '100', '100', '10000', '200.00', '200', '10', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30', '1:100000:208.33333:100,2:10000:19.44444445:10,3:1000:1.80555556:1,4:100:0.16666667:0.1,5:10:0.01527778:0.01', '1:0.05:3:0.03,2:0.01:30:10,3:0.005:50:15', '50', '1:5:30:0.2,2:15:300:0.15,3:25:3000:0.1,4:50:30000:0.05', '12', '12', '5', '5,50,10,0,0,0,0.2,99', '15,150,30,3,0,0,0.15,99', '45,450,200,0,3,0,0.1,99', '50,30000,0,0,3,0.05,99', '6', '0.30', 'e1269e4cd0224ef0a21ccbc27fde2da4', '1', '3', '2', '39.8', '0', '0.20', '0', '1320', '0,0.8,0.2,1,5,10,20', '0,0.8,0.2,1,1,4,1', '124', '1', '5', '4', '3', '2', '1320', '0', '24', '6.6172', '15.00', '10', '1.00', '10', '0.10', '0', '50', '0.22', '0.25', '5000.00', '1250.00', '6000', '30000', '150000', '300000', '500000', '0.2', '0.25', '0.3', '0.4', '0.5', '1', '2', '3', '4', '6', '6', '8', '10', '12', '0.3', '1', '3', '5', '15', '20', '1', '2', '3', '5000000', '8000000', '15', '20', '25', '0.2', '0.25', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '10.00', '10', '100', '10000000000', '6000000000', '50000000', '0.02', '0', '0', '0', '100', '0.20', '0.25', '100', '10', '1000', '1', '7', '24', '100', '10', '10', '3', '5', '10', '10', '50', '100', '3000000', '15000000', '30000000', '1.00', '2.00', '3.00', '0.0000', '0', '0');
 
 -- ----------------------------
 -- Table structure for zx_bonus_total
@@ -998,18 +1015,15 @@ CREATE TABLE `zx_bonus_total` (
   `tax_money` decimal(10,2) DEFAULT '0.00' COMMENT '爱心基金',
   PRIMARY KEY (`id`),
   UNIQUE KEY `touserid` (`touserid`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='奖金总计表';
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='奖金总计表';
 
 -- ----------------------------
 -- Records of zx_bonus_total
 -- ----------------------------
-INSERT INTO `zx_bonus_total` VALUES ('1', '1', '13289223170', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3531.60', '0.00', '20402.00', '1535634340', '0.00', '0.00');
-INSERT INTO `zx_bonus_total` VALUES ('2', '11', '18391032562', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '45.60', '0.00', '0.00', '1535634340', '0.00', '0.00');
-INSERT INTO `zx_bonus_total` VALUES ('3', '9', '17602906158', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '69.60', '0.00', '0.00', '1535634340', '0.00', '0.00');
-INSERT INTO `zx_bonus_total` VALUES ('4', '10', '15929285804', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '55.20', '0.00', '3602.00', '1535634340', '0.00', '0.00');
-INSERT INTO `zx_bonus_total` VALUES ('5', '12', '17629155243', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '24.00', '0.00', '2002.00', '1535634340', '0.00', '0.00');
-INSERT INTO `zx_bonus_total` VALUES ('6', '14', '18589020061', '0.00', '0.00', '0.00', '0.00', '1030.00', '58.71', '15260.43', '0.00', '79941.14', '1535634340', '0.00', '0.00');
-INSERT INTO `zx_bonus_total` VALUES ('7', '15', '18589020062', '0.00', '0.00', '0.00', '0.00', '0.42', '0.00', '1.60', '0.00', '20.36', '1535634340', '0.00', '0.00');
+INSERT INTO `zx_bonus_total` VALUES ('1', '14', '18589020061', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '21657.40', '0.00', '5246.64', '1535790997', '0.00', '0.00');
+INSERT INTO `zx_bonus_total` VALUES ('2', '15', '18589020062', '0.00', '0.00', '0.00', '0.00', '17.64', '0.00', '6779.80', '0.00', '51733.87', '1535790676', '0.00', '0.00');
+INSERT INTO `zx_bonus_total` VALUES ('3', '16', '18826564012', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2.38', '0.00', '498.00', '1536031729', '0.00', '0.00');
+INSERT INTO `zx_bonus_total` VALUES ('4', '19', '18062926291', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '1200.00', '0.00', '0.00', '1536113469', '0.00', '0.00');
 
 -- ----------------------------
 -- Table structure for zx_category
@@ -1157,7 +1171,7 @@ CREATE TABLE `zx_config` (
   UNIQUE KEY `uk_name` (`name`),
   KEY `type` (`type`),
   KEY `group` (`group`)
-) ENGINE=MyISAM AUTO_INCREMENT=289 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=291 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zx_config
@@ -1203,7 +1217,7 @@ INSERT INTO `zx_config` VALUES ('96', 'IS_MOBIL', '4', '开启手机网站功能
 INSERT INTO `zx_config` VALUES ('97', 'COM_TITLE', '1', '会员称谓', '1', '', '修改会员在前台的称谓', '1433317378', '1433317457', '1', 'CIEX', '0');
 INSERT INTO `zx_config` VALUES ('98', 'DENY_LEVEL', '1', '禁止显示级别', '3', '', '禁止显示级别用\" , \"号隔开', '1388845937', '1388845937', '1', '1', '0');
 INSERT INTO `zx_config` VALUES ('100', 'IS_BILL', '4', '开户币', '4', '0:关闭,1:开启', '开启后充值会自动充为开户币', '1428656342', '1429685447', '1', '1', '0');
-INSERT INTO `zx_config` VALUES ('101', 'LOGO', '7', '后台网站logo', '9', '', '网站logo建议比例大小：271:70,格式为png', '1434092587', '1434680803', '1', '481', '0');
+INSERT INTO `zx_config` VALUES ('101', 'LOGO', '7', '后台网站logo', '9', '', '网站logo建议比例大小：271:70,格式为png', '1434092587', '1434680803', '1', '485', '0');
 INSERT INTO `zx_config` VALUES ('102', 'SHOP_TITLE', '1', '商城名称', '8', '', '商城显示名称', '1434335059', '1434606939', '1', '购物商城', '0');
 INSERT INTO `zx_config` VALUES ('201', 'BANK_NAME', '1', '开户行', '2', '', '公司账号所属银行', '1429252287', '1429252287', '1', '', '0');
 INSERT INTO `zx_config` VALUES ('202', 'BANK_USER', '1', '开户人', '2', '', '公司账号开户人', '1429252347', '1429252426', '1', '', '0');
@@ -1216,9 +1230,9 @@ INSERT INTO `zx_config` VALUES ('208', 'HOT_BUY', '0', '热销阀值', '8', '', 
 INSERT INTO `zx_config` VALUES ('209', 'SERVICE_QQ', '3', 'QQ客服', '8', '', '方便买家联系', '1434612327', '1434612327', '1', '3453768524 \r\n', '0');
 INSERT INTO `zx_config` VALUES ('210', 'SERVICE_PHONE', '3', '客服电话', '8', '', '客服电话', '1434613143', '1434613143', '1', '0373-5117770', '0');
 INSERT INTO `zx_config` VALUES ('211', 'SEND_PHONE', '0', '卖家联系电话', '8', '', '', '1434615672', '1434615672', '1', '0373-5017770', '0');
-INSERT INTO `zx_config` VALUES ('212', 'ADMIN_LOGIN_LOGO', '7', '后台登陆logo', '9', '', '格式为png,透明背景,比例大小：274*71', '1434680901', '1434684082', '1', '481', '0');
-INSERT INTO `zx_config` VALUES ('213', 'HOME_LOGO', '7', '前台logo', '9', '', '格式为png，背景透明,大小比例4*1', '1434682796', '1434684869', '1', '482', '0');
-INSERT INTO `zx_config` VALUES ('214', 'HOME_LOGIN_LOGO', '7', '前台登陆页logo', '9', '', '格式：png；背景透明；大小比例332*80', '1434682853', '1434684194', '1', '482', '0');
+INSERT INTO `zx_config` VALUES ('212', 'ADMIN_LOGIN_LOGO', '7', '后台登陆logo', '9', '', '格式为png,透明背景,比例大小：274*71', '1434680901', '1434684082', '1', '485', '0');
+INSERT INTO `zx_config` VALUES ('213', 'HOME_LOGO', '7', '前台logo', '9', '', '格式为png，背景透明,大小比例4*1', '1434682796', '1434684869', '1', '484', '0');
+INSERT INTO `zx_config` VALUES ('214', 'HOME_LOGIN_LOGO', '7', '前台登陆页logo', '9', '', '格式：png；背景透明；大小比例332*80', '1434682853', '1434684194', '1', '484', '0');
 INSERT INTO `zx_config` VALUES ('215', 'URANK_NAME', '3', '会员级别名称', '2', '', '会员级别对应名称', '1436248721', '1512548854', '1', '1:蓝粉\r\n2:红粉\r\n3:银粉\r\n4:金粉\r\n5:铂金\r\n\r\n', '0');
 INSERT INTO `zx_config` VALUES ('278', 'DIVID_DAY', '1', '允许分红日期', '2', '', '只能写0-6的数字分别表示星期日到星期六,多个数字用\" , \"号隔开(在英文输入法下输入)', '1388845937', '1436175468', '0', '0,2,3,4,5,6', '0');
 INSERT INTO `zx_config` VALUES ('279', 'REGTYPE_NAME', '3', '会员职务名称', '2', '', '', '1436256572', '1436256572', '0', '0:职工\r\n1:主任\r\n2:经理\r\n3:监理\r\n4:总监\r\n5:董事\r\n6:股东', '0');
@@ -1230,7 +1244,9 @@ INSERT INTO `zx_config` VALUES ('284', 'RG_MONEY', '1', '充值面额', '2', '',
 INSERT INTO `zx_config` VALUES ('285', 'ALLOW_BANK', '3', '允许使用银行', '2', '', '注册时会员可使用的银行', '1439371835', '1439371875', '1', '1:工商银行\r\n2:建设银行\r\n\r\n\r\n', '0');
 INSERT INTO `zx_config` VALUES ('286', 'RESET_PWD', '1', '重置密码', '1', '', '重置密码所需电子币', '1439796904', '1439796952', '1', '0', '0');
 INSERT INTO `zx_config` VALUES ('287', 'PWD_UNUMBER', '1', '会员编号', '1', '', '重置密码扣费流入账户,0表示流入公司', '1439802135', '1439802135', '1', '0', '0');
-INSERT INTO `zx_config` VALUES ('288', 'HOME_LOGO_BG', '7', '前台背景图片', '9', '', '', '1489144266', '1489144266', '1', '415', '0');
+INSERT INTO `zx_config` VALUES ('288', 'HOME_LOGO_BG', '7', '前台背景图片', '9', '', '', '1489144266', '1489144266', '1', '484', '0');
+INSERT INTO `zx_config` VALUES ('289', 'IS_TRADING_HALL', '4', '关闭交易大厅', '6', '0:关闭,1:开启', '交易大厅暂时关闭，如有不便，敬请原谅', '1378898976', '1428652640', '1', '1', '1');
+INSERT INTO `zx_config` VALUES ('290', 'IS_USER_TRANSFER', '4', '关闭会员互转', '6', '0:关闭,1:开启', '会员互转暂时关闭，如有不便，敬请原谅', '1378898976', '1428652640', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for zx_cron
@@ -46475,7 +46491,7 @@ CREATE TABLE `zx_document` (
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of zx_document
@@ -46508,11 +46524,12 @@ INSERT INTO `zx_document` VALUES ('40', '0', '', 'NWTT未来的方向及发展�
 INSERT INTO `zx_document` VALUES ('41', '0', '', '关于NWTT矿机', '49', '', '0', '0', '2', '1', '0', '0', '0', '1', '1510968420', '0', '0', '0', '0', '0', '1510968420', '1525924934', '-1');
 INSERT INTO `zx_document` VALUES ('43', '0', '', '如何成为AGL的一份子?', '47', '', '0', '0', '2', '1', '0', '0', '0', '0', '1513149660', '0', '0', '0', '0', '0', '1513149660', '1521791554', '-1');
 INSERT INTO `zx_document` VALUES ('44', '0', '', '新会员注册和实名认证注意事项', '47', '', '0', '0', '2', '1', '0', '0', '0', '0', '1513150140', '0', '0', '0', '0', '0', '1513150140', '1521791556', '-1');
-INSERT INTO `zx_document` VALUES ('45', '0', '', '只有努力才会有美好的明天', '46', '', '0', '0', '2', '1', '0', '0', '0', '0', '1513214220', '0', '0', '0', '0', '0', '1513214220', '1525925017', '1');
+INSERT INTO `zx_document` VALUES ('45', '0', '', '只有努力才会有美好的明天', '46', '', '0', '0', '2', '1', '0', '0', '0', '0', '1513214220', '0', '0', '0', '0', '0', '1513214220', '1535808667', '-1');
 INSERT INTO `zx_document` VALUES ('46', '0', '', '12312', '47', '', '0', '0', '2', '1', '0', '0', '0', '0', '1523499840', '0', '0', '0', '0', '0', '1523499840', '1523499957', '-1');
 INSERT INTO `zx_document` VALUES ('47', '0', '', '推荐分享', '47', '', '0', '0', '2', '1', '0', '0', '0', '0', '1523499900', '0', '0', '0', '0', '0', '1523499900', '1523500206', '1');
-INSERT INTO `zx_document` VALUES ('48', '0', '', '测试', '46', '123', '0', '0', '2', '1', '0', '0', '0', '0', '1528609320', '0', '0', '0', '0', '0', '1528609320', '1528609390', '1');
+INSERT INTO `zx_document` VALUES ('48', '0', '', '测试', '46', '123', '0', '0', '2', '1', '0', '0', '0', '0', '1528609320', '0', '0', '0', '0', '0', '1528609320', '1535808671', '-1');
 INSERT INTO `zx_document` VALUES ('49', '0', '', '阿萨德', '49', '', '0', '0', '2', '1', '0', '0', '0', '0', '1528609440', '0', '0', '0', '0', '0', '1528609440', '1535627885', '1');
+INSERT INTO `zx_document` VALUES ('51', '0', '', '测试', '46', '', '0', '0', '2', '1', '0', '0', '0', '0', '1535872560', '0', '0', '0', '0', '0', '1535872560', '1535872616', '1');
 
 -- ----------------------------
 -- Table structure for zx_document_article
@@ -46564,6 +46581,7 @@ INSERT INTO `zx_document_article` VALUES ('46', '0', '312发的球队前往都�
 INSERT INTO `zx_document_article` VALUES ('47', '0', '<h1>\r\n	<span style=\"color:#FFFFFF;\">\r\n	<h2 style=\"font-family:Simsun;font-size:medium;\">\r\n		<span style=\"color:#FFFFFF;background-color:#000000;\">一、免费注册，1枚起投，所有奖励按持有数量分配，买卖自由，交易价格单边上扬</span><br />\r\n<span style=\"color:#FFFFFF;background-color:#000000;\">二、免费注册，1枚起投，所有奖励按持有数量分配，买卖自由，交易价格单边上扬</span>\r\n	</h2>\r\n</span> \r\n</h1>', '', '0', '0');
 INSERT INTO `zx_document_article` VALUES ('48', '0', '<p>\r\n	<span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span><span>测试</span>\r\n</p>\r\n<p>\r\n	<span><span>测试</span></span>\r\n</p>\r\n<p>\r\n	<span><span>测试</span></span>\r\n</p>\r\n<p>\r\n	<span><span>测试</span></span>\r\n</p>\r\n<p>\r\n	<span><span>测试</span></span>\r\n</p>\r\n<p>\r\n	<span><br />\r\n</span>\r\n</p>', '', '0', '0');
 INSERT INTO `zx_document_article` VALUES ('49', '0', '<span style=\"color:#CC0000;font-family:arial;font-size:13px;background-color:#FFFFFF;\"><span style=\"color:#CC0000;font-family:arial;font-size:13px;background-color:#FFFFFF;\">投资有风险</span><span style=\"color:#333333;font-family:arial;font-size:13px;background-color:#FFFFFF;\">,入市需要谨慎</span></span>', '', '0', '0');
+INSERT INTO `zx_document_article` VALUES ('51', '0', '测试', '', '0', '0');
 
 -- ----------------------------
 -- Table structure for zx_document_download
@@ -46630,7 +46648,7 @@ CREATE TABLE `zx_fh` (
   `time` varchar(255) DEFAULT NULL,
   `count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zx_fh
@@ -46645,6 +46663,12 @@ INSERT INTO `zx_fh` VALUES ('9', '1529427084', '0');
 INSERT INTO `zx_fh` VALUES ('10', '1529518403', '0');
 INSERT INTO `zx_fh` VALUES ('11', '1529600367', '0');
 INSERT INTO `zx_fh` VALUES ('33', '1535634340', '0');
+INSERT INTO `zx_fh` VALUES ('34', '1535713267', '0');
+INSERT INTO `zx_fh` VALUES ('35', '1535732542', '0');
+INSERT INTO `zx_fh` VALUES ('36', '1535819877', '0');
+INSERT INTO `zx_fh` VALUES ('37', '1535911390', '0');
+INSERT INTO `zx_fh` VALUES ('38', '1535990702', '0');
+INSERT INTO `zx_fh` VALUES ('39', '1536080660', '0');
 
 -- ----------------------------
 -- Table structure for zx_field
@@ -46865,13 +46889,13 @@ CREATE TABLE `zx_jiaoyi` (
   `tag` varchar(255) DEFAULT NULL COMMENT '订单号',
   `huilv` varchar(255) DEFAULT '0' COMMENT '交易完成汇率',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zx_jiaoyi
 -- ----------------------------
-INSERT INTO `zx_jiaoyi` VALUES ('1', '0', '', '1', '13289223170', '615.000', '12300.000', '100.000', '1528603889', null, null, null, '1', '0', null, '123.000', 'D6100388915243259936', '0');
-INSERT INTO `zx_jiaoyi` VALUES ('2', '0', '', '1', '13289223170', '756.450', '15129.000', '123.000', '1528603918', null, null, null, '1', '0', null, '123.000', 'D6100391885713202900', '0');
+INSERT INTO `zx_jiaoyi` VALUES ('1', '16', '18826564012', '1', '13289223170', null, '12300.000', '100.000', '1528603889', '1535878884', null, null, '2', '0', null, '123.000', 'D6100388915243259936', '0');
+INSERT INTO `zx_jiaoyi` VALUES ('2', '16', '18826564012', '1', '13289223170', null, '15129.000', '123.000', '1528603918', '1536020940', null, null, '2', '0', null, '123.000', 'D6100391885713202900', '0');
 INSERT INTO `zx_jiaoyi` VALUES ('3', '0', '', '1', '13289223170', '610.000', '12200.000', '100.000', '1528603981', null, null, null, '1', '0', null, '122.000', 'D6100398185373516415', '0');
 INSERT INTO `zx_jiaoyi` VALUES ('4', '0', '', '1', '13289223170', '616.100', '12322.000', '101.000', '1528603992', null, null, null, '1', '0', null, '122.000', 'D6100399218932587124', '0');
 INSERT INTO `zx_jiaoyi` VALUES ('5', '0', '', '1', '13289223170', '500.000', '10000.000', '100.000', '1528604255', null, null, null, '1', '0', null, '100.000', 'D6100425564739862999', '0');
@@ -46895,10 +46919,11 @@ INSERT INTO `zx_jiaoyi` VALUES ('22', '6', '18049553861', '9', '17602906158', '5
 INSERT INTO `zx_jiaoyi` VALUES ('23', '10', '15929285804', '0', '', '500.000', '10000.000', '100.000', '1529057718', null, null, '1529390254', '4', '0', null, '100.000', 'D6155771873431366012', '0');
 INSERT INTO `zx_jiaoyi` VALUES ('24', '11', '18391032562', '10', '15929285804', '3075.000', '61500.000', '500.000', '1529649948', '1529649989', '1529650230', '1529650438', '5', '0', './Uploads/Home/jyrz/2018-06-22/5b2c9c36178c5.png', '123.000', 'D6224994888844699900', '6.6172');
 INSERT INTO `zx_jiaoyi` VALUES ('25', '13', '18629495961', '12', '17629155243', '6150.000', '123000.000', '1000.000', '1529650084', '1529650099', '1529650610', '1529650618', '5', '0', './Uploads/Home/jyrz/2018-06-22/5b2c9db2dcf56.jpg', '123.000', 'D6225008471266635002', '6.6172');
-INSERT INTO `zx_jiaoyi` VALUES ('26', '11', '18391032562', '0', '', '3075.000', '61500.000', '500.000', '1529650464', null, null, null, '1', '0', null, '123.000', 'D6225046437575200882', '0');
-INSERT INTO `zx_jiaoyi` VALUES ('27', '10', '15929285804', '0', '', '67.500', '1350.000', '1000.000', '1529652092', null, null, null, '1', '0', null, '1.350', 'D6225209222926916225', '0');
+INSERT INTO `zx_jiaoyi` VALUES ('26', '11', '18391032562', '16', '18826564012', '3075.000', '61500.000', '500.000', '1529650464', '1535878602', '1535878694', null, '3', '0', './Uploads/Home/jyrz/2018-09-02/5b8ba6267cbbb.jpg', '123.000', 'D6225046437575200882', '0');
+INSERT INTO `zx_jiaoyi` VALUES ('27', '10', '15929285804', '16', '18826564012', '67.500', '1350.000', '1000.000', '1529652092', '1536020886', null, null, '2', '0', null, '1.350', 'D6225209222926916225', '0');
 INSERT INTO `zx_jiaoyi` VALUES ('28', '12', '17629155243', '0', '', '135.000', '2700.000', '2000.000', '1529652439', null, null, null, '1', '0', null, '1.350', 'D6225243904078533548', '0');
 INSERT INTO `zx_jiaoyi` VALUES ('29', '9', '17602906158', '0', '', '337.500', '6750.000', '5000.000', '1529652898', null, null, null, '1', '0', null, '1.350', 'D6225289857789755304', '0');
+INSERT INTO `zx_jiaoyi` VALUES ('30', '0', '', '16', '18826564012', '10.000', '115000.000', '1000.000', '1535879627', null, null, '1536020897', '4', '0', null, '115.000', 'D9027962757487303813', '0');
 
 -- ----------------------------
 -- Table structure for zx_kuangji
@@ -46920,7 +46945,7 @@ CREATE TABLE `zx_kuangji` (
   `stoptime` char(12) DEFAULT NULL COMMENT '停止时间',
   `pprevtime` char(12) DEFAULT NULL COMMENT '上次开始时间',
   PRIMARY KEY (`iid`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zx_kuangji
@@ -46939,6 +46964,44 @@ INSERT INTO `zx_kuangji` VALUES ('11', '12', null, '5', '0', '0', '0.10', '0.166
 INSERT INTO `zx_kuangji` VALUES ('12', '13', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1529572129', null, '0');
 INSERT INTO `zx_kuangji` VALUES ('13', '14', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1535626866', null, '0');
 INSERT INTO `zx_kuangji` VALUES ('14', '15', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1535629362', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('15', '16', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1535874401', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('16', '17', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536020794', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('17', '18', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536067600', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('18', '19', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536067764', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('19', '20', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536068230', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('20', '21', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536068311', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('21', '22', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536068664', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('22', '23', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536068787', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('23', '24', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536068890', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('24', '25', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536068942', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('25', '26', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536070572', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('26', '27', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536070673', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('27', '28', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536071062', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('28', '29', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536071162', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('29', '30', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536071667', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('30', '31', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536071708', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('31', '32', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072035', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('32', '33', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072108', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('33', '34', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072150', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('34', '35', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072200', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('35', '36', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072271', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('36', '37', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072331', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('37', '38', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072391', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('38', '39', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072448', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('39', '40', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072527', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('40', '41', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072678', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('41', '42', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072722', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('42', '43', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072788', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('43', '44', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072838', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('44', '45', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536072933', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('45', '46', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536073039', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('46', '47', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536073093', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('47', '48', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536073173', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('48', '49', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536073254', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('49', '50', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536073302', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('50', '51', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536139515', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('51', '52', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536139586', null, '0');
+INSERT INTO `zx_kuangji` VALUES ('52', '53', null, '5', '0', '0', '0.10', '0.16666667', '0.00000000', '0.00000000', '1', '1536139621', null, '0');
 
 -- ----------------------------
 -- Table structure for zx_liuyan
@@ -46958,7 +47021,7 @@ CREATE TABLE `zx_liuyan` (
   `tostatus` tinyint(4) DEFAULT '1' COMMENT '收件箱删除：删除0，未删除1',
   `yidu` tinyint(4) DEFAULT '0' COMMENT '0未读 1读了',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员留言';
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员留言';
 
 -- ----------------------------
 -- Records of zx_liuyan
@@ -46985,6 +47048,46 @@ INSERT INTO `zx_liuyan` VALUES ('19', '0', '14', '充值成功', '公司已经�
 INSERT INTO `zx_liuyan` VALUES ('20', '0', '14', '充值成功', '公司已经给你充值300000在线钱包', null, '1535627333', null, '0', '1', '1', '0');
 INSERT INTO `zx_liuyan` VALUES ('21', '0', '14', '充值成功', '公司已经给你充值300000在线钱包', null, '1535630873', null, '0', '1', '1', '0');
 INSERT INTO `zx_liuyan` VALUES ('22', '0', '14', '充值成功', '公司已经给你充值1在线钱包', null, '1535630929', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('23', '0', '15', '充值成功', '公司已经给你充值1000总钱包', null, '1535736680', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('24', '0', '15', '充值成功', '公司已经给你充值100总钱包', null, '1535816883', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('25', '0', '16', '充值成功', '公司已经给你充值1000总钱包', null, '1535874693', null, '0', '1', '1', '1');
+INSERT INTO `zx_liuyan` VALUES ('26', '0', '16', '充值成功', '公司已经给你充值500在线钱包', null, '1535874712', null, '0', '1', '1', '1');
+INSERT INTO `zx_liuyan` VALUES ('27', '0', '16', '充值成功', '公司已经给你充值100动态钱包', null, '1535874734', null, '0', '1', '1', '1');
+INSERT INTO `zx_liuyan` VALUES ('28', '0', '19', '充值成功', '公司已经给你充值300000在线钱包', null, '1536068376', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('29', '0', '20', '充值成功', '公司已经给你充值300000在线钱包', null, '1536068474', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('30', '0', '21', '充值成功', '公司已经给你充值300000总钱包', null, '1536068510', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('31', '0', '22', '充值成功', '公司已经给你充值150000在线钱包', null, '1536068688', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('32', '0', '23', '充值成功', '公司已经给你充值30000在线钱包', null, '1536068979', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('33', '0', '24', '充值成功', '公司已经给你充值6000在线钱包', null, '1536069005', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('34', '0', '25', '充值成功', '公司已经给你充值6000在线钱包', null, '1536069029', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('35', '0', '26', '充值成功', '公司已经给你充值300000在线钱包', null, '1536070691', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('36', '0', '27', '充值成功', '公司已经给你充值300000在线钱包', null, '1536070739', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('37', '0', '28', '充值成功', '公司已经给你充值150000在线钱包', null, '1536071213', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('38', '0', '29', '充值成功', '公司已经给你充值150000在线钱包', null, '1536071302', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('39', '0', '30', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073339', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('40', '0', '31', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073375', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('41', '0', '32', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073394', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('42', '0', '33', '充值成功', '公司已经给你充值30000在线钱包', null, '1536073454', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('43', '0', '34', '充值成功', '公司已经给你充值6000在线钱包', null, '1536073474', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('44', '0', '35', '充值成功', '公司已经给你充值150000在线钱包', null, '1536073493', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('45', '0', '36', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073734', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('46', '0', '37', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073765', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('47', '0', '38', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073784', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('48', '0', '39', '充值成功', '公司已经给你充值150000在线钱包', null, '1536073809', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('49', '0', '40', '充值成功', '公司已经给你充值30000在线钱包', null, '1536073829', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('50', '0', '41', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073868', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('51', '0', '42', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073884', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('52', '0', '43', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073925', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('53', '0', '43', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073942', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('54', '0', '43', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073959', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('55', '0', '44', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073982', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('56', '0', '45', '充值成功', '公司已经给你充值300000在线钱包', null, '1536073997', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('57', '0', '46', '充值成功', '公司已经给你充值300000总钱包', null, '1536074018', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('58', '0', '46', '充值成功', '公司已经给你充值300000在线钱包', null, '1536074086', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('59', '0', '47', '充值成功', '公司已经给你充值300000在线钱包', null, '1536074101', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('60', '0', '48', '充值成功', '公司已经给你充值300000在线钱包', null, '1536074120', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('61', '0', '49', '充值成功', '公司已经给你充值300000在线钱包', null, '1536074143', null, '0', '1', '1', '0');
+INSERT INTO `zx_liuyan` VALUES ('62', '0', '50', '充值成功', '公司已经给你充值300000在线钱包', null, '1536074169', null, '0', '1', '1', '0');
 
 -- ----------------------------
 -- Table structure for zx_local_comment
@@ -47027,12 +47130,12 @@ CREATE TABLE `zx_manager` (
   `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '管理员状态',
   PRIMARY KEY (`mid`),
   UNIQUE KEY `mname` (`mname`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zx_manager
 -- ----------------------------
-INSERT INTO `zx_manager` VALUES ('1', 'admin', '2252121286@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1428249899', '2130706433', '1535640846', '2130706433', '1527599291', '2130706433', '1206', '1');
+INSERT INTO `zx_manager` VALUES ('1', 'admin', '2252121286@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1428249899', '2130706433', '1536138931', '1901557589', '1527599291', '2130706433', '1224', '1');
 INSERT INTO `zx_manager` VALUES ('3', 'yhf001', '2252121286@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1428280805', '2130706433', '1428377427', '2130706433', '0', null, '2', '-1');
 INSERT INTO `zx_manager` VALUES ('4', 'manager', '222@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1438675943', '2130706433', '0', '', '1488937230', null, '0', '-1');
 INSERT INTO `zx_manager` VALUES ('5', 'shangcheng', '123@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1448611107', '2130706433', '1448611260', '2130706433', '1509976565', null, '2', '-1');
@@ -47040,7 +47143,8 @@ INSERT INTO `zx_manager` VALUES ('6', 'zhangsan', 'dsfadsfasdf@qq.com', 'f232e8a
 INSERT INTO `zx_manager` VALUES ('7', 'agl123', '123456@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1509976628', '1999108173', '1512609203', '2130706433', '0', null, '154', '1');
 INSERT INTO `zx_manager` VALUES ('8', 'sy1122', '1556691300@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1526033707', '1965313098', '0', '', '0', null, '0', '1');
 INSERT INTO `zx_manager` VALUES ('9', 'admin11', '1592969504@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1528606040', '0', '1528611425', '0', '0', null, '3', '1');
-INSERT INTO `zx_manager` VALUES ('10', 'admin1111', '1592969505@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1528615554', '0', '0', '', '0', null, '0', '1');
+INSERT INTO `zx_manager` VALUES ('10', 'admin1111', '1592969505@qq.com', 'f232e8ac99ecb53d52c281bdc34779ac', '1528615554', '0', '0', '', '1535808711', null, '0', '-1');
+INSERT INTO `zx_manager` VALUES ('11', 'admin_test', '313862421@qq.com', 'e71cae5eb0632063b4e54f6c569ef365', '1535873095', '1901556832', '0', '', '0', null, '0', '1');
 
 -- ----------------------------
 -- Table structure for zx_member
@@ -47070,7 +47174,7 @@ CREATE TABLE `zx_member` (
   `allmoney` decimal(20,4) DEFAULT '0.0000' COMMENT '进账现金',
   `alljifen` double(10,4) DEFAULT '0.0000' COMMENT '总积分',
   `hasjifen` double(10,4) DEFAULT '0.0000' COMMENT '积分',
-  `hascp` double(10,4) DEFAULT '0.0000' COMMENT '积分账户',
+  `hascp` double(10,4) DEFAULT '0.0000' COMMENT '动态钱包-积分账户',
   `allcp` double(10,4) DEFAULT '0.0000' COMMENT '进账复消',
   `bill_money` double(10,4) DEFAULT '0.0000' COMMENT '激活时报单金额',
   `allbonus` double(12,4) DEFAULT '0.0000' COMMENT '总奖金',
@@ -47148,23 +47252,48 @@ CREATE TABLE `zx_member` (
   KEY `tuijianid` (`tuijianid`) USING BTREE,
   KEY `deep` (`tdeep`) USING BTREE,
   KEY `recom_num` (`recom_num`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员信息表';
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员信息表';
 
 -- ----------------------------
 -- Records of zx_member
 -- ----------------------------
-INSERT INTO `zx_member` VALUES ('1', '13289223170', '王卓璞', '2', '0', '0', '0', '0', null, '0', '0', null, null, '0', '0', '1', '0', '10000.0000', '98100.0000', '7955.0000', '12010.0000', '2943.0000', '2943.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '123465789', '谈雨婷', '123456789123456', '1234657892143', '123123465', '123123456', null, null, '', '13289223170', '0', '', '1528602497', '1528602497', '0', null, '0', '123456', '123456', '0', '0', '6', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '1.40', '0.60', '0', '0', null, null, null, null, '3', null, null, null, null, null, '13', '', null, '0', '0', '0', null, '0', '0', '1', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('2', '13289223171', '柴雅芙', '2', '0', '0', '1', '13289223170', ',1,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '400.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '柴雅芙', '', '', null, null, null, null, '', '13289223171', '0', '', '1528606338', '1528606338', '0', null, '0', '123456', '123456', '0', '1', '6', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.70', '0.60', '0', '0', null, null, null, null, '3', null, null, null, null, null, '6', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('3', 'qweqweqewqe', '匡烨霖1', '2', '0', '0', '1', '13289223170', ',1,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '100.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '123', '', '123', '123', '123', '123', '', ',,', '', 'qweqweqewqe', '0', '', '1528606353', '1528606353', '0', null, '0', '123456', '123456', '0', '1', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, '', '', '', null, '0', '123', null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('4', '123', '竺妙菱', '2', '0', '0', '1', '13289223170', ',1,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '竺妙菱', '', '', null, null, null, null, '', '123', '0', '', '1528613568', '1528613568', '0', null, '0', '123456', '123456', '0', '1', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('6', '18049553861', '123', '2', '0', '0', '1', '13289223170', ',1,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '22965.0000', '20000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '123', '咸建辉', '123', '123', '123', '213213', null, null, '', '18049553861', '0', '', '1528618962', '1528618962', '0', null, '0', '123456', '123456', '0', '1', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', '', null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('11', '18391032562', '李晶', '2', '0', '0', '2', '13289223171', ',1,2,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '1900.0000', '24950.0000', '30000.0000', '38.0000', '38.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '工商银行', '', '6212604211785642', '610425199805061183', '18391032562', '18391032562', null, null, '', '18391032562', '0', null, '1529571540', '1529571540', '0', null, '3395560053', '123456', '123456', '0', '2', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('9', '17602906158', '张明娟', '2', '0', '0', '2', '13289223171', ',1,2,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '2900.0000', '22250.0000', '30000.0000', '58.0000', '58.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '太白路支行', '张明娟', '6000059874566952', '610105125987156966', '1234566', '1234566@qq.com', null, null, '', '17602906158', '0', '', '1529053870', '1529053870', '0', null, '3395564187', '123456', '123456', '0', '2', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('10', '15929285804', '周青青', '2', '0', '0', '2', '13289223171', ',1,2,', '0', '0', null, null, '8', '0', '1', '0', '0.0000', '2300.0000', '28495.0000', '30000.0000', '46.0000', '46.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '咸阳陕西科技大学人民路支行', '', '1122334455667788990', '112233445566778899', '123456789', '123456789', null, null, '', '15929285804', '0', null, '1529055753', '1529055753', '0', null, '3395564187', '112255', '123456', '0', '2', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '1', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('12', '17629155243', '周美', '2', '0', '0', '2', '13289223171', ',1,2,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '1000.0000', '13000.0000', '10000.0000', '20.0000', '20.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '招商银行', '', '1223654898215547', '625347925113141541', 'sdiahdf', '13354287256', null, null, '', '17629155243', '0', null, '1529572044', '1529572044', '0', null, '3395560053', '123456', '123456', '0', '2', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '1', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('13', '18629495961', '聂', '2', '0', '0', '2', '13289223171', ',1,2,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '23950.0000', '30000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '中国银行', '', '6213500000420789104', '42042119905232', '18629495960', '18629495960', null, null, '', '18629495961', '0', null, '1529572129', '1529572129', '0', null, '3395560053', '123456', '123456', '0', '2', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
-INSERT INTO `zx_member` VALUES ('14', '18589020061', 'ljy', '2', '0', '0', '1', '13289223170', ',1,', '0', '0', null, null, '0', '0', '1', '0', '300001.0000', '298901.0000', '890.0000', '0.0000', '15260.4510', '15260.4510', '927.0450', '927.0450', '0.0000', '0.0000', '1', '梅陇支行', '仰鹤轩', '123456789', '123456789987654321', 'weixin666', 'zhifubao888', null, null, '', '18589020061', '0', '', '1535626866', '1535626866', '0', null, '2130706433', '123456', '123456', '0', '1', '1', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.20', '0.10', '0', '0', null, null, null, null, '3', null, null, null, null, null, '1', null, null, '0', '0', '0', null, '0', '0', '1', '', '58.7100', '103.0050');
-INSERT INTO `zx_member` VALUES ('15', '18589020062', 'langlang', '2', '0', '0', '14', '18589020061', ',1,14,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '100.0000', '0.0000', '0.0000', '1.6000', '1.6000', '1.3780', '0.3780', '0.0000', '0.0000', '1', '', '', null, '', null, null, null, null, '', '18589020062', '0', null, '1535629362', '1535629361', '0', null, '2130706433', '123456', '123456', '0', '2', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '1', '', '0.0180', '0.0420');
+INSERT INTO `zx_member` VALUES ('2', '13289223171', '柴雅芙', '2', '0', '0', '1', '13289223170', ',1,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '200.0000', '0.0000', '0.0000', '0.0000', '100.0000', '0.0000', '0.0000', '0.0000', '1', '', '柴雅芙', '', '', null, null, null, null, '', '13289223171', '0', '', '1528606338', '1528606338', '0', null, '0', '123456', '654321', '0', '1', '7', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.80', '0.70', '0', '0', null, null, null, null, '3', null, null, null, null, null, '7', '', null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('18', '18826564012', '曾哥1', '2', '0', '0', '2', '13289223171', ',1,2,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '曾哥1', '', '', null, null, null, null, '', '18826564012', '0', '', '1536067600', '1536067600', '0', null, '2005467750', '123456', '123456', '0', '2', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('19', '18062926291', '吴远文', '2', '0', '0', '1', '13289223170', ',1,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '1200.0000', '1200.0000', '5892.1500', '0.0000', '0.0000', '0.0000', '1', '中国农业银行', '公司1-1', '6228481828954991678', '420222197810180453', '18062926291', '18062926291', null, null, '', '18062926291', '0', '', '1536067764', '1536067764', '0', null, '2005467750', '654321', '123456', '0', '1', '6', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '3.50', '0.60', '0', '0', null, null, null, null, '3', null, null, null, null, null, '34', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('20', '18138205281', '公司2-1（刘）', '2', '0', '0', '19', '18062926291', ',1,19,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司2-1（刘）', '', '', null, null, null, null, '', '18138205281', '0', '', '1536068230', '1536068230', '0', null, '2005467750', '123456', '123456', '0', '2', '5', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.90', '0.50', '0', '0', null, null, null, null, '3', null, null, null, null, null, '8', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('22', '15889718424', '公司2-2（刘）', '2', '0', '0', '19', '18062926291', ',1,19,', '0', '0', null, null, '0', '0', '1', '0', '150000.0000', '150000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司2-2（刘）', '', '', null, null, null, null, '', '15889718424', '0', '', '1536068664', '1536068664', '0', null, '2005467750', '123456', '123456', '0', '2', '5', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.60', '0.50', '0', '0', null, null, null, null, '3', null, null, null, null, null, '5', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('23', '13946142461', '公司2-3', '2', '0', '0', '19', '18062926291', ',1,19,', '0', '0', null, null, '0', '0', '1', '0', '30000.0000', '30000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司2-3', '', '', null, null, null, null, '', '13946142461', '0', '', '1536068787', '1536068787', '0', null, '2005467750', '123456', '123456', '0', '2', '5', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.60', '0.50', '0', '0', null, null, null, null, '3', null, null, null, null, null, '5', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('24', '18604509461', '公司2-4（代）', '2', '0', '0', '19', '18062926291', ',1,19,', '0', '0', null, null, '0', '0', '1', '0', '6000.0000', '6000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司2-4（代）', '', '', null, null, null, null, '', '18604509461', '0', '', '1536068890', '1536068890', '0', null, '2005467750', '123456', '123456', '0', '2', '5', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.60', '0.50', '0', '0', null, null, null, null, '3', null, null, null, null, null, '5', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('25', '13059027307', '公司2-5（代）', '2', '0', '0', '19', '18062926291', ',1,19,', '0', '0', null, null, '0', '0', '1', '0', '6000.0000', '6000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司2-5（代）', '', '', null, null, null, null, '', '13059027307', '0', '', '1536068942', '1536068942', '0', null, '2005467750', '123456', '123456', '0', '2', '5', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.60', '0.50', '0', '0', null, null, null, null, '3', null, null, null, null, null, '5', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('1', '13289223170', '王卓璞', '2', '0', '0', '0', '0', null, '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '123465789', '谈雨婷', '123456789123456', '1234657892143', '123123465', '123123456', null, null, '', '13289223170', '0', '', '1528602497', '1528602497', '0', null, '0', '123456', '123456', '0', '0', '9', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '5.20', '0.90', '0', '0', null, null, null, null, '3', null, null, null, null, null, '51', '', null, '0', '0', '0', null, '0', '0', '1', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('26', '15895949827', '公司3-1（苗）', '2', '0', '0', '20', '18138205281', ',1,19,20,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-1（苗）', '', '', null, null, null, null, '', '15895949827', '0', '', '1536070572', '1536070572', '0', null, '2005467750', '123456', '123456', '0', '3', '1', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.40', '0.10', '0', '0', null, null, null, null, '3', null, null, null, null, null, '3', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('27', '13544890357', '公司3-6', '2', '0', '0', '22', '15889718424', ',1,19,22,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-6', '', '', null, null, null, null, '', '13544890357', '0', '', '1536070673', '1536070673', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('28', '15246333699', '公司3-2（付）', '2', '0', '0', '20', '18138205281', ',1,19,20,', '0', '0', null, null, '0', '0', '1', '0', '150000.0000', '150000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-2（付）', '', '', null, null, null, null, '', '15246333699', '0', '', '1536071062', '1536071062', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('29', '13514562151', '公司3-3（付）', '2', '0', '0', '20', '18138205281', ',1,19,20,', '0', '0', null, null, '0', '0', '1', '0', '150000.0000', '150000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-3（付）', '', '', null, null, null, null, '', '13514562151', '0', '', '1536071162', '1536071162', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('30', '13905161123', '公司3-4（付）', '2', '0', '0', '20', '18138205281', ',1,19,20,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-4（付）', '', '', null, null, null, null, '', '13905161123', '0', '', '1536071667', '1536071667', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('31', '18045960007', '公司3-5（付）', '2', '0', '0', '20', '18138205281', ',1,19,20,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-5（付）', '', '', null, null, null, null, '', '18045960007', '0', '', '1536071708', '1536071708', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('32', '13354079935', '公司3-7（付）', '2', '0', '0', '22', '15889718424', ',1,19,22,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-7（付）', '', '', null, null, null, null, '', '13354079935', '0', '', '1536072035', '1536072035', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('33', '18699114361', '公司3-8（付）', '2', '0', '0', '22', '15889718424', ',1,19,22,', '0', '0', null, null, '0', '0', '1', '0', '30000.0000', '30000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-8（付）', '', '', null, null, null, null, '', '18699114361', '0', '', '1536072108', '1536072108', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('34', '13694631668', '公司3-9（付）', '2', '0', '0', '22', '15889718424', ',1,19,22,', '0', '0', null, null, '0', '0', '1', '0', '6000.0000', '6000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-9（付）', '', '', null, null, null, null, '', '13694631668', '0', '', '1536072150', '1536072150', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('35', '17666557898', '公司3-10（付）', '2', '0', '0', '22', '15889718424', ',1,19,22,', '0', '0', null, null, '0', '0', '1', '0', '150000.0000', '150000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-10（付）', '', '', null, null, null, null, '', '17666557898', '0', '', '1536072200', '1536072200', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('36', '15945499909', '公司3-11', '2', '0', '0', '23', '13946142461', ',1,19,23,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-11', '', '', null, null, null, null, '', '15945499909', '0', '', '1536072271', '1536072271', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('37', '13946346889', '公司3-12', '2', '0', '0', '23', '13946142461', ',1,19,23,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-12', '', '', null, null, null, null, '', '13946346889', '0', '', '1536072331', '1536072331', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('38', '13514559185', '公司3-13（付）', '2', '0', '0', '23', '13946142461', ',1,19,23,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-13（付）', '', '', null, null, null, null, '', '13514559185', '0', '', '1536072391', '1536072391', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('39', '18714530215', '公司3-14（付）', '2', '0', '0', '23', '13946142461', ',1,19,23,', '0', '0', null, null, '0', '0', '1', '0', '150000.0000', '150000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-14（付）', '', '', null, null, null, null, '', '18714530215', '0', '', '1536072448', '1536072447', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('40', '18944538986', '公司3-15（付）', '2', '0', '0', '23', '13946142461', ',1,19,23,', '0', '0', null, null, '0', '0', '1', '0', '30000.0000', '30000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-15（付）', '', '', null, null, null, null, '', '18944538986', '0', '', '1536072527', '1536072527', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('41', '18704612120', '公司3-16（代）', '2', '0', '0', '24', '18604509461', ',1,19,24,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-16（代）', '', '', null, null, null, null, '', '18704612120', '0', '', '1536072678', '1536072678', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('42', '18944601819', '公司3-17（代）', '2', '0', '0', '24', '18604509461', ',1,19,24,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-17（代）', '', '', null, null, null, null, '', '18944601819', '0', '', '1536072722', '1536072722', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('43', '15846516816', '公司3-18（代）', '2', '0', '0', '24', '18604509461', ',1,19,24,', '0', '0', null, null, '0', '0', '1', '0', '900000.0000', '900000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-18（代）', '', '', null, null, null, null, '', '15846516816', '0', '', '1536072788', '1536072788', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('44', '13091441344', '公司3-19（贤）', '2', '0', '0', '24', '18604509461', ',1,19,24,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-19（贤）', '', '', null, null, null, null, '', '13091441344', '0', '', '1536072838', '1536072838', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('45', '15504506888', '公司3-20（贤）', '2', '0', '0', '24', '18604509461', ',1,19,24,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-20（贤）', '', '', null, null, null, null, '', '15504506888', '0', '', '1536072933', '1536072933', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('46', '18824243931', '公司3-21（贤）', '2', '0', '0', '25', '13059027307', ',1,19,25,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-21（贤）', '', '', null, null, null, null, '', '18824243931', '0', '', '1536073039', '1536073039', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('47', '15124558531', '公司3-22（贤）', '2', '0', '0', '25', '13059027307', ',1,19,25,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-22（贤）', '', '', null, null, null, null, '', '15124558531', '0', '', '1536073093', '1536073093', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('48', '18246088878', '公司3-23（刘）', '2', '0', '0', '25', '13059027307', ',1,19,25,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-23（刘）', '', '', null, null, null, null, '', '18246088878', '0', '', '1536073173', '1536073173', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('49', '15561555788', '公司3-24（刘）', '2', '0', '0', '25', '13059027307', ',1,19,25,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-24（刘）', '', '', null, null, null, null, '', '15561555788', '0', '', '1536073254', '1536073254', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('50', '13091891118', '公司3-25（刘）', '2', '0', '0', '25', '13059027307', ',1,19,25,', '0', '0', null, null, '0', '0', '1', '0', '300000.0000', '300000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '公司3-25（刘）', '', '', null, null, null, null, '', '13091891118', '0', '', '1536073302', '1536073302', '0', null, '2005467750', '123456', '123456', '0', '3', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('51', '17176545583', '陈辉', '2', '0', '0', '26', '15895949827', ',1,19,20,26,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '陈辉', '', '', null, null, null, null, '', '17176545583', '0', '', '1536139515', '1536139515', '0', null, '1901557589', '123456', '123456', '0', '4', '2', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.30', '0.20', '0', '0', null, null, null, null, '3', null, null, null, null, null, '2', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('52', '17176545572', '陈振', '2', '0', '0', '51', '17176545583', ',1,19,20,26,51,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '陈振', '', '', null, null, null, null, '', '17176545572', '0', '', '1536139586', '1536139586', '0', null, '1901557589', '123456', '123456', '0', '5', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
+INSERT INTO `zx_member` VALUES ('53', '17176545607', '陈洪', '2', '0', '0', '51', '17176545583', ',1,19,20,26,51,', '0', '0', null, null, '0', '0', '1', '0', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '', '陈洪', '', '', null, null, null, null, '', '17176545607', '0', '', '1536139621', '1536139621', '0', null, '1901557589', '123456', '123456', '0', '5', '0', '1', '0', '0', '0', '1', '0', '0.00', '0.00', '0.00', '0.00', null, '1', null, '0', '0.00', '0.00', '0', '0.10', '0.00', '0', '0', null, null, null, null, '3', null, null, null, null, null, '0', null, null, '0', '0', '0', null, '0', '0', '0', '', '0.0000', '0.0000');
 
 -- ----------------------------
 -- Table structure for zx_member_info
@@ -47591,151 +47720,110 @@ CREATE TABLE `zx_money_change` (
   `cp_money` double(10,4) DEFAULT '0.0000' COMMENT '复消累计',
   PRIMARY KEY (`id`),
   KEY `status` (`status`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='财务流水';
+) ENGINE=MyISAM AUTO_INCREMENT=1458 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='财务流水';
 
 -- ----------------------------
 -- Records of zx_money_change
 -- ----------------------------
-INSERT INTO `zx_money_change` VALUES ('1', '1', '1', '15', '18589020062', '0', '0', '13', '1', '1.0000', '0.0000', '0.0000', '1535629384', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('2', '1', '1', '14', '18589020061', '0', '0', '13', '1', '1.0000', '301000.0000', '0.0000', '1535629569', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('3', '1', '1', '14', '18589020061', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1535630873', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('4', '1', '1', '14', '18589020061', '0', '0', '21', '1', '1.0000', '300001.0000', '0.0000', '1535630929', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('5', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '10201.0000', '0.0000', '1535631193', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('6', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535631193', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('7', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535631193', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('8', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '1801.0000', '0.0000', '1535631193', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('9', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '1001.0000', '0.0000', '1535631193', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('10', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1500.0050', '0.0000', '0.0000', '1535631193', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('11', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '0.0000', '0.0000', '1535631194', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('12', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '0.0000', '0.0000', '1535631194', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('13', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '10201.0000', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('14', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('15', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('16', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '1801.0000', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('17', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '1001.0000', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('18', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1500.0050', '92.7045', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('19', '6', '1', '14', '18589020061', '0', '0', '17', '1', '1.0300', '0.0000', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('20', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '92.7045', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('21', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '10.3005', '0.0000', '1535631643', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('22', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('23', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('24', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('25', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('26', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('27', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1500.0050', '185.4090', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('28', '6', '1', '14', '18589020061', '0', '0', '17', '1', '2.0600', '1.0300', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('29', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '185.4090', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('30', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '20.6010', '0.0000', '1535631719', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('31', '2', '1', '14', '18589020061', '14', '18589020061', '24', '0', '1000.0000', '300001.0000', '0.0000', '1535632276', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('32', '2', '1', '14', '18589020061', '0', '0', '8', '0', '100.0000', '1000.0000', '0.0000', '1535632276', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('33', '2', '1', '14', '18589020061', '14', '18589020061', '24', '1', '1100.0000', null, '0.0000', '1535632276', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('34', '2', '1', '15', '18589020062', '14', '18589020061', '16', '0', '110.0000', '890.0000', '0.0000', '1535632697', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('35', '2', '1', '15', '18589020062', '14', '18589020061', '8', '0', '10.0000', '890.0000', '0.0000', '1535632697', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('36', '2', '1', '15', '18589020062', '14', '18589020061', '16', '1', '100.0000', '100.0000', '0.0000', '1535632697', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('37', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('38', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('39', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('40', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('41', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('42', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '278.1135', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('43', '6', '1', '14', '18589020061', '0', '0', '17', '1', '3.0900', '3.0900', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('44', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '278.1135', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('45', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '30.9015', '0.0000', '1535632743', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('46', '2', '1', '15', '18589020062', '15', '18589020062', '24', '0', '100.0000', null, '0.0000', '1535632772', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('47', '2', '1', '15', '18589020062', '15', '18589020062', '24', '1', '100.0000', null, '0.0000', '1535632772', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('48', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('49', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('50', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('51', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('52', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('53', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '370.8180', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('54', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('55', '6', '1', '14', '18589020061', '0', '0', '17', '1', '4.1200', '6.1800', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('56', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '370.8180', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('57', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '41.2020', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('58', '3', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0630', '1.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('59', '5', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0070', '0.0000', '0.0000', '1535632814', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('60', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535633399', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('61', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535633399', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('62', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535633399', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('63', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535633399', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('64', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535633399', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('65', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '463.5225', '0.0000', '1535633399', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('66', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.0630', '0.0000', '1535633399', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('67', '6', '1', '14', '18589020061', '0', '0', '17', '1', '5.1500', '10.3000', '0.0000', '1535633428', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('68', '6', '1', '15', '18589020062', '0', '0', '17', '1', '0.0010', '0.0000', '0.0000', '1535633428', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('69', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '463.5225', '0.0000', '1535633428', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('70', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '51.5025', '0.0000', '1535633428', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('71', '3', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0630', '1.0630', '0.0000', '1535633429', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('72', '5', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0070', '0.0070', '0.0000', '1535633429', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('73', '6', '1', '14', '18589020061', '0', '0', '17', '1', '6.1800', '15.4500', '0.0000', '1535633435', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('74', '6', '1', '15', '18589020062', '0', '0', '17', '1', '0.0010', '0.0010', '0.0000', '1535633435', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('75', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '556.2270', '0.0000', '1535633435', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('76', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '61.8030', '0.0000', '1535633435', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('77', '3', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0630', '1.1260', '0.0000', '1535633435', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('78', '5', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0070', '0.0140', '0.0000', '1535633435', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('79', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '648.9315', '0.0000', '1535633449', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('80', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '72.1035', '0.0000', '1535633449', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('81', '3', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0630', '1.1890', '0.0000', '1535633449', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('82', '5', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0070', '0.0210', '0.0000', '1535633449', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('83', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '741.6360', '0.0000', '1535633489', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('84', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '82.4040', '0.0000', '1535633489', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('85', '3', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0630', '1.2520', '0.0000', '1535633489', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('86', '5', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0070', '0.0280', '0.0000', '1535633489', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('87', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('88', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('89', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('90', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('91', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('92', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '834.3405', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('93', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.3150', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('94', '6', '1', '14', '18589020061', '0', '0', '17', '1', '9.2700', '21.6300', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('95', '6', '1', '15', '18589020062', '0', '0', '17', '1', '0.0040', '0.0020', '0.0000', '1535633692', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('96', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('97', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('98', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('99', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('100', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('101', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '834.3405', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('102', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.3150', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('103', '6', '1', '14', '18589020061', '0', '0', '17', '1', '9.2700', '30.9000', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('104', '6', '1', '15', '18589020062', '0', '0', '17', '1', '0.0040', '0.0060', '0.0000', '1535633703', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('105', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('106', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('107', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('108', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('109', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('110', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '834.3405', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('111', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.3150', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('112', '6', '1', '14', '18589020061', '0', '0', '17', '1', '9.2700', '40.1700', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('113', '6', '1', '15', '18589020062', '0', '0', '17', '1', '0.0040', '0.0100', '0.0000', '1535633730', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('114', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535634271', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('115', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('116', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('117', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('118', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('119', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '834.3405', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('120', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.3150', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('121', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('122', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('123', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('124', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('125', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('126', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '834.3405', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('127', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.3150', '0.0000', '1535634272', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('128', '4', '1', '1', '13289223170', '0', '0', '7', '1', '294.3000', '0.0000', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('129', '4', '1', '11', '18391032562', '0', '0', '7', '1', '3.8000', '0.0000', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('130', '4', '1', '9', '17602906158', '0', '0', '7', '1', '5.8000', '0.0000', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('131', '4', '1', '10', '15929285804', '0', '0', '7', '1', '4.6000', '0.0000', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('132', '4', '1', '12', '17629155243', '0', '0', '7', '1', '2.0000', '0.0000', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('133', '4', '1', '14', '18589020061', '0', '0', '7', '1', '1195.6040', '834.3405', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('134', '4', '1', '15', '18589020062', '0', '0', '7', '1', '0.2000', '1.3150', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('135', '6', '1', '14', '18589020061', '0', '0', '17', '1', '9.2700', '49.4400', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('136', '6', '1', '15', '18589020062', '0', '0', '17', '1', '0.0040', '0.0140', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('137', '3', '1', '14', '18589020061', '1', '13289223170', '5', '1', '92.7045', '834.3405', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('138', '5', '1', '14', '18589020061', '1', '13289223170', '5', '1', '10.3005', '92.7045', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('139', '3', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0630', '1.3150', '0.0000', '1535634340', null, '0.0000');
-INSERT INTO `zx_money_change` VALUES ('140', '5', '1', '15', '18589020062', '14', '18589020061', '5', '1', '0.0070', '0.0350', '0.0000', '1535634340', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1391', '3', '1', '14', '18589020061', '0', '0', '13', '1', '100.0000', '10000.0000', '0.0000', '1535790997', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1390', '3', '1', '14', '18589020061', '0', '0', '33', '1', '1.6500', '10000.0000', '0.0000', '1535790997', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1389', '4', '1', '14', '18589020061', '0', '0', '7', '1', '25.0000', '200.0000', '0.0000', '1535790997', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1388', '3', '1', '14', '18589020061', '0', '0', '13', '1', '100.0000', '10000.0000', '0.0000', '1535790696', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1387', '4', '1', '14', '18589020061', '0', '0', '7', '1', '25.0000', '100.0000', '0.0000', '1535790696', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1386', '3', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535790676', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1385', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '400.0000', '0.0000', '1535790676', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1384', '3', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535787079', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1383', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '300.0000', '0.0000', '1535787079', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1382', '4', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535787039', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1381', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '200.0000', '0.0000', '1535787039', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1380', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '100.0000', '0.0000', '1535786058', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1379', '4', '1', '14', '18589020061', '0', '0', '7', '1', '25.0000', '0.0000', '0.0000', '1535786058', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1378', '3', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535783724', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1377', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '100.0000', '0.0000', '1535783724', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1376', '1', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535783419', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1375', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '100.0000', '0.0000', '1535783419', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1374', '4', '1', '14', '18589020061', '0', '0', '7', '1', '25.0000', '0.0000', '0.0000', '1535783419', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1373', '1', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535783162', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1372', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '5800.0000', '0.0000', '1535783162', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1371', '4', '1', '14', '18589020061', '0', '0', '7', '1', '25.0000', '42.0000', '0.0000', '1535783162', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1370', '1', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535783067', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1369', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '5700.0000', '0.0000', '1535783067', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1368', '4', '1', '14', '18589020061', '0', '0', '7', '1', '25.0000', '42.0000', '0.0000', '1535783067', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1367', '1', '1', '15', '18589020062', '0', '0', '13', '1', '100.0000', '5500.0000', '0.0000', '1535782837', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1366', '4', '1', '15', '18589020062', '0', '0', '7', '1', '11.0000', '5600.0000', '0.0000', '1535782837', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1365', '4', '1', '14', '18589020061', '0', '0', '7', '1', '25.0000', '42.0000', '0.0000', '1535782837', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1364', '2', '1', '15', '18589020062', '15', '18589020062', '24', '1', '500.0000', null, '0.0000', '1535736710', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1363', '2', '1', '15', '18589020062', '15', '18589020062', '24', '0', '500.0000', null, '0.0000', '1535736710', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1362', '3', '1', '14', '18589020061', '15', '18589020062', '20', '1', '30.0000', '12.0000', '0.0000', '1535736710', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1361', '2', '1', '15', '18589020062', '0', '0', '21', '1', '1000.0000', '1000.0000', '0.0000', '1535736680', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1359', '3', '1', '14', '18589020061', '15', '18589020062', '20', '1', '6.0000', '0.0000', '0.0000', '1535735718', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1360', '3', '1', '14', '18589020061', '15', '18589020062', '20', '1', '6.0000', '6.0000', '0.0000', '1535736124', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1392', '3', '1', '2', '13289223171', '0', '0', '13', '1', '100.0000', '0.0000', '0.0000', '1535810525', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1393', '2', '1', '15', '18589020062', '0', '0', '21', '1', '100.0000', '555.0000', '0.0000', '1535816883', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1394', '2', '1', '16', '18826564012', '0', '0', '21', '1', '1000.0000', '1000.0000', '0.0000', '1535874693', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1395', '1', '1', '16', '18826564012', '0', '0', '21', '1', '500.0000', '500.0000', '0.0000', '1535874712', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1396', '3', '1', '16', '18826564012', '0', '0', '21', '1', '100.0000', '100.0000', '0.0000', '1535874734', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1397', '2', '1', '16', '18826564012', '0', '0', '28', '0', '10.0000', '990.0000', '0.0000', '1535874837', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1398', '1', '1', '16', '18826564012', '0', '0', '28', '0', '5.0000', '495.0000', '0.0000', '1535874891', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1399', '3', '1', '16', '18826564012', '0', '0', '28', '0', '1.0000', '99.0000', '0.0000', '1535874904', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1400', '4', '1', '16', '18826564012', '0', '0', '7', '1', '0.9900', '199.0000', '0.0000', '1535876723', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1401', '3', '1', '16', '18826564012', '0', '0', '13', '1', '100.0000', '495.0000', '0.0000', '1535876723', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1402', '3', '1', '1', '13289223170', '16', '18826564012', '20', '1', '0.0000', '0.0000', '0.0000', '1535877532', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1403', '2', '1', '16', '18826564012', '16', '18826564012', '24', '0', '100.0000', null, '0.0000', '1535877532', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1404', '2', '1', '16', '18826564012', '16', '18826564012', '24', '1', '100.0000', null, '0.0000', '1535877532', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1405', '2', '1', '2', '13289223171', '16', '18826564012', '16', '0', '110.0000', '880.9900', '0.0000', '1535878156', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1406', '2', '1', '2', '13289223171', '16', '18826564012', '8', '0', '10.0000', '880.9900', '0.0000', '1535878156', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1407', '2', '1', '2', '13289223171', '16', '18826564012', '16', '1', '100.0000', '200.0000', '0.0000', '1535878156', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1408', '2', '1', '16', '18826564012', '1', '13289223170', '3', '0', '105.0000', '780.9900', '0.0000', '1535878884', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1409', '2', '1', '16', '18826564012', '1', '13289223170', '8', '0', '5.0000', '100.0000', '0.0000', '1535878884', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1410', '2', '1', '16', '18826564012', '0', '0', '8', '0', '10.0000', '115000.0000', '0.0000', '1535879627', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1411', '3', '1', '1', '13289223170', '16', '18826564012', '20', '1', '0.0000', '0.0000', '0.0000', '1535879814', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1412', '2', '1', '16', '18826564012', '16', '18826564012', '24', '0', '100.0000', null, '0.0000', '1535879814', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1413', '2', '1', '16', '18826564012', '16', '18826564012', '24', '1', '100.0000', null, '0.0000', '1535879814', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1414', '2', '1', '16', '18826564012', '1', '13289223170', '3', '0', '129.1500', '542.9900', '0.0000', '1536020940', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1415', '2', '1', '16', '18826564012', '1', '13289223170', '8', '0', '6.1500', '123.0000', '0.0000', '1536020940', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1416', '4', '1', '16', '18826564012', '0', '0', '7', '1', '1.3900', '299.0000', '0.0000', '1536031729', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1417', '3', '1', '16', '18826564012', '0', '0', '13', '1', '100.0000', '695.0000', '0.0000', '1536031729', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1418', '1', '1', '19', '18062926291', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536068376', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1419', '1', '1', '20', '18138205281', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536068474', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1420', '2', '1', '21', '15889718424', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536068510', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1421', '1', '1', '22', '15889718424', '0', '0', '21', '1', '150000.0000', '150000.0000', '0.0000', '1536068688', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1422', '1', '1', '23', '13946142461', '0', '0', '21', '1', '30000.0000', '30000.0000', '0.0000', '1536068979', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1423', '1', '1', '24', '18604509461', '0', '0', '21', '1', '6000.0000', '6000.0000', '0.0000', '1536069005', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1424', '1', '1', '25', '13059027307', '0', '0', '21', '1', '6000.0000', '6000.0000', '0.0000', '1536069029', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1425', '1', '1', '26', '15895949827', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536070691', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1426', '1', '1', '27', '13544890357', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536070739', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1427', '1', '1', '28', '15246333699', '0', '0', '21', '1', '150000.0000', '150000.0000', '0.0000', '1536071213', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1428', '1', '1', '29', '13514562151', '0', '0', '21', '1', '150000.0000', '150000.0000', '0.0000', '1536071302', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1429', '1', '1', '30', '13905161123', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073339', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1430', '1', '1', '31', '18045960007', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073375', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1431', '1', '1', '32', '13354079935', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073394', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1432', '1', '1', '33', '18699114361', '0', '0', '21', '1', '30000.0000', '30000.0000', '0.0000', '1536073454', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1433', '1', '1', '34', '13694631668', '0', '0', '21', '1', '6000.0000', '6000.0000', '0.0000', '1536073474', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1434', '1', '1', '35', '17666557898', '0', '0', '21', '1', '150000.0000', '150000.0000', '0.0000', '1536073493', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1435', '1', '1', '36', '15945499909', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073734', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1436', '1', '1', '37', '13946346889', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073765', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1437', '1', '1', '38', '13514559185', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073784', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1438', '1', '1', '39', '18714530215', '0', '0', '21', '1', '150000.0000', '150000.0000', '0.0000', '1536073809', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1439', '1', '1', '40', '18944538986', '0', '0', '21', '1', '30000.0000', '30000.0000', '0.0000', '1536073829', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1440', '1', '1', '41', '18704612120', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073868', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1441', '1', '1', '42', '18944601819', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073884', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1442', '1', '1', '43', '15846516816', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073925', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1443', '1', '1', '43', '15846516816', '0', '0', '21', '1', '300000.0000', '600000.0000', '0.0000', '1536073942', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1444', '1', '1', '43', '15846516816', '0', '0', '21', '1', '300000.0000', '900000.0000', '0.0000', '1536073959', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1445', '1', '1', '44', '13091441344', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073982', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1446', '1', '1', '45', '15504506888', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536073997', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1447', '2', '1', '46', '18824243931', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536074018', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1448', '2', '1', '46', '18824243931', '0', '0', '28', '0', '300000.0000', '0.0000', '0.0000', '1536074065', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1449', '1', '1', '46', '18824243931', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536074086', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1450', '1', '1', '47', '15124558531', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536074101', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1451', '1', '1', '48', '18246088878', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536074120', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1452', '1', '1', '49', '15561555788', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536074143', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1453', '1', '1', '50', '13091891118', '0', '0', '21', '1', '300000.0000', '300000.0000', '0.0000', '1536074169', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1454', '3', '1', '19', '18062926291', '0', '0', '36', '1', '0.0000', '300000.0000', '0.0000', '1536113061', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1455', '4', '1', '19', '18062926291', '0', '0', '7', '1', '1200.0000', '0.0000', '0.0000', '1536113469', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1456', '3', '1', '19', '18062926291', '0', '0', '33', '1', '5607.0000', '300000.0000', '0.0000', '1536113469', null, '0.0000');
+INSERT INTO `zx_money_change` VALUES ('1457', '3', '1', '19', '18062926291', '0', '0', '34', '1', '285.1500', '300000.0000', '0.0000', '1536113469', null, '0.0000');
 
 -- ----------------------------
 -- Table structure for zx_month
@@ -47769,12 +47857,17 @@ CREATE TABLE `zx_msg` (
   `create_time` int(20) DEFAULT '0',
   `status` int(5) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zx_msg
 -- ----------------------------
 INSERT INTO `zx_msg` VALUES ('3', '699221', '18589020062', 'Fo', '1535629307', '403');
+INSERT INTO `zx_msg` VALUES ('4', '418020', '18826564012', 'Fo', '1535879031', '403');
+INSERT INTO `zx_msg` VALUES ('5', '779465', '15977563066', 'Fo', '1536031519', '403');
+INSERT INTO `zx_msg` VALUES ('6', '792118', '15977563066', 'Fo', '1536031522', '403');
+INSERT INTO `zx_msg` VALUES ('7', '183201', '18062926291', 'Fo', '1536113106', '403');
+INSERT INTO `zx_msg` VALUES ('8', '671420', '18062926291', 'Fo', '1536113301', '403');
 
 -- ----------------------------
 -- Table structure for zx_name_config
@@ -47840,7 +47933,7 @@ CREATE TABLE `zx_picture` (
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=483 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=486 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zx_picture
@@ -48126,6 +48219,8 @@ INSERT INTO `zx_picture` VALUES ('479', 'local', '/Uploads/Picture/2018-04-16/5a
 INSERT INTO `zx_picture` VALUES ('480', 'local', '/Uploads/Picture/2018-04-16/5ad463b66eb6a.png', '', '0e6cbe66cfd31ff1e0f6addf72053443', 'e2577f7f55ff7ab5f4498b3404fb03933b2f967c', '1', '1523868598');
 INSERT INTO `zx_picture` VALUES ('481', 'local', '/Uploads/Picture/2018-05-10/5af41ea66ba32.png', '', '5b0773a204f9a79f1b6352cd0182a277', '95fb3c836489abd62d2052ab362b3c470905d992', '1', '1525948070');
 INSERT INTO `zx_picture` VALUES ('482', 'local', '/Uploads/Picture/2018-05-10/5af41f1b03651.png', '', '64f6399f75f24bde87e5b2b98b7d37f3', '3cc9e43cebc928782296e965b3a032385a0c4aff', '1', '1525948186');
+INSERT INTO `zx_picture` VALUES ('484', 'local', '/Uploads/Picture/2018-09-03/5b8ce52f2c074.gif', '', '1cc87adb9873919d4759dfcb8332a26f', 'cd0aef421cb2db9d361b7b421bc4aa0efd215341', '1', '1535960367');
+INSERT INTO `zx_picture` VALUES ('485', 'local', '/Uploads/Picture/2018-09-05/5b8f81117df80.png', '', 'ce575b074505f627b59a4d7493cc54da', '612ec99733f91bbf2bbe5a3f54e010793a2d4e4b', '1', '1536131345');
 
 -- ----------------------------
 -- Table structure for zx_principal
@@ -48659,6 +48754,30 @@ CREATE TABLE `zx_shoplist` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for zx_sign
+-- ----------------------------
+DROP TABLE IF EXISTS `zx_sign`;
+CREATE TABLE `zx_sign` (
+  `log_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `sign_time` int(11) DEFAULT NULL COMMENT '签到时间',
+  `status` tinyint(4) DEFAULT NULL COMMENT '1成功',
+  PRIMARY KEY (`log_id`),
+  KEY `uid` (`uid`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zx_sign
+-- ----------------------------
+INSERT INTO `zx_sign` VALUES ('9', '15', '1535790676', '1');
+INSERT INTO `zx_sign` VALUES ('11', '14', '1535790997', '1');
+INSERT INTO `zx_sign` VALUES ('12', '2', '1535810525', '1');
+INSERT INTO `zx_sign` VALUES ('13', '16', '1535876723', '1');
+INSERT INTO `zx_sign` VALUES ('14', '16', '1536031729', '1');
+INSERT INTO `zx_sign` VALUES ('15', '19', '1536113469', '1');
+INSERT INTO `zx_sign` VALUES ('16', '24', '1536139186', '1');
+
+-- ----------------------------
 -- Table structure for zx_slide
 -- ----------------------------
 DROP TABLE IF EXISTS `zx_slide`;
@@ -48781,23 +48900,47 @@ CREATE TABLE `zx_ucenter_member` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`) USING BTREE,
   KEY `status` (`status`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员登陆表';
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员登陆表';
 
 -- ----------------------------
 -- Records of zx_ucenter_member
 -- ----------------------------
-INSERT INTO `zx_ucenter_member` VALUES ('1', '13289223170', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1529642202', '1965323488', '23', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('2', '13289223171', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('3', 'qweqweqewqe', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('4', '123', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('6', '18049553861', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1529046180', '0', '6', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('11', '18391032562', null, '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1529650263', '1965323488', '3', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('9', '17602906158', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1529652843', '1965323488', '4', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('10', '15929285804', null, 'e71f2de6996265099e9ac32627b32506', '6f5760a139b91250651837f529d90d18', '1529649797', '1965323488', '7', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('12', '17629155243', null, '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1529649111', '1965323488', '2', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('13', '18629495961', null, '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1529649396', '1965323488', '3', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('14', '18589020061', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1535639381', '2130706433', '3', '1');
-INSERT INTO `zx_ucenter_member` VALUES ('15', '18589020062', null, '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1535639326', '2130706433', '2', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('2', '13289223171', '', '6f5760a139b91250651837f529d90d18', '69e06ff00edda4874e8bdf85661d7d76', '1535994501', '2874319827', '4', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('28', '15246333699', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('18', '18826564012', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1536071730', '2875921831', '2', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('19', '18062926291', '', '69e06ff00edda4874e8bdf85661d7d76', '6f5760a139b91250651837f529d90d18', '1536139837', '2003272602', '6', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('20', '18138205281', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('22', '15889718424', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('23', '13946142461', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('24', '18604509461', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1536139151', '2003272602', '1', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('25', '13059027307', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('26', '15895949827', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '1536113514', '2003272602', '1', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('27', '13544890357', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('29', '13514562151', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('30', '13905161123', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('31', '18045960007', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('32', '13354079935', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('33', '18699114361', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('34', '13694631668', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('35', '17666557898', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('36', '15945499909', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('37', '13946346889', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('38', '13514559185', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('39', '18714530215', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('40', '18944538986', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('41', '18704612120', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('42', '18944601819', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('43', '15846516816', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('44', '13091441344', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('45', '15504506888', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('46', '18824243931', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('47', '15124558531', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('48', '18246088878', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('49', '15561555788', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('50', '13091891118', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('51', '17176545583', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('52', '17176545572', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
+INSERT INTO `zx_ucenter_member` VALUES ('53', '17176545607', '', '6f5760a139b91250651837f529d90d18', '6f5760a139b91250651837f529d90d18', '0', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for zx_ucenter_setting

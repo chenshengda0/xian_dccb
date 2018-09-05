@@ -246,6 +246,14 @@ class PublicController extends \Think\Controller {
      */
   public function timedTask(){
 
+      $key = I('key');
+      if($key != '481F85D988BE72F4'){
+
+            die(json_encode(array('status'=>'NO','msg'=>'校验错误')));
+      }
+
+     // http://ciex.cn/index.php?a=/admin/public/timedTask/key/481F85D988BE72F4.html
+
       //判断是否进行分红   暂时放着
       $sttime= strtotime(date('Y-m-d'),time());
       $endtime = $sttime + 86400;
@@ -264,6 +272,7 @@ class PublicController extends \Think\Controller {
           $result = M('fh')->add($data);
 
       }
+      die(json_encode(array('status'=>'OK','msg'=>'无访问权限')));
       $this->success("无访问权限",'/home/index/index');
 
   }

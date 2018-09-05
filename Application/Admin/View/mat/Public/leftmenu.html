@@ -9,7 +9,7 @@
                 			<span class="label label-important">{:count($nav['children'])}</span>
                 </a>
 		              <ul><volist name="nav.children" id="subnav">
-		                     <li><a href="{$subnav.url|U}"><i class="icon-caret-right"></i>{$subnav.title}</a></li> 
+		                     <li><a href="{$subnav.url|U}"><i class="icon-caret-right"></i>{$subnav.title}</a></li>
 						</volist></ul> </li>
 				<else/>
 				<li>
@@ -27,7 +27,7 @@
                 </a>
 	            <ul>
 	                <volist name="sub_menu['_child']" id="menu">
-	                       <li><a href="{$menu.url|U}"><i class="icon-caret-right"></i>{$menu.title}</a></li> 
+	                       <li><a href="{$menu.url|U}"><i class="icon-caret-right"></i>{$menu.title}</a></li>
 	                </volist>
 	            </ul></li>
         </notempty>

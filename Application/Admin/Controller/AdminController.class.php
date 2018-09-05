@@ -59,8 +59,9 @@ class AdminController extends CommonController {
         	$this->assign('__MENU__', $this->getNewMenus());
         	$this->getMenu();
         }
-      
-        
+
+
+
     }
     
     private function _nav($id){
@@ -371,6 +372,7 @@ class AdminController extends CommonController {
     
     		//高亮主菜单
     		$current = M('Menu')->where("url like '%{$controller}/".ACTION_NAME."%'")->field('id')->find();
+
     		if($current){
     			$nav = D('Menu')->getPath($current['id']);
     			$nav_first_title = $nav[0]['title'];

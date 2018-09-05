@@ -1,0 +1,80 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="search_box">
+        <a class="btn" href="{:U('add',array('pid'=>I('get.pid',0)))}">新 增</a>
+       
+    </div>
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+ <h5>{$meta_title}</h5></div>
+        <form class="ids">
+         <div class="widget-content nopadding"><div class='dataTables_wrapper'>
+            <table class='table table-bordered data-table'>
+                <thead>
+                    <tr>
+                        <th class="row-selected">
+                            <input class="checkbox check-all" type="checkbox">
+                        </th>
+                        <th>ID</th>
+                       
+                        <th>名称</th>
+                        <th>地址</th>
+                       
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+				<notempty name="list">
+                <volist name="list" id="menu">
+                    <tr>
+                        <td><input class="ids row-selected" type="checkbox" name="id[]" value="{$menu.id}"></td>
+                        <td>{$menu.id}</td>
+                     
+                        <td>{$menu.name}</td>
+                        <td>{$menu.address}</td>
+                    
+                        <td>
+                            <a title="编辑" href="{:U('edit?id='.$menu['id'])}">编辑</a>
+                            <a class="confirm ajax-get" title="删除" href="{:U('del?id='.$menu['id'])}">删除</a>
+                        </td>
+                    </tr>
+                </volist>
+				<else/>
+				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+                </tbody>
+            </table></div></div>
+        </form>
+        <!-- 分页 -->
+        <div class="page">
+			{$_page}
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        $(function() {
+            //导航高亮
+            highlight_subnav("{:U('index')}");
+            //点击排序
+        	$('.list_sort').click(function(){
+        		var url = $(this).attr('url');
+        		var ids = $('.ids:checked');
+        		var param = '';
+        		if(ids.length > 0){
+        			var str = new Array();
+        			ids.each(function(){
+        				str.push($(this).val());
+        			});
+        			param = str.join(',');
+        		}
+
+        		if(url != undefined && url != ''){
+        			window.location.href = url + '/ids/' + param;
+        		}
+        	});
+        });
+    </script>
+</block>
