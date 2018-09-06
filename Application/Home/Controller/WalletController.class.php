@@ -132,6 +132,26 @@ class WalletController extends HomeController{
 		
 		
 	}
+	
+	//充币列表
+	public function recharge_log(){
+		$uid = is_login () ;
+		
+		$list  =   M("ciex_recharge")->where(array('uid'=>$uid))->field(true)->order('id desc')->limit(30)->select();
+		$status = array('-1'=>'无效','0'=>'未支付','1'=>'已支付','2'=>'已完成');
+		if($list) {
+			
+			 foreach($list as $key=>$vo){
+                $list[$key]['type'] = $status[$vo['status']];
+				
+            }
+           
+        }
+		
+        $this->assign('list',$list);
+		$this->display();
+		
+	}
    
 
 }

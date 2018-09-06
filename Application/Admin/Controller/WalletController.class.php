@@ -87,7 +87,7 @@ class WalletController extends AdminController {
             $info = M('wallet')->field(true)->find($id);
            
             $this->assign('info', $info);
-            $this->meta_title = '编辑后台菜单';
+            $this->meta_title = '编辑支付钱包设置';
             $this->display();
         }
     }
@@ -107,7 +107,7 @@ class WalletController extends AdminController {
         if(M('wallet')->where($map)->delete()){
             // S('DB_CONFIG_DATA',null);
             //记录行为
-            action_log('update_wallet', 'wallet', $id, UID);
+            action_log('delete_wallet', 'wallet', $id, UID);
             $this->success('删除成功');
         } else {
             $this->error('删除失败！');
@@ -148,6 +148,64 @@ class WalletController extends AdminController {
 
         $this->display();
     }
+	
+	
+	 /**
+     * 编辑配置
+     * @author yangweijie <yangweijiester@gmail.com>
+     */
+    public function recharge($id = 0){
+        if(IS_POST){
+			$id = I('id');
+            $Menu = M('ciex_recharge');
+			$data['note'] = I('note');
+			$data['status'] = I('status');
+			$data['recharge_time'] = time();
+            $id = $Menu->where(['id'=>$id])->save($data);
+           
+                if($id){
+                    // S('DB_CONFIG_DATA',null);
+                    //记录行为
+                    action_log('update_ciex_recharge', 'ciex_recharge', $data['id'], UID);
+                    $this->success('更新成功',U('/Admin/wallet/recharge_list'));
+                } else {
+                    $this->error('更新失败');
+                }
+            
+        } else {
+            $info = array();
+            /* 获取数据 */
+            $info = M('ciex_recharge')->field(true)->find($id);
+           
+            $this->assign('info', $info);
+            $this->meta_title = '用户充币';
+            $this->display();
+        }
+    }
+	
+	
+	  /**
+     * 删除支付钱包
+     * @author yangweijie <yangweijiester@gmail.com>
+     */
+    public function rechargeDel(){
+        $id = array_unique((array)I('id',0));
+
+        if ( empty($id) ) {
+            $this->error('请选择要操作的数据!');
+        }
+
+        $map = array('id' => array('in', $id) );
+        if(M('ciex_recharge')->where($map)->delete()){
+            // S('DB_CONFIG_DATA',null);
+            //记录行为
+            action_log('del_ciex_recharge', 'ciex_recharge', $id, UID);
+            $this->success('删除成功');
+        } else {
+            $this->error('删除失败！');
+        }
+    }
+
 
    
 }

@@ -1,0 +1,114 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+ <h5>{$meta_title}</h5></div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+    <div class="widget-content nopadding">
+        <div class="control-group">
+            <label class="control-label">用户名称</label>
+            <div class="controls">
+              
+				{$info.realname|default=''}
+                <span class="check-tips"></span>
+            </div>
+        </div>
+         <div class="control-group">
+            <label class="control-label">用户手机</label>
+            <div class="controls">
+               
+                <span class="text input-large"> {$info.mobile|default=''}</span>
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">CIEX价格</label>
+            <div class="controls">
+               
+                <span class="check-tips">{$info.ciex_num|default=''}</span>
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">充值CIEX数量</label>
+            <div class="controls">
+               
+                <span class="check-tips">{$info.ciex_price|default=''}</span>
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">USDT价格</label>
+            <div class="controls">
+               
+                <span class="check-tips">{$info.usdt_num|default=''}</span>
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">支付USDT数量</label>
+            <div class="controls">
+               
+                <span class="check-tips">{$info.usdt_price|default=''}</span>
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">下单时间</label>
+            <div class="controls">
+               
+                <span class="check-tips">{$info.add_time|date="Y-m-d H:i:s",###}</span>
+            </div>
+        </div>
+		<if condition="$info['payment_img']">
+		<div class="control-group">
+            <label class="control-label">支付时间</label>
+            <div class="controls">
+               
+                <span class="check-tips">{$info.payment_img|date="Y-m-d H:i:s",###}</span>
+            </div>
+        </div>
+		</if>
+		<if condition="$info['recharge_time']">
+		<div class="control-group">
+            <label class="control-label">发币时间</label>
+            <div class="controls">
+                <span class="check-tips">{$info.recharge_time|date="Y-m-d H:i:s",###}</span>
+            </div>
+        </div>
+		</if>
+		<if condition="$info['status'] neq 2">
+		<div class="control-group">
+            <label class="control-label">确认发币</label>
+            <div class="controls">
+                 <select name="status" style="background-color: #AAAAAA;border: 1px solid #FFFFFF;">
+                      <!--  <option value="1">在线钱包</option>-->
+                        <option value="2" >发币</option>
+                        <option value="-1">订单失效</option>
+                      
+                    </select>
+            </div>
+        </div>
+        </if>
+		<div class="control-group">
+            <label class="control-label">回复用户</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="note" value="{$info.note|default=''}">
+		
+                <span class="check-tips"></span>
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" name="id" value="{$info.id|default=''}">
+			<if condition="$info['status'] neq 2">
+            <button type="submit" class="btn btn-success ajax-post" target-form="form-horizontal">提交</button>
+			</if>
+             <button type="button" class="btn btn-danger" onclick="javascript:history.back(-1);return false;">返回</button>
+        </div></div>
+    </form></div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        Think.setValue("pid", {$info.pid|default = 0});
+        Think.setValue("hide", {$info.hide|default = 0});
+        Think.setValue("is_dev", {$info.is_dev|default = 0});
+        //导航高亮
+        highlight_subnav("{:U('index')}");
+    </script>
+</block>
