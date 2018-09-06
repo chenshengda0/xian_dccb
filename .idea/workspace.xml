@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb1f0e34-6f1b-4104-b147-0b4cdfd0c6fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/WalletController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/WalletController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/Kung/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/Kung/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/User/bulea.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/View/wap/User/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/View/wap/User/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,26 +32,26 @@
         <counts>
           <entry key="html" value="34" />
           <entry key="js" value="2" />
-          <entry key="php" value="63" />
+          <entry key="php" value="67" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="34" />
           <entry key="JavaScript" value="2" />
-          <entry key="PHP" value="63" />
+          <entry key="PHP" value="67" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="196" />
-          <entry key="php" value="1743" />
+          <entry key="php" value="1763" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="196" />
-          <entry key="PHP" value="1743" />
+          <entry key="PHP" value="1763" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.rename.constructor" />
@@ -95,63 +94,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Home/wap/js/sc_img.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="1080" column="26" selection-start-line="1080" selection-start-column="26" selection-end-line="1080" selection-end-column="26" />
-              <folding>
-                <element signature="e#34#55#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Controller.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="347" column="47" selection-start-line="347" selection-start-column="30" selection-end-line="347" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThinkPHP/Conf/convention.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="497" column="60" selection-start-line="497" selection-start-column="54" selection-end-line="497" selection-end-column="60" />
+            <state relative-caret-position="459">
+              <caret line="266" column="18" selection-start-line="266" selection-start-column="18" selection-end-line="266" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Home/Controller/WalletController.class.php">
+        <entry file="file://$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="872">
-              <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
+            <state relative-caret-position="404">
+              <caret line="42" column="59" lean-forward="true" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -181,15 +137,15 @@
       <find>'recharge'</find>
       <find>hidden</find>
       <find>z_file</find>
-      <find>z_addImg</find>
       <find>sent</find>
-      <find>z_photo</find>
       <find>success(</find>
       <find>$this-&gt;success</find>
-      <find>mj_tj</find>
       <find>TMPL_ACTION_ERROR</find>
       <find>foreach</find>
       <find>norenzheng</find>
+      <find>mj_tj</find>
+      <find>z_addImg</find>
+      <find>z_photo</find>
     </findStrings>
     <replaceStrings>
       <replace>CIEX</replace>
@@ -221,9 +177,7 @@
         <option value="$PROJECT_DIR$/Application/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/UserController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/KungController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/HomeController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/MenuController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/View/mat/Public/base.html" />
         <option value="$PROJECT_DIR$/Application/Admin/View/mat/Public/leftmenu.html" />
@@ -232,6 +186,8 @@
         <option value="$PROJECT_DIR$/Application/Admin/View/mat/User/userindex.html" />
         <option value="$PROJECT_DIR$/Application/Home/View/wap/User/bulea.html" />
         <option value="$PROJECT_DIR$/Application/Home/View/wap/User/index.html" />
+        <option value="$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" />
       </list>
     </option>
   </component>
@@ -335,12 +291,12 @@
       <workItem from="1536069853259" duration="2298000" />
       <workItem from="1536127437831" duration="4047000" />
       <workItem from="1536132182985" duration="11589000" />
-      <workItem from="1536200470505" duration="6755000" />
+      <workItem from="1536200470505" duration="7795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53741000" />
+    <option name="totallyTimeSpent" value="54781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -628,20 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="406" column="36" lean-forward="true" selection-start-line="406" selection-start-column="4" selection-end-line="406" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="268" column="17" selection-start-line="268" selection-start-column="17" selection-end-line="268" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/User/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -659,38 +601,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/WalletController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="872">
-          <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/Controller/TradingHallController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Home/wap/js/sc_img.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/Kung/sent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="60" column="69" selection-start-line="60" selection-start-column="64" selection-end-line="60" selection-end-column="69" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#li#1;n#if#0;n#ul#0;n#div#2;n#if#0;n#notempty#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -701,34 +615,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="1080" column="26" selection-start-line="1080" selection-start-column="26" selection-end-line="1080" selection-end-column="26" />
-          <folding>
-            <element signature="e#34#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Controller.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="347" column="47" selection-start-line="347" selection-start-column="30" selection-end-line="347" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Conf/convention.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Controller/CommonController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="63" column="28" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="28" />
+        <state relative-caret-position="494">
+          <caret line="110" column="37" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -752,10 +642,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/WalletController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="872">
+          <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
-          <caret line="497" column="60" selection-start-line="497" selection-start-column="54" selection-end-line="497" selection-end-column="60" />
+          <caret line="497" column="24" lean-forward="true" selection-start-line="497" selection-start-column="24" selection-end-line="497" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Conf/convention.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Controller.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="347" column="47" selection-start-line="347" selection-start-column="30" selection-end-line="347" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/KungController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="1080" column="26" selection-start-line="1080" selection-start-column="26" selection-end-line="1080" selection-end-column="26" />
+          <folding>
+            <element signature="e#34#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Home/wap/js/sc_img.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/View/wap/Kung/sent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="60" column="69" selection-start-line="60" selection-start-column="64" selection-end-line="60" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#li#1;n#if#0;n#ul#0;n#div#2;n#if#0;n#notempty#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Api/ChangeApi.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="42" column="59" lean-forward="true" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="266" column="18" selection-start-line="266" selection-start-column="18" selection-end-line="266" selection-end-column="18" />
         </state>
       </provider>
     </entry>

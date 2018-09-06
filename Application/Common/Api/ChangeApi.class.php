@@ -51,7 +51,7 @@ final class ChangeApi
 
 
 
-            }elseif($a["hasbill"]>=$bonusRule["chia"]&&$a["hasbill"]<$bonusRule["chib"]){
+            }elseif($a["hasbill"]>=$bonusRule["chia"]&&$a["hasbill"]<=$bonusRule["chib"]){
 
                 $jj=$a["hasbill"]*$bonusRule["chiab"]*0.01;
 
@@ -63,7 +63,7 @@ final class ChangeApi
                 $money = array('money' => $jj, 'hasmoney' => $a['hascp'], 'taxmoney' => 0);
                 money_change($type, $a, get_com(), $money);
 
-            }elseif($a["hasbill"]>=$bonusRule["chib"]&&$a["hasbill"]<$bonusRule["chic"]){
+            }elseif($a["hasbill"]>=$bonusRule["chib"]&&$a["hasbill"]<=$bonusRule["chic"]){
 
                 $jj=$a["hasbill"]*$bonusRule["chiac"]*0.01;
 
@@ -78,7 +78,7 @@ final class ChangeApi
 
 
 
-            }elseif($a["hasbill"]>=$bonusRule["chic"]&&$a["hasbill"]<$bonusRule["chid"]){
+            }elseif($a["hasbill"]>=$bonusRule["chic"]&&$a["hasbill"]<=$bonusRule["chid"]){
 
                 $jj=$a["hasbill"]*$bonusRule["chiad"]*0.01;
                 D("member")->where(array("status"=>1,"uid"=>$a["uid"]))->setInc("hasjifen",$jj);

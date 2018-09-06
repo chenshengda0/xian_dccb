@@ -260,7 +260,7 @@ class PublicController extends \Think\Controller {
 
       $maptiem['time'] =array('BETWEEN',array($sttime,$endtime));
       $fhtime = M('fh')->where($maptiem)->find();
-      if(!$fhtime){
+      if($fhtime){
 
           //如果没有，则进行一次分红
           $fh= new ChangeApi;
