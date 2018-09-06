@@ -177,15 +177,15 @@
 											<a class="btn btn-mini btn-info" href="{:U('TradingHall/moneyInc',array('id'=>$vo['uid']))}">充币</a>
 											<a class="btn btn-mini btn-info " href="{:U('User/del',array('id'=>$vo['uid']))}">删除</a>
 											<!--<a class="btn btn-mini btn-info ajax-get confirm"  href="{:U('is_vip',array('id'=>$vo['uid']))}" >冲VIP</a>-->
-											<a class='btn btn-mini btn-success' href="{:U('User/uinfo',array('id'=>$vo['uid']))}">更多操作>></a>
+											<a class='btn btn-mini btn-success' href="{:U('User/uinfo',array('id'=>$vo['uid']))}">更多操作</a>
 
 											<!--  <eq name="vo.isbill" value="1">
 		                    	<a class="btn btn-mini btn-success  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}">取消报单中心</a>
 		                    <else/>           
 	                            <a class="btn btn-mini btn-info  ajax-get" href="{:U('User/setBill',array('id'=>$vo['uid']))}" >设为报单中心</a>
-	                        </eq>
- 						<a class="btn btn-mini btn-info " href="{:U('User/del',array('id'=>$vo['uid']))}" >修改</a>
-                        <a class="btn btn-mini btn-info " href="{:U('User/updateMemberPsd',array('id'=>$vo['uid']))}" >改密</a>  -->
+	                        </eq>-->
+ 						<a class="btn btn-mini btn-info " href="{:U('User/updateMemberMsg',array('id'=>$vo['uid']))}" >修改</a>
+                        <a class="btn btn-mini btn-info " href="{:U('User/updateMemberPsd',array('id'=>$vo['uid']))}" >改密</a>  
 										</td>
 									</tr>
 								</volist>

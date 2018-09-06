@@ -7,7 +7,9 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css" />
 	<link rel="stylesheet" href="__H-W__/css/style.css" />
-	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+	<script src="__H-W__/js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="__JS__/sc_img.js"></script>
 	<style type="text/css">
 		.qiehuan {
 			width: 100%;
@@ -67,53 +69,60 @@
 
 <body>
 	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="{:U('recharge')}"></a>
 		<h1 class="mui-title">
 			
-			我的账户</h1>
+			支付</h1>
 	</header>
-	<div class="mui-content">
-		<div class="qiehuan" id="qiehuan">
-			<a href="javascript:;" class="active">
-				平台公告
-			</a>
-			<a href="javascript:;">
-				行业新闻
-			</a>
-		</div>
 
 
-		<div class="boxs">
-			<volist name="gonggao" id="vo">
-				<a href="{:U('new_xiangqing',array('id'=>$vo['id']))}">
+
+		<div class="boxs" style="margin-top: 50px;">
+				<div class="wenzi">
+					<p>
+						<h5 style="color: #fff;">充值{$info.ciex_num} CIEX 需要支付 {$info.usdt_num} USDT</h4>
+					</p>
+					
+				</div>
+					
+			<volist name="list" id="vo">
+				
 					<div class="wenzi">
 						<p>
-							<h4 style="color: #fff;">{$vo.title}</h4>
+							<h4 style="color: #fff;">{$vo.name}</h4>
 						</p>
 						<p class="ps">
-							<span>{$vo.id|get_ar}</span>
+							<span>{$vo.address}</span>
 						</p>
 					</div>
-				</a>
+				
 			</volist>
 		</div>
+		
+				付款截图
+										<div class="z_photo">
+										    <div class="z_file">
+										     <form action="{:U('')}" method="post" enctype="multipart/form-data" name="form1" id="myform">
+								              
+								                <input type="file" name="file" id="file" value="" accept="image/*" multiple onchange="imgChange('z_photo','z_file');" />			
+							                </div>
+											 <div class="z_addImg">
+									               			<input type="hidden" name="z_addImg" id="z_addImg"value="">
+											            </div>
+												       	
+							           </div>
+							            <div class="bottom">
+											
+											<div class="but1 ajax-get" href="{:U('quxiao_dd',array('id'=>$info['id']))}">取消订单</div>
+								
+											<input type="hidden" name="id" value="{$info['id']}">
+											<input type="submit" value="确认打款" class="but2">
+										   
+										
+											</form>
+									    </div>
 
 
-
-		<div class="boxs" style="display: none;">
-			<volist name="instro" id="va">
-				<a href="{:U('new_xiangqing',array('id'=>$va['id']))}">
-					<div class="wenzi">
-						<p>
-							<h4 style="color: #fff;">{$va.title}</h4>
-						</p>
-						<p class="ps">
-							<span>{$va.id|get_ar}</span>
-						</p>
-					</div>
-				</a>
-			</volist>
-		</div>
 
 
 
@@ -147,26 +156,7 @@
 
 		</div>
 	</div>
-	<script src="__H-W__/js/jquery-3.1.0.min.js"></script>
-	<script src="__H-W__/js/mui.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		mui.init();
-		var as = document.getElementById("qiehuan").getElementsByTagName("a");
-		var boxs = document.getElementsByClassName("boxs");
-		for (var i = 0; i < as.length; i++) {
-			as[i].index = i;
-			as[i].onclick = function () {
-				for (var j = 0; j < as.length; j++) {
-					as[j].className = "";
-				}
-				this.className = "active";
-				for (var i = 0; i < boxs.length; i++) {
-					boxs[i].style.display = "none";
-				}
-				boxs[this.index].style.display = "block";
-			}
-		}
-	</script>
+
 </body>
 
 </html>

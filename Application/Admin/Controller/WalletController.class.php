@@ -16,13 +16,13 @@ namespace Admin\Controller;
 class WalletController extends AdminController {
 
     /**
-     * 后台菜单首页
+     * 后台钱包管理
      * @return none
      */
     public function wallet_list(){
 
 
-        $list  =   M("wallet")->where($map)->field(true)->order('id asc')->select();
+        $list  =   M("wallet")->field(true)->order('id asc')->select();
 
         $this->assign('list',$list);
 
@@ -38,6 +38,7 @@ class WalletController extends AdminController {
             $Menu = M('wallet');
 			$data['name'] = I('name');
 			$data['address'] = I('address');
+			$data['add_time'] = time();
             $id = $Menu->add($data);
                
                 if($id){
@@ -92,7 +93,7 @@ class WalletController extends AdminController {
     }
 
     /**
-     * 删除后台菜单
+     * 删除支付钱包
      * @author yangweijie <yangweijiester@gmail.com>
      */
     public function del(){
@@ -111,6 +112,41 @@ class WalletController extends AdminController {
         } else {
             $this->error('删除失败！');
         }
+    }
+	
+	
+	 /**
+     * 后台钱包管理
+     * @return none
+     */
+    public function recharge_list(){
+
+
+       
+		$model= M('ciex_recharge');
+		$map ='';
+		$maps = '';
+		$order= 'id desc';
+		$field = '*';
+		$list = $this->lists($model,$map,$maps,$order,$field);
+
+		$status = array('-1'=>'无效','0'=>'未支付','1'=>'已支付','2'=>'已完成');
+		
+		 if($list) {
+			
+			 foreach($list as $key=>$vo){
+                $list[$key]['status'] = $status[$vo['status']];
+				$list[$key]['add_time'] = date('Y-m-d H:i',$vo['add_time']);
+				$list[$key]['pay_time'] = $vo['pay_time'] ? date('Y-m-d H:i',$vo['pay_time']) : '未支付';
+              
+            }
+           
+        }
+		
+        $this->assign('list',$list);
+		
+
+        $this->display();
     }
 
    
