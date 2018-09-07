@@ -205,6 +205,77 @@ class WalletController extends AdminController {
             $this->error('删除失败！');
         }
     }
+	
+	/**
+     * 后台钱包管理
+     * @return none
+     */
+    public function withdraw_list(){
+
+
+       
+		$model= M('ciex_withdraw');
+		$map ='';
+		$maps = '';
+		$order= 'id desc';
+		$field = '*';
+		$list = $this->lists($model,$map,$maps,$order,$field);
+
+		$status = array('-1'=>'无效','0'=>'未支付','1'=>'已支付','2'=>'已完成');
+		
+		 if($list) {
+			
+			 foreach($list as $key=>$vo){
+                $list[$key]['status'] = $status[$vo['status']];
+				$list[$key]['add_time'] = date('Y-m-d H:i',$vo['add_time']);
+				$list[$key]['pay_time'] = $vo['pay_time'] ? date('Y-m-d H:i',$vo['pay_time']) : '未支付';
+              
+            }
+           
+        }
+		
+        $this->assign('list',$list);
+		
+
+        $this->display();
+    }
+	
+	
+	
+	 /**
+     * 编辑配置
+     * @author yangweijie <yangweijiester@gmail.com>
+     */
+    public function withdraw($id = 0){
+        if(IS_POST){
+			$id = I('id');
+            $Menu = M('ciex_withdraw');
+			$data['note'] = I('note');
+			$data['status'] = I('status');
+			$data['recharge_time'] = time();
+            $id = $Menu->where(['id'=>$id])->save($data);
+           
+                if($id){
+                    // S('DB_CONFIG_DATA',null);
+                    //记录行为
+                    action_log('update_ciex_withdraw', 'ciex_withdraw', $data['id'], UID);
+                    $this->success('更新成功',U('/Admin/wallet/withdraw_list'));
+                } else {
+                    $this->error('更新失败');
+                }
+            
+        } else {
+            $info = array();
+            /* 获取数据 */
+            $info = M('ciex_withdraw')->field(true)->find($id);
+           
+            $this->assign('info', $info);
+            $this->meta_title = '用户充币';
+            $this->display();
+        }
+    }
+	
+	
 
 
    

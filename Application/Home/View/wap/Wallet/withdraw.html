@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>充币</title>
+    <title>提币</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="__H-W__/css/mui.css"/>
     <link rel="stylesheet" href="__H-W__/css/style.css" />
@@ -42,8 +42,8 @@
 	</script>
     <header class="mui-bar mui-bar-nav">
     	<a class=" mui-icon mui-icon-left-nav mui-pull-left" style="margin: 0;" href="{:U('user/index')}"></a>
-        <h1 class="mui-title">充币</h1>
-        <a href="{:U('recharge_log')}" class="mui-pull-right">充值记录</a>
+        <h1 class="mui-title">提币</h1>
+        <a href="{:U('withdraw_log')}" class="mui-pull-right">提币记录</a>
     </header>
     <div class="mui-content">
         <form action="{:U('')}" method="post" class="form-horizontal">
@@ -58,10 +58,18 @@
                 </p>
         
                 <p class="jine">
-                    <span>充值数量</span>
-                    <input type="text" name="num" placeholder="请输入充值CIEX数量"/>
+                    <span>转出数量</span>
+                    <input type="text" name="num" placeholder="请输入提现CIEX数量"/>
                 </p>
                 <p class="jine">
+                    <span>钱包名称</span>
+                    <input type="text" name="purse_name" placeholder="钱包名称"/>
+                </p>
+				<p class="jine">
+                    <span>钱包地址</span>
+                    <input type="text" name="purse_address" placeholder="钱包地址"/>
+                </p>
+				<p class="jine">
                     <span>交易密码</span>
                     <input type="password" name="pay" placeholder="请输入交易密码"/>
                 </p>

@@ -1,0 +1,90 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="search_box">
+      
+       
+    </div>
+<div class="widget-box">
+<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+ <h5>充币处理</h5></div>
+        <form class="ids">
+         <div class="widget-content nopadding"><div class='dataTables_wrapper'>
+            <table class='table table-bordered data-table'>
+                <thead>
+                    <tr>
+                        <th class="row-selected">
+                            <input class="checkbox check-all" type="checkbox">
+                        </th>
+                        <th>ID</th>
+                       
+                        <th>用户名称</th>
+                        <th>手机号码</th>
+						<th>充值数量</th>
+                        <th>应付USDT</th>
+						<th>下单时间</th>
+						<th>支付时间</th>
+						<th>订单状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+				<notempty name="list">
+                <volist name="list" id="vo">
+                    <tr>
+                        <td><input class="ids row-selected" type="checkbox" name="id[]" value="{$vo.id}"></td>
+                        <td>{$vo.id}</td>
+                     
+                        <td>{$vo.realname}</td>
+                        <td>{$vo.mobile}</td>
+						<td>{$vo.ciex_num}</td>
+						<td>{$vo.usdt_num}</td>
+						<td>{$vo.add_time}</td>
+						<td>{$vo.pay_time}</td>
+						<td>{$vo.status}</td>
+                    
+                    
+                        <td>
+                            <a title="编辑" href="{:U('withdraw?id='.$vo['id'])}">查看</a>
+                            <a class="confirm ajax-get" title="删除" href="{:U('withdrawDel?id='.$vo['id'])}">删除</a>
+                        </td>
+                    </tr>
+                </volist>
+				<else/>
+				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+                </tbody>
+            </table></div></div>
+        </form>
+        <!-- 分页 -->
+        <div class="page">
+			{$_page}
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        $(function() {
+            //导航高亮
+            highlight_subnav("{:U('index')}");
+            //点击排序
+        	$('.list_sort').click(function(){
+        		var url = $(this).attr('url');
+        		var ids = $('.ids:checked');
+        		var param = '';
+        		if(ids.length > 0){
+        			var str = new Array();
+        			ids.each(function(){
+        				str.push($(this).val());
+        			});
+        			param = str.join(',');
+        		}
+
+        		if(url != undefined && url != ''){
+        			window.location.href = url + '/ids/' + param;
+        		}
+        	});
+        });
+    </script>
+</block>
